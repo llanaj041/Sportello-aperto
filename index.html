@@ -89,14 +89,14 @@
   .chips { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 0.5rem; }
   .chip { padding: 9px 18px; border: 1.5px solid var(--green-mid); border-radius: 24px; font-size: 13px; color: var(--green-dark); cursor: pointer; background: var(--green-light); transition: all 0.18s; font-family: 'Sora', sans-serif; font-weight: 700; box-shadow: 0 1px 4px rgba(0,102,204,0.08); display: flex; align-items: center; gap: 6px; }
   .chip:hover { background: var(--green); color: white; border-color: var(--green); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,102,204,0.22); }
-  .chip-blue { padding: 9px 18px; border: 1.5px solid #bfdbfe; border-radius: 24px; font-size: 13px; color: var(--blue-dark); cursor: pointer; background: var(--blue-light); transition: all 0.18s; font-family: 'Sora', sans-serif; font-weight: 700; box-shadow: 0 1px 4px rgba(37,99,235,0.08); display: flex; align-items: center; gap: 6px; }
-  .chip-blue:hover { background: var(--blue); color: white; border-color: var(--blue); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(37,99,235,0.22); }
-  .chip-orange { padding: 9px 18px; border: 1.5px solid #fed7aa; border-radius: 24px; font-size: 13px; color: var(--orange); cursor: pointer; background: var(--orange-light); transition: all 0.18s; font-family: 'Sora', sans-serif; font-weight: 700; box-shadow: 0 1px 4px rgba(234,88,12,0.08); display: flex; align-items: center; gap: 6px; }
-  .chip-orange:hover { background: var(--orange); color: white; border-color: var(--orange); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(234,88,12,0.22); }
-  .chip-purple { padding: 9px 18px; border: 1.5px solid #ddd6fe; border-radius: 24px; font-size: 13px; color: var(--purple); cursor: pointer; background: var(--purple-light); transition: all 0.18s; font-family: 'Sora', sans-serif; font-weight: 700; box-shadow: 0 1px 4px rgba(124,58,237,0.08); display: flex; align-items: center; gap: 6px; }
-  .chip-purple:hover { background: var(--purple); color: white; border-color: var(--purple); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(124,58,237,0.22); }
-  .chip-teal { padding: 9px 18px; border: 1.5px solid #99f6e4; border-radius: 24px; font-size: 13px; color: var(--teal); cursor: pointer; background: var(--teal-light); transition: all 0.18s; font-family: 'Sora', sans-serif; font-weight: 700; box-shadow: 0 1px 4px rgba(13,148,136,0.08); display: flex; align-items: center; gap: 6px; }
-  .chip-teal:hover { background: var(--teal); color: white; border-color: var(--teal); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(13,148,136,0.22); }
+  .chip-blue { padding: 9px 18px; border: 1.5px solid var(--green-mid); border-radius: 24px; font-size: 13px; color: var(--green-dark); cursor: pointer; background: var(--green-light); transition: all 0.18s; font-family: 'Sora', sans-serif; font-weight: 700; box-shadow: 0 1px 4px rgba(0,102,204,0.08); display: flex; align-items: center; gap: 6px; }
+  .chip-blue:hover { background: var(--green); color: white; border-color: var(--green); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,102,204,0.22); }
+  .chip-orange { padding: 9px 18px; border: 1.5px solid var(--green-mid); border-radius: 24px; font-size: 13px; color: var(--green-dark); cursor: pointer; background: var(--green-light); transition: all 0.18s; font-family: 'Sora', sans-serif; font-weight: 700; box-shadow: 0 1px 4px rgba(0,102,204,0.08); display: flex; align-items: center; gap: 6px; }
+  .chip-orange:hover { background: var(--green); color: white; border-color: var(--green); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,102,204,0.22); }
+  .chip-purple { padding: 9px 18px; border: 1.5px solid var(--green-mid); border-radius: 24px; font-size: 13px; color: var(--green-dark); cursor: pointer; background: var(--green-light); transition: all 0.18s; font-family: 'Sora', sans-serif; font-weight: 700; box-shadow: 0 1px 4px rgba(0,102,204,0.08); display: flex; align-items: center; gap: 6px; }
+  .chip-purple:hover { background: var(--green); color: white; border-color: var(--green); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,102,204,0.22); }
+  .chip-teal { padding: 9px 18px; border: 1.5px solid var(--green-mid); border-radius: 24px; font-size: 13px; color: var(--green-dark); cursor: pointer; background: var(--green-light); transition: all 0.18s; font-family: 'Sora', sans-serif; font-weight: 700; box-shadow: 0 1px 4px rgba(0,102,204,0.08); display: flex; align-items: center; gap: 6px; }
+  .chip-teal:hover { background: var(--green); color: white; border-color: var(--green); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,102,204,0.22); }
   /* MODALI */
   .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 9000; align-items: flex-end; justify-content: center; backdrop-filter: blur(3px); animation: fadeIn 0.2s ease; }
   .modal-overlay.open { display: flex; }
@@ -224,8 +224,33 @@
   .spinner { width: 34px; height: 34px; border: 3px solid var(--border); border-top-color: var(--green); border-radius: 50%; animation: spin 0.75s linear infinite; margin: 0 auto 1rem; }
   @keyframes spin { to { transform: rotate(360deg); } }
   .bonus-count-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--green); color: white; border-radius: 20px; padding: 6px 14px; font-family: 'Sora', sans-serif; font-size: 13px; font-weight: 700; margin-bottom: 1rem; }
-  /* Aggiornamento 2026 tag */
   .update-tag { display: inline-block; padding: 3px 9px; border-radius: 8px; font-size: 10px; font-weight: 800; font-family: 'Sora',sans-serif; background: #dcfce7; color: #14532d; margin-left: 6px; vertical-align: middle; letter-spacing: 0.5px; }
+
+  /* Privacy / Cookie links footer */
+  .privacy-footer {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 2.5rem;
+    padding-bottom: 1rem;
+  }
+  .privacy-footer a {
+    font-size: 13px;
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: var(--card);
+    transition: all 0.18s;
+  }
+  .privacy-footer a:hover {
+    background: var(--green-light);
+    color: var(--green-dark);
+    border-color: var(--green-mid);
+  }
 </style>
 </head>
 <body>
@@ -261,8 +286,8 @@
 
   <div class="section-title">🌍 Immigrazione &amp; Stranieri</div>
   <div class="chips">
-    <button class="chip-blue" onclick="apriModal('cittadinanzaModal')">🇮🇹 Cittadinanza Italiana — Guida Completa</button>
-    <button class="chip-blue" onclick="apriModal('permessoCheckModal')">🔍 Controlla Stato Permesso di Soggiorno</button>
+    <button class="chip" onclick="apriModal('cittadinanzaModal')">🇮🇹 Cittadinanza Italiana — Guida Completa</button>
+    <button class="chip" onclick="apriModal('permessoCheckModal')">🔍 Controlla Stato Permesso di Soggiorno</button>
     <button class="chip" onclick="apriModal('permessoModal')">📋 Permesso di Soggiorno</button>
     <button class="chip" onclick="apriModal('codiceFiscaleModal')">🔢 Codice Fiscale Stranieri</button>
     <button class="chip" onclick="apriModal('ricongiungimentoModal')">👨‍👩‍👧 Ricongiungimento Familiare</button>
@@ -279,14 +304,14 @@
 
   <div class="section-title">🏠 Casa &amp; 💼 Lavoro</div>
   <div class="chips">
-    <button class="chip-purple" onclick="apriModal('affittoModal')">📝 Contratti di Affitto</button>
-    <button class="chip-purple" onclick="apriModal('bonusCasaModal')">🔨 Bonus Ristrutturazione 2026</button>
-    <button class="chip-purple" onclick="apriModal('condominialeModal')">🏢 Spese Condominiali</button>
+    <button class="chip" onclick="apriModal('affittoModal')">📝 Contratti di Affitto</button>
+    <button class="chip" onclick="apriModal('bonusCasaModal')">🔨 Bonus Ristrutturazione 2026</button>
+    <button class="chip" onclick="apriModal('condominialeModal')">🏢 Spese Condominiali</button>
   </div>
   <div class="chips">
-    <button class="chip-teal" onclick="apriModal('cedolinoModal')">💶 Cedolino (Busta Paga)</button>
-    <button class="chip-teal" onclick="apriModal('naspiModal')">💼 NASpI — Disoccupazione 2026</button>
-    <button class="chip-teal" onclick="apriModal('partitaIvaModal')">🧾 Aprire Partita IVA</button>
+    <button class="chip" onclick="apriModal('cedolinoModal')">💶 Cedolino (Busta Paga)</button>
+    <button class="chip" onclick="apriModal('naspiModal')">💼 NASpI — Disoccupazione 2026</button>
+    <button class="chip" onclick="apriModal('partitaIvaModal')">🧾 Aprire Partita IVA</button>
   </div>
 
   <button class="trova-esperto-btn" onclick="avviaConsulenza()">
@@ -294,6 +319,12 @@
     <span>Trova un esperto vicino a te</span>
     <span class="btn-arrow">→</span>
   </button>
+
+  <!-- Privacy & Cookie footer links -->
+  <div class="privacy-footer">
+    <a href="https://www.iubenda.com/privacy-policy/24529420" target="_blank">🔒 Privacy Policy</a>
+    <a href="https://www.iubenda.com/privacy-policy/24529420/cookie-policy" target="_blank">🍪 Cookie Policy</a>
+  </div>
 </div>
 
 <!-- ======================== MODAL: RADAR BONUS ======================== -->
@@ -898,8 +929,6 @@
   </div>
 </div>
 
-<!-- ======================== NUOVI MODAL CASA ======================== -->
-
 <!-- MODAL AFFITTO -->
 <div class="modal-overlay" id="affittoModal" onclick="chiudiModal('affittoModal', event)">
   <div class="modal-sheet">
@@ -1074,8 +1103,6 @@
     </div>
   </div>
 </div>
-
-<!-- ======================== NUOVI MODAL LAVORO ======================== -->
 
 <!-- MODAL CEDOLINO -->
 <div class="modal-overlay" id="cedolinoModal" onclick="chiudiModal('cedolinoModal', event)">
@@ -1275,7 +1302,6 @@ let currentMapQuery = 'CAF patronato';
 // DATABASE BONUS — AGGIORNATO 2026
 // =====================================================
 const BONUS_DB = [
-  // ─── UNIVERSALI ───
   {
     id: 'isee',
     nome: '📄 ISEE 2026 — Attestazione Gratuita',
@@ -1294,7 +1320,6 @@ const BONUS_DB = [
     dove: '→ spid.gov.it (gratuito con Poste ID)',
     condizioni: { stati: ['studente','disoccupato','dipendente','pensionato','genitore','autonomo'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
   },
-  // ─── FAMIGLIE CON FIGLI ───
   {
     id: 'assegno_unico',
     nome: '👶 Assegno Unico Universale 2026',
@@ -1322,7 +1347,6 @@ const BONUS_DB = [
     dove: '→ Comune di residenza (ufficio servizi sociali)',
     condizioni: { stati: ['studente','disoccupato','dipendente','pensionato','genitore','autonomo'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['minorenni','disabili'] }
   },
-  // ─── ISEE BASSO ───
   {
     id: 'adi',
     nome: '💳 ADI — Assegno di Inclusione 2026',
@@ -1359,7 +1383,6 @@ const BONUS_DB = [
     dove: '→ Selezione automatica Comune — ritiro all\'ufficio postale',
     condizioni: { stati: ['disoccupato','pensionato','genitore'], isee: ['basso','medio_basso'], cittad: ['italiana'], figli: ['nessuno','minorenni','disabili'] }
   },
-  // ─── STUDENTI ───
   {
     id: 'borsa_ersu',
     nome: '🎓 Borsa di Studio ERSU/DSU 2026',
@@ -1378,7 +1401,6 @@ const BONUS_DB = [
     dove: '→ Segreteria Ateneo con ISEE universitario',
     condizioni: { stati: ['studente'], isee: ['basso','medio_basso','medio'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
   },
-  // ─── LAVORATORI DIPENDENTI ───
   {
     id: 'fringe_benefit',
     nome: '🎁 Fringe Benefit con Figli a Carico',
@@ -1397,7 +1419,6 @@ const BONUS_DB = [
     dove: '→ CAF gratuito o agenziaentrate.gov.it con SPID',
     condizioni: { stati: ['dipendente','pensionato'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
   },
-  // ─── CASA ───
   {
     id: 'bonus_ristrutturazione',
     nome: '🔨 Bonus Ristrutturazione Casa 2026',
@@ -1416,7 +1437,6 @@ const BONUS_DB = [
     dove: '→ Comune di residenza (servizi sociali)',
     condizioni: { stati: ['disoccupato','dipendente','genitore'], isee: ['basso','medio_basso'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
   },
-  // ─── PENSIONATI ───
   {
     id: 'integrazione_pensione',
     nome: '🏦 Integrazione al Minimo Pensione',
@@ -1435,7 +1455,6 @@ const BONUS_DB = [
     dove: '→ INPS.it o Patronato',
     condizioni: { stati: ['pensionato'], isee: ['basso','medio_basso'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
   },
-  // ─── DISOCCUPATI ───
   {
     id: 'naspi',
     nome: '💼 NASpI 2026 — Indennità Disoccupazione',
@@ -1445,7 +1464,6 @@ const BONUS_DB = [
     dove: '→ INPS.it con SPID o Patronato (entro 68 giorni)',
     condizioni: { stati: ['disoccupato'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
   },
-  // ─── PARTITA IVA / AUTONOMI ───
   {
     id: 'regime_forfettario',
     nome: '📊 Regime Forfettario 2026 — Flat Tax 15%',
@@ -1455,7 +1473,6 @@ const BONUS_DB = [
     dove: '→ Apertura gratuita su agenziaentrate.gov.it con SPID',
     condizioni: { stati: ['autonomo'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
   },
-  // ─── EXTRA-UE ───
   {
     id: 'ssn_stranieri',
     nome: '💊 Iscrizione SSN per Stranieri',
@@ -1474,7 +1491,6 @@ const BONUS_DB = [
     dove: '→ INPS.it con SPID o CAF',
     condizioni: { stati: ['disoccupato','genitore'], isee: ['basso'], cittad: ['extraue'], figli: ['minorenni','disabili'] }
   },
-  // ─── DISABILI ───
   {
     id: 'bonus_disabilita',
     nome: '♿ Assegno di Accompagnamento / Invalidità',
@@ -1723,7 +1739,5 @@ function escapeHtml(str) {
   return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
 </script>
-<a href="https://www.iubenda.com/privacy-policy/24529420" class="iubenda-white iubenda-noiframe iubenda-embed" title="Privacy Policy ">Privacy Policy</a><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
-<a href="https://www.iubenda.com/privacy-policy/24529420/cookie-policy" class="iubenda-white iubenda-noiframe iubenda-embed" title="Cookie Policy ">Cookie Policy</a><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
 </body>
 </html>
