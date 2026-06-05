@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sportello Aperto — Burocrazia Italiana Spiegata Semplice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #0066CC;
+    --green-dark: #004A99;
+    --green-light: #e6f0fb;
+    --green-mid: #b3d4f5;
+    --bg: #f4f6f3;
+    --card: #ffffff;
+    --border: #dde3dd;
+    --text: #1a1f1a;
+    --muted: #6b7a6b;
+    --warning-bg: #fffbeb;
+    --warning-border: #f59e0b;
+    --warning-text: #78350f;
+    --partner-bg: #1e293b;
+    --blue: #2563eb;
+    --blue-light: #eff6ff;
+    --blue-dark: #1d4ed8;
+    --orange: #ea580c;
+    --orange-light: #fff7ed;
+    --radius: 16px;
+    --shadow: 0 2px 12px rgba(0,0,0,0.06);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,0.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+    color: var(--text);
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle at 20% 20%, rgba(0,102,204,0.06) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 80%, rgba(0,102,204,0.04) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .app { max-width: 680px; margin: 0 auto; position: relative; z-index: 1; }
+  .header { display: flex; align-items: center; gap: 14px; margin-bottom: 6px; }
+  .logo-icon {
+    width: 52px; height: 52px;
+    background: linear-gradient(135deg, #0066CC 0%, #0055AA 100%);
+    border-radius: 16px; display: flex; align-items: center; justify-content: center;
+    font-size: 26px; box-shadow: 0 4px 16px rgba(0,102,204,0.3); flex-shrink: 0;
+  }
+  .logo-text { font-family: 'Sora', sans-serif; font-size: 26px; font-weight: 800; color: var(--text); letter-spacing: -0.8px; }
+  .tagline { font-size: 14px; color: var(--muted); margin-bottom: 1.75rem; padding-left: 66px; font-style: italic; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem; margin-bottom: 1.25rem; box-shadow: var(--shadow); }
+  .comune-section { margin-bottom: 1rem; position: relative; }
+  .comune-input { width: 100%; padding: 13px 16px 13px 44px; border: 1px solid var(--border); border-radius: var(--radius); font-size: 15px; font-family: 'DM Sans', sans-serif; background: var(--card); box-shadow: var(--shadow); transition: border-color 0.2s, box-shadow 0.2s; color: var(--text); }
+  .comune-input:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(0,102,204,0.12); }
+  .comune-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); font-size: 18px; pointer-events: none; }
+  .comune-searching { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; border: 2px solid var(--border); border-top-color: var(--green); border-radius: 50%; animation: spin 0.7s linear infinite; display: none; }
+  .dropdown-menu { position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: var(--card); border: 1px solid var(--border); border-radius: 12px; max-height: 240px; overflow-y: auto; z-index: 1000; box-shadow: var(--shadow-lg); display: none; }
+  .dropdown-item { padding: 13px 16px; cursor: pointer; font-size: 14px; border-bottom: 1px solid #f5f5f5; color: var(--text); display: flex; align-items: center; gap: 8px; transition: background 0.15s; }
+  .dropdown-item:last-child { border-bottom: none; }
+  .dropdown-item:hover { background: var(--green-light); color: var(--green-dark); }
+  .dropdown-item .city-name { font-weight: 500; }
+  .dropdown-item .city-region { font-size: 12px; color: var(--muted); }
+  .dropdown-empty { padding: 16px; font-size: 14px; color: var(--muted); text-align: center; }
+  .radar-trigger-btn {
+    width: 100%; margin-bottom: 1.25rem; padding: 1.1rem 1.4rem;
+    border-radius: var(--radius); border: 2px dashed var(--green);
+    background: var(--green-light); color: var(--green-dark);
+    font-size: 15px; font-family: 'Sora', sans-serif; font-weight: 700;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    gap: 10px; transition: all 0.22s; box-shadow: var(--shadow);
+  }
+  .radar-trigger-btn:hover { background: var(--green); color: white; border-style: solid; transform: translateY(-2px); box-shadow: 0 6px 22px rgba(0,102,204,0.28); }
+  .radar-trigger-btn .radar-arrow { margin-left: auto; font-size: 18px; opacity: 0.6; transition: transform 0.2s; }
+  .radar-trigger-btn:hover .radar-arrow { transform: translateX(4px); opacity: 1; }
+  .section-title { font-size: 11px; font-family: 'Sora', sans-serif; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin: 1.5rem 0 0.6rem 2px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 0.5rem; }
+  .chip { padding: 9px 18px; border: 1.5px solid var(--green-mid); border-radius: 24px; font-size: 13px; color: var(--green-dark); cursor: pointer; background: var(--green-light); transition: all 0.18s; font-family: 'Sora', sans-serif; font-weight: 700; box-shadow: 0 1px 4px rgba(0,102,204,0.08); display: flex; align-items: center; gap: 6px; }
+  .chip:hover { background: var(--green); color: white; border-color: var(--green); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,102,204,0.22); }
+  .chip-blue { padding: 9px 18px; border: 1.5px solid #bfdbfe; border-radius: 24px; font-size: 13px; color: var(--blue-dark); cursor: pointer; background: var(--blue-light); transition: all 0.18s; font-family: 'Sora', sans-serif; font-weight: 700; box-shadow: 0 1px 4px rgba(37,99,235,0.08); display: flex; align-items: center; gap: 6px; }
+  .chip-blue:hover { background: var(--blue); color: white; border-color: var(--blue); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(37,99,235,0.22); }
+  .chip-orange { padding: 9px 18px; border: 1.5px solid #fed7aa; border-radius: 24px; font-size: 13px; color: var(--orange); cursor: pointer; background: var(--orange-light); transition: all 0.18s; font-family: 'Sora', sans-serif; font-weight: 700; box-shadow: 0 1px 4px rgba(234,88,12,0.08); display: flex; align-items: center; gap: 6px; }
+  .chip-orange:hover { background: var(--orange); color: white; border-color: var(--orange); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(234,88,12,0.22); }
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 9000; align-items: flex-end; justify-content: center; backdrop-filter: blur(3px); animation: fadeIn 0.2s ease; }
+  .modal-overlay.open { display: flex; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .modal-sheet { background: var(--card); border-radius: 24px 24px 0 0; width: 100%; max-width: 700px; max-height: 92vh; display: flex; flex-direction: column; box-shadow: 0 -8px 40px rgba(0,0,0,0.18); animation: slideUp 0.3s cubic-bezier(0.34,1.56,0.64,1); overflow: hidden; }
+  @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+  .modal-header { padding: 1.2rem 1.4rem; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+  .modal-title { font-family: 'Sora', sans-serif; font-size: 16px; font-weight: 700; flex: 1; color: var(--text); }
+  .modal-close { width: 32px; height: 32px; border-radius: 50%; border: none; background: var(--bg); color: var(--muted); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; line-height: 1; }
+  .modal-close:hover { background: #eee; color: var(--text); }
+  .modal-body { overflow-y: auto; flex: 1; padding: 1.4rem; }
+  .citizenship-intro { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 1px solid #bfdbfe; border-radius: 14px; padding: 1.2rem; margin-bottom: 1.4rem; font-size: 14px; line-height: 1.7; color: #1e3a8a; }
+  .citizenship-intro strong { font-weight: 700; }
+  .step-list { list-style: none; padding: 0; }
+  .step-item { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid #f3f3f3; align-items: flex-start; }
+  .step-item:last-child { border-bottom: none; }
+  .step-num { width: 32px; height: 32px; background: var(--blue); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 14px; flex-shrink: 0; box-shadow: 0 2px 8px rgba(37,99,235,0.22); }
+  .step-num.green { background: var(--green); box-shadow: 0 2px 8px rgba(0,102,204,0.22); }
+  .step-num.orange { background: var(--orange); box-shadow: 0 2px 8px rgba(234,88,12,0.22); }
+  .step-content { flex: 1; }
+  .step-title { font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .step-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .step-desc strong { color: var(--text); }
+  .step-tag { display: inline-block; padding: 2px 8px; background: var(--blue-light); color: var(--blue-dark); border-radius: 8px; font-size: 11px; font-weight: 700; font-family: 'Sora', sans-serif; margin-top: 5px; }
+  .step-tag.orange { background: var(--orange-light); color: var(--orange); }
+  .step-tag.green { background: var(--green-light); color: var(--green-dark); }
+  .warn-box { background: var(--warning-bg); border-left: 4px solid var(--warning-border); border-radius: 10px; padding: 1rem 1.1rem; font-size: 13px; color: var(--warning-text); line-height: 1.6; margin: 1rem 0; }
+  .warn-box strong { font-weight: 700; }
+  .info-box { background: var(--green-light); border-left: 4px solid var(--green); border-radius: 10px; padding: 1rem 1.1rem; font-size: 13px; color: #003380; line-height: 1.6; margin: 1rem 0; }
+  .info-box strong { font-weight: 700; }
+  .section-sub { font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); margin: 1.4rem 0 0.8rem; }
+  .permesso-intro { background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%); border: 1px solid #fdba74; border-radius: 14px; padding: 1.2rem; margin-bottom: 1.4rem; font-size: 14px; line-height: 1.7; color: #7c2d12; }
+  .link-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; margin-bottom: 12px; overflow: hidden; box-shadow: 0 1px 6px rgba(0,0,0,0.05); transition: box-shadow 0.2s, transform 0.15s; display: block; text-decoration: none; color: inherit; }
+  .link-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.10); transform: translateY(-1px); }
+  .link-card-header { padding: 12px 14px; display: flex; align-items: center; gap: 12px; }
+  .link-card-icon { width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+  .icon-blue { background: var(--blue-light); }
+  .icon-orange { background: var(--orange-light); }
+  .icon-green { background: var(--green-light); }
+  .link-card-info { flex: 1; min-width: 0; }
+  .link-card-title { font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+  .link-card-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+  .link-card-url { font-size: 11px; color: var(--blue); font-weight: 600; margin-top: 3px; display: block; word-break: break-all; }
+  .link-card-arrow { font-size: 18px; color: var(--muted); flex-shrink: 0; }
+  .badge-official { display: inline-block; padding: 2px 8px; background: #dbeafe; color: #1e3a8a; border-radius: 8px; font-size: 10px; font-weight: 700; font-family: 'Sora', sans-serif; margin-left: 6px; vertical-align: middle; }
+  .tipo-permesso-tabs { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 1.2rem; }
+  .tipo-tab { padding: 6px 14px; border: 1px solid var(--border); border-radius: 20px; font-size: 12px; font-family: 'Sora', sans-serif; font-weight: 600; cursor: pointer; background: var(--card); color: var(--muted); transition: all 0.15s; }
+  .tipo-tab.active, .tipo-tab:hover { background: var(--orange); color: white; border-color: var(--orange); }
+  .tipo-tab.blue.active, .tipo-tab.blue:hover { background: var(--blue); color: white; border-color: var(--blue); }
+  .tipo-tab.green.active, .tipo-tab.green:hover { background: var(--green); color: white; border-color: var(--green); }
+  .steps-permesso { display: none; }
+  .steps-permesso.active { display: block; }
+  .grid-profilo { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+  @media (max-width: 480px) { .grid-profilo { grid-template-columns: 1fr; } }
+  .select-group { display: flex; flex-direction: column; gap: 5px; }
+  .select-group label { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; font-family: 'Sora', sans-serif; }
+  .select-profilo { padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 13px; font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); outline: none; transition: border-color 0.2s; cursor: pointer; }
+  .select-profilo:focus { border-color: var(--green); background: white; }
+  .radar-btn { width: 100%; padding: 13px; background: var(--green-light); color: var(--green-dark); border: 1.5px dashed var(--green); border-radius: 12px; font-size: 14px; font-family: 'Sora', sans-serif; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+  .radar-btn:hover { background: var(--green); color: white; border-style: solid; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,102,204,0.25); }
+
+  /* BONUS CARDS */
+  .bonus-result { margin-top: 1.25rem; animation: fadeUp 0.3s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  .bonus-section-title { font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 1.2rem 0 0.6rem; display: flex; align-items: center; gap: 6px; }
+  .bonus-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1rem 1.2rem; margin-bottom: 10px; box-shadow: 0 1px 6px rgba(0,0,0,0.05); transition: box-shadow 0.2s, transform 0.15s; }
+  .bonus-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.10); transform: translateY(-1px); }
+  .bonus-card-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 6px; }
+  .bonus-card-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
+  .bonus-card-name { font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 700; color: var(--text); flex: 1; }
+  .bonus-importo { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 700; font-family: 'Sora', sans-serif; background: var(--green-light); color: var(--green-dark); white-space: nowrap; }
+  .bonus-importo.orange { background: var(--orange-light); color: var(--orange); }
+  .bonus-importo.blue { background: var(--blue-light); color: var(--blue-dark); }
+  .bonus-desc { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 6px; }
+  .bonus-dove { font-size: 12px; color: var(--green-dark); font-weight: 600; }
+  .no-bonus { background: var(--warning-bg); border: 1px solid var(--warning-border); border-radius: 12px; padding: 1rem 1.2rem; font-size: 13px; color: var(--warning-text); line-height: 1.6; margin-top: 1rem; }
+  .partner-box { background: var(--partner-bg); border-radius: 14px; padding: 1.25rem; margin-top: 1.75rem; display: flex; flex-direction: column; gap: 12px; }
+  .partner-text { font-size: 14px; color: #cbd5e1; line-height: 1.6; }
+  .partner-text strong { color: #f1f5f9; }
+  .partner-btn { background: var(--green); color: white; border: none; padding: 13px 16px; border-radius: 10px; font-size: 14px; font-family: 'Sora', sans-serif; font-weight: 700; cursor: pointer; text-align: center; width: 100%; transition: background 0.2s, transform 0.1s; }
+  .partner-btn:hover { background: var(--green-dark); transform: translateY(-1px); }
+  .trova-esperto-btn { width: 100%; margin-top: 2rem; padding: 1.1rem 1.4rem; border-radius: var(--radius); border: 2px dashed var(--green); background: var(--green-light); color: var(--green-dark); font-size: 15px; font-family: 'Sora', sans-serif; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.22s; box-shadow: var(--shadow); }
+  .trova-esperto-btn:hover { background: var(--green); color: white; border-style: solid; transform: translateY(-2px); box-shadow: 0 6px 22px rgba(0,102,204,0.28); }
+  .trova-esperto-btn .btn-arrow { margin-left: auto; font-size: 18px; opacity: 0.6; transition: transform 0.2s; }
+  .trova-esperto-btn:hover .btn-arrow { transform: translateX(4px); opacity: 1; }
+  .map-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 9000; align-items: flex-end; justify-content: center; backdrop-filter: blur(4px); animation: fadeIn 0.2s ease; }
+  .map-modal-overlay.open { display: flex; }
+  .map-modal { background: var(--card); border-radius: 24px 24px 0 0; width: 100%; max-width: 700px; height: 88vh; display: flex; flex-direction: column; box-shadow: 0 -8px 40px rgba(0,0,0,0.22); animation: slideUp 0.3s cubic-bezier(0.34,1.56,0.64,1); overflow: hidden; }
+  .map-modal-header { padding: 1rem 1.4rem; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--border); flex-shrink: 0; background: var(--card); }
+  .map-modal-title { font-family: 'Sora', sans-serif; font-size: 15px; font-weight: 700; flex: 1; color: var(--text); }
+  .map-modal-close { width: 32px; height: 32px; border-radius: 50%; border: none; background: var(--bg); color: var(--muted); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; line-height: 1; }
+  .map-modal-close:hover { background: #eee; color: var(--text); }
+  .map-status-bar { padding: 0.65rem 1.2rem; background: var(--green-light); border-bottom: 1px solid var(--green-mid); font-size: 12px; color: var(--green-dark); display: flex; align-items: center; gap: 8px; flex-shrink: 0; font-weight: 600; font-family: 'Sora', sans-serif; }
+  .map-status-bar.error { background: #fff5f5; border-color: #fecaca; color: #c0392b; }
+  .map-status-bar.loading-bar { background: #fffbeb; border-color: #fde68a; color: #92400e; }
+  #googleMapFrame { width: 100%; flex: 1; border: none; display: block; }
+  .map-footer { padding: 0.85rem 1.2rem; background: var(--card); border-top: 1px solid var(--border); display: flex; gap: 8px; flex-shrink: 0; }
+  .map-action-btn { flex: 1; padding: 10px 12px; border-radius: 10px; font-size: 13px; font-family: 'Sora', sans-serif; font-weight: 700; cursor: pointer; border: none; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.18s; }
+  .map-action-primary { background: var(--green); color: white; }
+  .map-action-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
+  .map-action-secondary { background: var(--bg); color: var(--text); border: 1px solid var(--border); }
+  .map-action-secondary:hover { background: var(--green-light); border-color: var(--green); color: var(--green-dark); }
+  .map-full-loading { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 2rem; text-align: center; color: var(--muted); font-size: 14px; }
+  .map-full-loading .spinner { margin: 0; }
+  .map-perm-denied { background: #fff8f0; border: 1px solid #fed7aa; border-radius: 14px; padding: 1.4rem; font-size: 13px; color: #7c2d12; line-height: 1.8; max-width: 360px; }
+  .map-perm-denied strong { display: block; font-size: 15px; margin-bottom: 6px; color: #92400e; }
+  .spinner { width: 34px; height: 34px; border: 3px solid var(--border); border-top-color: var(--green); border-radius: 50%; animation: spin 0.75s linear infinite; margin: 0 auto 1rem; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Contatore bonus trovati */
+  .bonus-count-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--green); color: white; border-radius: 20px; padding: 6px 14px; font-family: 'Sora', sans-serif; font-size: 13px; font-weight: 700; margin-bottom: 1rem; }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="header">
+    <div class="logo-icon">🚪</div>
+    <span class="logo-text">Sportello Aperto</span>
+  </div>
+  <p class="tagline">La burocrazia italiana spiegata semplice, senza fare la coda.</p>
+
+  <div class="comune-section">
+    <span class="comune-icon">📍</span>
+    <input class="comune-input" id="comuneInput" type="text" placeholder="Cerca il tuo Comune (es: Marsala, Caltanissetta...)" autocomplete="off" oninput="cercaComuni(this.value)" />
+    <div class="comune-searching" id="comuneSpinner"></div>
+    <div class="dropdown-menu" id="comuniDropdown"></div>
+  </div>
+
+  <button class="radar-trigger-btn" onclick="apriRadarModal()">
+    <span style="font-size:20px">🎯</span>
+    <span>Radar Bonus &amp; Agevolazioni Personali</span>
+    <span class="radar-arrow">→</span>
+  </button>
+
+  <div class="section-title">🇮🇹 Pratiche Comuni</div>
+  <div class="chips">
+    <button class="chip" onclick="apriModal('iseeModal')">📄 Modello ISEE</button>
+    <button class="chip" onclick="apriModal('assegnoModal')">👶 Assegno Unico</button>
+    <button class="chip" onclick="apriModal('spidModal')">🪪 SPID / CIE</button>
+    <button class="chip" onclick="apriModal('medicoModal')">🏥 Medico di Base</button>
+    <button class="chip" onclick="apriModal('passaportoModal')">✈️ Rinnovo Passaporto</button>
+    <button class="chip" onclick="apriModal('residenzaModal')">🏠 Cambio Residenza</button>
+  </div>
+
+  <div class="section-title">🌍 Immigrazione &amp; Stranieri</div>
+  <div class="chips">
+    <button class="chip-blue" onclick="apriModal('cittadinanzaModal')">🇮🇹 Cittadinanza Italiana — Guida Completa</button>
+    <button class="chip-blue" onclick="apriModal('permessoCheckModal')">🔍 Controlla Stato Permesso di Soggiorno</button>
+    <button class="chip" onclick="apriModal('permessoModal')">📋 Permesso di Soggiorno</button>
+    <button class="chip" onclick="apriModal('codiceFiscaleModal')">🔢 Codice Fiscale Stranieri</button>
+    <button class="chip" onclick="apriModal('ricongiungimentoModal')">👨‍👩‍👧 Ricongiungimento Familiare</button>
+    <button class="chip" onclick="apriModal('ssnModal')">💊 SSN per Stranieri</button>
+  </div>
+
+  <div class="section-title">🎓 Studenti &amp; Concorsi</div>
+  <div class="chips">
+    <button class="chip" onclick="apriModal('tolcModal')">📝 Test TOLC</button>
+    <button class="chip" onclick="apriModal('borseModal')">🎓 Borse di Studio</button>
+    <button class="chip" onclick="apriModal('maturitaModal')">📜 Maturità &amp; Diploma</button>
+    <button class="chip" onclick="apriModal('concorsiModal')">🏛️ Concorsi Pubblici</button>
+  </div>
+
+  <button class="trova-esperto-btn" onclick="avviaConsulenza()">
+    <span style="font-size:20px">🗺️</span>
+    <span>Trova un esperto vicino a te</span>
+    <span class="btn-arrow">→</span>
+  </button>
+</div>
+
+<!-- ======================== MODAL: RADAR BONUS ======================== -->
+<div class="modal-overlay" id="radarModal" onclick="chiudiModal('radarModal', event)">
+  <div class="modal-sheet">
+    <div class="modal-header" style="border-top: 4px solid var(--green);">
+      <span style="font-size:22px">🎯</span>
+      <span class="modal-title">Radar Bonus &amp; Agevolazioni 2026</span>
+      <button class="modal-close" onclick="chiudiModalBtn('radarModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="citizenship-intro" style="background:linear-gradient(135deg,#eef6ff,#dbeafe);border-color:#93c5fd;color:#1e3a8a;">
+        <strong>Scopri tutti i bonus 2026 a cui hai diritto.</strong> Inserisci il tuo profilo e il tuo Comune: analizzerò bonus nazionali, regionali e locali con importi aggiornati all'anno in corso.
+      </div>
+      <div class="comune-section" style="margin-bottom:1rem;">
+        <span class="comune-icon">📍</span>
+        <input class="comune-input" id="radarComuneInput" type="text" placeholder="Cerca il tuo Comune (es: Palermo, Milano…)" autocomplete="off" oninput="cercaComuniRadar(this.value)" />
+        <div class="comune-searching" id="radarComuneSpinner"></div>
+        <div class="dropdown-menu" id="radarComuniDropdown"></div>
+      </div>
+      <div class="grid-profilo">
+        <div class="select-group">
+          <label>Chi sei</label>
+          <select id="radarStato" class="select-profilo">
+            <option value="studente">Studente Universitario</option>
+            <option value="disoccupato">Disoccupato / In cerca di lavoro</option>
+            <option value="dipendente">Lavoratore Dipendente</option>
+            <option value="pensionato">Pensionato</option>
+            <option value="genitore">Genitore / Nucleo Familiare</option>
+            <option value="autonomo">Lavoratore Autonomo / Partita IVA</option>
+          </select>
+        </div>
+        <div class="select-group">
+          <label>Figli a carico</label>
+          <select id="radarFigli" class="select-profilo">
+            <option value="nessuno">Nessun figlio a carico</option>
+            <option value="minorenni">Con figli minorenni a carico</option>
+            <option value="disabili">Con figli maggiorenni e disabili a carico</option>
+          </select>
+        </div>
+        <div class="select-group">
+          <label>Fascia ISEE</label>
+          <select id="radarIsee" class="select-profilo">
+            <option value="basso">Basso (sotto i 9.360€)</option>
+            <option value="medio_basso">Medio-basso (9.360€ – 15.000€)</option>
+            <option value="medio">Medio (15.000€ – 30.000€)</option>
+            <option value="alto">Alto (sopra i 30.000€ o senza ISEE)</option>
+          </select>
+        </div>
+        <div class="select-group">
+          <label>Cittadinanza</label>
+          <select id="radarCittad" class="select-profilo">
+            <option value="italiana">Italiana o Europea (UE)</option>
+            <option value="extraue">Extra-UE con Permesso di Soggiorno</option>
+          </select>
+        </div>
+      </div>
+      <button class="radar-btn" id="radarLaunchBtn" onclick="avviaRadarBonusModal()">🚀 Scansiona i miei Bonus 2026</button>
+      <div id="radarModalResult"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== MODAL: ISEE ======================== -->
+<div class="modal-overlay" id="iseeModal" onclick="chiudiModal('iseeModal', event)">
+  <div class="modal-sheet">
+    <div class="modal-header" style="border-top: 4px solid var(--green);">
+      <span style="font-size:22px">📄</span>
+      <span class="modal-title">Modello ISEE — Guida Completa</span>
+      <button class="modal-close" onclick="chiudiModalBtn('iseeModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="citizenship-intro" style="background:linear-gradient(135deg,#eef6ff,#dbeafe);border-color:#93c5fd;color:#1e3a8a;">
+        <strong>Cos'è l'ISEE?</strong> L'Indicatore della Situazione Economica Equivalente misura la situazione economica del tuo nucleo familiare. Serve per accedere a bonus, riduzioni tariffarie, borse di studio e molti servizi pubblici agevolati.
+      </div>
+      <div class="warn-box"><strong>⚠️ Novità 2026:</strong> Dal 1° gennaio 2026 è in vigore il nuovo <strong>"ISEE per specifiche prestazioni familiari e per l'inclusione"</strong>, più favorevole per famiglie con figli e prime case di proprietà. Si applica automaticamente per ADI, SFL, Assegno Unico, Bonus Nido e Bonus Nuovi Nati.</div>
+      <div class="section-sub">📋 Passi da seguire</div>
+      <ul class="step-list">
+        <li class="step-item"><div class="step-num green">1</div><div class="step-content"><div class="step-title">Raccogli i documenti del nucleo familiare</div><div class="step-desc"><strong>Documenti necessari per tutti i componenti:</strong><br>• Codice fiscale di tutti i familiari<br>• Documento d'identità del dichiarante<br>• Ultima dichiarazione dei redditi (730 o CU)<br>• Saldi bancari/postali al 31 dicembre dell'anno precedente<br>• Dati catastali degli immobili posseduti<br>• Targa veicoli posseduti</div><span class="step-tag green">Prima di tutto</span></div></li>
+        <li class="step-item"><div class="step-num green">2</div><div class="step-content"><div class="step-title">Scegli come presentare la DSU</div><div class="step-desc">Puoi presentare la Dichiarazione Sostitutiva Unica (DSU) in 3 modi:<br>• <strong>Online su INPS.it</strong> con SPID/CIE (gratuito, immediato)<br>• <strong>Al CAF</strong> (gratuito, ti aiutano loro)<br>• <strong>Online tramite CAF convenzionato</strong></div><span class="step-tag green">Gratuito</span></div></li>
+        <li class="step-item"><div class="step-num green">3</div><div class="step-content"><div class="step-title">Compila la DSU precompilata (consigliato)</div><div class="step-desc">Dal 2020 l'INPS mette a disposizione la <strong>DSU precompilata</strong>: i dati fiscali vengono caricati automaticamente dall'Agenzia delle Entrate. Devi solo verificare e integrare i dati patrimoniali (conti correnti, immobili).</div><span class="step-tag">Più veloce</span></div></li>
+        <li class="step-item"><div class="step-num green">4</div><div class="step-content"><div class="step-title">Ricevi l'attestazione ISEE</div><div class="step-desc">Dopo la presentazione ricevi subito l'<strong>attestazione ISEE in formato PDF</strong>, valida per l'anno in corso. L'ISEE ordinario scade il 15 gennaio dell'anno successivo.</div><span class="step-tag green">Immediato</span></div></li>
+      </ul>
+      <div class="warn-box"><strong>⚠️ Trappola comune:</strong> Molti dimenticano di dichiarare i saldi bancari al 31/12. Se l'INPS trova discrepanze con i dati dell'Agenzia delle Entrate, l'ISEE viene sospeso e devi rifare tutto.</div>
+      <div class="section-sub">🔗 Link Ufficiali</div>
+      <a class="link-card" href="https://www.inps.it/it/it/strumenti/isee-e-prestazioni-collegate/isee.html" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-green">🏛️</div><div class="link-card-info"><div class="link-card-title">INPS — Portale ISEE <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Presenta la DSU online, scarica l'attestazione, accedi alla DSU precompilata.</div><span class="link-card-url">inps.it → ISEE</span></div><span class="link-card-arrow">→</span></div></a>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== MODAL: ASSEGNO UNICO ======================== -->
+<div class="modal-overlay" id="assegnoModal" onclick="chiudiModal('assegnoModal', event)">
+  <div class="modal-sheet">
+    <div class="modal-header" style="border-top: 4px solid var(--green);">
+      <span style="font-size:22px">👶</span>
+      <span class="modal-title">Assegno Unico e Universale 2026</span>
+      <button class="modal-close" onclick="chiudiModalBtn('assegnoModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="citizenship-intro" style="background:linear-gradient(135deg,#eef6ff,#dbeafe);border-color:#93c5fd;color:#1e3a8a;"><strong>Cos'è l'Assegno Unico?</strong> È un sostegno economico mensile per le famiglie con figli a carico fino a 21 anni. Importi 2026 rivalutati +1,4%: da <strong>58,30€/mese (minimo)</strong> a <strong>203,80€/mese per figlio</strong> (ISEE fino a 17.468,51€).</div>
+      <div class="warn-box"><strong>⚠️ Scadenza critica:</strong> Chi non presenta l'ISEE 2026 entro il <strong>30 giugno 2026</strong> riceve solo il minimo (58,30€/figlio) e perde gli arretrati da marzo. Non serve fare nuova domanda se quella precedente è già "accolta".</div>
+      <ul class="step-list">
+        <li class="step-item"><div class="step-num green">1</div><div class="step-content"><div class="step-title">Aggiorna l'ISEE 2026 entro giugno</div><div class="step-desc">Senza ISEE valido ricevi solo il <strong>minimo garantito (58,30€/figlio/mese)</strong>. Rinnova al CAF o su INPS.it con SPID/CIE.</div><span class="step-tag green">Prima di tutto</span></div></li>
+        <li class="step-item"><div class="step-num green">2</div><div class="step-content"><div class="step-title">Nessuna nuova domanda se già beneficiario</div><div class="step-desc">Se la tua domanda è in stato "accolta", <strong>l'INPS ricalcola automaticamente</strong> gli importi con il nuovo ISEE 2026. Intervieni solo se cambiano i dati del nucleo familiare.</div><span class="step-tag">Automatico</span></div></li>
+        <li class="step-item"><div class="step-num green">3</div><div class="step-content"><div class="step-title">Prima domanda: presenta su INPS.it</div><div class="step-desc">Accedi al portale INPS con SPID/CIE → cerca "Assegno Unico" → compila indicando dati dei figli e IBAN.</div><span class="step-tag">Con SPID/CIE</span></div></li>
+        <li class="step-item"><div class="step-num green">4</div><div class="step-content"><div class="step-title">Oppure rivolgiti a CAF o Patronato</div><div class="step-desc">Puoi presentare domanda gratuitamente tramite un CAF convenzionato INPS.</div><span class="step-tag green">Gratuito al CAF</span></div></li>
+      </ul>
+      <div class="info-box"><strong>📊 Tabella importi 2026 per figlio minorenne:</strong><br>• ISEE fino a 17.468,51€ → <strong>203,80€/mese</strong><br>• ISEE tra 17.468,51€ e 46.582,71€ → importo graduale<br>• ISEE oltre 46.582,71€ o senza ISEE → <strong>58,30€/mese</strong><br>• Figli 18-21 anni: da 29,10€ a 99,10€/mese</div>
+      <div class="section-sub">🔗 Link Ufficiali</div>
+      <a class="link-card" href="https://www.inps.it/it/it/dettaglio-scheda.it.hrw12901.assegno-unico-e-universale-per-i-figli-a-carico.html" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-green">👶</div><div class="link-card-info"><div class="link-card-title">INPS — Assegno Unico <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Domanda online, importi 2026, requisiti, simulatore e scadenze.</div><span class="link-card-url">inps.it → Assegno Unico</span></div><span class="link-card-arrow">→</span></div></a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL SPID -->
+<div class="modal-overlay" id="spidModal" onclick="chiudiModal('spidModal', event)">
+  <div class="modal-sheet">
+    <div class="modal-header" style="border-top: 4px solid var(--blue);">
+      <span style="font-size:22px">🪪</span>
+      <span class="modal-title">SPID e CIE — Identità Digitale</span>
+      <button class="modal-close" onclick="chiudiModalBtn('spidModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="citizenship-intro"><strong>SPID o CIE?</strong> Entrambi servono per accedere ai servizi online della PA. <strong>SPID</strong> è un'app/credenziale di gestori privati. <strong>CIE</strong> si usa direttamente come documento fisico NFC.</div>
+      <div class="tipo-permesso-tabs" id="spidTabs">
+        <button class="tipo-tab blue active" onclick="switchTab('spid', 'spidTabs', 'spidContent', 'blue', this)">Ottieni SPID</button>
+        <button class="tipo-tab blue" onclick="switchTab('cie', 'spidTabs', 'spidContent', 'blue', this)">Ottieni CIE</button>
+      </div>
+      <div id="spidContent">
+        <div id="tab-spid" class="steps-permesso active">
+          <ul class="step-list">
+            <li class="step-item"><div class="step-num" style="background:var(--blue)">1</div><div class="step-content"><div class="step-title">Scegli un Identity Provider</div><div class="step-desc">Vai su <strong>spid.gov.it</strong>: <strong>Poste ID</strong> (gratuito), Aruba, Intesa, InfoCert, Namirial, TIM id.</div><span class="step-tag blue" style="background:#eff6ff;color:#1d4ed8">Gratuito con Poste</span></div></li>
+            <li class="step-item"><div class="step-num" style="background:var(--blue)">2</div><div class="step-content"><div class="step-title">Registrati online</div><div class="step-desc">Inserisci: <strong>codice fiscale, documento valido, cellulare, email</strong>.</div></div></li>
+            <li class="step-item"><div class="step-num" style="background:var(--blue)">3</div><div class="step-content"><div class="step-title">Verifica l'identità</div><div class="step-desc">• <strong>Di persona</strong> allo sportello del provider<br>• <strong>Via webcam</strong> (~20-30€)<br>• Con <strong>CIE con PIN</strong></div><span class="step-tag orange">Obbligatorio</span></div></li>
+            <li class="step-item"><div class="step-num" style="background:var(--blue)">4</div><div class="step-content"><div class="step-title">Attiva lo SPID</div><div class="step-desc">Ricevi le credenziali e installa l'app del provider per il secondo fattore.</div><span class="step-tag" style="background:#eff6ff;color:#1d4ed8">Subito operativo</span></div></li>
+          </ul>
+        </div>
+        <div id="tab-cie" class="steps-permesso">
+          <ul class="step-list">
+            <li class="step-item"><div class="step-num green">1</div><div class="step-content"><div class="step-title">Richiedi la CIE al Comune</div><div class="step-desc">Prenota su <strong>prenotazionicie.interno.gov.it</strong>. Porta documento scaduto, codice fiscale, foto tessera.</div><span class="step-tag orange">Costo: 16,79€</span></div></li>
+            <li class="step-item"><div class="step-num green">2</div><div class="step-content"><div class="step-title">Ricevi PIN e CIE</div><div class="step-desc">Prima metà PIN allo sportello. Seconda metà + CIE per posta entro 6 giorni.</div></div></li>
+            <li class="step-item"><div class="step-num green">3</div><div class="step-content"><div class="step-title">Installa l'app CieID</div><div class="step-desc">App gratuita su App Store / Google Play. Avvicina la CIE al telefono NFC e inserisci il PIN.</div><span class="step-tag green">App gratuita</span></div></li>
+          </ul>
+        </div>
+      </div>
+      <div class="section-sub">🔗 Link Ufficiali</div>
+      <a class="link-card" href="https://www.spid.gov.it" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-blue">🔐</div><div class="link-card-info"><div class="link-card-title">spid.gov.it <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Confronto provider, guida alla registrazione.</div><span class="link-card-url">spid.gov.it</span></div><span class="link-card-arrow">→</span></div></a>
+      <a class="link-card" href="https://www.cartaidentita.interno.gov.it" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-blue">🪪</div><div class="link-card-info"><div class="link-card-title">cartaidentita.interno.gov.it <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Prenotazione, guida CIE elettronica e app CieID.</div><span class="link-card-url">cartaidentita.interno.gov.it</span></div><span class="link-card-arrow">→</span></div></a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL MEDICO -->
+<div class="modal-overlay" id="medicoModal" onclick="chiudiModal('medicoModal', event)">
+  <div class="modal-sheet">
+    <div class="modal-header" style="border-top: 4px solid #ef4444;">
+      <span style="font-size:22px">🏥</span>
+      <span class="modal-title">Scelta / Cambio Medico di Base</span>
+      <button class="modal-close" onclick="chiudiModalBtn('medicoModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="citizenship-intro" style="background:linear-gradient(135deg,#fff1f2,#fecdd3);border-color:#fda4af;color:#9f1239;"><strong>Il Medico di Medicina Generale</strong> è gratuito tramite SSN. Puoi sceglierlo tra quelli disponibili nella tua ASL e cambiarlo quando vuoi.</div>
+      <ul class="step-list">
+        <li class="step-item"><div class="step-num" style="background:#ef4444">1</div><div class="step-content"><div class="step-title">Trova i medici disponibili nella tua ASL</div><div class="step-desc">Sul sito della tua <strong>ASL/ATS di residenza</strong> o di persona allo sportello ASL.</div><span class="step-tag">Gratuito</span></div></li>
+        <li class="step-item"><div class="step-num" style="background:#ef4444">2</div><div class="step-content"><div class="step-title">Verifica che accetti nuovi assistiti</div><div class="step-desc">I medici hanno un massimale di <strong>1.500 assistiti</strong>. Se al massimale, cerca un altro medico disponibile.</div></div></li>
+        <li class="step-item"><div class="step-num" style="background:#ef4444">3</div><div class="step-content"><div class="step-title">Effettua la scelta</div><div class="step-desc">Online tramite portale regionale (con SPID/CIE) o allo sportello ASL con documento e tessera sanitaria.</div><span class="step-tag green">In giornata</span></div></li>
+        <li class="step-item"><div class="step-num" style="background:#ef4444">4</div><div class="step-content"><div class="step-title">Il cambio è immediato</div><div class="step-desc">Puoi cambiare medico <strong>quante volte vuoi</strong>, senza preavviso né motivazione.</div><span class="step-tag green">Nessun limite</span></div></li>
+      </ul>
+      <div class="warn-box"><strong>⚠️ Per i cittadini stranieri:</strong> Hai diritto al medico di base con permesso di soggiorno valido. Vai allo sportello ASL con permesso di soggiorno e codice fiscale.</div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PASSAPORTO -->
+<div class="modal-overlay" id="passaportoModal" onclick="chiudiModal('passaportoModal', event)">
+  <div class="modal-sheet">
+    <div class="modal-header" style="border-top: 4px solid var(--blue);">
+      <span style="font-size:22px">✈️</span>
+      <span class="modal-title">Rinnovo Passaporto</span>
+      <button class="modal-close" onclick="chiudiModalBtn('passaportoModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="citizenship-intro"><strong>Il passaporto italiano</strong> ha validità <strong>10 anni</strong> per gli adulti (5 anni per i minori). Viene rilasciato dalla Questura o dai Commissariati di P.S.</div>
+      <ul class="step-list">
+        <li class="step-item"><div class="step-num" style="background:var(--blue)">1</div><div class="step-content"><div class="step-title">Prenota l'appuntamento online</div><div class="step-desc">Accedi a <strong>passaportonline.poliziadistato.it</strong> con SPID/CIE.</div><span class="step-tag" style="background:#eff6ff;color:#1d4ed8">Con SPID/CIE</span></div></li>
+        <li class="step-item"><div class="step-num" style="background:var(--blue)">2</div><div class="step-content"><div class="step-title">Prepara i documenti</div><div class="step-desc">• Vecchio passaporto • Carta d'identità valida • Codice fiscale • 2 foto tessera biometriche • Marca da bollo 73,50€ • Versamento 42,50€ su c/c postale n. 67422808</div><span class="step-tag orange">Costo totale ~116€</span></div></li>
+        <li class="step-item"><div class="step-num" style="background:var(--blue)">3</div><div class="step-content"><div class="step-title">Presentati allo sportello</div><div class="step-desc">Consegni documenti, impronte digitali e foto. Tutto in pochi minuti.</div></div></li>
+        <li class="step-item"><div class="step-num" style="background:var(--blue)">4</div><div class="step-content"><div class="step-title">Ritira il passaporto</div><div class="step-desc">Pronto entro <strong>7-15 giorni lavorativi</strong>. Ricevi SMS/email quando è disponibile.</div><span class="step-tag">7–15 giorni</span></div></li>
+      </ul>
+      <div class="warn-box"><strong>⚠️ Trappola comune:</strong> Le foto devono essere biometriche: sfondo bianco, occhi aperti, viso frontale.</div>
+      <div class="section-sub">🔗 Link Ufficiali</div>
+      <a class="link-card" href="https://passaportonline.poliziadistato.it" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-blue">✈️</div><div class="link-card-info"><div class="link-card-title">Passaporto Online — Polizia di Stato <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Prenota l'appuntamento, verifica lo stato della pratica.</div><span class="link-card-url">passaportonline.poliziadistato.it</span></div><span class="link-card-arrow">→</span></div></a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL RESIDENZA -->
+<div class="modal-overlay" id="residenzaModal" onclick="chiudiModal('residenzaModal', event)">
+  <div class="modal-sheet">
+    <div class="modal-header" style="border-top: 4px solid var(--green);">
+      <span style="font-size:22px">🏠</span>
+      <span class="modal-title">Cambio di Residenza</span>
+      <button class="modal-close" onclick="chiudiModalBtn('residenzaModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="citizenship-intro" style="background:linear-gradient(135deg,#eef6ff,#dbeafe);border-color:#93c5fd;color:#1e3a8a;"><strong>Il cambio di residenza</strong> è obbligatorio entro 20 giorni dal trasferimento. Puoi farlo online, è gratuito.</div>
+      <ul class="step-list">
+        <li class="step-item"><div class="step-num green">1</div><div class="step-content"><div class="step-title">Prepara i documenti</div><div class="step-desc">• Documento d'identità • Codice fiscale di tutti i componenti • Indirizzo preciso del nuovo alloggio • Per extra-UE: permesso di soggiorno valido</div></div></li>
+        <li class="step-item"><div class="step-num green">2</div><div class="step-content"><div class="step-title">Presenta la dichiarazione</div><div class="step-desc"><strong>Online:</strong> portale nazionale <strong>anagrafenazionale.interno.gov.it</strong> o sito del Comune. <strong>Di persona:</strong> sportello Anagrafe.</div><span class="step-tag green">Gratuito</span></div></li>
+        <li class="step-item"><div class="step-num green">3</div><div class="step-content"><div class="step-title">Verifica dell'agente comunale</div><div class="step-desc">Entro <strong>45 giorni</strong> un agente verifica la residenza. Se non trovano nessuno, la pratica viene annullata.</div><span class="step-tag orange">Verifica domicilio</span></div></li>
+        <li class="step-item"><div class="step-num green">4</div><div class="step-content"><div class="step-title">Aggiorna i documenti</div><div class="step-desc">Aggiorna patente, libretto veicolo (obbligatorio entro 30 giorni), medico di base se cambi ASL.</div><span class="step-tag">Obbligatorio</span></div></li>
+      </ul>
+      <div class="warn-box"><strong>⚠️ Trappola comune:</strong> Dimenticare il libretto del veicolo. Sanzione da 200€ a 800€.</div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL CITTADINANZA -->
+<div class="modal-overlay" id="cittadinanzaModal" onclick="chiudiModal('cittadinanzaModal', event)">
+  <div class="modal-sheet">
+    <div class="modal-header" style="border-top: 4px solid var(--blue);">
+      <span style="font-size:22px">🇮🇹</span>
+      <span class="modal-title">Cittadinanza Italiana — Guida Completa</span>
+      <button class="modal-close" onclick="chiudiModalBtn('cittadinanzaModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="citizenship-intro"><strong>La cittadinanza italiana</strong> include il passaporto UE, diritto di voto e libera circolazione in Europa.</div>
+      <div class="section-sub">📌 Scegli la tua via di accesso</div>
+      <div class="tipo-permesso-tabs" id="cittTabs">
+        <button class="tipo-tab blue active" onclick="switchTab('residenza', 'cittTabs', 'cittContent', 'blue', this)">Per Residenza</button>
+        <button class="tipo-tab blue" onclick="switchTab('matrimonio', 'cittTabs', 'cittContent', 'blue', this)">Per Matrimonio</button>
+        <button class="tipo-tab blue" onclick="switchTab('nascita', 'cittTabs', 'cittContent', 'blue', this)">Per Nascita / Jus Sanguinis</button>
+        <button class="tipo-tab blue" onclick="switchTab('riconoscimento', 'cittTabs', 'cittContent', 'blue', this)">Per Riconoscimento</button>
+      </div>
+      <div id="cittContent">
+        <div id="tab-residenza" class="steps-permesso active">
+          <div class="warn-box"><strong>⏱️ Requisito base:</strong> 10 anni di residenza legale (4 per UE, 5 per apolidi/rifugiati, 3 per nati in Italia).</div>
+          <ul class="step-list">
+            <li class="step-item"><div class="step-num" style="background:var(--blue)">1</div><div class="step-content"><div class="step-title">Verifica i requisiti</div><div class="step-desc">Residenza continua, reddito ≥ 8.263€/anno, nessuna condanna grave, italiano B1.</div></div></li>
+            <li class="step-item"><div class="step-num" style="background:var(--blue)">2</div><div class="step-content"><div class="step-title">Ottieni la certificazione B1</div><div class="step-desc">Enti: CELI (Perugia), CILS (Siena), PLIDA (Dante Alighieri), CERT.IT (Roma Tre).</div><span class="step-tag" style="background:#eff6ff;color:#1d4ed8">Obbligatorio dal 2018</span></div></li>
+            <li class="step-item"><div class="step-num" style="background:var(--blue)">3</div><div class="step-content"><div class="step-title">Raccogli i documenti</div><div class="step-desc">Atto di nascita + apostille, certificato penale + apostille, permesso valido, residenza storica, ultime 3 dichiarazioni redditi, B1, 250€ versamento + marca da bollo 16€.</div><span class="step-tag orange">Apostille richiesta</span></div></li>
+            <li class="step-item"><div class="step-num" style="background:var(--blue)">4</div><div class="step-content"><div class="step-title">Domanda online</div><div class="step-desc">Esclusivamente su <strong>cittadinanza.dlci.interno.gov.it</strong> con SPID/CIE.</div><span class="step-tag green">Solo via web</span></div></li>
+            <li class="step-item"><div class="step-num" style="background:var(--blue)">5</div><div class="step-content"><div class="step-title">Attendi e giura</div><div class="step-desc">Tempi: fino a 48 mesi. Poi giuramento davanti al Sindaco entro 6 mesi.</div><span class="step-tag orange">Fino a 4 anni</span></div></li>
+          </ul>
+        </div>
+        <div id="tab-matrimonio" class="steps-permesso">
+          <div class="warn-box"><strong>⏱️ Requisito:</strong> 2 anni di matrimonio + residenza in Italia (1 anno con figli).</div>
+          <ul class="step-list">
+            <li class="step-item"><div class="step-num" style="background:var(--blue)">1</div><div class="step-content"><div class="step-title">Verifica requisiti</div><div class="step-desc">Matrimonio in essere, residenza ≥ 2 anni dal matrimonio, reddito sufficiente, B1.</div></div></li>
+            <li class="step-item"><div class="step-num" style="background:var(--blue)">2</div><div class="step-content"><div class="step-title">Domanda online + giuramento</div><div class="step-desc">Portale <strong>cittadinanza.dlci.interno.gov.it</strong>. Costo 250€. Tempi: fino a 48 mesi.</div></div></li>
+          </ul>
+          <div class="warn-box"><strong>⚠️ Attenzione:</strong> Se divorzi durante l'iter, la domanda può essere rigettata.</div>
+        </div>
+        <div id="tab-nascita" class="steps-permesso">
+          <div class="citizenship-intro" style="background:linear-gradient(135deg,#eef6ff,#dbeafe);border-color:#93c5fd;color:#1e3a8a;"><strong>Jus Sanguinis:</strong> se hai un antenato italiano (anche bisnonno) puoi richiedere il riconoscimento. Nessun limite di generazioni.</div>
+          <ul class="step-list">
+            <li class="step-item"><div class="step-num" style="background:var(--blue)">1</div><div class="step-content"><div class="step-title">Costruisci l'albero genealogico</div><div class="step-desc">Atti di nascita, matrimonio e morte di tutti gli antenati italiani, tradotti e apostillati.</div></div></li>
+            <li class="step-item"><div class="step-num" style="background:var(--blue)">2</div><div class="step-content"><div class="step-title">Domanda al Comune (se in Italia) o al Consolato</div><div class="step-desc">All'estero: Consolato Italiano (attenzione: code fino a 10+ anni in alcune sedi).</div></div></li>
+          </ul>
+        </div>
+        <div id="tab-riconoscimento" class="steps-permesso">
+          <div class="citizenship-intro">Per chi è nato in Italia da genitori stranieri: richiesta entro 1 anno dai 18 anni, con residenza continua dalla nascita.</div>
+          <ul class="step-list">
+            <li class="step-item"><div class="step-num" style="background:var(--blue)">1</div><div class="step-content"><div class="step-title">Dichiarazione al Comune entro i 19 anni</div><div class="step-desc">All'<strong>Ufficio Anagrafe</strong> entro il <strong>19° compleanno</strong>. Non serve B1.</div><span class="step-tag orange">Termine perentorio</span></div></li>
+          </ul>
+          <div class="warn-box"><strong>⚠️ Attenzione:</strong> Perdi definitivamente questo diritto se non fai domanda entro il 19° compleanno.</div>
+        </div>
+      </div>
+      <div class="section-sub">🔗 Link Ufficiali</div>
+      <a class="link-card" href="https://cittadinanza.dlci.interno.gov.it" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-blue">🏛️</div><div class="link-card-info"><div class="link-card-title">Portale Cittadinanza <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Domanda online con SPID/CIE, tracking pratica.</div><span class="link-card-url">cittadinanza.dlci.interno.gov.it</span></div><span class="link-card-arrow">→</span></div></a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PERMESSO CHECK -->
+<div class="modal-overlay" id="permessoCheckModal" onclick="chiudiModal('permessoCheckModal', event)">
+  <div class="modal-sheet">
+    <div class="modal-header" style="border-top: 4px solid var(--blue);">
+      <span style="font-size:22px">🔍</span>
+      <span class="modal-title">Controlla Stato Permesso di Soggiorno</span>
+      <button class="modal-close" onclick="chiudiModalBtn('permessoCheckModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="permesso-intro"><strong>Come funziona:</strong> Dopo il kit postale ricevi una <strong>ricevuta con numero di pratica</strong>. Con quel numero puoi verificare lo stato online.</div>
+      <div class="section-sub">🖥️ Verifica Online</div>
+      <a class="link-card" href="https://questure.poliziadistato.it/stranieri" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-orange">🚔</div><div class="link-card-info"><div class="link-card-title">Polizia di Stato — Stato Pratica Stranieri <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Inserisci il numero della ricevuta postale (codice A, B o C).</div><span class="link-card-url">questure.poliziadistato.it/stranieri</span></div><span class="link-card-arrow">→</span></div></a>
+      <a class="link-card" href="https://www.poste.it/prodotti/kit-permesso-soggiorno.html" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-green">📮</div><div class="link-card-info"><div class="link-card-title">Poste Italiane — Kit Permesso di Soggiorno <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Dove acquistarlo (~30€), come compilarlo e dove consegnarlo.</div><span class="link-card-url">poste.it → Kit Permesso</span></div><span class="link-card-arrow">→</span></div></a>
+      <div class="section-sub">📊 Codici di stato</div>
+      <div class="card" style="padding:1rem 1.2rem;margin-bottom:0.75rem;">
+        <ul style="list-style:none;padding:0;font-size:13px;line-height:2.2;">
+          <li>🟡 <strong>IN ATTESA DI DEFINIZIONE</strong> — Pratica ricevuta, non ancora lavorata.</li>
+          <li>🔵 <strong>IN ISTRUTTORIA</strong> — Ufficio sta analizzando i documenti.</li>
+          <li>🟠 <strong>CONVOCAZIONE</strong> — Devi presentarti allo sportello.</li>
+          <li>🟢 <strong>PRONTO PER IL RITIRO</strong> — Vai in Questura con la ricevuta originale.</li>
+          <li>🔴 <strong>DINIEGATO / RIFIUTATO</strong> — 60 giorni per fare ricorso al TAR.</li>
+          <li>⚪ <strong>ARCHIVIATO</strong> — Pratica chiusa per mancata presentazione.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PERMESSO DI SOGGIORNO -->
+<div class="modal-overlay" id="permessoModal" onclick="chiudiModal('permessoModal', event)">
+  <div class="modal-sheet">
+    <div class="modal-header" style="border-top: 4px solid var(--orange);">
+      <span style="font-size:22px">📋</span>
+      <span class="modal-title">Permesso di Soggiorno — Rilascio e Rinnovo</span>
+      <button class="modal-close" onclick="chiudiModalBtn('permessoModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="permesso-intro"><strong>Il permesso di soggiorno</strong> va richiesto entro <strong>8 giorni lavorativi</strong> dall'ingresso. Si presenta tramite Kit postale alle Poste, <strong>non in Questura</strong>.</div>
+      <div class="warn-box"><strong>⚠️ Novità 2026:</strong> Le Questure adottano progressivamente un sistema digitale per ridurre i tempi di convocazione e consegna. Per rinnovi di alcune tipologie non sarà più necessario presentare tutta la documentazione da zero.</div>
+      <div class="tipo-permesso-tabs" id="permessoTabs">
+        <button class="tipo-tab active" onclick="switchTab('rilascio', 'permessoTabs', 'permessoContent', 'orange', this)">Primo Rilascio</button>
+        <button class="tipo-tab" onclick="switchTab('rinnovo', 'permessoTabs', 'permessoContent', 'orange', this)">Rinnovo</button>
+        <button class="tipo-tab" onclick="switchTab('tipi', 'permessoTabs', 'permessoContent', 'orange', this)">Tipi di Permesso</button>
+      </div>
+      <div id="permessoContent">
+        <div id="tab-rilascio" class="steps-permesso active">
+          <ul class="step-list">
+            <li class="step-item"><div class="step-num orange">1</div><div class="step-content"><div class="step-title">Acquista il Kit postale (~30€)</div><div class="step-desc">Vai a un <strong>Ufficio Postale abilitato</strong> e acquista il Kit.</div><span class="step-tag orange">~30€</span></div></li>
+            <li class="step-item"><div class="step-num orange">2</div><div class="step-content"><div class="step-title">Compila e allega i documenti</div><div class="step-desc">• Passaporto valido (copia tutte pagine + frontespizio originale) • Visto d'ingresso • 4 foto tessera • Ricevute pagamento incluse nel kit</div></div></li>
+            <li class="step-item"><div class="step-num orange">3</div><div class="step-content"><div class="step-title">Consegna alle Poste</div><div class="step-desc">Ti rilasciano una <strong>ricevuta con appuntamento in Questura</strong>.</div></div></li>
+            <li class="step-item"><div class="step-num orange">4</div><div class="step-content"><div class="step-title">Appuntamento in Questura</div><div class="step-desc">Portati ricevuta, passaporto originale e documenti. Prendono le <strong>impronte digitali biometriche</strong>.</div></div></li>
+            <li class="step-item"><div class="step-num orange">5</div><div class="step-content"><div class="step-title">Ritira il permesso</div><div class="step-desc">Quando lo stato è "PRONTO PER IL RITIRO", vai in Questura con ricevuta originale e <strong>25€ di marca da bollo</strong>.</div><span class="step-tag orange">25€ marca da bollo</span></div></li>
+          </ul>
+          <div class="warn-box"><strong>⚠️ Trappola comune:</strong> Kit da consegnare entro 8 giorni dall'ingresso. Superato il termine sei in posizione irregolare.</div>
+        </div>
+        <div id="tab-rinnovo" class="steps-permesso">
+          <div class="info-box"><strong>Quando rinnovare:</strong> Domanda <strong>60-90 giorni prima della scadenza</strong>. La ricevuta postale vale come permesso provvisorio.</div>
+          <ul class="step-list">
+            <li class="step-item"><div class="step-num orange">1</div><div class="step-content"><div class="step-title">Stessa procedura del rilascio</div><div class="step-desc">Aggiungi: vecchio permesso originale, buste paga, rinnovo contratto.</div></div></li>
+            <li class="step-item"><div class="step-num orange">2</div><div class="step-content"><div class="step-title">La ricevuta ti copre nel frattempo</div><div class="step-desc">La ricevuta postale <strong>equivale al permesso</strong>. Puoi lavorare, viaggiare in Schengen e accedere ai servizi.</div><span class="step-tag green">Valore legale</span></div></li>
+          </ul>
+        </div>
+        <div id="tab-tipi" class="steps-permesso">
+          <div class="card" style="padding:1rem 1.2rem;"><ul style="list-style:none;padding:0;font-size:13px;line-height:2.4;"><li>💼 <strong>Lavoro subordinato</strong> → contratto + decreto flussi</li><li>🎓 <strong>Studio</strong> → iscrizione universitaria</li><li>👨‍👩‍👧 <strong>Ricongiungimento familiare</strong> → nulla osta Prefettura</li><li>🛡️ <strong>Protezione internazionale</strong> → rifugiati</li><li>🤝 <strong>Lungo soggiornante (CE)</strong> → dopo 5 anni di residenza</li></ul></div>
+        </div>
+      </div>
+      <div class="section-sub">🔗 Link Ufficiali</div>
+      <a class="link-card" href="https://questure.poliziadistato.it/stranieri" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-orange">🚔</div><div class="link-card-info"><div class="link-card-title">Questure — Ufficio Immigrazione <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Trova la Questura, orari sportello stranieri, controllo pratica.</div><span class="link-card-url">questure.poliziadistato.it/stranieri</span></div><span class="link-card-arrow">→</span></div></a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL CODICE FISCALE -->
+<div class="modal-overlay" id="codiceFiscaleModal" onclick="chiudiModal('codiceFiscaleModal', event)">
+  <div class="modal-sheet">
+    <div class="modal-header" style="border-top: 4px solid var(--green);">
+      <span style="font-size:22px">🔢</span>
+      <span class="modal-title">Codice Fiscale per Stranieri</span>
+      <button class="modal-close" onclick="chiudiModalBtn('codiceFiscaleModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="citizenship-intro" style="background:linear-gradient(135deg,#eef6ff,#dbeafe);border-color:#93c5fd;color:#1e3a8a;"><strong>Il Codice Fiscale</strong> è indispensabile per quasi tutto in Italia. I cittadini stranieri possono richiederlo all'Agenzia delle Entrate, anche prima di avere il permesso di soggiorno.</div>
+      <ul class="step-list">
+        <li class="step-item"><div class="step-num green">1</div><div class="step-content"><div class="step-title">Vai all'Agenzia delle Entrate</div><div class="step-desc">Allo sportello (meglio prenotare online su <strong>agenziaentrate.gov.it</strong>).</div><span class="step-tag green">Gratuito</span></div></li>
+        <li class="step-item"><div class="step-num green">2</div><div class="step-content"><div class="step-title">Porta i documenti</div><div class="step-desc">• Passaporto valido (originale + fotocopia) • Visto d'ingresso • Per minori: atto di nascita tradotto</div></div></li>
+        <li class="step-item"><div class="step-num green">3</div><div class="step-content"><div class="step-title">Ricevi il codice fiscale</div><div class="step-desc">Rilasciato <strong>immediatamente allo sportello</strong> su tesserino plastificato. Permanente e immutabile.</div><span class="step-tag green">Rilascio immediato</span></div></li>
+      </ul>
+      <div class="warn-box"><strong>⚠️ Attenzione:</strong> Il codice fiscale NON è un permesso di soggiorno. Non ti autorizza a lavorare o risiedere in Italia.</div>
+      <div class="section-sub">🔗 Link Ufficiali</div>
+      <a class="link-card" href="https://www.agenziaentrate.gov.it/portale/web/guest/schede/istanze/richiesta-tesserino-codice-fiscale/stranieri-non-res-cf" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-green">🔢</div><div class="link-card-info"><div class="link-card-title">Agenzia delle Entrate — CF Stranieri <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Procedura ufficiale e sedi.</div><span class="link-card-url">agenziaentrate.gov.it</span></div><span class="link-card-arrow">→</span></div></a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL RICONGIUNGIMENTO -->
+<div class="modal-overlay" id="ricongiungimentoModal" onclick="chiudiModal('ricongiungimentoModal', event)">
+  <div class="modal-sheet">
+    <div class="modal-header" style="border-top: 4px solid var(--orange);">
+      <span style="font-size:22px">👨‍👩‍👧</span>
+      <span class="modal-title">Ricongiungimento Familiare</span>
+      <button class="modal-close" onclick="chiudiModalBtn('ricongiungimentoModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="permesso-intro"><strong>Il ricongiungimento familiare</strong> si gestisce tramite lo <strong>Sportello Unico per l'Immigrazione (SUI)</strong> della Prefettura.</div>
+      <ul class="step-list">
+        <li class="step-item"><div class="step-num orange">1</div><div class="step-content"><div class="step-title">Verifica i requisiti</div><div class="step-desc">• Permesso valido da ≥ 1 anno • Alloggio idoneo (certificato idoneità abitativa) • Reddito minimo ~6.085€/anno</div><span class="step-tag orange">Requisiti cumulativi</span></div></li>
+        <li class="step-item"><div class="step-num orange">2</div><div class="step-content"><div class="step-title">Certificato di idoneità abitativa</div><div class="step-desc">Vai all'<strong>Ufficio Igiene del Comune</strong> con visura catastale dell'alloggio.</div><span class="step-tag">Prima di tutto</span></div></li>
+        <li class="step-item"><div class="step-num orange">3</div><div class="step-content"><div class="step-title">Domanda online allo Sportello Unico</div><div class="step-desc">Portale <strong>sportellounimigrazione.dlci.interno.gov.it</strong> con SPID/CIE.</div></div></li>
+        <li class="step-item"><div class="step-num orange">4</div><div class="step-content"><div class="step-title">Il familiare ottiene il visto al Consolato</div><div class="step-desc">Dopo il nulla osta (tempi: <strong>90-180 giorni</strong>), il familiare va al Consolato italiano nel suo Paese.</div><span class="step-tag">90–180 giorni</span></div></li>
+      </ul>
+      <div class="warn-box"><strong>⚠️ Trappola comune:</strong> Senza certificato di idoneità abitativa la domanda viene rigettata automaticamente.</div>
+      <div class="section-sub">🔗 Link Ufficiali</div>
+      <a class="link-card" href="https://sportellounimigrazione.dlci.interno.gov.it" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-orange">🏢</div><div class="link-card-info"><div class="link-card-title">Sportello Unico Immigrazione <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Domanda online, tracking pratica, modulistica.</div><span class="link-card-url">sportellounimigrazione.dlci.interno.gov.it</span></div><span class="link-card-arrow">→</span></div></a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL SSN -->
+<div class="modal-overlay" id="ssnModal" onclick="chiudiModal('ssnModal', event)">
+  <div class="modal-sheet">
+    <div class="modal-header" style="border-top: 4px solid #ef4444;">
+      <span style="font-size:22px">💊</span>
+      <span class="modal-title">Servizio Sanitario Nazionale per Stranieri</span>
+      <button class="modal-close" onclick="chiudiModalBtn('ssnModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="citizenship-intro" style="background:linear-gradient(135deg,#fff1f2,#fecdd3);border-color:#fda4af;color:#9f1239;"><strong>I cittadini stranieri con permesso regolare</strong> hanno diritto all'iscrizione al SSN: tessera sanitaria, medico di base, visite specialistiche.</div>
+      <div class="tipo-permesso-tabs" id="ssnTabs">
+        <button class="tipo-tab active" onclick="switchTab('regolari', 'ssnTabs', 'ssnContent', 'orange', this)">Stranieri Regolari</button>
+        <button class="tipo-tab" onclick="switchTab('irregolari', 'ssnTabs', 'ssnContent', 'orange', this)">STP (Irregolari)</button>
+        <button class="tipo-tab" onclick="switchTab('europei', 'ssnTabs', 'ssnContent', 'orange', this)">Cittadini UE</button>
+      </div>
+      <div id="ssnContent">
+        <div id="tab-regolari" class="steps-permesso active">
+          <ul class="step-list">
+            <li class="step-item"><div class="step-num" style="background:#ef4444">1</div><div class="step-content"><div class="step-title">Vai all'ASL di residenza</div><div class="step-desc">Portati: permesso valido, passaporto, codice fiscale, dichiarazione di residenza.</div></div></li>
+            <li class="step-item"><div class="step-num" style="background:#ef4444">2</div><div class="step-content"><div class="step-title">Ricevi la tessera sanitaria</div><div class="step-desc">Scegli il medico di base dalla lista. La tessera arriva per posta in pochi giorni.</div><span class="step-tag green">Gratuito</span></div></li>
+          </ul>
+        </div>
+        <div id="tab-irregolari" class="steps-permesso">
+          <div class="info-box"><strong>Codice STP:</strong> anche senza permesso, hai diritto alle cure urgenti. Nessuna segnalazione all'autorità (D.Lgs. 286/98, art. 35).</div>
+          <ul class="step-list">
+            <li class="step-item"><div class="step-num" style="background:#ef4444">1</div><div class="step-content"><div class="step-title">Richiedi il codice STP</div><div class="step-desc">Al Pronto Soccorso o Distretto Sanitario. Codice valido 6 mesi, rinnovabile.</div><span class="step-tag green">Anonimato garantito</span></div></li>
+          </ul>
+        </div>
+        <div id="tab-europei" class="steps-permesso">
+          <div class="info-box"><strong>Residenti UE:</strong> iscriviti all'ASL come i cittadini italiani. In visita: usa la <strong>TEAM</strong>.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL TOLC -->
+<div class="modal-overlay" id="tolcModal" onclick="chiudiModal('tolcModal', event)">
+  <div class="modal-sheet">
+    <div class="modal-header" style="border-top: 4px solid var(--blue);">
+      <span style="font-size:22px">📝</span>
+      <span class="modal-title">Test TOLC — Guida Completa</span>
+      <button class="modal-close" onclick="chiudiModalBtn('tolcModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="citizenship-intro"><strong>Il TOLC (Test Online CISIA)</strong> è il test di ammissione per Medicina, Ingegneria, Economia, Psicologia e altre facoltà. Risultati validi per 1 anno accademico.</div>
+      <ul class="step-list">
+        <li class="step-item"><div class="step-num" style="background:var(--blue)">1</div><div class="step-content"><div class="step-title">Registrati su cisiaonline.it</div><div class="step-desc">Crea un account gratuito.</div></div></li>
+        <li class="step-item"><div class="step-num" style="background:var(--blue)">2</div><div class="step-content"><div class="step-title">Scegli TOLC e data</div><div class="step-desc">In sede o da casa (TOLC@CASA). Puoi ripetere <strong>una volta al mese</strong> per lo stesso tipo.</div></div></li>
+        <li class="step-item"><div class="step-num" style="background:var(--blue)">3</div><div class="step-content"><div class="step-title">Paga e prenota</div><div class="step-desc"><strong>30€</strong> per ogni sessione.</div><span class="step-tag orange">30€ a sessione</span></div></li>
+        <li class="step-item"><div class="step-num" style="background:var(--blue)">4</div><div class="step-content"><div class="step-title">Risultato immediato</div><div class="step-desc">Il punteggio è valido fino al 31 luglio dell'anno successivo.</div></div></li>
+      </ul>
+      <div class="section-sub">🔗 Link Ufficiali</div>
+      <a class="link-card" href="https://www.cisiaonline.it" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-blue">📝</div><div class="link-card-info"><div class="link-card-title">CISIA — Portale Ufficiale TOLC <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Prenotazioni, calendario, simulatori gratuiti.</div><span class="link-card-url">cisiaonline.it</span></div><span class="link-card-arrow">→</span></div></a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL BORSE -->
+<div class="modal-overlay" id="borseModal" onclick="chiudiModal('borseModal', event)">
+  <div class="modal-sheet">
+    <div class="modal-header" style="border-top: 4px solid var(--green);">
+      <span style="font-size:22px">🎓</span>
+      <span class="modal-title">Borse di Studio Universitarie</span>
+      <button class="modal-close" onclick="chiudiModalBtn('borseModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="citizenship-intro" style="background:linear-gradient(135deg,#eef6ff,#dbeafe);border-color:#93c5fd;color:#1e3a8a;"><strong>Le borse DSU/ERSU</strong> coprono tasse, vitto, alloggio e assegno mensile. <strong>I bandi aprono tra luglio e settembre.</strong></div>
+      <ul class="step-list">
+        <li class="step-item"><div class="step-num green">1</div><div class="step-content"><div class="step-title">Fai l'ISEE Universitario entro agosto</div><div class="step-desc">Al CAF o online su INPS.it entro la scadenza del bando (di solito <strong>31 agosto</strong>).</div><span class="step-tag orange">Scadenza agosto</span></div></li>
+        <li class="step-item"><div class="step-num green">2</div><div class="step-content"><div class="step-title">Cerca il bando del tuo DSU/ERSU regionale</div><div class="step-desc">DSU Toscana, ERSU Palermo, ER.GO Emilia, DiSCo Lazio, ADISU Campania, ecc.</div></div></li>
+        <li class="step-item"><div class="step-num green">3</div><div class="step-content"><div class="step-title">Presenta domanda online</div><div class="step-desc">Con SPID/CIE sul portale del tuo ERSU/DSU.</div></div></li>
+      </ul>
+      <div class="warn-box"><strong>⚠️ Trappola comune:</strong> Perdere la scadenza del bando significa perdere il diritto alla borsa per tutto l'anno.</div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL MATURITÀ -->
+<div class="modal-overlay" id="maturitaModal" onclick="chiudiModal('maturitaModal', event)">
+  <div class="modal-sheet">
+    <div class="modal-header" style="border-top: 4px solid var(--orange);">
+      <span style="font-size:22px">📜</span>
+      <span class="modal-title">Esame di Maturità e Diploma</span>
+      <button class="modal-close" onclick="chiudiModalBtn('maturitaModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="permesso-intro"><strong>L'Esame di Stato</strong> si svolge a giugno. Per essere ammesso: media ≥ 6/10 in tutte le materie.</div>
+      <div class="card" style="padding:1rem 1.2rem;margin-bottom:1rem;">
+        <ul style="list-style:none;padding:0;font-size:13px;line-height:2.4;">
+          <li>✏️ <strong>1ª prova scritta</strong> — Italiano</li>
+          <li>📐 <strong>2ª prova scritta</strong> — Materia caratterizzante</li>
+          <li>🗣️ <strong>Colloquio orale</strong> — Multidisciplinare + PCTO + Educazione Civica</li>
+          <li>⭐ <strong>Crediti scolastici</strong> — fino a 40 punti</li>
+          <li>🏆 <strong>Max 100/100</strong> (con lode)</li>
+        </ul>
+      </div>
+      <div class="warn-box"><strong>⚠️ Diploma:</strong> alcune scuole lo consegnano entro settembre, altre fino a 12 mesi. Nel frattempo: dichiarazione sostitutiva con il voto.</div>
+      <div class="section-sub">🔗 Link Ufficiali</div>
+      <a class="link-card" href="https://www.istruzione.it/esame_di_stato/" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-orange">📜</div><div class="link-card-info"><div class="link-card-title">MIUR — Esame di Stato <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Normativa, date, struttura delle prove.</div><span class="link-card-url">istruzione.it → Esame di Stato</span></div><span class="link-card-arrow">→</span></div></a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL CONCORSI -->
+<div class="modal-overlay" id="concorsiModal" onclick="chiudiModal('concorsiModal', event)">
+  <div class="modal-sheet">
+    <div class="modal-header" style="border-top: 4px solid var(--blue);">
+      <span style="font-size:22px">🏛️</span>
+      <span class="modal-title">Concorsi Pubblici — Come Partecipare</span>
+      <button class="modal-close" onclick="chiudiModalBtn('concorsiModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="citizenship-intro"><strong>I concorsi pubblici</strong> si trovano sulla <strong>Gazzetta Ufficiale</strong> e sul portale <strong>InPA</strong>. Candidatura quasi sempre online.</div>
+      <ul class="step-list">
+        <li class="step-item"><div class="step-num" style="background:var(--blue)">1</div><div class="step-content"><div class="step-title">Registrati su InPA</div><div class="step-desc">Portale <strong>inpa.gov.it</strong> con SPID/CIE. Compila il profilo con titoli ed esperienze.</div><span class="step-tag" style="background:#eff6ff;color:#1d4ed8">Portale unico</span></div></li>
+        <li class="step-item"><div class="step-num" style="background:var(--blue)">2</div><div class="step-content"><div class="step-title">Cerca i bandi attivi</div><div class="step-desc">Filtra per ente, profilo, regione, titolo. Attiva <strong>notifiche automatiche</strong>. I bandi durano ~30 giorni.</div></div></li>
+        <li class="step-item"><div class="step-num" style="background:var(--blue)">3</div><div class="step-content"><div class="step-title">Presenta la domanda online</div><div class="step-desc">Clicca "Candidati" dalla scheda bando. Allega documenti e ricevi ricevuta via email.</div><span class="step-tag">Tutto online</span></div></li>
+      </ul>
+      <div class="warn-box"><strong>⚠️ Trappola comune:</strong> Domanda incompleta = esclusione automatica senza possibilità di integrazione.</div>
+      <div class="section-sub">🔗 Link Ufficiali</div>
+      <a class="link-card" href="https://www.inpa.gov.it" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-blue">🏛️</div><div class="link-card-info"><div class="link-card-title">InPA — Portale Nazionale Concorsi PA <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Tutti i bandi attivi, candidatura online.</div><span class="link-card-url">inpa.gov.it</span></div><span class="link-card-arrow">→</span></div></a>
+      <a class="link-card" href="https://www.gazzettaufficiale.it/ricerca/concorsi" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-blue">📰</div><div class="link-card-info"><div class="link-card-title">Gazzetta Ufficiale — Concorsi <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Fonte legale di tutti i bandi.</div><span class="link-card-url">gazzettaufficiale.it → Concorsi</span></div><span class="link-card-arrow">→</span></div></a>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== MODAL MAPPA ======================== -->
+<div class="map-modal-overlay" id="mapModalOverlay" onclick="chiudiMappa(event)">
+  <div class="map-modal">
+    <div class="map-modal-header">
+      <span style="font-size:20px">🗺️</span>
+      <span class="map-modal-title" id="mapModalTitle">CAF e Patronati vicino a te</span>
+      <button class="map-modal-close" onclick="chiudiMappaBtn()">✕</button>
+    </div>
+    <div class="map-status-bar loading-bar" id="mapStatusBar">
+      <span id="mapStatusIcon">⏳</span>
+      <span id="mapStatusText">Rilevamento posizione GPS in corso…</span>
+    </div>
+    <div id="mapContent" style="flex:1;display:flex;flex-direction:column;overflow:hidden;">
+      <div class="map-full-loading" id="mapLoader">
+        <div class="spinner" style="width:36px;height:36px;"></div>
+        <p>Stiamo cercando la tua posizione…<br><small>Concedi l'accesso alla geolocalizzazione quando richiesto.</small></p>
+      </div>
+    </div>
+    <div class="map-footer" id="mapFooter" style="display:none;">
+      <button class="map-action-btn map-action-secondary" onclick="apriGoogleMapsCaf()">🔍 Apri in Maps</button>
+      <button class="map-action-btn map-action-primary" onclick="cercaTipoLuogo('patronato')">🏢 Patronati</button>
+      <button class="map-action-btn map-action-primary" onclick="cercaTipoLuogo('caf')">📋 CAF</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// =====================================================
+// STATO GLOBALE
+// =====================================================
+let selectedCity = 'Italia';
+let radarSelectedCity = '';
+let comuneSearchTimer = null;
+let radarComuneTimer = null;
+let userLat = null;
+let userLng = null;
+let currentMapQuery = 'CAF patronato';
+
+// =====================================================
+// DATABASE BONUS — IMPORTI AGGIORNATI 2026
+// Fonti: Circolare INPS n.7/2026, Legge di Bilancio 2026
+// =====================================================
+const BONUS_DB = [
+
+  // ─── UNIVERSALI / TUTTI ───
+  {
+    id: 'isee',
+    nome: '📄 ISEE 2026 — Attestazione Gratuita',
+    importo: 'Gratuito',
+    importoClass: 'green',
+    desc: 'Obbligatorio per accedere a quasi tutti i bonus. Dal 2026 esiste il nuovo "ISEE per prestazioni familiari e inclusione", più favorevole per famiglie con figli. Presentalo al CAF o su INPS.it con SPID.',
+    dove: '→ CAF (gratuito) o inps.it',
+    condizioni: { stati: ['studente','disoccupato','dipendente','pensionato','genitore','autonomo'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
+  },
+  {
+    id: 'spid',
+    nome: '🪪 SPID / CIE — Identità Digitale',
+    importo: 'Gratuito',
+    importoClass: 'green',
+    desc: 'Indispensabile per fare domanda online di quasi tutti i bonus italiani.',
+    dove: '→ spid.gov.it o Comune',
+    condizioni: { stati: ['studente','disoccupato','dipendente','pensionato','genitore','autonomo'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
+  },
+
+  // ─── FAMIGLIE CON FIGLI ───
+  {
+    id: 'assegno_unico',
+    nome: '👶 Assegno Unico Universale 2026',
+    importo: 'da 58,30€ a 203,80€/mese per figlio',
+    importoClass: 'green',
+    desc: 'Importi rivalutati +1,4% (Circ. INPS n.7/2026). Per figli fino a 21 anni. Massimo 203,80€/mese con ISEE ≤17.468€. Minimo garantito 58,30€/mese. Scadenza ISEE: 30 giugno 2026 per non perdere gli arretrati da marzo.',
+    dove: '→ INPS.it o CAF (non serve nuova domanda se già "accolta")',
+    condizioni: { stati: ['studente','disoccupato','dipendente','pensionato','genitore','autonomo'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['minorenni','disabili'] }
+  },
+  {
+    id: 'bonus_nido',
+    nome: '🍼 Bonus Nido 2026',
+    importo: 'fino a 3.600€/anno (nati dal 2024)',
+    importoClass: 'green',
+    desc: 'Semplificato in 2 fasce per nati dal 2024: ISEE ≤40.000€ → 3.600€/anno; ISEE >40.000€ o senza ISEE → 1.500€/anno. Dal 2026 la domanda non va più ripresentata ogni anno. (Circ. INPS n.29/2026)',
+    dove: '→ INPS.it con SPID/CIE o CAF/Patronato',
+    condizioni: { stati: ['studente','disoccupato','dipendente','pensionato','genitore','autonomo'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['minorenni'] }
+  },
+  {
+    id: 'bonus_nuovi_nati',
+    nome: '🐣 Bonus Nuovi Nati (una tantum)',
+    importo: '1.000€ una tantum',
+    importoClass: 'green',
+    desc: 'Contributo una tantum per ogni figlio nato o adottato dal 1° gennaio 2024. ISEE ≤40.000€. Introdotto dalla Legge di Bilancio 2024, confermato e ampliato nel 2026.',
+    dove: '→ INPS.it con SPID/CIE entro 120 giorni dalla nascita',
+    condizioni: { stati: ['studente','disoccupato','dipendente','pensionato','genitore','autonomo'], isee: ['basso','medio_basso','medio'], cittad: ['italiana','extraue'], figli: ['minorenni'] }
+  },
+  {
+    id: 'carta_famiglie',
+    nome: '👨‍👩‍👧 Carta Famiglie Numerose',
+    importo: 'Sconti e agevolazioni',
+    importoClass: 'blue',
+    desc: 'Per famiglie con almeno 3 figli under 26. Sconti su trasporti, musei, tariffe pubbliche.',
+    dove: '→ Comune di residenza',
+    condizioni: { stati: ['studente','disoccupato','dipendente','pensionato','genitore','autonomo'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['minorenni','disabili'] }
+  },
+  {
+    id: 'bonus_mamme',
+    nome: '👩 Bonus Mamme Lavoratrici 2026',
+    importo: 'fino a 3.000€/anno (esonero contributi)',
+    importoClass: 'blue',
+    desc: 'Esonero totale dai contributi previdenziali a carico della lavoratrice. Requisiti: madre con ≥2 figli (uno under 10), ISEE ≤40.000€. Fino a ~250€/mese in più in busta paga.',
+    dove: '→ Datore di lavoro / busta paga (richiesta automatica)',
+    condizioni: { stati: ['dipendente'], isee: ['basso','medio_basso','medio'], cittad: ['italiana','extraue'], figli: ['minorenni','disabili'] }
+  },
+
+  // ─── ISEE BASSO ───
+  {
+    id: 'adi',
+    nome: '💳 ADI — Assegno di Inclusione 2026',
+    importo: 'fino a 6.000€/anno (500€/mese per singolo)',
+    importoClass: 'orange',
+    desc: 'ISEE ≤9.360€. Per nuclei con minori, disabili o over 60. Importo moltiplicato per la scala di equivalenza del nucleo. Durata 18 mesi rinnovabili. Dal 2026 calcolo ISEE più favorevole per case di proprietà (franchigia elevata a 91.500€).',
+    dove: '→ INPS.it o CAF (con SPID)',
+    condizioni: { stati: ['disoccupato','genitore','pensionato'], isee: ['basso'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
+  },
+  {
+    id: 'sfl',
+    nome: '💼 SFL — Supporto Formazione e Lavoro 2026',
+    importo: '500€/mese per max 12 mesi',
+    importoClass: 'orange',
+    desc: 'Per persone tra 18-59 anni senza lavoro con ISEE ≤10.140€. Impegnate in percorsi di formazione o lavori di pubblica utilità. Importo aumentato rispetto al 2025 (era 350€). Soglia ISEE ampliata dalla Legge di Bilancio 2026.',
+    dove: '→ INPS.it + Centro per l\'Impiego (SIISL)',
+    condizioni: { stati: ['disoccupato'], isee: ['basso','medio_basso'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
+  },
+  {
+    id: 'bonus_sociale_energia',
+    nome: '⚡ Bonus Sociale Energia e Gas 2026',
+    importo: 'circa 200-600€/anno',
+    importoClass: 'green',
+    desc: 'Sconto automatico sulle bollette di luce, gas e acqua. Si attiva presentando l\'ISEE al CAF — non serve fare domanda separata.',
+    dove: '→ Automatico con ISEE aggiornato (CAF)',
+    condizioni: { stati: ['studente','disoccupato','dipendente','pensionato','genitore','autonomo'], isee: ['basso','medio_basso'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
+  },
+  {
+    id: 'carta_risparmio',
+    nome: '🛒 Carta Risparmio Spesa',
+    importo: '460€/anno (caricata su carta)',
+    importoClass: 'orange',
+    desc: 'Per nuclei in condizione di povertà assoluta. Utilizzabile per acquisti alimentari e farmaci.',
+    dove: '→ Comune di residenza (lista d\'attesa)',
+    condizioni: { stati: ['disoccupato','pensionato','genitore'], isee: ['basso'], cittad: ['italiana'], figli: ['nessuno','minorenni','disabili'] }
+  },
+
+  // ─── STUDENTI ───
+  {
+    id: 'borsa_ersu',
+    nome: '🎓 Borsa di Studio ERSU/DSU 2026',
+    importo: 'fino a 6.000€/anno',
+    importoClass: 'blue',
+    desc: 'Copre tasse, vitto e alloggio. Bando apre a luglio-settembre. ISEE universitario obbligatorio entro fine agosto.',
+    dove: '→ Portale ERSU/DSU regionale',
+    condizioni: { stati: ['studente'], isee: ['basso','medio_basso','medio'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
+  },
+  {
+    id: 'esonero_tasse',
+    nome: '🎓 Esonero Tasse Universitarie 2026',
+    importo: 'Tasse ridotte o azzerate',
+    importoClass: 'green',
+    desc: 'Con ISEE sotto 22.000€ hai diritto a riduzione o esonero totale delle tasse universitarie.',
+    dove: '→ Segreteria Ateneo con ISEE universitario',
+    condizioni: { stati: ['studente'], isee: ['basso','medio_basso','medio'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
+  },
+
+  // ─── LAVORATORI DIPENDENTI ───
+  {
+    id: 'fringe_benefit',
+    nome: '🎁 Fringe Benefit con Figli 2026',
+    importo: 'fino a 2.000€ esentasse',
+    importoClass: 'blue',
+    desc: 'Benefit aziendali esenti da tasse fino a 2.000€ per chi ha figli a carico. Richiede comunicazione al datore di lavoro.',
+    dove: '→ Ufficio HR / busta paga',
+    condizioni: { stati: ['dipendente'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['minorenni','disabili'] }
+  },
+  {
+    id: 'detrazioni_figli',
+    nome: '📊 Detrazioni Fiscali Figli a Carico',
+    importo: 'risparmio fiscale in busta paga',
+    importoClass: 'green',
+    desc: 'Detrazione IRPEF per figli a carico. Comunicalo al datore di lavoro o al CAF in fase di 730.',
+    dove: '→ CAF / dichiarazione redditi',
+    condizioni: { stati: ['dipendente','autonomo'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['minorenni','disabili'] }
+  },
+  {
+    id: '730_precompilato',
+    nome: '📋 730 Precompilato 2026 — Detrazioni',
+    importo: 'Rimborso IRPEF variabile',
+    importoClass: 'blue',
+    desc: 'Detrazioni per spese mediche, scolastiche, sport, veterinarie, ristrutturazioni e altro. Invia il 730 entro settembre 2026.',
+    dove: '→ CAF (gratuito) o agenziaentrate.gov.it',
+    condizioni: { stati: ['dipendente'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
+  },
+
+  // ─── PENSIONATI ───
+  {
+    id: 'integrazione_pensione',
+    nome: '🏦 Integrazione al Minimo Pensione 2026',
+    importo: 'fino a ~600€/mese',
+    importoClass: 'green',
+    desc: 'Se la pensione è bassa, INPS la integra fino al minimo vitale rivalutato per il 2026. Si ottiene automaticamente se i redditi sono bassi.',
+    dove: '→ Patronato INPS',
+    condizioni: { stati: ['pensionato'], isee: ['basso','medio_basso'], cittad: ['italiana'], figli: ['nessuno','minorenni','disabili'] }
+  },
+  {
+    id: 'quattordicesima',
+    nome: '💰 Quattordicesima Pensionati 2026',
+    importo: 'fino a 655€ una tantum (luglio)',
+    importoClass: 'green',
+    desc: 'Bonus una tantum erogato a luglio per pensionati con reddito basso (sotto 1,5 volte il trattamento minimo). Importo varia in base agli anni di contribuzione.',
+    dove: '→ Automatico INPS (luglio 2026)',
+    condizioni: { stati: ['pensionato'], isee: ['basso','medio_basso'], cittad: ['italiana'], figli: ['nessuno','minorenni','disabili'] }
+  },
+  {
+    id: 'bonus_anziani',
+    nome: '🧓 Bonus Anziani Non Autosufficienti 2026',
+    importo: 'fino a 850€/mese',
+    importoClass: 'orange',
+    desc: 'Per over 80 non autosufficienti con ISEE sotto 6.000€. Contributo per assistenza domiciliare.',
+    dove: '→ INPS.it o Patronato',
+    condizioni: { stati: ['pensionato'], isee: ['basso','medio_basso'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
+  },
+
+  // ─── DISOCCUPATI ───
+  {
+    id: 'naspi',
+    nome: '💼 NASpI 2026 — Indennità Disoccupazione',
+    importo: '75% dello stipendio (max ~1.550€/mese)',
+    importoClass: 'orange',
+    desc: 'Per lavoratori dipendenti che hanno perso involontariamente il lavoro. Dura fino a 24 mesi. Richiesta entro 68 giorni dal licenziamento. Massimale 2026: ~1.550,42€/mese.',
+    dove: '→ INPS.it con SPID o Patronato',
+    condizioni: { stati: ['disoccupato'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
+  },
+  {
+    id: 'dis_coll',
+    nome: '📄 DIS-COLL 2026 — Disoccupazione Co.co.co',
+    importo: '75% del reddito precedente',
+    importoClass: 'orange',
+    desc: 'Per collaboratori coordinati e continuativi iscritti alla Gestione Separata INPS che hanno perso il contratto.',
+    dove: '→ INPS.it con SPID',
+    condizioni: { stati: ['disoccupato','autonomo'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
+  },
+
+  // ─── PARTITA IVA / AUTONOMI ───
+  {
+    id: 'regime_forfettario',
+    nome: '📊 Regime Forfettario — Flat Tax 15%',
+    importo: 'Tasse al 15% (5% start-up)',
+    importoClass: 'blue',
+    desc: 'Regime fiscale agevolato per autonomi con ricavi sotto 85.000€. Niente IVA, niente ritenute, contabilità semplificata.',
+    dove: '→ Commercialista / Agenzia Entrate',
+    condizioni: { stati: ['autonomo'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
+  },
+  {
+    id: 'iscro',
+    nome: '📄 ISCRO 2026 — Indennità Straordinaria Autonomi',
+    importo: '25% del reddito precedente per 6 mesi',
+    importoClass: 'orange',
+    desc: 'Per lavoratori autonomi iscritti alla Gestione Separata con calo del reddito ≥50% rispetto alla media biennale. Domanda entro il 31 ottobre.',
+    dove: '→ INPS.it con SPID (entro 31 ottobre)',
+    condizioni: { stati: ['autonomo'], isee: ['basso','medio_basso'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
+  },
+
+  // ─── DISABILI ───
+  {
+    id: 'bonus_disabilita',
+    nome: '♿ Assegno di Accompagnamento / Invalidità 2026',
+    importo: 'da 286€ a 527€/mese',
+    importoClass: 'green',
+    desc: 'Per persone con invalidità riconosciuta. Importo varia in base al grado di invalidità. Non ha limiti di reddito.',
+    dove: '→ INPS.it con verbale INPS o Patronato',
+    condizioni: { stati: ['studente','disoccupato','dipendente','pensionato','genitore','autonomo'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['disabili'] }
+  },
+
+  // ─── EXTRA-UE ───
+  {
+    id: 'ssn_stranieri',
+    nome: '💊 Iscrizione SSN per Stranieri 2026',
+    importo: 'Gratuito con permesso',
+    importoClass: 'green',
+    desc: 'Con permesso di soggiorno valido hai diritto al medico di base e alle cure del SSN gratuito.',
+    dove: '→ Sportello ASL di residenza',
+    condizioni: { stati: ['studente','disoccupato','dipendente','pensionato','genitore','autonomo'], isee: ['basso','medio_basso','medio','alto'], cittad: ['extraue'], figli: ['nessuno','minorenni','disabili'] }
+  },
+  {
+    id: 'reddito_inclusione_stranieri',
+    nome: '🌍 ADI per Stranieri Lungo-soggiornanti',
+    importo: 'fino a 500€/mese',
+    importoClass: 'orange',
+    desc: 'Gli stranieri con permesso CE per soggiornanti di lungo periodo (5 anni) o permesso unico lavoro >6 mesi possono accedere all\'Assegno di Inclusione con ISEE ≤9.360€.',
+    dove: '→ INPS.it con SPID o CAF',
+    condizioni: { stati: ['disoccupato','genitore'], isee: ['basso'], cittad: ['extraue'], figli: ['minorenni','disabili'] }
+  },
+
+  // ─── CASA ───
+  {
+    id: 'bonus_affitto',
+    nome: '🏠 Bonus Affitto (Fondo Morosità)',
+    importo: 'variabile per comune',
+    importoClass: 'blue',
+    desc: 'Contributo per il pagamento dell\'affitto per inquilini in difficoltà. Gestito dai singoli Comuni — verifica disponibilità nel tuo Comune.',
+    dove: '→ Comune di residenza (ufficio servizi sociali)',
+    condizioni: { stati: ['disoccupato','dipendente','genitore'], isee: ['basso','medio_basso'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
+  },
+  {
+    id: 'superbonus_detrazione',
+    nome: '🔨 Detrazioni Ristrutturazione Casa 2026',
+    importo: 'dal 36% al 65% della spesa',
+    importoClass: 'blue',
+    desc: 'Detrazione IRPEF per lavori di ristrutturazione, risparmio energetico, sicurezza sismica. Aliquota ridotta al 36% per seconde case dal 2025. Recupero in 10 anni.',
+    dove: '→ CAF / Dichiarazione redditi',
+    condizioni: { stati: ['dipendente','pensionato','autonomo'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
+  }
+];
+
+// =====================================================
+// LOGICA RADAR BONUS
+// =====================================================
+function avviaRadarBonusModal() {
+  const comuneVal = document.getElementById('radarComuneInput').value.trim();
+  if (!comuneVal) {
+    document.getElementById('radarComuneInput').focus();
+    document.getElementById('radarComuneInput').style.borderColor = '#f59e0b';
+    setTimeout(() => document.getElementById('radarComuneInput').style.borderColor = '', 2000);
+    return;
+  }
+
+  const stato   = document.getElementById('radarStato').value;
+  const figli   = document.getElementById('radarFigli').value;
+  const isee    = document.getElementById('radarIsee').value;
+  const cittad  = document.getElementById('radarCittad').value;
+
+  const bonusAttivi = BONUS_DB.filter(b => {
+    const c = b.condizioni;
+    return c.stati.includes(stato) &&
+           c.figli.includes(figli) &&
+           c.isee.includes(isee) &&
+           c.cittad.includes(cittad);
+  });
+
+  const statoLabel = {
+    studente: 'Studente Universitario',
+    disoccupato: 'Disoccupato / In cerca di lavoro',
+    dipendente: 'Lavoratore Dipendente',
+    pensionato: 'Pensionato',
+    genitore: 'Genitore / Nucleo Familiare',
+    autonomo: 'Lavoratore Autonomo / P.IVA'
+  }[stato];
+
+  let html = `
+    <div class="bonus-result">
+      <div style="padding-bottom:1rem;border-bottom:1px solid #f0f0f0;margin-bottom:1rem;">
+        <div style="font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:var(--muted);margin-bottom:8px;">
+          📍 ${escapeHtml(comuneVal)} · ${escapeHtml(statoLabel)}
+        </div>
+        <div class="bonus-count-badge">
+          🎯 ${bonusAttivi.length} bonus 2026 trovati per il tuo profilo
+        </div>
+      </div>`;
+
+  if (bonusAttivi.length === 0) {
+    html += `<div class="no-bonus">⚠️ Nessun bonus specifico trovato per questo profilo. Considera di aggiornare l'ISEE 2026 o rivolgerti a un CAF per una verifica personalizzata.</div>`;
+  } else {
+    const priorita = bonusAttivi.filter(b => b.importoClass === 'orange');
+    const standard = bonusAttivi.filter(b => b.importoClass !== 'orange');
+
+    if (priorita.length > 0) {
+      html += `<div class="bonus-section-title">🔴 Bonus Prioritari — Fai domanda subito</div>`;
+      priorita.forEach(b => { html += bonusCard(b); });
+    }
+
+    if (standard.length > 0) {
+      html += `<div class="bonus-section-title">✅ Altri Bonus Disponibili</div>`;
+      standard.forEach(b => { html += bonusCard(b); });
+    }
+  }
+
+  html += `
+      <div class="warn-box" style="margin-top:1.25rem;">
+        <strong>⚠️ Nota 2026:</strong> Importi aggiornati alla Legge di Bilancio 2026 e Circ. INPS n.7/2026. Il tuo Comune potrebbe avere agevolazioni locali aggiuntive — chiedi all'ufficio Servizi Sociali del Comune o a un CAF.
+      </div>
+      <div class="partner-box">
+        <div class="partner-text">💼 <strong>Vuoi che qualcuno si occupi di tutto?</strong><br>Un <strong>CAF o patronato</strong> vicino a te può compilare le pratiche al posto tuo, spesso gratuitamente.</div>
+        <button class="partner-btn" onclick="chiudiModalBtn('radarModal'); avviaConsulenza();">🗺️ Trova un esperto vicino a te →</button>
+      </div>
+    </div>`;
+
+  document.getElementById('radarModalResult').innerHTML = html;
+
+  setTimeout(() => {
+    document.getElementById('radarModalResult').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+}
+
+function bonusCard(b) {
+  return `
+    <div class="bonus-card">
+      <div class="bonus-card-header">
+        <div class="bonus-card-name">${b.nome}</div>
+        <span class="bonus-importo ${b.importoClass}">${b.importo}</span>
+      </div>
+      <div class="bonus-desc">${b.desc}</div>
+      <div class="bonus-dove">${b.dove}</div>
+    </div>`;
+}
+
+// =====================================================
+// SISTEMA MODALE
+// =====================================================
+function apriModal(id) { document.getElementById(id).classList.add('open'); }
+function chiudiModalBtn(id) { document.getElementById(id).classList.remove('open'); }
+function chiudiModal(id, e) { if (e.target === document.getElementById(id)) document.getElementById(id).classList.remove('open'); }
+
+function apriRadarModal() {
+  const comuneVal = document.getElementById('comuneInput').value.trim();
+  if (comuneVal && !document.getElementById('radarComuneInput').value.trim()) {
+    document.getElementById('radarComuneInput').value = comuneVal;
+    radarSelectedCity = comuneVal;
+  }
+  apriModal('radarModal');
+}
+
+function switchTab(tipo, tabsId, contentId, colorClass, btn) {
+  const content = document.getElementById(contentId);
+  content.querySelectorAll('.steps-permesso').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('#' + tabsId + ' .tipo-tab').forEach(b => b.classList.remove('active'));
+  const target = content.querySelector('#tab-' + tipo);
+  if (target) target.classList.add('active');
+  btn.classList.add('active');
+}
+
+// =====================================================
+// RICERCA COMUNI (Nominatim)
+// =====================================================
+function cercaComuni(val) {
+  clearTimeout(comuneSearchTimer);
+  const dropdown = document.getElementById('comuniDropdown');
+  const spinner  = document.getElementById('comuneSpinner');
+  if (!val || val.length < 2) { dropdown.style.display = 'none'; return; }
+  spinner.style.display = 'block';
+  comuneSearchTimer = setTimeout(async () => {
+    try {
+      const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(val)}&countrycodes=it&featuretype=city&format=json&addressdetails=1&limit=8&accept-language=it`;
+      const res  = await fetch(url, { headers: { 'Accept-Language': 'it' } });
+      const data = await res.json();
+      spinner.style.display = 'none';
+      mostrarDropdown(data, val, 'comuniDropdown', function(nome, regione) {
+        document.getElementById('comuneInput').value = nome;
+        document.getElementById('comuniDropdown').style.display = 'none';
+        selectedCity = regione ? `${nome} (${regione})` : nome;
+      });
+    } catch(e) { spinner.style.display = 'none'; dropdown.style.display = 'none'; }
+  }, 350);
+}
+
+function cercaComuniRadar(val) {
+  clearTimeout(radarComuneTimer);
+  const dropdown = document.getElementById('radarComuniDropdown');
+  const spinner  = document.getElementById('radarComuneSpinner');
+  if (!val || val.length < 2) { dropdown.style.display = 'none'; return; }
+  spinner.style.display = 'block';
+  radarComuneTimer = setTimeout(async () => {
+    try {
+      const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(val)}&countrycodes=it&featuretype=city&format=json&addressdetails=1&limit=8&accept-language=it`;
+      const res  = await fetch(url, { headers: { 'Accept-Language': 'it' } });
+      const data = await res.json();
+      spinner.style.display = 'none';
+      mostrarDropdown(data, val, 'radarComuniDropdown', function(nome, regione) {
+        document.getElementById('radarComuneInput').value = nome;
+        document.getElementById('radarComuniDropdown').style.display = 'none';
+        radarSelectedCity = regione ? `${nome} (${regione})` : nome;
+      });
+    } catch(e) { spinner.style.display = 'none'; dropdown.style.display = 'none'; }
+  }, 350);
+}
+
+function mostrarDropdown(results, query, dropdownId, onSelect) {
+  const dropdown = document.getElementById(dropdownId);
+  dropdown.innerHTML = '';
+  const luoghi = results.filter(r => r.address && (r.address.city || r.address.town || r.address.village || r.address.municipality));
+  if (luoghi.length === 0) {
+    dropdown.innerHTML = `<div class="dropdown-empty">Nessun comune trovato per "${query}"</div>`;
+    dropdown.style.display = 'block';
+    return;
+  }
+  luoghi.forEach(r => {
+    const nomeComune  = r.address.city || r.address.town || r.address.village || r.address.municipality;
+    const regione     = r.address.state  || '';
+    const provincia   = r.address.county || '';
+    const item        = document.createElement('div');
+    item.className    = 'dropdown-item';
+    item.innerHTML    = `<span>📍</span><span><span class="city-name">${nomeComune}</span><span class="city-region"> — ${provincia ? provincia + ', ' : ''}${regione}</span></span>`;
+    item.onclick = () => onSelect(nomeComune, regione);
+    dropdown.appendChild(item);
+  });
+  dropdown.style.display = 'block';
+}
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('.comune-section')) {
+    document.getElementById('comuniDropdown').style.display    = 'none';
+    document.getElementById('radarComuniDropdown').style.display = 'none';
+  }
+});
+
+// =====================================================
+// MAPPA CAF
+// =====================================================
+function aggiornaStatusBar(tipo, icona, testo) {
+  const bar = document.getElementById('mapStatusBar');
+  bar.className = 'map-status-bar ' + tipo;
+  document.getElementById('mapStatusIcon').textContent = icona;
+  document.getElementById('mapStatusText').textContent = testo;
+}
+
+function mostraIframeGoogleMaps(lat, lng, query) {
+  currentMapQuery = query;
+  const src = `https://maps.google.com/maps?q=${encodeURIComponent(query)}&ll=${lat},${lng}&z=14&output=embed&hl=it`;
+  document.getElementById('mapContent').innerHTML = `
+    <iframe id="googleMapFrame" src="${src}" style="flex:1;width:100%;border:none;min-height:320px;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
+  document.getElementById('mapFooter').style.display = 'flex';
+}
+
+function apriGoogleMapsCaf() {
+  if (userLat && userLng) {
+    window.open(`https://www.google.com/maps/search/${encodeURIComponent(currentMapQuery)}/@${userLat},${userLng},14z`, '_blank');
+  }
+}
+
+function cercaTipoLuogo(tipo) {
+  if (!userLat || !userLng) return;
+  const query = tipo === 'caf' ? 'CAF Centro Assistenza Fiscale' : 'Patronato INPS CGIL CISL UIL';
+  document.getElementById('mapModalTitle').textContent = tipo === 'caf' ? 'CAF — Centri Assistenza Fiscale' : 'Patronati vicino a te';
+  aggiornaStatusBar('', '📍', `Ricerca "${tipo === 'caf' ? 'CAF' : 'Patronati'}" nella tua zona`);
+  mostraIframeGoogleMaps(userLat, userLng, query);
+}
+
+function avviaConsulenza() {
+  userLat = null; userLng = null;
+  document.getElementById('mapModalTitle').textContent = 'CAF e Patronati vicino a te';
+  document.getElementById('mapContent').innerHTML = `
+    <div class="map-full-loading" id="mapLoader">
+      <div class="spinner" style="width:36px;height:36px;"></div>
+      <p>Stiamo cercando la tua posizione…<br><small>Concedi l'accesso alla geolocalizzazione quando richiesto.</small></p>
+    </div>`;
+  document.getElementById('mapFooter').style.display = 'none';
+  aggiornaStatusBar('loading-bar', '⏳', 'Rilevamento posizione GPS in corso…');
+  document.getElementById('mapModalOverlay').classList.add('open');
+
+  if (!navigator.geolocation) {
+    aggiornaStatusBar('error', '⚠️', 'Geolocalizzazione non supportata');
+    mostraIframeGoogleMaps(41.9028, 12.4964, 'CAF patronato consulenza fiscale Italia');
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(
+    (pos) => {
+      userLat = pos.coords.latitude;
+      userLng = pos.coords.longitude;
+      const acc = Math.round(pos.coords.accuracy);
+      aggiornaStatusBar('', '✅', `Posizione trovata · precisione ${acc < 100 ? 'alta' : acc < 500 ? 'media' : 'bassa'} (±${acc}m)`);
+      mostraIframeGoogleMaps(userLat, userLng, 'CAF patronato consulenza fiscale');
+    },
+    (err) => {
+      if (err.code === 1) {
+        aggiornaStatusBar('error', '🚫', 'Accesso alla posizione negato');
+        document.getElementById('mapContent').innerHTML = `
+          <div class="map-full-loading">
+            <div class="map-perm-denied">
+              <strong>📍 Posizione non disponibile</strong>
+              Hai negato l'accesso alla geolocalizzazione.<br><br>
+              Per abilitarla:<br>
+              • <strong>Chrome/Edge:</strong> clicca il lucchetto 🔒 nella barra → Posizione → Consenti<br>
+              • <strong>Safari:</strong> Impostazioni → Privacy → Servizi di localizzazione<br>
+              • <strong>Firefox:</strong> barra URL → ✕ → Rimuovi blocco posizione
+            </div>
+            <a href="https://www.google.com/maps/search/CAF+patronato+Italia" target="_blank"
+               style="display:inline-block;margin-top:12px;padding:12px 20px;background:var(--green);color:white;border-radius:10px;font-weight:700;font-family:'Sora',sans-serif;font-size:14px;text-decoration:none;">
+              🔍 Cerca su Google Maps →
+            </a>
+          </div>`;
+      } else {
+        aggiornaStatusBar('error', '⚠️', 'Posizione non rilevata — mappa generica');
+        mostraIframeGoogleMaps(41.9028, 12.4964, 'CAF patronato consulenza fiscale Italia');
+      }
+    },
+    { enableHighAccuracy: true, timeout: 12000, maximumAge: 300000 }
+  );
+}
+
+function chiudiMappa(e) {
+  if (e.target === document.getElementById('mapModalOverlay')) chiudiMappaBtn();
+}
+function chiudiMappaBtn() {
+  document.getElementById('mapModalOverlay').classList.remove('open');
+  const frame = document.getElementById('googleMapFrame');
+  if (frame) frame.src = '';
+}
+
+// =====================================================
+// UTILITY
+// =====================================================
+function escapeHtml(str) {
+  if (!str) return '';
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+</script>
+</body>
+</html>
