@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
-<head> <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RJNDP9YME"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-9RJNDP9YME');
-</script>
+<head><script type="text/javascript" src="https://embeds.iubenda.com/widgets/8a0bfd5a-d4aa-45d7-993f-bb8f8a434aed.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sportello Aperto — Burocrazia Italiana Spiegata Semplice</title>
@@ -34,6 +26,10 @@
     --blue-dark: #1d4ed8;
     --orange: #ea580c;
     --orange-light: #fff7ed;
+    --purple: #7c3aed;
+    --purple-light: #f5f3ff;
+    --teal: #0d9488;
+    --teal-light: #f0fdfa;
     --radius: 16px;
     --shadow: 0 2px 12px rgba(0,0,0,0.06);
     --shadow-lg: 0 8px 32px rgba(0,0,0,0.08);
@@ -97,6 +93,11 @@
   .chip-blue:hover { background: var(--blue); color: white; border-color: var(--blue); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(37,99,235,0.22); }
   .chip-orange { padding: 9px 18px; border: 1.5px solid #fed7aa; border-radius: 24px; font-size: 13px; color: var(--orange); cursor: pointer; background: var(--orange-light); transition: all 0.18s; font-family: 'Sora', sans-serif; font-weight: 700; box-shadow: 0 1px 4px rgba(234,88,12,0.08); display: flex; align-items: center; gap: 6px; }
   .chip-orange:hover { background: var(--orange); color: white; border-color: var(--orange); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(234,88,12,0.22); }
+  .chip-purple { padding: 9px 18px; border: 1.5px solid #ddd6fe; border-radius: 24px; font-size: 13px; color: var(--purple); cursor: pointer; background: var(--purple-light); transition: all 0.18s; font-family: 'Sora', sans-serif; font-weight: 700; box-shadow: 0 1px 4px rgba(124,58,237,0.08); display: flex; align-items: center; gap: 6px; }
+  .chip-purple:hover { background: var(--purple); color: white; border-color: var(--purple); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(124,58,237,0.22); }
+  .chip-teal { padding: 9px 18px; border: 1.5px solid #99f6e4; border-radius: 24px; font-size: 13px; color: var(--teal); cursor: pointer; background: var(--teal-light); transition: all 0.18s; font-family: 'Sora', sans-serif; font-weight: 700; box-shadow: 0 1px 4px rgba(13,148,136,0.08); display: flex; align-items: center; gap: 6px; }
+  .chip-teal:hover { background: var(--teal); color: white; border-color: var(--teal); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(13,148,136,0.22); }
+  /* MODALI */
   .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 9000; align-items: flex-end; justify-content: center; backdrop-filter: blur(3px); animation: fadeIn 0.2s ease; }
   .modal-overlay.open { display: flex; }
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -109,12 +110,25 @@
   .modal-body { overflow-y: auto; flex: 1; padding: 1.4rem; }
   .citizenship-intro { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 1px solid #bfdbfe; border-radius: 14px; padding: 1.2rem; margin-bottom: 1.4rem; font-size: 14px; line-height: 1.7; color: #1e3a8a; }
   .citizenship-intro strong { font-weight: 700; }
+  /* SCHEMA STANDARD (cosa serve / dove / procedimento / costo) */
+  .guide-block { background: var(--bg); border: 1px solid var(--border); border-radius: 14px; padding: 1rem 1.2rem; margin-bottom: 1rem; }
+  .guide-block-title { font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); margin-bottom: 10px; display: flex; align-items: center; gap: 7px; }
+  .guide-block ul { list-style: none; padding: 0; }
+  .guide-block ul li { font-size: 13px; line-height: 1.8; color: var(--text); padding: 2px 0; display: flex; align-items: flex-start; gap: 7px; }
+  .guide-block ul li::before { content: '•'; color: var(--green); font-size: 16px; line-height: 1.4; flex-shrink: 0; }
+  .costo-badge { display: inline-block; padding: 5px 14px; border-radius: 20px; font-family: 'Sora', sans-serif; font-size: 13px; font-weight: 800; }
+  .costo-green { background: var(--green-light); color: var(--green-dark); }
+  .costo-orange { background: var(--orange-light); color: var(--orange); }
+  .costo-blue { background: var(--blue-light); color: var(--blue-dark); }
+  /* STEP LIST */
   .step-list { list-style: none; padding: 0; }
   .step-item { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid #f3f3f3; align-items: flex-start; }
   .step-item:last-child { border-bottom: none; }
   .step-num { width: 32px; height: 32px; background: var(--blue); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 14px; flex-shrink: 0; box-shadow: 0 2px 8px rgba(37,99,235,0.22); }
   .step-num.green { background: var(--green); box-shadow: 0 2px 8px rgba(0,102,204,0.22); }
   .step-num.orange { background: var(--orange); box-shadow: 0 2px 8px rgba(234,88,12,0.22); }
+  .step-num.purple { background: var(--purple); box-shadow: 0 2px 8px rgba(124,58,237,0.22); }
+  .step-num.teal { background: var(--teal); box-shadow: 0 2px 8px rgba(13,148,136,0.22); }
   .step-content { flex: 1; }
   .step-title { font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
   .step-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
@@ -122,6 +136,8 @@
   .step-tag { display: inline-block; padding: 2px 8px; background: var(--blue-light); color: var(--blue-dark); border-radius: 8px; font-size: 11px; font-weight: 700; font-family: 'Sora', sans-serif; margin-top: 5px; }
   .step-tag.orange { background: var(--orange-light); color: var(--orange); }
   .step-tag.green { background: var(--green-light); color: var(--green-dark); }
+  .step-tag.purple { background: var(--purple-light); color: var(--purple); }
+  .step-tag.teal { background: var(--teal-light); color: var(--teal); }
   .warn-box { background: var(--warning-bg); border-left: 4px solid var(--warning-border); border-radius: 10px; padding: 1rem 1.1rem; font-size: 13px; color: var(--warning-text); line-height: 1.6; margin: 1rem 0; }
   .warn-box strong { font-weight: 700; }
   .info-box { background: var(--green-light); border-left: 4px solid var(--green); border-radius: 10px; padding: 1rem 1.1rem; font-size: 13px; color: #003380; line-height: 1.6; margin: 1rem 0; }
@@ -135,17 +151,22 @@
   .icon-blue { background: var(--blue-light); }
   .icon-orange { background: var(--orange-light); }
   .icon-green { background: var(--green-light); }
+  .icon-purple { background: var(--purple-light); }
+  .icon-teal { background: var(--teal-light); }
   .link-card-info { flex: 1; min-width: 0; }
   .link-card-title { font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
   .link-card-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
   .link-card-url { font-size: 11px; color: var(--blue); font-weight: 600; margin-top: 3px; display: block; word-break: break-all; }
   .link-card-arrow { font-size: 18px; color: var(--muted); flex-shrink: 0; }
   .badge-official { display: inline-block; padding: 2px 8px; background: #dbeafe; color: #1e3a8a; border-radius: 8px; font-size: 10px; font-weight: 700; font-family: 'Sora', sans-serif; margin-left: 6px; vertical-align: middle; }
+  .badge-2026 { display: inline-block; padding: 2px 8px; background: #dcfce7; color: #14532d; border-radius: 8px; font-size: 10px; font-weight: 700; font-family: 'Sora', sans-serif; margin-left: 6px; vertical-align: middle; }
   .tipo-permesso-tabs { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 1.2rem; }
   .tipo-tab { padding: 6px 14px; border: 1px solid var(--border); border-radius: 20px; font-size: 12px; font-family: 'Sora', sans-serif; font-weight: 600; cursor: pointer; background: var(--card); color: var(--muted); transition: all 0.15s; }
   .tipo-tab.active, .tipo-tab:hover { background: var(--orange); color: white; border-color: var(--orange); }
   .tipo-tab.blue.active, .tipo-tab.blue:hover { background: var(--blue); color: white; border-color: var(--blue); }
   .tipo-tab.green.active, .tipo-tab.green:hover { background: var(--green); color: white; border-color: var(--green); }
+  .tipo-tab.purple.active, .tipo-tab.purple:hover { background: var(--purple); color: white; border-color: var(--purple); }
+  .tipo-tab.teal.active, .tipo-tab.teal:hover { background: var(--teal); color: white; border-color: var(--teal); }
   .steps-permesso { display: none; }
   .steps-permesso.active { display: block; }
   .grid-profilo { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
@@ -156,7 +177,6 @@
   .select-profilo:focus { border-color: var(--green); background: white; }
   .radar-btn { width: 100%; padding: 13px; background: var(--green-light); color: var(--green-dark); border: 1.5px dashed var(--green); border-radius: 12px; font-size: 14px; font-family: 'Sora', sans-serif; font-weight: 700; cursor: pointer; transition: all 0.2s; }
   .radar-btn:hover { background: var(--green); color: white; border-style: solid; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,102,204,0.25); }
-
   /* BONUS CARDS */
   .bonus-result { margin-top: 1.25rem; animation: fadeUp 0.3s ease; }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
@@ -164,7 +184,6 @@
   .bonus-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1rem 1.2rem; margin-bottom: 10px; box-shadow: 0 1px 6px rgba(0,0,0,0.05); transition: box-shadow 0.2s, transform 0.15s; }
   .bonus-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.10); transform: translateY(-1px); }
   .bonus-card-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 6px; }
-  .bonus-card-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
   .bonus-card-name { font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 700; color: var(--text); flex: 1; }
   .bonus-importo { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 700; font-family: 'Sora', sans-serif; background: var(--green-light); color: var(--green-dark); white-space: nowrap; }
   .bonus-importo.orange { background: var(--orange-light); color: var(--orange); }
@@ -181,6 +200,7 @@
   .trova-esperto-btn:hover { background: var(--green); color: white; border-style: solid; transform: translateY(-2px); box-shadow: 0 6px 22px rgba(0,102,204,0.28); }
   .trova-esperto-btn .btn-arrow { margin-left: auto; font-size: 18px; opacity: 0.6; transition: transform 0.2s; }
   .trova-esperto-btn:hover .btn-arrow { transform: translateX(4px); opacity: 1; }
+  /* MAPPA */
   .map-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 9000; align-items: flex-end; justify-content: center; backdrop-filter: blur(4px); animation: fadeIn 0.2s ease; }
   .map-modal-overlay.open { display: flex; }
   .map-modal { background: var(--card); border-radius: 24px 24px 0 0; width: 100%; max-width: 700px; height: 88vh; display: flex; flex-direction: column; box-shadow: 0 -8px 40px rgba(0,0,0,0.22); animation: slideUp 0.3s cubic-bezier(0.34,1.56,0.64,1); overflow: hidden; }
@@ -199,14 +219,13 @@
   .map-action-secondary { background: var(--bg); color: var(--text); border: 1px solid var(--border); }
   .map-action-secondary:hover { background: var(--green-light); border-color: var(--green); color: var(--green-dark); }
   .map-full-loading { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 2rem; text-align: center; color: var(--muted); font-size: 14px; }
-  .map-full-loading .spinner { margin: 0; }
   .map-perm-denied { background: #fff8f0; border: 1px solid #fed7aa; border-radius: 14px; padding: 1.4rem; font-size: 13px; color: #7c2d12; line-height: 1.8; max-width: 360px; }
   .map-perm-denied strong { display: block; font-size: 15px; margin-bottom: 6px; color: #92400e; }
   .spinner { width: 34px; height: 34px; border: 3px solid var(--border); border-top-color: var(--green); border-radius: 50%; animation: spin 0.75s linear infinite; margin: 0 auto 1rem; }
   @keyframes spin { to { transform: rotate(360deg); } }
-
-  /* Contatore bonus trovati */
   .bonus-count-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--green); color: white; border-radius: 20px; padding: 6px 14px; font-family: 'Sora', sans-serif; font-size: 13px; font-weight: 700; margin-bottom: 1rem; }
+  /* Aggiornamento 2026 tag */
+  .update-tag { display: inline-block; padding: 3px 9px; border-radius: 8px; font-size: 10px; font-weight: 800; font-family: 'Sora',sans-serif; background: #dcfce7; color: #14532d; margin-left: 6px; vertical-align: middle; letter-spacing: 0.5px; }
 </style>
 </head>
 <body>
@@ -215,7 +234,7 @@
     <div class="logo-icon">🚪</div>
     <span class="logo-text">Sportello Aperto</span>
   </div>
-  <p class="tagline">La burocrazia italiana spiegata semplice, senza fare la coda.</p>
+  <p class="tagline">La burocrazia italiana spiegata semplice, senza fare la coda. • Aggiornato 2026</p>
 
   <div class="comune-section">
     <span class="comune-icon">📍</span>
@@ -258,6 +277,18 @@
     <button class="chip" onclick="apriModal('concorsiModal')">🏛️ Concorsi Pubblici</button>
   </div>
 
+  <div class="section-title">🏠 Casa &amp; 💼 Lavoro</div>
+  <div class="chips">
+    <button class="chip-purple" onclick="apriModal('affittoModal')">📝 Contratti di Affitto</button>
+    <button class="chip-purple" onclick="apriModal('bonusCasaModal')">🔨 Bonus Ristrutturazione 2026</button>
+    <button class="chip-purple" onclick="apriModal('condominialeModal')">🏢 Spese Condominiali</button>
+  </div>
+  <div class="chips">
+    <button class="chip-teal" onclick="apriModal('cedolinoModal')">💶 Cedolino (Busta Paga)</button>
+    <button class="chip-teal" onclick="apriModal('naspiModal')">💼 NASpI — Disoccupazione 2026</button>
+    <button class="chip-teal" onclick="apriModal('partitaIvaModal')">🧾 Aprire Partita IVA</button>
+  </div>
+
   <button class="trova-esperto-btn" onclick="avviaConsulenza()">
     <span style="font-size:20px">🗺️</span>
     <span>Trova un esperto vicino a te</span>
@@ -270,12 +301,12 @@
   <div class="modal-sheet">
     <div class="modal-header" style="border-top: 4px solid var(--green);">
       <span style="font-size:22px">🎯</span>
-      <span class="modal-title">Radar Bonus &amp; Agevolazioni 2026</span>
+      <span class="modal-title">Radar Bonus &amp; Agevolazioni Personali</span>
       <button class="modal-close" onclick="chiudiModalBtn('radarModal')">✕</button>
     </div>
     <div class="modal-body">
       <div class="citizenship-intro" style="background:linear-gradient(135deg,#eef6ff,#dbeafe);border-color:#93c5fd;color:#1e3a8a;">
-        <strong>Scopri tutti i bonus 2026 a cui hai diritto.</strong> Inserisci il tuo profilo e il tuo Comune: analizzerò bonus nazionali, regionali e locali con importi aggiornati all'anno in corso.
+        <strong>Scopri tutti i bonus a cui hai diritto.</strong> Inserisci il tuo profilo e il tuo Comune: analizzerò bonus nazionali, regionali e locali con importi aggiornati al 2026.
       </div>
       <div class="comune-section" style="margin-bottom:1rem;">
         <span class="comune-icon">📍</span>
@@ -320,7 +351,7 @@
           </select>
         </div>
       </div>
-      <button class="radar-btn" id="radarLaunchBtn" onclick="avviaRadarBonusModal()">🚀 Scansiona i miei Bonus 2026</button>
+      <button class="radar-btn" id="radarLaunchBtn" onclick="avviaRadarBonusModal()">🚀 Scansiona i miei Bonus</button>
       <div id="radarModalResult"></div>
     </div>
   </div>
@@ -331,24 +362,47 @@
   <div class="modal-sheet">
     <div class="modal-header" style="border-top: 4px solid var(--green);">
       <span style="font-size:22px">📄</span>
-      <span class="modal-title">Modello ISEE — Guida Completa</span>
+      <span class="modal-title">Modello ISEE — Guida Completa <span class="badge-2026">2026</span></span>
       <button class="modal-close" onclick="chiudiModalBtn('iseeModal')">✕</button>
     </div>
     <div class="modal-body">
       <div class="citizenship-intro" style="background:linear-gradient(135deg,#eef6ff,#dbeafe);border-color:#93c5fd;color:#1e3a8a;">
-        <strong>Cos'è l'ISEE?</strong> L'Indicatore della Situazione Economica Equivalente misura la situazione economica del tuo nucleo familiare. Serve per accedere a bonus, riduzioni tariffarie, borse di studio e molti servizi pubblici agevolati.
+        <strong>Cos'è l'ISEE?</strong> Misura la situazione economica del tuo nucleo familiare. Serve per accedere a bonus, riduzioni tariffarie, borse di studio e molti servizi agevolati. Dal 2026 esiste anche l'<strong>ISEE agevolato</strong> per alcune prestazioni (Assegno Unico, ADI, Bonus Nido).
       </div>
-      <div class="warn-box"><strong>⚠️ Novità 2026:</strong> Dal 1° gennaio 2026 è in vigore il nuovo <strong>"ISEE per specifiche prestazioni familiari e per l'inclusione"</strong>, più favorevole per famiglie con figli e prime case di proprietà. Si applica automaticamente per ADI, SFL, Assegno Unico, Bonus Nido e Bonus Nuovi Nati.</div>
-      <div class="section-sub">📋 Passi da seguire</div>
+      <div class="guide-block">
+        <div class="guide-block-title">📋 Cosa serve</div>
+        <ul>
+          <li>Codice fiscale di tutti i componenti del nucleo familiare</li>
+          <li>Documento d'identità del dichiarante</li>
+          <li>Ultima dichiarazione redditi (730 o CU) — dati 2024 per l'ISEE 2026</li>
+          <li>Saldi bancari/postali al 31 dicembre 2024</li>
+          <li>Dati catastali degli immobili posseduti</li>
+          <li>Targa veicoli posseduti</li>
+        </ul>
+      </div>
+      <div class="guide-block">
+        <div class="guide-block-title">🌐 Dove andare</div>
+        <ul>
+          <li><strong>Online su INPS.it</strong> con SPID/CIE (immediato, gratuito)</li>
+          <li><strong>Al CAF</strong> gratuitamente — ti aiutano loro a compilare</li>
+        </ul>
+      </div>
+      <div class="guide-block">
+        <div class="guide-block-title">🪜 Il procedimento</div>
+      </div>
       <ul class="step-list">
-        <li class="step-item"><div class="step-num green">1</div><div class="step-content"><div class="step-title">Raccogli i documenti del nucleo familiare</div><div class="step-desc"><strong>Documenti necessari per tutti i componenti:</strong><br>• Codice fiscale di tutti i familiari<br>• Documento d'identità del dichiarante<br>• Ultima dichiarazione dei redditi (730 o CU)<br>• Saldi bancari/postali al 31 dicembre dell'anno precedente<br>• Dati catastali degli immobili posseduti<br>• Targa veicoli posseduti</div><span class="step-tag green">Prima di tutto</span></div></li>
-        <li class="step-item"><div class="step-num green">2</div><div class="step-content"><div class="step-title">Scegli come presentare la DSU</div><div class="step-desc">Puoi presentare la Dichiarazione Sostitutiva Unica (DSU) in 3 modi:<br>• <strong>Online su INPS.it</strong> con SPID/CIE (gratuito, immediato)<br>• <strong>Al CAF</strong> (gratuito, ti aiutano loro)<br>• <strong>Online tramite CAF convenzionato</strong></div><span class="step-tag green">Gratuito</span></div></li>
-        <li class="step-item"><div class="step-num green">3</div><div class="step-content"><div class="step-title">Compila la DSU precompilata (consigliato)</div><div class="step-desc">Dal 2020 l'INPS mette a disposizione la <strong>DSU precompilata</strong>: i dati fiscali vengono caricati automaticamente dall'Agenzia delle Entrate. Devi solo verificare e integrare i dati patrimoniali (conti correnti, immobili).</div><span class="step-tag">Più veloce</span></div></li>
-        <li class="step-item"><div class="step-num green">4</div><div class="step-content"><div class="step-title">Ricevi l'attestazione ISEE</div><div class="step-desc">Dopo la presentazione ricevi subito l'<strong>attestazione ISEE in formato PDF</strong>, valida per l'anno in corso. L'ISEE ordinario scade il 15 gennaio dell'anno successivo.</div><span class="step-tag green">Immediato</span></div></li>
+        <li class="step-item"><div class="step-num green">1</div><div class="step-content"><div class="step-title">Raccogli i documenti</div><div class="step-desc">Prepara i dati reddituali e patrimoniali di tutti i componenti del nucleo.</div></div></li>
+        <li class="step-item"><div class="step-num green">2</div><div class="step-content"><div class="step-title">Accedi a INPS.it con SPID/CIE</div><div class="step-desc">Vai su <strong>inps.it → ISEE → DSU precompilata</strong>. I dati fiscali vengono caricati automaticamente dall'Agenzia delle Entrate dal 2020.</div><span class="step-tag green">Più rapido</span></div></li>
+        <li class="step-item"><div class="step-num green">3</div><div class="step-content"><div class="step-title">Verifica e integra i dati patrimoniali</div><div class="step-desc">Aggiungi saldi bancari, immobili, veicoli. <strong>Novità 2026:</strong> i titoli di Stato e buoni postali fino a 50.000€ sono esclusi automaticamente dalla DSU precompilata.</div><span class="step-tag">Novità 2026</span></div></li>
+        <li class="step-item"><div class="step-num green">4</div><div class="step-content"><div class="step-title">Invia e ricevi l'attestazione</div><div class="step-desc">L'attestazione ISEE arriva in <strong>PDF immediato</strong>. Valida fino al 31 dicembre 2026.</div><span class="step-tag green">Immediato</span></div></li>
       </ul>
-      <div class="warn-box"><strong>⚠️ Trappola comune:</strong> Molti dimenticano di dichiarare i saldi bancari al 31/12. Se l'INPS trova discrepanze con i dati dell'Agenzia delle Entrate, l'ISEE viene sospeso e devi rifare tutto.</div>
+      <div class="guide-block" style="margin-top:1rem;">
+        <div class="guide-block-title">💰 Quanto costa</div>
+        <span class="costo-badge costo-green">✅ Completamente gratuito</span>
+      </div>
+      <div class="warn-box"><strong>⚠️ Trappola comune:</strong> Dimenticare i saldi bancari al 31/12/2024. Se l'INPS trova discrepanze, l'ISEE viene sospeso. Non aggiornare l'ISEE entro febbraio 2026 porta al pagamento dell'importo minimo dell'Assegno Unico (57€/figlio).</div>
       <div class="section-sub">🔗 Link Ufficiali</div>
-      <a class="link-card" href="https://www.inps.it/it/it/strumenti/isee-e-prestazioni-collegate/isee.html" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-green">🏛️</div><div class="link-card-info"><div class="link-card-title">INPS — Portale ISEE <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Presenta la DSU online, scarica l'attestazione, accedi alla DSU precompilata.</div><span class="link-card-url">inps.it → ISEE</span></div><span class="link-card-arrow">→</span></div></a>
+      <a class="link-card" href="https://www.inps.it/it/it/strumenti/isee-e-prestazioni-collegate/isee.html" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-green">🏛️</div><div class="link-card-info"><div class="link-card-title">INPS — Portale ISEE <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">DSU precompilata, attestazione, servizi collegati.</div><span class="link-card-url">inps.it → ISEE</span></div><span class="link-card-arrow">→</span></div></a>
     </div>
   </div>
 </div>
@@ -358,21 +412,40 @@
   <div class="modal-sheet">
     <div class="modal-header" style="border-top: 4px solid var(--green);">
       <span style="font-size:22px">👶</span>
-      <span class="modal-title">Assegno Unico e Universale 2026</span>
+      <span class="modal-title">Assegno Unico e Universale <span class="badge-2026">2026</span></span>
       <button class="modal-close" onclick="chiudiModalBtn('assegnoModal')">✕</button>
     </div>
     <div class="modal-body">
-      <div class="citizenship-intro" style="background:linear-gradient(135deg,#eef6ff,#dbeafe);border-color:#93c5fd;color:#1e3a8a;"><strong>Cos'è l'Assegno Unico?</strong> È un sostegno economico mensile per le famiglie con figli a carico fino a 21 anni. Importi 2026 rivalutati +1,4%: da <strong>58,30€/mese (minimo)</strong> a <strong>203,80€/mese per figlio</strong> (ISEE fino a 17.468,51€).</div>
-      <div class="warn-box"><strong>⚠️ Scadenza critica:</strong> Chi non presenta l'ISEE 2026 entro il <strong>30 giugno 2026</strong> riceve solo il minimo (58,30€/figlio) e perde gli arretrati da marzo. Non serve fare nuova domanda se quella precedente è già "accolta".</div>
+      <div class="citizenship-intro" style="background:linear-gradient(135deg,#eef6ff,#dbeafe);border-color:#93c5fd;color:#1e3a8a;"><strong>Importi 2026 aggiornati (+1,4% ISTAT):</strong> da <strong>57€/mese</strong> (senza ISEE o ISEE oltre 45.575€) fino a <strong>199€/mese per figlio</strong> (ISEE sotto 17.091€). Maggiorazioni per figli disabili, famiglie numerose, figli under 1 anno (+50%).</div>
+      <div class="warn-box"><strong>⚠️ Requisito fondamentale:</strong> Devi avere l'<strong>ISEE 2026 aggiornato</strong> entro febbraio per ricevere l'importo corretto già da gennaio (con arretrati). Senza ISEE: solo 57€/figlio.</div>
+      <div class="guide-block">
+        <div class="guide-block-title">📋 Cosa serve</div>
+        <ul>
+          <li>ISEE 2026 aggiornato (con dati reddituali 2024)</li>
+          <li>SPID o CIE per accedere a INPS.it</li>
+          <li>IBAN del conto corrente dove ricevere i pagamenti</li>
+          <li>Dati dei figli a carico (codice fiscale, data di nascita)</li>
+        </ul>
+      </div>
+      <div class="guide-block">
+        <div class="guide-block-title">🌐 Dove andare</div>
+        <ul>
+          <li><strong>INPS.it</strong> — domanda online con SPID/CIE</li>
+          <li><strong>CAF o Patronato</strong> — assistenza gratuita</li>
+        </ul>
+      </div>
       <ul class="step-list">
-        <li class="step-item"><div class="step-num green">1</div><div class="step-content"><div class="step-title">Aggiorna l'ISEE 2026 entro giugno</div><div class="step-desc">Senza ISEE valido ricevi solo il <strong>minimo garantito (58,30€/figlio/mese)</strong>. Rinnova al CAF o su INPS.it con SPID/CIE.</div><span class="step-tag green">Prima di tutto</span></div></li>
-        <li class="step-item"><div class="step-num green">2</div><div class="step-content"><div class="step-title">Nessuna nuova domanda se già beneficiario</div><div class="step-desc">Se la tua domanda è in stato "accolta", <strong>l'INPS ricalcola automaticamente</strong> gli importi con il nuovo ISEE 2026. Intervieni solo se cambiano i dati del nucleo familiare.</div><span class="step-tag">Automatico</span></div></li>
-        <li class="step-item"><div class="step-num green">3</div><div class="step-content"><div class="step-title">Prima domanda: presenta su INPS.it</div><div class="step-desc">Accedi al portale INPS con SPID/CIE → cerca "Assegno Unico" → compila indicando dati dei figli e IBAN.</div><span class="step-tag">Con SPID/CIE</span></div></li>
-        <li class="step-item"><div class="step-num green">4</div><div class="step-content"><div class="step-title">Oppure rivolgiti a CAF o Patronato</div><div class="step-desc">Puoi presentare domanda gratuitamente tramite un CAF convenzionato INPS.</div><span class="step-tag green">Gratuito al CAF</span></div></li>
+        <li class="step-item"><div class="step-num green">1</div><div class="step-content"><div class="step-title">Aggiorna l'ISEE 2026</div><div class="step-desc">Senza ISEE ricevi solo l'<strong>importo minimo (57€/figlio/mese)</strong>. Fallo entro febbraio per gli arretrati.</div><span class="step-tag green">Prima di tutto</span></div></li>
+        <li class="step-item"><div class="step-num green">2</div><div class="step-content"><div class="step-title">Se hai già domanda accolta: non rifai nulla</div><div class="step-desc">Per il 2026 non è necessaria una nuova domanda se quella precedente è in stato "accolta". Verifica solo l'ISEE.</div><span class="step-tag green">Rinnovo automatico</span></div></li>
+        <li class="step-item"><div class="step-num green">3</div><div class="step-content"><div class="step-title">Prima richiesta: domanda su INPS.it</div><div class="step-desc">Accedi con SPID/CIE → cerca "Assegno Unico" → inserisci dati figli e IBAN.</div></div></li>
+        <li class="step-item"><div class="step-num green">4</div><div class="step-content"><div class="step-title">Ricevi il pagamento mensile</div><div class="step-desc">L'INPS accredita ogni mese sul tuo IBAN. Segnala variazioni familiari tempestivamente.</div><span class="step-tag">Ogni mese</span></div></li>
       </ul>
-      <div class="info-box"><strong>📊 Tabella importi 2026 per figlio minorenne:</strong><br>• ISEE fino a 17.468,51€ → <strong>203,80€/mese</strong><br>• ISEE tra 17.468,51€ e 46.582,71€ → importo graduale<br>• ISEE oltre 46.582,71€ o senza ISEE → <strong>58,30€/mese</strong><br>• Figli 18-21 anni: da 29,10€ a 99,10€/mese</div>
+      <div class="guide-block">
+        <div class="guide-block-title">💰 Quanto costa</div>
+        <span class="costo-badge costo-green">✅ Gratuito — domanda e pagamenti senza costi</span>
+      </div>
       <div class="section-sub">🔗 Link Ufficiali</div>
-      <a class="link-card" href="https://www.inps.it/it/it/dettaglio-scheda.it.hrw12901.assegno-unico-e-universale-per-i-figli-a-carico.html" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-green">👶</div><div class="link-card-info"><div class="link-card-title">INPS — Assegno Unico <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Domanda online, importi 2026, requisiti, simulatore e scadenze.</div><span class="link-card-url">inps.it → Assegno Unico</span></div><span class="link-card-arrow">→</span></div></a>
+      <a class="link-card" href="https://www.inps.it/it/it/dettaglio-scheda.it.hrw12901.assegno-unico-e-universale-per-i-figli-a-carico.html" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-green">👶</div><div class="link-card-info"><div class="link-card-title">INPS — Assegno Unico <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Domanda online, tabelle importi 2026, simulatore e scadenze.</div><span class="link-card-url">inps.it → Assegno Unico</span></div><span class="link-card-arrow">→</span></div></a>
     </div>
   </div>
 </div>
@@ -393,18 +466,41 @@
       </div>
       <div id="spidContent">
         <div id="tab-spid" class="steps-permesso active">
+          <div class="guide-block">
+            <div class="guide-block-title">📋 Cosa serve</div>
+            <ul>
+              <li>Codice fiscale</li>
+              <li>Documento d'identità valido (CI o passaporto)</li>
+              <li>Numero di cellulare attivo</li>
+              <li>Indirizzo email personale</li>
+            </ul>
+          </div>
           <ul class="step-list">
             <li class="step-item"><div class="step-num" style="background:var(--blue)">1</div><div class="step-content"><div class="step-title">Scegli un Identity Provider</div><div class="step-desc">Vai su <strong>spid.gov.it</strong>: <strong>Poste ID</strong> (gratuito), Aruba, Intesa, InfoCert, Namirial, TIM id.</div><span class="step-tag blue" style="background:#eff6ff;color:#1d4ed8">Gratuito con Poste</span></div></li>
             <li class="step-item"><div class="step-num" style="background:var(--blue)">2</div><div class="step-content"><div class="step-title">Registrati online</div><div class="step-desc">Inserisci: <strong>codice fiscale, documento valido, cellulare, email</strong>.</div></div></li>
-            <li class="step-item"><div class="step-num" style="background:var(--blue)">3</div><div class="step-content"><div class="step-title">Verifica l'identità</div><div class="step-desc">• <strong>Di persona</strong> allo sportello del provider<br>• <strong>Via webcam</strong> (~20-30€)<br>• Con <strong>CIE con PIN</strong></div><span class="step-tag orange">Obbligatorio</span></div></li>
+            <li class="step-item"><div class="step-num" style="background:var(--blue)">3</div><div class="step-content"><div class="step-title">Verifica l'identità (obbligatorio)</div><div class="step-desc">• <strong>Di persona</strong> allo sportello del provider (gratuito)<br>• <strong>Via webcam</strong> (~20-30€)<br>• Con <strong>CIE + PIN</strong></div></div></li>
             <li class="step-item"><div class="step-num" style="background:var(--blue)">4</div><div class="step-content"><div class="step-title">Attiva lo SPID</div><div class="step-desc">Ricevi le credenziali e installa l'app del provider per il secondo fattore.</div><span class="step-tag" style="background:#eff6ff;color:#1d4ed8">Subito operativo</span></div></li>
           </ul>
+          <div class="guide-block">
+            <div class="guide-block-title">💰 Quanto costa</div>
+            <span class="costo-badge costo-green">✅ Gratuito con Poste ID</span>
+          </div>
         </div>
         <div id="tab-cie" class="steps-permesso">
+          <div class="guide-block">
+            <div class="guide-block-title">📋 Cosa serve</div>
+            <ul>
+              <li>Vecchio documento d'identità scaduto (o CI valida per rinnovo)</li>
+              <li>Codice fiscale</li>
+              <li>Foto tessera recente</li>
+              <li>16,79€ per il pagamento</li>
+            </ul>
+          </div>
           <ul class="step-list">
-            <li class="step-item"><div class="step-num green">1</div><div class="step-content"><div class="step-title">Richiedi la CIE al Comune</div><div class="step-desc">Prenota su <strong>prenotazionicie.interno.gov.it</strong>. Porta documento scaduto, codice fiscale, foto tessera.</div><span class="step-tag orange">Costo: 16,79€</span></div></li>
-            <li class="step-item"><div class="step-num green">2</div><div class="step-content"><div class="step-title">Ricevi PIN e CIE</div><div class="step-desc">Prima metà PIN allo sportello. Seconda metà + CIE per posta entro 6 giorni.</div></div></li>
-            <li class="step-item"><div class="step-num green">3</div><div class="step-content"><div class="step-title">Installa l'app CieID</div><div class="step-desc">App gratuita su App Store / Google Play. Avvicina la CIE al telefono NFC e inserisci il PIN.</div><span class="step-tag green">App gratuita</span></div></li>
+            <li class="step-item"><div class="step-num green">1</div><div class="step-content"><div class="step-title">Prenota sul portale ufficiale</div><div class="step-desc">Vai su <strong>prenotazionicie.interno.gov.it</strong> e scegli un appuntamento al tuo Comune.</div></div></li>
+            <li class="step-item"><div class="step-num green">2</div><div class="step-content"><div class="step-title">Vai allo sportello</div><div class="step-desc">Porta documento, codice fiscale, foto tessera. Ricevi <strong>prima metà del PIN</strong> allo sportello.</div><span class="step-tag orange">Costo: 16,79€</span></div></li>
+            <li class="step-item"><div class="step-num green">3</div><div class="step-content"><div class="step-title">Ricevi la CIE a casa</div><div class="step-desc">Seconda metà PIN + CIE per posta entro 6 giorni lavorativi.</div></div></li>
+            <li class="step-item"><div class="step-num green">4</div><div class="step-content"><div class="step-title">Installa l'app CieID</div><div class="step-desc">App gratuita su App Store / Google Play. Avvicina la CIE al telefono NFC e inserisci il PIN completo.</div><span class="step-tag green">App gratuita</span></div></li>
           </ul>
         </div>
       </div>
@@ -425,12 +521,14 @@
     </div>
     <div class="modal-body">
       <div class="citizenship-intro" style="background:linear-gradient(135deg,#fff1f2,#fecdd3);border-color:#fda4af;color:#9f1239;"><strong>Il Medico di Medicina Generale</strong> è gratuito tramite SSN. Puoi sceglierlo tra quelli disponibili nella tua ASL e cambiarlo quando vuoi.</div>
+      <div class="guide-block"><div class="guide-block-title">📋 Cosa serve</div><ul><li>Documento d'identità</li><li>Tessera sanitaria / codice fiscale</li><li>Per stranieri: permesso di soggiorno valido</li></ul></div>
+      <div class="guide-block"><div class="guide-block-title">🌐 Dove andare</div><ul><li>Sito della tua <strong>ASL/ATS di residenza</strong> (portale regionale con SPID)</li><li>Sportello anagrafico ASL di persona</li></ul></div>
       <ul class="step-list">
-        <li class="step-item"><div class="step-num" style="background:#ef4444">1</div><div class="step-content"><div class="step-title">Trova i medici disponibili nella tua ASL</div><div class="step-desc">Sul sito della tua <strong>ASL/ATS di residenza</strong> o di persona allo sportello ASL.</div><span class="step-tag">Gratuito</span></div></li>
-        <li class="step-item"><div class="step-num" style="background:#ef4444">2</div><div class="step-content"><div class="step-title">Verifica che accetti nuovi assistiti</div><div class="step-desc">I medici hanno un massimale di <strong>1.500 assistiti</strong>. Se al massimale, cerca un altro medico disponibile.</div></div></li>
-        <li class="step-item"><div class="step-num" style="background:#ef4444">3</div><div class="step-content"><div class="step-title">Effettua la scelta</div><div class="step-desc">Online tramite portale regionale (con SPID/CIE) o allo sportello ASL con documento e tessera sanitaria.</div><span class="step-tag green">In giornata</span></div></li>
-        <li class="step-item"><div class="step-num" style="background:#ef4444">4</div><div class="step-content"><div class="step-title">Il cambio è immediato</div><div class="step-desc">Puoi cambiare medico <strong>quante volte vuoi</strong>, senza preavviso né motivazione.</div><span class="step-tag green">Nessun limite</span></div></li>
+        <li class="step-item"><div class="step-num" style="background:#ef4444">1</div><div class="step-content"><div class="step-title">Trova i medici disponibili</div><div class="step-desc">Sul sito della tua ASL filtra per zona. I medici hanno un massimale di <strong>1.500 assistiti</strong>.</div></div></li>
+        <li class="step-item"><div class="step-num" style="background:#ef4444">2</div><div class="step-content"><div class="step-title">Effettua la scelta online o allo sportello</div><div class="step-desc">Online con SPID/CIE sul portale regionale, oppure allo sportello ASL.</div><span class="step-tag green">In giornata</span></div></li>
+        <li class="step-item"><div class="step-num" style="background:#ef4444">3</div><div class="step-content"><div class="step-title">Il cambio è immediato</div><div class="step-desc">Puoi cambiare medico <strong>quante volte vuoi</strong>, senza preavviso né motivazione.</div><span class="step-tag green">Nessun limite</span></div></li>
       </ul>
+      <div class="guide-block"><div class="guide-block-title">💰 Quanto costa</div><span class="costo-badge costo-green">✅ Gratuito tramite SSN</span></div>
       <div class="warn-box"><strong>⚠️ Per i cittadini stranieri:</strong> Hai diritto al medico di base con permesso di soggiorno valido. Vai allo sportello ASL con permesso di soggiorno e codice fiscale.</div>
     </div>
   </div>
@@ -445,14 +543,17 @@
       <button class="modal-close" onclick="chiudiModalBtn('passaportoModal')">✕</button>
     </div>
     <div class="modal-body">
-      <div class="citizenship-intro"><strong>Il passaporto italiano</strong> ha validità <strong>10 anni</strong> per gli adulti (5 anni per i minori). Viene rilasciato dalla Questura o dai Commissariati di P.S.</div>
+      <div class="citizenship-intro"><strong>Il passaporto italiano</strong> ha validità <strong>10 anni</strong> per adulti, 5 per minori. Rilasciato dalla Questura o dai Commissariati di P.S.</div>
+      <div class="guide-block"><div class="guide-block-title">📋 Cosa serve</div><ul><li>Vecchio passaporto (se disponibile)</li><li>Carta d'identità valida + codice fiscale</li><li>2 foto tessera biometriche (sfondo bianco, occhi aperti)</li><li>Marca da bollo da 73,50€</li><li>Versamento 42,50€ su c/c postale n. 67422808</li></ul></div>
+      <div class="guide-block"><div class="guide-block-title">🌐 Dove andare</div><ul><li><strong>passaportonline.poliziadistato.it</strong> — prenotazione appuntamento con SPID/CIE</li><li>Questura o Commissariato di competenza</li></ul></div>
       <ul class="step-list">
-        <li class="step-item"><div class="step-num" style="background:var(--blue)">1</div><div class="step-content"><div class="step-title">Prenota l'appuntamento online</div><div class="step-desc">Accedi a <strong>passaportonline.poliziadistato.it</strong> con SPID/CIE.</div><span class="step-tag" style="background:#eff6ff;color:#1d4ed8">Con SPID/CIE</span></div></li>
-        <li class="step-item"><div class="step-num" style="background:var(--blue)">2</div><div class="step-content"><div class="step-title">Prepara i documenti</div><div class="step-desc">• Vecchio passaporto • Carta d'identità valida • Codice fiscale • 2 foto tessera biometriche • Marca da bollo 73,50€ • Versamento 42,50€ su c/c postale n. 67422808</div><span class="step-tag orange">Costo totale ~116€</span></div></li>
-        <li class="step-item"><div class="step-num" style="background:var(--blue)">3</div><div class="step-content"><div class="step-title">Presentati allo sportello</div><div class="step-desc">Consegni documenti, impronte digitali e foto. Tutto in pochi minuti.</div></div></li>
+        <li class="step-item"><div class="step-num" style="background:var(--blue)">1</div><div class="step-content"><div class="step-title">Prenota l'appuntamento online</div><div class="step-desc">Accedi a <strong>passaportonline.poliziadistato.it</strong> con SPID/CIE e scegli data e sede.</div></div></li>
+        <li class="step-item"><div class="step-num" style="background:var(--blue)">2</div><div class="step-content"><div class="step-title">Effettua i pagamenti</div><div class="step-desc">Marca da bollo 73,50€ (tabaccheria o online) + versamento 42,50€ sul c/c postale indicato.</div></div></li>
+        <li class="step-item"><div class="step-num" style="background:var(--blue)">3</div><div class="step-content"><div class="step-title">Presentati allo sportello</div><div class="step-desc">Consegna documenti, impronte digitali e foto. Tutto in pochi minuti.</div></div></li>
         <li class="step-item"><div class="step-num" style="background:var(--blue)">4</div><div class="step-content"><div class="step-title">Ritira il passaporto</div><div class="step-desc">Pronto entro <strong>7-15 giorni lavorativi</strong>. Ricevi SMS/email quando è disponibile.</div><span class="step-tag">7–15 giorni</span></div></li>
       </ul>
-      <div class="warn-box"><strong>⚠️ Trappola comune:</strong> Le foto devono essere biometriche: sfondo bianco, occhi aperti, viso frontale.</div>
+      <div class="guide-block"><div class="guide-block-title">💰 Quanto costa</div><span class="costo-badge costo-orange">~116€ totali (73,50€ bollo + 42,50€ versamento)</span></div>
+      <div class="warn-box"><strong>⚠️ Trappola comune:</strong> Le foto devono essere biometriche: sfondo bianco, occhi aperti, viso frontale. Foto non conformi = rifiuto immediato.</div>
       <div class="section-sub">🔗 Link Ufficiali</div>
       <a class="link-card" href="https://passaportonline.poliziadistato.it" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-blue">✈️</div><div class="link-card-info"><div class="link-card-title">Passaporto Online — Polizia di Stato <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Prenota l'appuntamento, verifica lo stato della pratica.</div><span class="link-card-url">passaportonline.poliziadistato.it</span></div><span class="link-card-arrow">→</span></div></a>
     </div>
@@ -468,14 +569,17 @@
       <button class="modal-close" onclick="chiudiModalBtn('residenzaModal')">✕</button>
     </div>
     <div class="modal-body">
-      <div class="citizenship-intro" style="background:linear-gradient(135deg,#eef6ff,#dbeafe);border-color:#93c5fd;color:#1e3a8a;"><strong>Il cambio di residenza</strong> è obbligatorio entro 20 giorni dal trasferimento. Puoi farlo online, è gratuito.</div>
+      <div class="citizenship-intro" style="background:linear-gradient(135deg,#eef6ff,#dbeafe);border-color:#93c5fd;color:#1e3a8a;"><strong>Il cambio di residenza</strong> è obbligatorio entro 20 giorni dal trasferimento. Puoi farlo online gratuitamente.</div>
+      <div class="guide-block"><div class="guide-block-title">📋 Cosa serve</div><ul><li>Documento d'identità di tutti i componenti</li><li>Codice fiscale di tutti i componenti</li><li>Indirizzo preciso del nuovo alloggio</li><li>Per extra-UE: permesso di soggiorno valido</li></ul></div>
+      <div class="guide-block"><div class="guide-block-title">🌐 Dove andare</div><ul><li><strong>anagrafenazionale.interno.gov.it</strong> — portale nazionale con SPID/CIE</li><li>Sito del tuo Comune (sportello Anagrafe online)</li><li>Di persona allo sportello Anagrafe del Comune</li></ul></div>
       <ul class="step-list">
-        <li class="step-item"><div class="step-num green">1</div><div class="step-content"><div class="step-title">Prepara i documenti</div><div class="step-desc">• Documento d'identità • Codice fiscale di tutti i componenti • Indirizzo preciso del nuovo alloggio • Per extra-UE: permesso di soggiorno valido</div></div></li>
-        <li class="step-item"><div class="step-num green">2</div><div class="step-content"><div class="step-title">Presenta la dichiarazione</div><div class="step-desc"><strong>Online:</strong> portale nazionale <strong>anagrafenazionale.interno.gov.it</strong> o sito del Comune. <strong>Di persona:</strong> sportello Anagrafe.</div><span class="step-tag green">Gratuito</span></div></li>
-        <li class="step-item"><div class="step-num green">3</div><div class="step-content"><div class="step-title">Verifica dell'agente comunale</div><div class="step-desc">Entro <strong>45 giorni</strong> un agente verifica la residenza. Se non trovano nessuno, la pratica viene annullata.</div><span class="step-tag orange">Verifica domicilio</span></div></li>
-        <li class="step-item"><div class="step-num green">4</div><div class="step-content"><div class="step-title">Aggiorna i documenti</div><div class="step-desc">Aggiorna patente, libretto veicolo (obbligatorio entro 30 giorni), medico di base se cambi ASL.</div><span class="step-tag">Obbligatorio</span></div></li>
+        <li class="step-item"><div class="step-num green">1</div><div class="step-content"><div class="step-title">Prepara i documenti</div><div class="step-desc">Indirizzo preciso comprensivo di CAP, scala, interno. Per il veicolo: targa e libretto.</div></div></li>
+        <li class="step-item"><div class="step-num green">2</div><div class="step-content"><div class="step-title">Presenta la dichiarazione online</div><div class="step-desc">Sul portale nazionale o sul sito del Comune con SPID/CIE. È gratuito e immediato.</div><span class="step-tag green">Gratuito</span></div></li>
+        <li class="step-item"><div class="step-num green">3</div><div class="step-content"><div class="step-title">Attendi la verifica</div><div class="step-desc">Entro <strong>45 giorni</strong> un agente verifica la residenza. Assicurati di essere reperibile.</div><span class="step-tag orange">Verifica domicilio</span></div></li>
+        <li class="step-item"><div class="step-num green">4</div><div class="step-content"><div class="step-title">Aggiorna patente e libretto auto</div><div class="step-desc">Obbligatorio entro 30 giorni dalla variazione. Puoi farlo online su portale MIT.</div><span class="step-tag orange">Obbligatorio</span></div></li>
       </ul>
-      <div class="warn-box"><strong>⚠️ Trappola comune:</strong> Dimenticare il libretto del veicolo. Sanzione da 200€ a 800€.</div>
+      <div class="guide-block"><div class="guide-block-title">💰 Quanto costa</div><span class="costo-badge costo-green">✅ Gratuito</span></div>
+      <div class="warn-box"><strong>⚠️ Trappola comune:</strong> Dimenticare il libretto del veicolo. Sanzione da 200€ a 800€ se non aggiornato entro 30 giorni.</div>
     </div>
   </div>
 </div>
@@ -489,7 +593,7 @@
       <button class="modal-close" onclick="chiudiModalBtn('cittadinanzaModal')">✕</button>
     </div>
     <div class="modal-body">
-      <div class="citizenship-intro"><strong>La cittadinanza italiana</strong> include il passaporto UE, diritto di voto e libera circolazione in Europa.</div>
+      <div class="citizenship-intro"><strong>La cittadinanza italiana</strong> include passaporto UE, diritto di voto e libera circolazione in Europa.</div>
       <div class="section-sub">📌 Scegli la tua via di accesso</div>
       <div class="tipo-permesso-tabs" id="cittTabs">
         <button class="tipo-tab blue active" onclick="switchTab('residenza', 'cittTabs', 'cittContent', 'blue', this)">Per Residenza</button>
@@ -499,17 +603,18 @@
       </div>
       <div id="cittContent">
         <div id="tab-residenza" class="steps-permesso active">
+          <div class="guide-block"><div class="guide-block-title">📋 Cosa serve</div><ul><li>Atto di nascita + apostille tradotto in italiano</li><li>Certificato penale del Paese d'origine + apostille</li><li>Permesso di soggiorno valido + storico residenza</li><li>Ultime 3 dichiarazioni dei redditi (min. 8.263€/anno)</li><li>Certificazione italiano B1 (CELI, CILS, PLIDA, CERT.IT)</li><li>250€ versamento su c/c postale + marca da bollo 16€</li></ul></div>
           <div class="warn-box"><strong>⏱️ Requisito base:</strong> 10 anni di residenza legale (4 per UE, 5 per apolidi/rifugiati, 3 per nati in Italia).</div>
           <ul class="step-list">
-            <li class="step-item"><div class="step-num" style="background:var(--blue)">1</div><div class="step-content"><div class="step-title">Verifica i requisiti</div><div class="step-desc">Residenza continua, reddito ≥ 8.263€/anno, nessuna condanna grave, italiano B1.</div></div></li>
-            <li class="step-item"><div class="step-num" style="background:var(--blue)">2</div><div class="step-content"><div class="step-title">Ottieni la certificazione B1</div><div class="step-desc">Enti: CELI (Perugia), CILS (Siena), PLIDA (Dante Alighieri), CERT.IT (Roma Tre).</div><span class="step-tag" style="background:#eff6ff;color:#1d4ed8">Obbligatorio dal 2018</span></div></li>
-            <li class="step-item"><div class="step-num" style="background:var(--blue)">3</div><div class="step-content"><div class="step-title">Raccogli i documenti</div><div class="step-desc">Atto di nascita + apostille, certificato penale + apostille, permesso valido, residenza storica, ultime 3 dichiarazioni redditi, B1, 250€ versamento + marca da bollo 16€.</div><span class="step-tag orange">Apostille richiesta</span></div></li>
-            <li class="step-item"><div class="step-num" style="background:var(--blue)">4</div><div class="step-content"><div class="step-title">Domanda online</div><div class="step-desc">Esclusivamente su <strong>cittadinanza.dlci.interno.gov.it</strong> con SPID/CIE.</div><span class="step-tag green">Solo via web</span></div></li>
-            <li class="step-item"><div class="step-num" style="background:var(--blue)">5</div><div class="step-content"><div class="step-title">Attendi e giura</div><div class="step-desc">Tempi: fino a 48 mesi. Poi giuramento davanti al Sindaco entro 6 mesi.</div><span class="step-tag orange">Fino a 4 anni</span></div></li>
+            <li class="step-item"><div class="step-num" style="background:var(--blue)">1</div><div class="step-content"><div class="step-title">Ottieni la certificazione italiano B1</div><div class="step-desc">Enti: CELI (Perugia), CILS (Siena), PLIDA (Dante Alighieri), CERT.IT (Roma Tre). Obbligatorio dal 2018.</div><span class="step-tag orange">Obbligatorio</span></div></li>
+            <li class="step-item"><div class="step-num" style="background:var(--blue)">2</div><div class="step-content"><div class="step-title">Raccogli tutti i documenti</div><div class="step-desc">Atti con apostille, dichiarazioni redditi, storico residenza, permesso valido.</div><span class="step-tag orange">Apostille richiesta</span></div></li>
+            <li class="step-item"><div class="step-num" style="background:var(--blue)">3</div><div class="step-content"><div class="step-title">Fai domanda su cittadinanza.dlci.interno.gov.it</div><div class="step-desc">Solo via web con SPID/CIE. Allega tutta la documentazione scansionata.</div><span class="step-tag green">Solo via web</span></div></li>
+            <li class="step-item"><div class="step-num" style="background:var(--blue)">4</div><div class="step-content"><div class="step-title">Attendi il decreto e giura</div><div class="step-desc">Tempi: fino a 48 mesi. Poi giuramento davanti al Sindaco entro 6 mesi dalla notifica.</div><span class="step-tag orange">Fino a 4 anni</span></div></li>
           </ul>
+          <div class="guide-block"><div class="guide-block-title">💰 Quanto costa</div><span class="costo-badge costo-orange">250€ versamento + 16€ marca da bollo + costi apostille</span></div>
         </div>
         <div id="tab-matrimonio" class="steps-permesso">
-          <div class="warn-box"><strong>⏱️ Requisito:</strong> 2 anni di matrimonio + residenza in Italia (1 anno con figli).</div>
+          <div class="warn-box"><strong>⏱️ Requisito:</strong> 2 anni di matrimonio + residenza in Italia (1 anno con figli). Italiano B1 obbligatorio.</div>
           <ul class="step-list">
             <li class="step-item"><div class="step-num" style="background:var(--blue)">1</div><div class="step-content"><div class="step-title">Verifica requisiti</div><div class="step-desc">Matrimonio in essere, residenza ≥ 2 anni dal matrimonio, reddito sufficiente, B1.</div></div></li>
             <li class="step-item"><div class="step-num" style="background:var(--blue)">2</div><div class="step-content"><div class="step-title">Domanda online + giuramento</div><div class="step-desc">Portale <strong>cittadinanza.dlci.interno.gov.it</strong>. Costo 250€. Tempi: fino a 48 mesi.</div></div></li>
@@ -575,7 +680,6 @@
     </div>
     <div class="modal-body">
       <div class="permesso-intro"><strong>Il permesso di soggiorno</strong> va richiesto entro <strong>8 giorni lavorativi</strong> dall'ingresso. Si presenta tramite Kit postale alle Poste, <strong>non in Questura</strong>.</div>
-      <div class="warn-box"><strong>⚠️ Novità 2026:</strong> Le Questure adottano progressivamente un sistema digitale per ridurre i tempi di convocazione e consegna. Per rinnovi di alcune tipologie non sarà più necessario presentare tutta la documentazione da zero.</div>
       <div class="tipo-permesso-tabs" id="permessoTabs">
         <button class="tipo-tab active" onclick="switchTab('rilascio', 'permessoTabs', 'permessoContent', 'orange', this)">Primo Rilascio</button>
         <button class="tipo-tab" onclick="switchTab('rinnovo', 'permessoTabs', 'permessoContent', 'orange', this)">Rinnovo</button>
@@ -583,28 +687,28 @@
       </div>
       <div id="permessoContent">
         <div id="tab-rilascio" class="steps-permesso active">
+          <div class="guide-block"><div class="guide-block-title">📋 Cosa serve</div><ul><li>Passaporto valido (tutte le pagine fotocopiate + frontespizio originale)</li><li>Visto d'ingresso</li><li>4 foto tessera recenti</li><li>Ricevute di pagamento incluse nel kit postale (~30€ totali)</li></ul></div>
+          <div class="guide-block"><div class="guide-block-title">🌐 Dove andare</div><ul><li><strong>Ufficio Postale abilitato</strong> — acquisto e consegna kit (no Questura)</li><li><strong>questure.poliziadistato.it</strong> — verifica stato pratica</li></ul></div>
           <ul class="step-list">
-            <li class="step-item"><div class="step-num orange">1</div><div class="step-content"><div class="step-title">Acquista il Kit postale (~30€)</div><div class="step-desc">Vai a un <strong>Ufficio Postale abilitato</strong> e acquista il Kit.</div><span class="step-tag orange">~30€</span></div></li>
-            <li class="step-item"><div class="step-num orange">2</div><div class="step-content"><div class="step-title">Compila e allega i documenti</div><div class="step-desc">• Passaporto valido (copia tutte pagine + frontespizio originale) • Visto d'ingresso • 4 foto tessera • Ricevute pagamento incluse nel kit</div></div></li>
+            <li class="step-item"><div class="step-num orange">1</div><div class="step-content"><div class="step-title">Acquista il Kit postale (~30€)</div><div class="step-desc">Vai a un Ufficio Postale abilitato e acquista il Kit per stranieri.</div><span class="step-tag orange">~30€</span></div></li>
+            <li class="step-item"><div class="step-num orange">2</div><div class="step-content"><div class="step-title">Compila e allega i documenti</div><div class="step-desc">Segui le istruzioni del kit. Fotocopia tutte le pagine del passaporto.</div></div></li>
             <li class="step-item"><div class="step-num orange">3</div><div class="step-content"><div class="step-title">Consegna alle Poste</div><div class="step-desc">Ti rilasciano una <strong>ricevuta con appuntamento in Questura</strong>.</div></div></li>
-            <li class="step-item"><div class="step-num orange">4</div><div class="step-content"><div class="step-title">Appuntamento in Questura</div><div class="step-desc">Portati ricevuta, passaporto originale e documenti. Prendono le <strong>impronte digitali biometriche</strong>.</div></div></li>
-            <li class="step-item"><div class="step-num orange">5</div><div class="step-content"><div class="step-title">Ritira il permesso</div><div class="step-desc">Quando lo stato è "PRONTO PER IL RITIRO", vai in Questura con ricevuta originale e <strong>25€ di marca da bollo</strong>.</div><span class="step-tag orange">25€ marca da bollo</span></div></li>
+            <li class="step-item"><div class="step-num orange">4</div><div class="step-content"><div class="step-title">Appuntamento in Questura + ritiro</div><div class="step-desc">Porta ricevuta e passaporto originale. Prendono le impronte. Al ritiro: <strong>marca da bollo 25€</strong>.</div><span class="step-tag orange">25€ marca da bollo</span></div></li>
           </ul>
-          <div class="warn-box"><strong>⚠️ Trappola comune:</strong> Kit da consegnare entro 8 giorni dall'ingresso. Superato il termine sei in posizione irregolare.</div>
+          <div class="guide-block"><div class="guide-block-title">💰 Quanto costa</div><span class="costo-badge costo-orange">~30€ kit + 25€ marca da bollo al ritiro</span></div>
+          <div class="warn-box"><strong>⚠️ Trappola comune:</strong> Kit da consegnare entro 8 giorni dall'ingresso. Oltre questo termine si è in posizione irregolare.</div>
         </div>
         <div id="tab-rinnovo" class="steps-permesso">
-          <div class="info-box"><strong>Quando rinnovare:</strong> Domanda <strong>60-90 giorni prima della scadenza</strong>. La ricevuta postale vale come permesso provvisorio.</div>
+          <div class="info-box"><strong>Quando rinnovare:</strong> Domanda <strong>60-90 giorni prima della scadenza</strong>. La ricevuta postale vale come permesso provvisorio per lavorare e viaggiare in Schengen.</div>
           <ul class="step-list">
-            <li class="step-item"><div class="step-num orange">1</div><div class="step-content"><div class="step-title">Stessa procedura del rilascio</div><div class="step-desc">Aggiungi: vecchio permesso originale, buste paga, rinnovo contratto.</div></div></li>
-            <li class="step-item"><div class="step-num orange">2</div><div class="step-content"><div class="step-title">La ricevuta ti copre nel frattempo</div><div class="step-desc">La ricevuta postale <strong>equivale al permesso</strong>. Puoi lavorare, viaggiare in Schengen e accedere ai servizi.</div><span class="step-tag green">Valore legale</span></div></li>
+            <li class="step-item"><div class="step-num orange">1</div><div class="step-content"><div class="step-title">Stessa procedura del rilascio</div><div class="step-desc">Aggiungi: vecchio permesso originale, buste paga o contratto di lavoro, rinnovo contratto di affitto.</div></div></li>
+            <li class="step-item"><div class="step-num orange">2</div><div class="step-content"><div class="step-title">La ricevuta ti copre nel frattempo</div><div class="step-desc">La ricevuta postale <strong>equivale al permesso</strong>. Puoi lavorare, viaggiare e accedere ai servizi.</div><span class="step-tag green">Valore legale</span></div></li>
           </ul>
         </div>
         <div id="tab-tipi" class="steps-permesso">
           <div class="card" style="padding:1rem 1.2rem;"><ul style="list-style:none;padding:0;font-size:13px;line-height:2.4;"><li>💼 <strong>Lavoro subordinato</strong> → contratto + decreto flussi</li><li>🎓 <strong>Studio</strong> → iscrizione universitaria</li><li>👨‍👩‍👧 <strong>Ricongiungimento familiare</strong> → nulla osta Prefettura</li><li>🛡️ <strong>Protezione internazionale</strong> → rifugiati</li><li>🤝 <strong>Lungo soggiornante (CE)</strong> → dopo 5 anni di residenza</li></ul></div>
         </div>
       </div>
-      <div class="section-sub">🔗 Link Ufficiali</div>
-      <a class="link-card" href="https://questure.poliziadistato.it/stranieri" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-orange">🚔</div><div class="link-card-info"><div class="link-card-title">Questure — Ufficio Immigrazione <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Trova la Questura, orari sportello stranieri, controllo pratica.</div><span class="link-card-url">questure.poliziadistato.it/stranieri</span></div><span class="link-card-arrow">→</span></div></a>
     </div>
   </div>
 </div>
@@ -619,14 +723,15 @@
     </div>
     <div class="modal-body">
       <div class="citizenship-intro" style="background:linear-gradient(135deg,#eef6ff,#dbeafe);border-color:#93c5fd;color:#1e3a8a;"><strong>Il Codice Fiscale</strong> è indispensabile per quasi tutto in Italia. I cittadini stranieri possono richiederlo all'Agenzia delle Entrate, anche prima di avere il permesso di soggiorno.</div>
+      <div class="guide-block"><div class="guide-block-title">📋 Cosa serve</div><ul><li>Passaporto valido (originale + fotocopia)</li><li>Visto d'ingresso (se disponibile)</li><li>Per minori: atto di nascita tradotto in italiano</li></ul></div>
+      <div class="guide-block"><div class="guide-block-title">🌐 Dove andare</div><ul><li><strong>Agenzia delle Entrate</strong> — sportello fisico (prenotare online su agenziaentrate.gov.it)</li></ul></div>
       <ul class="step-list">
-        <li class="step-item"><div class="step-num green">1</div><div class="step-content"><div class="step-title">Vai all'Agenzia delle Entrate</div><div class="step-desc">Allo sportello (meglio prenotare online su <strong>agenziaentrate.gov.it</strong>).</div><span class="step-tag green">Gratuito</span></div></li>
-        <li class="step-item"><div class="step-num green">2</div><div class="step-content"><div class="step-title">Porta i documenti</div><div class="step-desc">• Passaporto valido (originale + fotocopia) • Visto d'ingresso • Per minori: atto di nascita tradotto</div></div></li>
-        <li class="step-item"><div class="step-num green">3</div><div class="step-content"><div class="step-title">Ricevi il codice fiscale</div><div class="step-desc">Rilasciato <strong>immediatamente allo sportello</strong> su tesserino plastificato. Permanente e immutabile.</div><span class="step-tag green">Rilascio immediato</span></div></li>
+        <li class="step-item"><div class="step-num green">1</div><div class="step-content"><div class="step-title">Prenota su agenziaentrate.gov.it</div><div class="step-desc">Accedi al portale e prenota lo sportello più vicino.</div></div></li>
+        <li class="step-item"><div class="step-num green">2</div><div class="step-content"><div class="step-title">Presentati allo sportello con i documenti</div><div class="step-desc">Passaporto originale + fotocopia. Il funzionario compila il modulo AA4/8.</div></div></li>
+        <li class="step-item"><div class="step-num green">3</div><div class="step-content"><div class="step-title">Ricevi il tesserino immediatamente</div><div class="step-desc">Rilasciato <strong>in giornata</strong> su tesserino plastificato. Permanente e immutabile.</div><span class="step-tag green">Rilascio immediato</span></div></li>
       </ul>
+      <div class="guide-block"><div class="guide-block-title">💰 Quanto costa</div><span class="costo-badge costo-green">✅ Gratuito</span></div>
       <div class="warn-box"><strong>⚠️ Attenzione:</strong> Il codice fiscale NON è un permesso di soggiorno. Non ti autorizza a lavorare o risiedere in Italia.</div>
-      <div class="section-sub">🔗 Link Ufficiali</div>
-      <a class="link-card" href="https://www.agenziaentrate.gov.it/portale/web/guest/schede/istanze/richiesta-tesserino-codice-fiscale/stranieri-non-res-cf" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-green">🔢</div><div class="link-card-info"><div class="link-card-title">Agenzia delle Entrate — CF Stranieri <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Procedura ufficiale e sedi.</div><span class="link-card-url">agenziaentrate.gov.it</span></div><span class="link-card-arrow">→</span></div></a>
     </div>
   </div>
 </div>
@@ -641,15 +746,14 @@
     </div>
     <div class="modal-body">
       <div class="permesso-intro"><strong>Il ricongiungimento familiare</strong> si gestisce tramite lo <strong>Sportello Unico per l'Immigrazione (SUI)</strong> della Prefettura.</div>
+      <div class="guide-block"><div class="guide-block-title">📋 Cosa serve</div><ul><li>Permesso di soggiorno valido da almeno 1 anno</li><li>Certificato di idoneità abitativa (rilasciato dal Comune)</li><li>Reddito minimo ~6.085€/anno (più 7.300€ con 1 familiare, più per ogni aggiuntivo)</li><li>SPID o CIE per domanda online</li></ul></div>
+      <div class="guide-block"><div class="guide-block-title">🌐 Dove andare</div><ul><li><strong>sportellounimigrazione.dlci.interno.gov.it</strong> — domanda online con SPID/CIE</li><li>Ufficio Igiene del Comune — per il certificato abitativo</li></ul></div>
       <ul class="step-list">
-        <li class="step-item"><div class="step-num orange">1</div><div class="step-content"><div class="step-title">Verifica i requisiti</div><div class="step-desc">• Permesso valido da ≥ 1 anno • Alloggio idoneo (certificato idoneità abitativa) • Reddito minimo ~6.085€/anno</div><span class="step-tag orange">Requisiti cumulativi</span></div></li>
-        <li class="step-item"><div class="step-num orange">2</div><div class="step-content"><div class="step-title">Certificato di idoneità abitativa</div><div class="step-desc">Vai all'<strong>Ufficio Igiene del Comune</strong> con visura catastale dell'alloggio.</div><span class="step-tag">Prima di tutto</span></div></li>
-        <li class="step-item"><div class="step-num orange">3</div><div class="step-content"><div class="step-title">Domanda online allo Sportello Unico</div><div class="step-desc">Portale <strong>sportellounimigrazione.dlci.interno.gov.it</strong> con SPID/CIE.</div></div></li>
-        <li class="step-item"><div class="step-num orange">4</div><div class="step-content"><div class="step-title">Il familiare ottiene il visto al Consolato</div><div class="step-desc">Dopo il nulla osta (tempi: <strong>90-180 giorni</strong>), il familiare va al Consolato italiano nel suo Paese.</div><span class="step-tag">90–180 giorni</span></div></li>
+        <li class="step-item"><div class="step-num orange">1</div><div class="step-content"><div class="step-title">Ottieni il certificato di idoneità abitativa</div><div class="step-desc">All'Ufficio Igiene del Comune con visura catastale. Senza questo la domanda viene rigettata.</div><span class="step-tag">Prima di tutto</span></div></li>
+        <li class="step-item"><div class="step-num orange">2</div><div class="step-content"><div class="step-title">Presenta domanda online allo Sportello Unico</div><div class="step-desc">Sul portale con SPID/CIE. Allega tutti i documenti.</div></div></li>
+        <li class="step-item"><div class="step-num orange">3</div><div class="step-content"><div class="step-title">Attendi il nulla osta</div><div class="step-desc">Tempi: <strong>90-180 giorni</strong>. Poi il familiare va al Consolato italiano nel suo Paese.</div><span class="step-tag">90–180 giorni</span></div></li>
+        <li class="step-item"><div class="step-num orange">4</div><div class="step-content"><div class="step-title">Il familiare entra in Italia con il visto</div><div class="step-desc">Entro 8 giorni dall'ingresso presenta il kit postale per il permesso di soggiorno.</div></div></li>
       </ul>
-      <div class="warn-box"><strong>⚠️ Trappola comune:</strong> Senza certificato di idoneità abitativa la domanda viene rigettata automaticamente.</div>
-      <div class="section-sub">🔗 Link Ufficiali</div>
-      <a class="link-card" href="https://sportellounimigrazione.dlci.interno.gov.it" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-orange">🏢</div><div class="link-card-info"><div class="link-card-title">Sportello Unico Immigrazione <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Domanda online, tracking pratica, modulistica.</div><span class="link-card-url">sportellounimigrazione.dlci.interno.gov.it</span></div><span class="link-card-arrow">→</span></div></a>
     </div>
   </div>
 </div>
@@ -671,19 +775,20 @@
       </div>
       <div id="ssnContent">
         <div id="tab-regolari" class="steps-permesso active">
+          <div class="guide-block"><div class="guide-block-title">📋 Cosa serve</div><ul><li>Permesso di soggiorno valido</li><li>Passaporto o documento d'identità</li><li>Codice fiscale</li><li>Dichiarazione di residenza</li></ul></div>
           <ul class="step-list">
-            <li class="step-item"><div class="step-num" style="background:#ef4444">1</div><div class="step-content"><div class="step-title">Vai all'ASL di residenza</div><div class="step-desc">Portati: permesso valido, passaporto, codice fiscale, dichiarazione di residenza.</div></div></li>
+            <li class="step-item"><div class="step-num" style="background:#ef4444">1</div><div class="step-content"><div class="step-title">Vai all'ASL di residenza allo sportello anagrafico</div><div class="step-desc">Porta tutti i documenti. Il personale ASL ti assegna la tessera sanitaria e ti fa scegliere il medico.</div></div></li>
             <li class="step-item"><div class="step-num" style="background:#ef4444">2</div><div class="step-content"><div class="step-title">Ricevi la tessera sanitaria</div><div class="step-desc">Scegli il medico di base dalla lista. La tessera arriva per posta in pochi giorni.</div><span class="step-tag green">Gratuito</span></div></li>
           </ul>
         </div>
         <div id="tab-irregolari" class="steps-permesso">
-          <div class="info-box"><strong>Codice STP:</strong> anche senza permesso, hai diritto alle cure urgenti. Nessuna segnalazione all'autorità (D.Lgs. 286/98, art. 35).</div>
+          <div class="info-box"><strong>Codice STP:</strong> anche senza permesso, hai diritto alle cure urgenti e ai servizi di base. Nessuna segnalazione all'autorità (D.Lgs. 286/98, art. 35).</div>
           <ul class="step-list">
-            <li class="step-item"><div class="step-num" style="background:#ef4444">1</div><div class="step-content"><div class="step-title">Richiedi il codice STP</div><div class="step-desc">Al Pronto Soccorso o Distretto Sanitario. Codice valido 6 mesi, rinnovabile.</div><span class="step-tag green">Anonimato garantito</span></div></li>
+            <li class="step-item"><div class="step-num" style="background:#ef4444">1</div><div class="step-content"><div class="step-title">Richiedi il codice STP</div><div class="step-desc">Al Pronto Soccorso o Distretto Sanitario. Codice valido 6 mesi, rinnovabile automaticamente.</div><span class="step-tag green">Anonimato garantito</span></div></li>
           </ul>
         </div>
         <div id="tab-europei" class="steps-permesso">
-          <div class="info-box"><strong>Residenti UE:</strong> iscriviti all'ASL come i cittadini italiani. In visita: usa la <strong>TEAM</strong>.</div>
+          <div class="info-box"><strong>Residenti UE:</strong> iscriviti all'ASL come i cittadini italiani. In visita temporanea: usa la <strong>TEAM</strong> (Tessera Europea di Assicurazione Malattia).</div>
         </div>
       </div>
     </div>
@@ -700,12 +805,15 @@
     </div>
     <div class="modal-body">
       <div class="citizenship-intro"><strong>Il TOLC (Test Online CISIA)</strong> è il test di ammissione per Medicina, Ingegneria, Economia, Psicologia e altre facoltà. Risultati validi per 1 anno accademico.</div>
+      <div class="guide-block"><div class="guide-block-title">📋 Cosa serve</div><ul><li>Account gratuito su cisiaonline.it</li><li>30€ per la prenotazione di ogni sessione</li><li>PC con webcam (per TOLC@CASA) o presenza in sede universitaria</li></ul></div>
+      <div class="guide-block"><div class="guide-block-title">🌐 Dove andare</div><ul><li><strong>cisiaonline.it</strong> — registrazione, prenotazione, simulatori gratuiti</li></ul></div>
       <ul class="step-list">
-        <li class="step-item"><div class="step-num" style="background:var(--blue)">1</div><div class="step-content"><div class="step-title">Registrati su cisiaonline.it</div><div class="step-desc">Crea un account gratuito.</div></div></li>
-        <li class="step-item"><div class="step-num" style="background:var(--blue)">2</div><div class="step-content"><div class="step-title">Scegli TOLC e data</div><div class="step-desc">In sede o da casa (TOLC@CASA). Puoi ripetere <strong>una volta al mese</strong> per lo stesso tipo.</div></div></li>
-        <li class="step-item"><div class="step-num" style="background:var(--blue)">3</div><div class="step-content"><div class="step-title">Paga e prenota</div><div class="step-desc"><strong>30€</strong> per ogni sessione.</div><span class="step-tag orange">30€ a sessione</span></div></li>
-        <li class="step-item"><div class="step-num" style="background:var(--blue)">4</div><div class="step-content"><div class="step-title">Risultato immediato</div><div class="step-desc">Il punteggio è valido fino al 31 luglio dell'anno successivo.</div></div></li>
+        <li class="step-item"><div class="step-num" style="background:var(--blue)">1</div><div class="step-content"><div class="step-title">Registrati gratuitamente su cisiaonline.it</div><div class="step-desc">Crea il profilo con i tuoi dati personali.</div></div></li>
+        <li class="step-item"><div class="step-num" style="background:var(--blue)">2</div><div class="step-content"><div class="step-title">Scegli il tipo di TOLC e la data</div><div class="step-desc">In sede universitaria o TOLC@CASA. Puoi ripetere <strong>una volta al mese</strong> per lo stesso tipo.</div></div></li>
+        <li class="step-item"><div class="step-num" style="background:var(--blue)">3</div><div class="step-content"><div class="step-title">Paga e prenota (30€)</div><div class="step-desc">Pagamento online con carta.</div><span class="step-tag orange">30€ a sessione</span></div></li>
+        <li class="step-item"><div class="step-num" style="background:var(--blue)">4</div><div class="step-content"><div class="step-title">Risultato immediato a fine test</div><div class="step-desc">Il punteggio è valido fino al 31 luglio dell'anno successivo.</div></div></li>
       </ul>
+      <div class="guide-block"><div class="guide-block-title">💰 Quanto costa</div><span class="costo-badge costo-orange">30€ per ogni sessione di test</span></div>
       <div class="section-sub">🔗 Link Ufficiali</div>
       <a class="link-card" href="https://www.cisiaonline.it" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-blue">📝</div><div class="link-card-info"><div class="link-card-title">CISIA — Portale Ufficiale TOLC <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Prenotazioni, calendario, simulatori gratuiti.</div><span class="link-card-url">cisiaonline.it</span></div><span class="link-card-arrow">→</span></div></a>
     </div>
@@ -722,12 +830,16 @@
     </div>
     <div class="modal-body">
       <div class="citizenship-intro" style="background:linear-gradient(135deg,#eef6ff,#dbeafe);border-color:#93c5fd;color:#1e3a8a;"><strong>Le borse DSU/ERSU</strong> coprono tasse, vitto, alloggio e assegno mensile. <strong>I bandi aprono tra luglio e settembre.</strong></div>
+      <div class="guide-block"><div class="guide-block-title">📋 Cosa serve</div><ul><li>ISEE Universitario (da richiedere entro agosto al CAF)</li><li>SPID o CIE per domanda online</li><li>Iscrizione universitaria confermata</li><li>Requisiti di merito (crediti minimi dell'anno precedente)</li></ul></div>
+      <div class="guide-block"><div class="guide-block-title">🌐 Dove andare</div><ul><li>Portale del tuo <strong>ERSU / DSU / DiSCo</strong> regionale (es. ERSU Palermo, DSU Toscana, ER.GO Emilia, DiSCo Lazio, ADISU Campania)</li></ul></div>
       <ul class="step-list">
-        <li class="step-item"><div class="step-num green">1</div><div class="step-content"><div class="step-title">Fai l'ISEE Universitario entro agosto</div><div class="step-desc">Al CAF o online su INPS.it entro la scadenza del bando (di solito <strong>31 agosto</strong>).</div><span class="step-tag orange">Scadenza agosto</span></div></li>
-        <li class="step-item"><div class="step-num green">2</div><div class="step-content"><div class="step-title">Cerca il bando del tuo DSU/ERSU regionale</div><div class="step-desc">DSU Toscana, ERSU Palermo, ER.GO Emilia, DiSCo Lazio, ADISU Campania, ecc.</div></div></li>
-        <li class="step-item"><div class="step-num green">3</div><div class="step-content"><div class="step-title">Presenta domanda online</div><div class="step-desc">Con SPID/CIE sul portale del tuo ERSU/DSU.</div></div></li>
+        <li class="step-item"><div class="step-num green">1</div><div class="step-content"><div class="step-title">Fai l'ISEE Universitario entro agosto</div><div class="step-desc">Al CAF o su INPS.it. Scadenza tipica bando: <strong>fine agosto / inizio settembre</strong>.</div><span class="step-tag orange">Scadenza agosto</span></div></li>
+        <li class="step-item"><div class="step-num green">2</div><div class="step-content"><div class="step-title">Cerca il bando del tuo ente regionale</div><div class="step-desc">Ogni regione ha il suo ente. Verifica i requisiti di merito e le soglie ISEE.</div></div></li>
+        <li class="step-item"><div class="step-num green">3</div><div class="step-content"><div class="step-title">Presenta domanda online con SPID/CIE</div><div class="step-desc">Sul portale del tuo ERSU/DSU entro la scadenza del bando.</div></div></li>
+        <li class="step-item"><div class="step-num green">4</div><div class="step-content"><div class="step-title">Ricevi la graduatoria e la borsa</div><div class="step-desc">In caso di approvazione ricevi accredito mensile + esonero tasse.</div><span class="step-tag green">Fino a 6.000€/anno</span></div></li>
       </ul>
-      <div class="warn-box"><strong>⚠️ Trappola comune:</strong> Perdere la scadenza del bando significa perdere il diritto alla borsa per tutto l'anno.</div>
+      <div class="guide-block"><div class="guide-block-title">💰 Quanto costa</div><span class="costo-badge costo-green">✅ Gratuita — anzi ti pagano fino a 6.000€/anno</span></div>
+      <div class="warn-box"><strong>⚠️ Trappola comune:</strong> Perdere la scadenza del bando significa perdere la borsa per tutto l'anno. Non si recupera.</div>
     </div>
   </div>
 </div>
@@ -741,17 +853,18 @@
       <button class="modal-close" onclick="chiudiModalBtn('maturitaModal')">✕</button>
     </div>
     <div class="modal-body">
-      <div class="permesso-intro"><strong>L'Esame di Stato</strong> si svolge a giugno. Per essere ammesso: media ≥ 6/10 in tutte le materie.</div>
+      <div class="permesso-intro"><strong>L'Esame di Stato</strong> si svolge a giugno. Per essere ammesso: media ≥ 6/10 in tutte le materie e voto di comportamento ≥ 6.</div>
       <div class="card" style="padding:1rem 1.2rem;margin-bottom:1rem;">
         <ul style="list-style:none;padding:0;font-size:13px;line-height:2.4;">
           <li>✏️ <strong>1ª prova scritta</strong> — Italiano</li>
-          <li>📐 <strong>2ª prova scritta</strong> — Materia caratterizzante</li>
+          <li>📐 <strong>2ª prova scritta</strong> — Materia caratterizzante del percorso</li>
           <li>🗣️ <strong>Colloquio orale</strong> — Multidisciplinare + PCTO + Educazione Civica</li>
-          <li>⭐ <strong>Crediti scolastici</strong> — fino a 40 punti</li>
-          <li>🏆 <strong>Max 100/100</strong> (con lode)</li>
+          <li>⭐ <strong>Crediti scolastici</strong> — fino a 40 punti (classi 3ª, 4ª, 5ª)</li>
+          <li>🏆 <strong>Max 100/100</strong> (con lode per candidati eccezionali)</li>
         </ul>
       </div>
-      <div class="warn-box"><strong>⚠️ Diploma:</strong> alcune scuole lo consegnano entro settembre, altre fino a 12 mesi. Nel frattempo: dichiarazione sostitutiva con il voto.</div>
+      <div class="guide-block"><div class="guide-block-title">💰 Quanto costa</div><span class="costo-badge costo-green">✅ Gratuito per le scuole statali</span></div>
+      <div class="warn-box"><strong>⚠️ Diploma:</strong> alcune scuole lo consegnano entro settembre, altre fino a 12 mesi. Nel frattempo: usa la dichiarazione sostitutiva con il voto per università e lavoro.</div>
       <div class="section-sub">🔗 Link Ufficiali</div>
       <a class="link-card" href="https://www.istruzione.it/esame_di_stato/" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-orange">📜</div><div class="link-card-info"><div class="link-card-title">MIUR — Esame di Stato <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Normativa, date, struttura delle prove.</div><span class="link-card-url">istruzione.it → Esame di Stato</span></div><span class="link-card-arrow">→</span></div></a>
     </div>
@@ -768,15 +881,354 @@
     </div>
     <div class="modal-body">
       <div class="citizenship-intro"><strong>I concorsi pubblici</strong> si trovano sulla <strong>Gazzetta Ufficiale</strong> e sul portale <strong>InPA</strong>. Candidatura quasi sempre online.</div>
+      <div class="guide-block"><div class="guide-block-title">📋 Cosa serve</div><ul><li>SPID o CIE per l'accesso a InPA</li><li>Titolo di studio richiesto dal bando</li><li>Eventuale documentazione di esperienze precedenti</li></ul></div>
+      <div class="guide-block"><div class="guide-block-title">🌐 Dove andare</div><ul><li><strong>inpa.gov.it</strong> — portale nazionale unico con tutti i bandi attivi</li><li><strong>gazzettaufficiale.it</strong> — fonte legale dei bandi</li></ul></div>
       <ul class="step-list">
-        <li class="step-item"><div class="step-num" style="background:var(--blue)">1</div><div class="step-content"><div class="step-title">Registrati su InPA</div><div class="step-desc">Portale <strong>inpa.gov.it</strong> con SPID/CIE. Compila il profilo con titoli ed esperienze.</div><span class="step-tag" style="background:#eff6ff;color:#1d4ed8">Portale unico</span></div></li>
-        <li class="step-item"><div class="step-num" style="background:var(--blue)">2</div><div class="step-content"><div class="step-title">Cerca i bandi attivi</div><div class="step-desc">Filtra per ente, profilo, regione, titolo. Attiva <strong>notifiche automatiche</strong>. I bandi durano ~30 giorni.</div></div></li>
-        <li class="step-item"><div class="step-num" style="background:var(--blue)">3</div><div class="step-content"><div class="step-title">Presenta la domanda online</div><div class="step-desc">Clicca "Candidati" dalla scheda bando. Allega documenti e ricevi ricevuta via email.</div><span class="step-tag">Tutto online</span></div></li>
+        <li class="step-item"><div class="step-num" style="background:var(--blue)">1</div><div class="step-content"><div class="step-title">Registrati su InPA con SPID/CIE</div><div class="step-desc">Compila il profilo con titoli ed esperienze lavorative.</div><span class="step-tag" style="background:#eff6ff;color:#1d4ed8">Portale unico</span></div></li>
+        <li class="step-item"><div class="step-num" style="background:var(--blue)">2</div><div class="step-content"><div class="step-title">Cerca i bandi attivi e attiva notifiche</div><div class="step-desc">Filtra per ente, profilo, regione, titolo. I bandi durano ~30 giorni.</div></div></li>
+        <li class="step-item"><div class="step-num" style="background:var(--blue)">3</div><div class="step-content"><div class="step-title">Clicca "Candidati" e allega i documenti</div><div class="step-desc">Ricevi ricevuta via email. Controlla che tutti i campi obbligatori siano compilati.</div><span class="step-tag">Tutto online</span></div></li>
+        <li class="step-item"><div class="step-num" style="background:var(--blue)">4</div><div class="step-content"><div class="step-title">Prepara le prove scritte e orali</div><div class="step-desc">Studia il bando e le materie indicate. Prova scritta → selezione → orale.</div></div></li>
       </ul>
+      <div class="guide-block"><div class="guide-block-title">💰 Quanto costa</div><span class="costo-badge costo-green">✅ Registrazione gratuita. Alcuni bandi prevedono tassa di partecipazione (10-30€)</span></div>
       <div class="warn-box"><strong>⚠️ Trappola comune:</strong> Domanda incompleta = esclusione automatica senza possibilità di integrazione.</div>
       <div class="section-sub">🔗 Link Ufficiali</div>
       <a class="link-card" href="https://www.inpa.gov.it" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-blue">🏛️</div><div class="link-card-info"><div class="link-card-title">InPA — Portale Nazionale Concorsi PA <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Tutti i bandi attivi, candidatura online.</div><span class="link-card-url">inpa.gov.it</span></div><span class="link-card-arrow">→</span></div></a>
       <a class="link-card" href="https://www.gazzettaufficiale.it/ricerca/concorsi" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-blue">📰</div><div class="link-card-info"><div class="link-card-title">Gazzetta Ufficiale — Concorsi <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Fonte legale di tutti i bandi.</div><span class="link-card-url">gazzettaufficiale.it → Concorsi</span></div><span class="link-card-arrow">→</span></div></a>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== NUOVI MODAL CASA ======================== -->
+
+<!-- MODAL AFFITTO -->
+<div class="modal-overlay" id="affittoModal" onclick="chiudiModal('affittoModal', event)">
+  <div class="modal-sheet">
+    <div class="modal-header" style="border-top: 4px solid var(--purple);">
+      <span style="font-size:22px">📝</span>
+      <span class="modal-title">Contratti di Affitto — Guida Pratica</span>
+      <button class="modal-close" onclick="chiudiModalBtn('affittoModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="citizenship-intro" style="background:linear-gradient(135deg,#f5f3ff,#ede9fe);border-color:#c4b5fd;color:#4c1d95;">
+        <strong>Un contratto di affitto non registrato è nullo per legge.</strong> Inquilino e proprietario rischiano sanzioni salate. Ecco come funziona tutto in modo semplice.
+      </div>
+      <div class="tipo-permesso-tabs" id="affittoTabs">
+        <button class="tipo-tab purple active" onclick="switchTab('tipicontratto', 'affittoTabs', 'affittoContent', 'purple', this)">Tipi di Contratto</button>
+        <button class="tipo-tab purple" onclick="switchTab('registrazione', 'affittoTabs', 'affittoContent', 'purple', this)">Registrazione</button>
+        <button class="tipo-tab purple" onclick="switchTab('dirittoinquilino', 'affittoTabs', 'affittoContent', 'purple', this)">Diritti Inquilino</button>
+      </div>
+      <div id="affittoContent">
+        <div id="tab-tipicontratto" class="steps-permesso active">
+          <div class="card" style="padding:1rem 1.2rem;margin-bottom:1rem;">
+            <ul style="list-style:none;padding:0;font-size:13px;line-height:2.6;">
+              <li>📅 <strong>4+4 anni (libero mercato)</strong> — Il contratto dura 4 anni, si rinnova automaticamente di altri 4. Il proprietario può disdire solo per motivi tassativi (es. uso personale). Il canone è libero.</li>
+              <li>📅 <strong>3+2 anni (concordato)</strong> — Canone determinato da accordi locali tra sindacati inquilini e proprietari. Vantaggio: tassazione ridotta per il proprietario, canone più basso per l'inquilino.</li>
+              <li>📅 <strong>Transitorio (1-18 mesi)</strong> — Per esigenze temporanee dimostrabili. Non rinnovabile automaticamente. Richiede documentazione del motivo.</li>
+              <li>🎓 <strong>Studenti (6-36 mesi)</strong> — Per studenti universitari fuori sede. Canone concordato. Richiede iscrizione universitaria.</li>
+            </ul>
+          </div>
+          <div class="info-box"><strong>💡 Consiglio:</strong> Il contratto 3+2 concordato è spesso il più conveniente per entrambe le parti: il proprietario paga meno tasse (cedolare secca al 10% vs 21%), l'inquilino paga meno.</div>
+        </div>
+        <div id="tab-registrazione" class="steps-permesso">
+          <div class="guide-block"><div class="guide-block-title">📋 Cosa serve</div><ul><li>Contratto firmato da entrambe le parti (2 originali)</li><li>Modello RLI compilato (scaricabile da agenziaentrate.gov.it)</li><li>Marca da bollo 16€ ogni 4 facciate del contratto</li><li>Imposta di registro: 2% del canone annuo (min. 67€) — se non si sceglie cedolare secca</li><li>Codici fiscali di proprietario e inquilino</li></ul></div>
+          <div class="guide-block"><div class="guide-block-title">🌐 Dove andare</div><ul><li><strong>agenziaentrate.gov.it → RLI online</strong> con SPID/CIE (gratuito, immediato)</li><li>Sportello fisico Agenzia delle Entrate (su prenotazione)</li></ul></div>
+          <ul class="step-list">
+            <li class="step-item"><div class="step-num purple">1</div><div class="step-content"><div class="step-title">Firma il contratto in 2 originali</div><div class="step-desc">Applica le marche da bollo da 16€ ogni 4 facciate o frazione.</div></div></li>
+            <li class="step-item"><div class="step-num purple">2</div><div class="step-content"><div class="step-title">Accedi a RLI online entro 30 giorni</div><div class="step-desc">Dal sito Agenzia delle Entrate con SPID/CIE. Compila il modello RLI e allega la scansione del contratto.</div><span class="step-tag purple" style="background:#f5f3ff;color:#7c3aed">Entro 30 giorni</span></div></li>
+            <li class="step-item"><div class="step-num purple">3</div><div class="step-content"><div class="step-title">Scegli se applicare la cedolare secca</div><div class="step-desc"><strong>Cedolare secca:</strong> 21% (libero mercato) o 10% (concordato). Il proprietario rinuncia ad aggiornare il canone. Più semplice e spesso conveniente.</div><span class="step-tag green">Consigliato</span></div></li>
+            <li class="step-item"><div class="step-num purple">4</div><div class="step-content"><div class="step-title">Ricevi la ricevuta di registrazione</div><div class="step-desc">Conservala: ti serve per detrazioni fiscali, bonus affitto e servizi pubblici.</div></div></li>
+          </ul>
+          <div class="guide-block"><div class="guide-block-title">💰 Quanto costa</div><span class="costo-badge costo-orange">Con cedolare secca: solo marche da bollo (16€ ogni 4 facciate). Senza: 2% del canone annuo + marche da bollo</span></div>
+          <div class="warn-box"><strong>⚠️ Trappola comune:</strong> Registrare oltre i 30 giorni comporta sanzioni del 120-240% dell'imposta dovuta. Registra subito.</div>
+        </div>
+        <div id="tab-dirittoinquilino" class="steps-permesso">
+          <div class="card" style="padding:1rem 1.2rem;">
+            <ul style="list-style:none;padding:0;font-size:13px;line-height:2.4;">
+              <li>🔑 <strong>Diritto all'abitabilità:</strong> L'appartamento deve essere idoneo e privo di vizi nascosti gravi (umidità, impianti non a norma).</li>
+              <li>🔧 <strong>Riparazioni:</strong> Manutenzione ordinaria → inquilino. Straordinaria (tetto, impianti, struttura) → proprietario.</li>
+              <li>📬 <strong>Disdetta:</strong> L'inquilino deve dare 6 mesi di preavviso (contratto 4+4). Il proprietario può disdire solo ai rinnovi per motivi tassativi.</li>
+              <li>💰 <strong>Caparra massima:</strong> Non esiste un limite di legge, ma la prassi è 2-3 mensilità. Va restituita entro 30-60 giorni dalla riconsegna.</li>
+              <li>🏠 <strong>Se il proprietario non registra:</strong> L'inquilino può registrare il contratto autonomamente e detrarre il costo dall'affitto.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="section-sub">🔗 Link Ufficiali</div>
+      <a class="link-card" href="https://www.agenziaentrate.gov.it/portale/web/guest/affitti-e-locazioni" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-purple">📝</div><div class="link-card-info"><div class="link-card-title">Agenzia Entrate — Affitti e Locazioni <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">RLI online, cedolare secca, modelli e guide.</div><span class="link-card-url">agenziaentrate.gov.it → Affitti</span></div><span class="link-card-arrow">→</span></div></a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL BONUS RISTRUTTURAZIONE 2026 -->
+<div class="modal-overlay" id="bonusCasaModal" onclick="chiudiModal('bonusCasaModal', event)">
+  <div class="modal-sheet">
+    <div class="modal-header" style="border-top: 4px solid var(--purple);">
+      <span style="font-size:22px">🔨</span>
+      <span class="modal-title">Bonus Ristrutturazione Casa <span class="badge-2026">2026</span></span>
+      <button class="modal-close" onclick="chiudiModalBtn('bonusCasaModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="citizenship-intro" style="background:linear-gradient(135deg,#f5f3ff,#ede9fe);border-color:#c4b5fd;color:#4c1d95;">
+        <strong>Nel 2026 la detrazione è al 50% per la prima casa e al 36% per le seconde case</strong>, confermata dalla Legge di Bilancio 2026 fino al 31 dicembre 2026. Spesa massima detraibile: 96.000€ per immobile.
+      </div>
+      <div class="tipo-permesso-tabs" id="bonusCasaTabs">
+        <button class="tipo-tab purple active" onclick="switchTab('ristrutturazione', 'bonusCasaTabs', 'bonusCasaContent', 'purple', this)">Ristrutturazione 50%/36%</button>
+        <button class="tipo-tab purple" onclick="switchTab('ecobonus', 'bonusCasaTabs', 'bonusCasaContent', 'purple', this)">Ecobonus Energetico</button>
+        <button class="tipo-tab purple" onclick="switchTab('bonusmobili', 'bonusCasaTabs', 'bonusCasaContent', 'purple', this)">Bonus Mobili</button>
+      </div>
+      <div id="bonusCasaContent">
+        <div id="tab-ristrutturazione" class="steps-permesso active">
+          <div class="card" style="padding:1rem 1.2rem;margin-bottom:1rem;">
+            <ul style="list-style:none;padding:0;font-size:13px;line-height:2.4;">
+              <li>🏠 <strong>Prima casa / abitazione principale:</strong> 50% di detrazione IRPEF</li>
+              <li>🏡 <strong>Seconda casa o immobili non principali:</strong> 36% di detrazione IRPEF</li>
+              <li>📊 <strong>Spesa massima detraibile:</strong> 96.000€ per immobile (limite annuale)</li>
+              <li>📅 <strong>Recupero in 10 anni:</strong> la detrazione si divide in 10 rate annuali uguali</li>
+              <li>⚠️ <strong>Redditi sopra 75.000€:</strong> limite massimo complessivo alle detrazioni (vedi CAF)</li>
+            </ul>
+          </div>
+          <div class="guide-block"><div class="guide-block-title">📋 Cosa serve</div><ul><li>Fatture intestate al richiedente per tutti i lavori</li><li>Pagamento tracciabile: <strong>bonifico parlante</strong> con causale specifica (art. 16-bis TUIR)</li><li>Dati catastali dell'immobile</li><li>Comunicazione preventiva all'ASL (per alcuni lavori)</li><li>Titolo di proprietà o contratto di locazione</li></ul></div>
+          <div class="guide-block"><div class="guide-block-title">🌐 Dove andare</div><ul><li><strong>CAF o commercialista</strong> — per inserire le spese nel 730</li><li><strong>agenziaentrate.gov.it</strong> — guida ufficiale aggiornata a febbraio 2026</li></ul></div>
+          <ul class="step-list">
+            <li class="step-item"><div class="step-num purple">1</div><div class="step-content"><div class="step-title">Verifica che i lavori siano ammissibili</div><div class="step-desc">Ammessi: manutenzione ordinaria e straordinaria, restauro, risanamento conservativo, ristrutturazione edilizia. Non ammessi: acquisto di materiali senza posa in opera.</div></div></li>
+            <li class="step-item"><div class="step-num purple">2</div><div class="step-content"><div class="step-title">Paga sempre con bonifico parlante</div><div class="step-desc">Il bonifico deve riportare: <strong>causale "art. 16-bis DPR 917/86"</strong>, codice fiscale beneficiario, partita IVA dell'impresa. Pagamenti in contanti = no detrazione.</div><span class="step-tag orange">Obbligatorio</span></div></li>
+            <li class="step-item"><div class="step-num purple">3</div><div class="step-content"><div class="step-title">Conserva tutta la documentazione</div><div class="step-desc">Fatture, ricevute bonifici, contratto lavori, foto prima/dopo. Conserva per 5 anni dall'ultima rata.</div></div></li>
+            <li class="step-item"><div class="step-num purple">4</div><div class="step-content"><div class="step-title">Inserisci le spese nel 730 o Unico</div><div class="step-desc">Al CAF o con commercialista. Le 10 rate annuali partono dall'anno successivo ai lavori.</div><span class="step-tag green">Recupero in 10 anni</span></div></li>
+          </ul>
+          <div class="guide-block"><div class="guide-block-title">💰 Quanto costa / si risparmia</div><span class="costo-badge costo-blue">50% di 10.000€ spesi = 5.000€ di rimborso fiscale in 10 anni (500€/anno)</span></div>
+        </div>
+        <div id="tab-ecobonus" class="steps-permesso">
+          <div class="citizenship-intro" style="background:linear-gradient(135deg,#f5f3ff,#ede9fe);border-color:#c4b5fd;color:#4c1d95;"><strong>Ecobonus 2026:</strong> detrazione al 50% per prima casa e 36% per seconde case, per lavori di riqualificazione energetica (cappotto termico, caldaie a condensazione, finestre, pompe di calore, ecc.).</div>
+          <div class="guide-block"><div class="guide-block-title">📋 Cosa serve</div><ul><li>APE (Attestato di Prestazione Energetica) ante e post intervento</li><li>Asseverazione tecnica firmata da un professionista abilitato</li><li>Bonifico parlante specifico per Ecobonus</li><li>Fatture e dati catastali dell'immobile</li></ul></div>
+          <div class="guide-block"><div class="guide-block-title">🌐 Dove andare</div><ul><li><strong>ENEA</strong> (enea.it) — comunicazione obbligatoria entro 90 giorni dai lavori</li><li>CAF o commercialista per la dichiarazione dei redditi</li></ul></div>
+          <div class="warn-box"><strong>⚠️ Obbligatorio:</strong> Comunicare i lavori all'ENEA entro 90 giorni dal fine lavori. Senza comunicazione perde la detrazione.</div>
+        </div>
+        <div id="tab-bonusmobili" class="steps-permesso">
+          <div class="citizenship-intro" style="background:linear-gradient(135deg,#f5f3ff,#ede9fe);border-color:#c4b5fd;color:#4c1d95;"><strong>Bonus Mobili 2026:</strong> detrazione del 50% su acquisto di mobili e grandi elettrodomestici (classe A o superiore). Collegato obbligatoriamente a lavori di ristrutturazione avviati dal 1° gennaio 2025.</div>
+          <div class="guide-block"><div class="guide-block-title">📋 Cosa serve</div><ul><li>Lavori di ristrutturazione avviati dal 1/1/2025 (bonifico ristrutturazione)</li><li>Acquisto mobili e/o elettrodomestici con <strong>pagamento tracciabile</strong></li><li>Spesa massima: 5.000€ per immobile</li></ul></div>
+          <div class="guide-block"><div class="guide-block-title">💰 Quanto costa / si risparmia</div></div>
+          <span class="costo-badge costo-blue">50% di 5.000€ = 2.500€ di rimborso fiscale in 10 anni</span>
+        </div>
+      </div>
+      <div class="section-sub">🔗 Link Ufficiali</div>
+      <a class="link-card" href="https://www.agenziaentrate.gov.it/portale/web/guest/ristrutturazione-casa" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-purple">🔨</div><div class="link-card-info"><div class="link-card-title">Agenzia Entrate — Guida Ristrutturazioni 2026 <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Guida aggiornata a febbraio 2026 con tutti i dettagli.</div><span class="link-card-url">agenziaentrate.gov.it → Ristrutturazioni</span></div><span class="link-card-arrow">→</span></div></a>
+      <a class="link-card" href="https://www.enea.it/it/seguici/news/ecobonus" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-purple">⚡</div><div class="link-card-info"><div class="link-card-title">ENEA — Comunicazione Ecobonus <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Portale obbligatorio per trasmissione dati lavori energetici.</div><span class="link-card-url">enea.it</span></div><span class="link-card-arrow">→</span></div></a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL SPESE CONDOMINIALI -->
+<div class="modal-overlay" id="condominialeModal" onclick="chiudiModal('condominialeModal', event)">
+  <div class="modal-sheet">
+    <div class="modal-header" style="border-top: 4px solid var(--purple);">
+      <span style="font-size:22px">🏢</span>
+      <span class="modal-title">Spese Condominiali — Come Leggerle</span>
+      <button class="modal-close" onclick="chiudiModalBtn('condominialeModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="citizenship-intro" style="background:linear-gradient(135deg,#f5f3ff,#ede9fe);border-color:#c4b5fd;color:#4c1d95;">
+        <strong>Il rendiconto condominiale</strong> può sembrare incomprensibile, ma segue regole precise. Ecco come orientarsi senza stress.
+      </div>
+      <div class="tipo-permesso-tabs" id="condoTabs">
+        <button class="tipo-tab purple active" onclick="switchTab('voce', 'condoTabs', 'condoContent', 'purple', this)">Voci Principali</button>
+        <button class="tipo-tab purple" onclick="switchTab('millesimi', 'condoTabs', 'condoContent', 'purple', this)">Millesimi</button>
+        <button class="tipo-tab purple" onclick="switchTab('preventivo', 'condoTabs', 'condoContent', 'purple', this)">Preventivo vs Consuntivo</button>
+      </div>
+      <div id="condoContent">
+        <div id="tab-voce" class="steps-permesso active">
+          <div class="card" style="padding:1rem 1.2rem;">
+            <ul style="list-style:none;padding:0;font-size:13px;line-height:2.4;">
+              <li>💡 <strong>Luce parti comuni:</strong> scale, androne, parcheggio. Ripartita per millesimi.</li>
+              <li>🧹 <strong>Pulizia e portineria:</strong> compenso addetto o impresa di pulizie.</li>
+              <li>🔧 <strong>Manutenzione ordinaria:</strong> riparazioni impianti, ascensore, piccoli interventi.</li>
+              <li>🏗️ <strong>Manutenzione straordinaria:</strong> rifacimento tetto, facciata, impianto condominiale. Quote straordinarie.</li>
+              <li>🏦 <strong>Fondo cassa:</strong> riserva per spese impreviste. Obbligatorio per legge dal 2013.</li>
+              <li>🔐 <strong>Assicurazione condominiale:</strong> copre danni alle parti comuni.</li>
+              <li>👨‍💼 <strong>Compenso amministratore:</strong> obbligatorio da indicare separatamente in rendiconto.</li>
+            </ul>
+          </div>
+        </div>
+        <div id="tab-millesimi" class="steps-permesso">
+          <div class="info-box"><strong>Cos'è un millesimo?</strong> Il condominio è diviso in 1.000 parti ideali. La tua quota millesimale dipende dalla dimensione e posizione del tuo appartamento.</div>
+          <div class="card" style="padding:1rem 1.2rem;">
+            <ul style="list-style:none;padding:0;font-size:13px;line-height:2.4;">
+              <li>🏠 <strong>Tabella proprietà generale:</strong> usata per spese di struttura (tetto, fondamenta, scala).</li>
+              <li>🔝 <strong>Tabella scala/ascensore:</strong> chi usa più il servizio (piani alti) paga di più.</li>
+              <li>🌡️ <strong>Tabella riscaldamento:</strong> basata sui consumi effettivi con contabilizzatori.</li>
+              <li>💡 <strong>Come verificarli:</strong> chiedi all'amministratore la tabella millesimale depositata dal notaio. Puoi contestarla in assemblea o al tribunale.</li>
+            </ul>
+          </div>
+        </div>
+        <div id="tab-preventivo" class="steps-permesso">
+          <div class="card" style="padding:1rem 1.2rem;">
+            <ul style="list-style:none;padding:0;font-size:13px;line-height:2.4;">
+              <li>📋 <strong>Preventivo:</strong> Budget stimato per l'anno entrante. Approvato in assemblea. Determina le rate mensili.</li>
+              <li>📊 <strong>Consuntivo:</strong> Rendiconto delle spese effettivamente sostenute nell'anno precedente. Deve quadrare con il preventivo.</li>
+              <li>⚖️ <strong>Saldo:</strong> Se le spese reali superano il preventivo → paghi un conguaglio. Se sono inferiori → ricevi un credito per l'anno successivo.</li>
+              <li>⏰ <strong>Tempistiche:</strong> L'assemblea ordinaria deve approvarli entro 180 giorni dalla chiusura dell'esercizio.</li>
+            </ul>
+          </div>
+          <div class="warn-box"><strong>⚠️ Trappola comune:</strong> Non partecipare all'assemblea significa accettare passivamente tutte le delibere. Partecipa sempre o delega per iscritto.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== NUOVI MODAL LAVORO ======================== -->
+
+<!-- MODAL CEDOLINO -->
+<div class="modal-overlay" id="cedolinoModal" onclick="chiudiModal('cedolinoModal', event)">
+  <div class="modal-sheet">
+    <div class="modal-header" style="border-top: 4px solid var(--teal);">
+      <span style="font-size:22px">💶</span>
+      <span class="modal-title">Cedolino (Busta Paga) — Come Si Legge</span>
+      <button class="modal-close" onclick="chiudiModalBtn('cedolinoModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="citizenship-intro" style="background:linear-gradient(135deg,#f0fdfa,#ccfbf1);border-color:#5eead4;color:#0f4f46;">
+        <strong>La busta paga ti dice quanto guadagni davvero, quanto lo Stato ti trattiene e cosa paga il tuo datore.</strong> Ecco il vocabolario base per leggerla.
+      </div>
+      <div class="tipo-permesso-tabs" id="cedolinoTabs">
+        <button class="tipo-tab teal active" onclick="switchTab('voci', 'cedolinoTabs', 'cedolinoContent', 'teal', this)">Voci Principali</button>
+        <button class="tipo-tab teal" onclick="switchTab('irpef', 'cedolinoTabs', 'cedolinoContent', 'teal', this)">IRPEF e Detrazioni</button>
+        <button class="tipo-tab teal" onclick="switchTab('inps', 'cedolinoTabs', 'cedolinoContent', 'teal', this)">Contributi INPS</button>
+      </div>
+      <div id="cedolinoContent">
+        <div id="tab-voci" class="steps-permesso active">
+          <div class="card" style="padding:1rem 1.2rem;margin-bottom:1rem;">
+            <ul style="list-style:none;padding:0;font-size:13px;line-height:2.6;">
+              <li>💰 <strong>Retribuzione lorda:</strong> Quello che hai guadagnato prima di qualsiasi trattenuta. Base di calcolo.</li>
+              <li>➖ <strong>Contributi INPS (quota dipendente):</strong> ~9,19% della retribuzione. Costruisce la tua pensione.</li>
+              <li>➖ <strong>IRPEF:</strong> Imposta sul reddito delle persone fisiche. Calcolata sul reddito imponibile, detratta alla fonte.</li>
+              <li>➖ <strong>Addizionali regionali e comunali:</strong> Percentuali variabili per zona. Trattenute in busta paga.</li>
+              <li>✅ <strong>Retribuzione netta:</strong> Quello che ricevi sul conto. Lordo - contributi - tasse.</li>
+              <li>📦 <strong>TFR (Trattamento di Fine Rapporto):</strong> ~6,91% della retribuzione accantonato ogni mese. Lo ricevi alla fine del rapporto.</li>
+            </ul>
+          </div>
+          <div class="info-box"><strong>💡 Regola pratica:</strong> In Italia un dipendente riceve mediamente il 65-70% della retribuzione lorda come netto. Esempio: 1.500€ lordi → ~1.000-1.050€ netti.</div>
+        </div>
+        <div id="tab-irpef" class="steps-permesso">
+          <div class="card" style="padding:1rem 1.2rem;margin-bottom:1rem;">
+            <ul style="list-style:none;padding:0;font-size:13px;line-height:2.6;">
+              <li>📊 <strong>Scaglioni IRPEF 2024-2026:</strong> 23% fino a 28.000€ · 35% da 28.001 a 50.000€ · 43% oltre 50.000€.</li>
+              <li>💚 <strong>Detrazione da lavoro dipendente:</strong> Automatica, riduce l'IRPEF. Più è basso il reddito, più è alta.</li>
+              <li>👨‍👩‍👧 <strong>Detrazione figli a carico:</strong> Comunicala al datore di lavoro ogni anno con modulo apposito. Ti abbassa l'IRPEF mensile in busta paga.</li>
+              <li>🏠 <strong>Detrazione mutuo prima casa:</strong> 19% degli interessi passivi (max 4.000€ di base). Non in busta paga: recuperi con il 730.</li>
+            </ul>
+          </div>
+          <div class="warn-box"><strong>⚠️ Attenzione:</strong> Se cambi lavoro o hai più datori, controlla che le detrazioni siano comunicate correttamente. Un errore porta a conguagli negativi (paghi di più) a dicembre.</div>
+        </div>
+        <div id="tab-inps" class="steps-permesso">
+          <div class="card" style="padding:1rem 1.2rem;">
+            <ul style="list-style:none;padding:0;font-size:13px;line-height:2.6;">
+              <li>👤 <strong>Quota dipendente:</strong> ~9,19% trattenuta dalla busta paga. Vai sul tuo estratto INPS per verificare.</li>
+              <li>🏢 <strong>Quota datore di lavoro:</strong> ~23-30% che il datore paga IN PIÙ del tuo stipendio lordo. Non lo vedi in busta paga ma è il tuo "costo del lavoro".</li>
+              <li>📅 <strong>Estratto contributivo:</strong> Su myINPS.it con SPID puoi vedere tutti i contributi versati anni per anno.</li>
+              <li>🏦 <strong>A cosa servono:</strong> Pensione, indennità di malattia, NASpI, congedi parentali, maternità.</li>
+            </ul>
+          </div>
+          <div class="guide-block"><div class="guide-block-title">🌐 Dove andare</div><ul><li><strong>myinps.it</strong> con SPID — estratto contributivo, simulazione pensione</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL NASpI 2026 -->
+<div class="modal-overlay" id="naspiModal" onclick="chiudiModal('naspiModal', event)">
+  <div class="modal-sheet">
+    <div class="modal-header" style="border-top: 4px solid var(--teal);">
+      <span style="font-size:22px">💼</span>
+      <span class="modal-title">NASpI — Disoccupazione 2026 <span class="badge-2026">Aggiornato</span></span>
+      <button class="modal-close" onclick="chiudiModalBtn('naspiModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="citizenship-intro" style="background:linear-gradient(135deg,#f0fdfa,#ccfbf1);border-color:#5eead4;color:#0f4f46;">
+        <strong>NASpI 2026 — Importo massimo: 1.584,70€/mese.</strong> Introdotte novità dalla Legge di Bilancio 2026: la NASpI anticipata (per aprire P.IVA) si eroga ora in <strong>due tranche: 70% + 30%</strong> invece di un'unica soluzione.
+      </div>
+      <div class="guide-block"><div class="guide-block-title">📋 Cosa serve</div><ul><li>Almeno 13 settimane di contribuzione negli ultimi 4 anni</li><li>Almeno 30 giorni di lavoro effettivo nell'ultimo anno</li><li>Stato di disoccupazione involontaria (licenziamento, fine contratto, dimissioni per giusta causa)</li><li>SPID o CIE per domanda online INPS</li></ul></div>
+      <div class="guide-block"><div class="guide-block-title">🌐 Dove andare</div><ul><li><strong>INPS.it</strong> — domanda online con SPID/CIE (da sezione "NASpI")</li><li><strong>Patronato</strong> — assistenza gratuita per compilare la domanda</li></ul></div>
+      <ul class="step-list">
+        <li class="step-item"><div class="step-num teal">1</div><div class="step-content"><div class="step-title">Presenta domanda entro 68 giorni</div><div class="step-desc">Dalla data di cessazione del rapporto di lavoro. Oltre i 68 giorni la NASpI parte solo dal giorno della domanda (perdi i giorni arretrati).</div><span class="step-tag orange">Entro 68 giorni</span></div></li>
+        <li class="step-item"><div class="step-num teal">2</div><div class="step-content"><div class="step-title">Accedi a INPS.it con SPID/CIE</div><div class="step-desc">Cerca "NASpI" → "Indennità NASpI" → compila il modulo con codice fiscale, IBAN, data licenziamento.</div></div></li>
+        <li class="step-item"><div class="step-num teal">3</div><div class="step-content"><div class="step-title">Sottoscrivi il PAD (Patto di servizio)</div><div class="step-desc">Al Centro per l'Impiego entro 15 giorni dalla domanda. Obbligatorio per non perdere l'indennità.</div><span class="step-tag orange">Obbligatorio</span></div></li>
+        <li class="step-item"><div class="step-num teal">4</div><div class="step-content"><div class="step-title">Ricevi i pagamenti mensili</div><div class="step-desc">INPS accredita ogni mese. La NASpI dura la metà delle settimane contributive degli ultimi 4 anni (max 24 mesi).</div><span class="step-tag teal" style="background:#f0fdfa;color:#0d9488">Max 24 mesi</span></div></li>
+      </ul>
+      <div class="card" style="padding:1rem 1.2rem;margin-bottom:1rem;margin-top:1rem;">
+        <div style="font-family:'Sora',sans-serif;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.8px;color:var(--muted);margin-bottom:10px;">📊 Calcolo dell'importo</div>
+        <ul style="list-style:none;padding:0;font-size:13px;line-height:2.2;">
+          <li>💰 <strong>Base:</strong> 75% della retribuzione media mensile imponibile degli ultimi 4 anni</li>
+          <li>📉 <strong>Riduzione progressiva:</strong> dal 4° mese si riduce del 3% ogni mese</li>
+          <li>🔝 <strong>Importo massimo 2026:</strong> 1.584,70€/mese</li>
+          <li>📉 <strong>Riduzione per lavoro part-time:</strong> 80% del reddito viene sottratto dall'indennità</li>
+        </ul>
+      </div>
+      <div class="warn-box"><strong>⚠️ Lavoro durante la NASpI:</strong> Puoi guadagnare fino a 8.500€/anno come dipendente o 5.500€ come autonomo/P.IVA senza perdere l'indennità, ma devi comunicarlo all'INPS entro 30 giorni con il modello NASpI-COM.</div>
+      <div class="info-box"><strong>💡 NASpI anticipata (novità 2026):</strong> Se vuoi aprire P.IVA puoi richiedere l'anticipo. La Legge di Bilancio 2026 prevede erogazione in <strong>2 tranche: 70% immediato + 30% dopo verifica requisiti</strong>. Non più in un'unica soluzione.</div>
+      <div class="guide-block"><div class="guide-block-title">💰 Quanto costa</div><span class="costo-badge costo-green">✅ Gratuito — è un tuo diritto già pagato con i contributi</span></div>
+      <div class="section-sub">🔗 Link Ufficiali</div>
+      <a class="link-card" href="https://www.inps.it/it/it/strumenti/prestazioni-a-sostegno-del-reddito/naspi.html" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-teal">💼</div><div class="link-card-info"><div class="link-card-title">INPS — NASpI <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Domanda online, simulatore importo, FAQ aggiornate.</div><span class="link-card-url">inps.it → NASpI</span></div><span class="link-card-arrow">→</span></div></a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PARTITA IVA -->
+<div class="modal-overlay" id="partitaIvaModal" onclick="chiudiModal('partitaIvaModal', event)">
+  <div class="modal-sheet">
+    <div class="modal-header" style="border-top: 4px solid var(--teal);">
+      <span style="font-size:22px">🧾</span>
+      <span class="modal-title">Aprire Partita IVA — Guida per Principianti <span class="badge-2026">2026</span></span>
+      <button class="modal-close" onclick="chiudiModalBtn('partitaIvaModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="citizenship-intro" style="background:linear-gradient(135deg,#f0fdfa,#ccfbf1);border-color:#5eead4;color:#0f4f46;">
+        <strong>Il Regime Forfettario 2026</strong> è quasi sempre la scelta migliore per chi parte: tasse al <strong>15%</strong> (o 5% per i primi 5 anni), niente IVA in fattura, contabilità semplice. Limite di ricavi: <strong>85.000€/anno</strong>.
+      </div>
+      <div class="tipo-permesso-tabs" id="pivasTabs">
+        <button class="tipo-tab teal active" onclick="switchTab('forfettario', 'pivasTabs', 'pivasContent', 'teal', this)">Regime Forfettario</button>
+        <button class="tipo-tab teal" onclick="switchTab('apertura', 'pivasTabs', 'pivasContent', 'teal', this)">Come Aprirla</button>
+        <button class="tipo-tab teal" onclick="switchTab('costi', 'pivasTabs', 'pivasContent', 'teal', this)">Tasse e Contributi</button>
+      </div>
+      <div id="pivasContent">
+        <div id="tab-forfettario" class="steps-permesso active">
+          <div class="card" style="padding:1rem 1.2rem;margin-bottom:1rem;">
+            <ul style="list-style:none;padding:0;font-size:13px;line-height:2.6;">
+              <li>📊 <strong>Aliquota:</strong> 15% sul reddito imponibile (5% per i primi 5 anni se nuova attività)</li>
+              <li>🚫 <strong>Niente IVA:</strong> emetti fatture senza IVA — il cliente non paga l'IVA, e tu non la versi.</li>
+              <li>📦 <strong>Reddito imponibile:</strong> Fatturato × coefficiente di redditività (varia per settore, es. 78% per commercio, 67% per professionisti)</li>
+              <li>💶 <strong>Limite ricavi:</strong> 85.000€/anno. Superati → dall'anno dopo esci dal regime.</li>
+              <li>🔴 <strong>Non ammessi:</strong> chi ha partecipazioni in SRL, chi ha redditi da lavoro dipendente sopra 35.000€</li>
+            </ul>
+          </div>
+          <div class="info-box"><strong>💡 Esempio concreto:</strong> Fatturi 20.000€ come consulente (coeff. 78%). Imponibile = 15.600€. Tasse = 15.600 × 15% = 2.340€/anno. Contributi INPS separati (~26% dell'imponibile).</div>
+        </div>
+        <div id="tab-apertura" class="steps-permesso">
+          <div class="guide-block"><div class="guide-block-title">📋 Cosa serve</div><ul><li>Codice fiscale e documento d'identità</li><li>Codice ATECO della tua attività (cerca su atecosei.istat.it)</li><li>Indirizzo domicilio fiscale</li><li>Nessun capitale minimo per ditte individuali</li></ul></div>
+          <div class="guide-block"><div class="guide-block-title">🌐 Dove andare</div><ul><li><strong>Agenzia delle Entrate</strong> — apertura P.IVA online con SPID (modello AA9/12), gratuita e immediata</li><li><strong>Camera di Commercio</strong> — solo per attività commerciali o artigianali</li></ul></div>
+          <ul class="step-list">
+            <li class="step-item"><div class="step-num teal">1</div><div class="step-content"><div class="step-title">Scegli il codice ATECO della tua attività</div><div class="step-desc">Cerca su atecosei.istat.it o chiedi a un CAF/commercialista. Definisce le tasse e i contributi INPS.</div></div></li>
+            <li class="step-item"><div class="step-num teal">2</div><div class="step-content"><div class="step-title">Apri P.IVA online all'Agenzia delle Entrate</div><div class="step-desc">Su <strong>agenziaentrate.gov.it</strong> con SPID/CIE → Servizi online → AA9/12. Gratuito e immediato.</div><span class="step-tag green">Gratuito</span></div></li>
+            <li class="step-item"><div class="step-num teal">3</div><div class="step-content"><div class="step-title">Iscriviti all'INPS (Gestione Separata)</div><div class="step-desc">Se sei libero professionista: Gestione Separata INPS. Se hai attività commerciale: Gestione Artigiani/Commercianti.</div></div></li>
+            <li class="step-item"><div class="step-num teal">4</div><div class="step-content"><div class="step-title">Emetti la tua prima fattura</div><div class="step-desc">Puoi usare software gratuiti come Fatture in Cloud (piano free), Aruba Fatturazione o Zucchetti. La fattura elettronica è obbligatoria.</div><span class="step-tag teal" style="background:#f0fdfa;color:#0d9488">Fattura elettronica</span></div></li>
+          </ul>
+          <div class="guide-block"><div class="guide-block-title">💰 Quanto costa aprire P.IVA</div><span class="costo-badge costo-green">✅ Apertura gratuita all'Agenzia delle Entrate</span></div>
+        </div>
+        <div id="tab-costi" class="steps-permesso">
+          <div class="card" style="padding:1rem 1.2rem;margin-bottom:1rem;">
+            <ul style="list-style:none;padding:0;font-size:13px;line-height:2.6;">
+              <li>🏦 <strong>Contributi INPS Gestione Separata 2026:</strong> ~26,23% dell'imponibile (se non hai altre coperture previdenziali).</li>
+              <li>🏦 <strong>Contributi Artigiani/Commercianti 2026:</strong> fissi (~4.500€/anno minimi) + percentuale sul reddito. Riduzione del 35% per i forfettari, del 50% per i primi 36 mesi per nuove attività.</li>
+              <li>📅 <strong>Quando si pagano le tasse:</strong> Acconto novembre + saldo giugno (con il 730 o modello Redditi).</li>
+              <li>⚠️ <strong>Prima nota spese:</strong> Conserva tutte le ricevute, anche se non sono deducibili in forfettario. Servono per verifiche fiscali.</li>
+            </ul>
+          </div>
+          <div class="warn-box"><strong>⚠️ Trappola comune:</strong> Non accantonare per le tasse. Metti da parte il 20-25% di ogni pagamento ricevuto per coprire tasse + contributi INPS a fine anno.</div>
+        </div>
+      </div>
+      <div class="section-sub">🔗 Link Ufficiali</div>
+      <a class="link-card" href="https://www.agenziaentrate.gov.it/portale/web/guest/schede/dichiarazioni/partita-iva" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-teal">🧾</div><div class="link-card-info"><div class="link-card-title">Agenzia Entrate — Apertura P.IVA <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Modello AA9/12 online, guida al regime forfettario.</div><span class="link-card-url">agenziaentrate.gov.it → Partita IVA</span></div><span class="link-card-arrow">→</span></div></a>
+      <a class="link-card" href="https://www.inps.it/it/it/strumenti/gestione-separata.html" target="_blank"><div class="link-card-header"><div class="link-card-icon icon-teal">🏦</div><div class="link-card-info"><div class="link-card-title">INPS — Gestione Separata <span class="badge-official">Ufficiale</span></div><div class="link-card-desc">Contributi, aliquote, versamenti 2026.</div><span class="link-card-url">inps.it → Gestione Separata</span></div><span class="link-card-arrow">→</span></div></a>
     </div>
   </div>
 </div>
@@ -820,19 +1272,17 @@ let userLng = null;
 let currentMapQuery = 'CAF patronato';
 
 // =====================================================
-// DATABASE BONUS — IMPORTI AGGIORNATI 2026
-// Fonti: Circolare INPS n.7/2026, Legge di Bilancio 2026
+// DATABASE BONUS — AGGIORNATO 2026
 // =====================================================
 const BONUS_DB = [
-
-  // ─── UNIVERSALI / TUTTI ───
+  // ─── UNIVERSALI ───
   {
     id: 'isee',
     nome: '📄 ISEE 2026 — Attestazione Gratuita',
     importo: 'Gratuito',
     importoClass: 'green',
-    desc: 'Obbligatorio per accedere a quasi tutti i bonus. Dal 2026 esiste il nuovo "ISEE per prestazioni familiari e inclusione", più favorevole per famiglie con figli. Presentalo al CAF o su INPS.it con SPID.',
-    dove: '→ CAF (gratuito) o inps.it',
+    desc: 'Obbligatorio per quasi tutti i bonus. Dal 2026 esiste l\'ISEE agevolato per Assegno Unico, ADI e Bonus Nido. Fallo entro febbraio per non perdere importi arretrati.',
+    dove: '→ CAF gratuito o inps.it con SPID',
     condizioni: { stati: ['studente','disoccupato','dipendente','pensionato','genitore','autonomo'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
   },
   {
@@ -840,263 +1290,199 @@ const BONUS_DB = [
     nome: '🪪 SPID / CIE — Identità Digitale',
     importo: 'Gratuito',
     importoClass: 'green',
-    desc: 'Indispensabile per fare domanda online di quasi tutti i bonus italiani.',
-    dove: '→ spid.gov.it o Comune',
+    desc: 'Indispensabile per fare domanda online di quasi tutti i bonus italiani. Senza SPID o CIE non puoi accedere a INPS.it, Agenzia delle Entrate, InPA.',
+    dove: '→ spid.gov.it (gratuito con Poste ID)',
     condizioni: { stati: ['studente','disoccupato','dipendente','pensionato','genitore','autonomo'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
   },
-
   // ─── FAMIGLIE CON FIGLI ───
   {
     id: 'assegno_unico',
     nome: '👶 Assegno Unico Universale 2026',
-    importo: 'da 58,30€ a 203,80€/mese per figlio',
+    importo: 'da 57€ a 199€/mese per figlio',
     importoClass: 'green',
-    desc: 'Importi rivalutati +1,4% (Circ. INPS n.7/2026). Per figli fino a 21 anni. Massimo 203,80€/mese con ISEE ≤17.468€. Minimo garantito 58,30€/mese. Scadenza ISEE: 30 giugno 2026 per non perdere gli arretrati da marzo.',
-    dove: '→ INPS.it o CAF (non serve nuova domanda se già "accolta")',
+    desc: 'Rivalutato +1,4% per il 2026. Da 57€ (senza ISEE) fino a 199€/mese per figlio (ISEE sotto 17.091€). Maggiorazione +50% per figli under 1 anno e famiglie con 3+ figli. Non serve nuova domanda se già accolta.',
+    dove: '→ INPS.it con SPID (domanda già accolta = rinnova solo ISEE)',
     condizioni: { stati: ['studente','disoccupato','dipendente','pensionato','genitore','autonomo'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['minorenni','disabili'] }
   },
   {
     id: 'bonus_nido',
     nome: '🍼 Bonus Nido 2026',
-    importo: 'fino a 3.600€/anno (nati dal 2024)',
+    importo: 'fino a 3.600€/anno',
     importoClass: 'green',
-    desc: 'Semplificato in 2 fasce per nati dal 2024: ISEE ≤40.000€ → 3.600€/anno; ISEE >40.000€ o senza ISEE → 1.500€/anno. Dal 2026 la domanda non va più ripresentata ogni anno. (Circ. INPS n.29/2026)',
-    dove: '→ INPS.it con SPID/CIE o CAF/Patronato',
-    condizioni: { stati: ['studente','disoccupato','dipendente','pensionato','genitore','autonomo'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['minorenni'] }
-  },
-  {
-    id: 'bonus_nuovi_nati',
-    nome: '🐣 Bonus Nuovi Nati (una tantum)',
-    importo: '1.000€ una tantum',
-    importoClass: 'green',
-    desc: 'Contributo una tantum per ogni figlio nato o adottato dal 1° gennaio 2024. ISEE ≤40.000€. Introdotto dalla Legge di Bilancio 2024, confermato e ampliato nel 2026.',
-    dove: '→ INPS.it con SPID/CIE entro 120 giorni dalla nascita',
+    desc: 'Rimborso rette asilo nido. Importo massimo per ISEE sotto 25.001€. Incluso nel calcolo ISEE agevolato 2026. Presentare domanda su INPS.it entro fine mese successivo al pagamento della retta.',
+    dove: '→ INPS.it con SPID/CIE',
     condizioni: { stati: ['studente','disoccupato','dipendente','pensionato','genitore','autonomo'], isee: ['basso','medio_basso','medio'], cittad: ['italiana','extraue'], figli: ['minorenni'] }
   },
   {
     id: 'carta_famiglie',
     nome: '👨‍👩‍👧 Carta Famiglie Numerose',
-    importo: 'Sconti e agevolazioni',
+    importo: 'Sconti e agevolazioni varie',
     importoClass: 'blue',
-    desc: 'Per famiglie con almeno 3 figli under 26. Sconti su trasporti, musei, tariffe pubbliche.',
-    dove: '→ Comune di residenza',
+    desc: 'Per famiglie con almeno 3 figli under 26. Sconti su trasporti, musei statali gratuiti, tariffe pubbliche ridotte.',
+    dove: '→ Comune di residenza (ufficio servizi sociali)',
     condizioni: { stati: ['studente','disoccupato','dipendente','pensionato','genitore','autonomo'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['minorenni','disabili'] }
   },
-  {
-    id: 'bonus_mamme',
-    nome: '👩 Bonus Mamme Lavoratrici 2026',
-    importo: 'fino a 3.000€/anno (esonero contributi)',
-    importoClass: 'blue',
-    desc: 'Esonero totale dai contributi previdenziali a carico della lavoratrice. Requisiti: madre con ≥2 figli (uno under 10), ISEE ≤40.000€. Fino a ~250€/mese in più in busta paga.',
-    dove: '→ Datore di lavoro / busta paga (richiesta automatica)',
-    condizioni: { stati: ['dipendente'], isee: ['basso','medio_basso','medio'], cittad: ['italiana','extraue'], figli: ['minorenni','disabili'] }
-  },
-
   // ─── ISEE BASSO ───
   {
     id: 'adi',
     nome: '💳 ADI — Assegno di Inclusione 2026',
-    importo: 'fino a 6.000€/anno (500€/mese per singolo)',
+    importo: 'fino a 500€/mese + integrazione affitto',
     importoClass: 'orange',
-    desc: 'ISEE ≤9.360€. Per nuclei con minori, disabili o over 60. Importo moltiplicato per la scala di equivalenza del nucleo. Durata 18 mesi rinnovabili. Dal 2026 calcolo ISEE più favorevole per case di proprietà (franchigia elevata a 91.500€).',
-    dove: '→ INPS.it o CAF (con SPID)',
+    desc: 'Sostegno per nuclei con minori, disabili o over 60 con ISEE sotto 9.360€. Ha sostituito il Reddito di Cittadinanza. I beneficiari devono rinnovare l\'ISEE entro fine gennaio per non sospendere l\'erogazione.',
+    dove: '→ INPS.it con SPID o CAF (gratuito)',
     condizioni: { stati: ['disoccupato','genitore','pensionato'], isee: ['basso'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
   },
   {
     id: 'sfl',
     nome: '💼 SFL — Supporto Formazione e Lavoro 2026',
-    importo: '500€/mese per max 12 mesi',
+    importo: '350€/mese per 12 mesi',
     importoClass: 'orange',
-    desc: 'Per persone tra 18-59 anni senza lavoro con ISEE ≤10.140€. Impegnate in percorsi di formazione o lavori di pubblica utilità. Importo aumentato rispetto al 2025 (era 350€). Soglia ISEE ampliata dalla Legge di Bilancio 2026.',
-    dove: '→ INPS.it + Centro per l\'Impiego (SIISL)',
-    condizioni: { stati: ['disoccupato'], isee: ['basso','medio_basso'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
+    desc: 'Per persone 18-59 anni senza lavoro con ISEE basso, impegnate in corsi di formazione o utilità pubblica. Calcolo ISEE agevolato dal 2026.',
+    dove: '→ INPS.it + Centro per l\'Impiego',
+    condizioni: { stati: ['disoccupato'], isee: ['basso'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
   },
   {
     id: 'bonus_sociale_energia',
     nome: '⚡ Bonus Sociale Energia e Gas 2026',
-    importo: 'circa 200-600€/anno',
+    importo: 'circa 200-700€/anno',
     importoClass: 'green',
-    desc: 'Sconto automatico sulle bollette di luce, gas e acqua. Si attiva presentando l\'ISEE al CAF — non serve fare domanda separata.',
-    dove: '→ Automatico con ISEE aggiornato (CAF)',
+    desc: 'Sconto automatico sulle bollette di luce, gas e acqua. Si attiva presentando l\'ISEE aggiornato al CAF — non serve fare domanda separata. Soglia ISEE: fino a 9.530€ (famiglie con 4+ figli: 20.000€).',
+    dove: '→ Automatico con ISEE aggiornato (presentato al CAF)',
     condizioni: { stati: ['studente','disoccupato','dipendente','pensionato','genitore','autonomo'], isee: ['basso','medio_basso'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
   },
   {
     id: 'carta_risparmio',
-    nome: '🛒 Carta Risparmio Spesa',
-    importo: '460€/anno (caricata su carta)',
+    nome: '🛒 Carta Dedicata a Te (ex Carta Risparmio)',
+    importo: '~500€/anno su carta prepagata',
     importoClass: 'orange',
-    desc: 'Per nuclei in condizione di povertà assoluta. Utilizzabile per acquisti alimentari e farmaci.',
-    dove: '→ Comune di residenza (lista d\'attesa)',
-    condizioni: { stati: ['disoccupato','pensionato','genitore'], isee: ['basso'], cittad: ['italiana'], figli: ['nessuno','minorenni','disabili'] }
+    desc: 'Per nuclei in difficoltà economica con ISEE sotto 15.000€. Utilizzabile per acquisti alimentari, carburante e abbonamenti trasporti. Selezione automatica dai Comuni. Non cumulabile con ADI o NASpI.',
+    dove: '→ Selezione automatica Comune — ritiro all\'ufficio postale',
+    condizioni: { stati: ['disoccupato','pensionato','genitore'], isee: ['basso','medio_basso'], cittad: ['italiana'], figli: ['nessuno','minorenni','disabili'] }
   },
-
   // ─── STUDENTI ───
   {
     id: 'borsa_ersu',
     nome: '🎓 Borsa di Studio ERSU/DSU 2026',
     importo: 'fino a 6.000€/anno',
     importoClass: 'blue',
-    desc: 'Copre tasse, vitto e alloggio. Bando apre a luglio-settembre. ISEE universitario obbligatorio entro fine agosto.',
-    dove: '→ Portale ERSU/DSU regionale',
+    desc: 'Copre tasse universitarie, vitto e alloggio. Bandi aprono luglio-settembre. ISEE universitario obbligatorio entro fine agosto. Requisiti di merito: crediti minimi dell\'anno precedente.',
+    dove: '→ Portale ERSU/DSU regionale (es. ERSU Palermo, DSU Toscana)',
     condizioni: { stati: ['studente'], isee: ['basso','medio_basso','medio'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
   },
   {
     id: 'esonero_tasse',
-    nome: '🎓 Esonero Tasse Universitarie 2026',
+    nome: '🎓 Esonero Tasse Universitarie',
     importo: 'Tasse ridotte o azzerate',
     importoClass: 'green',
-    desc: 'Con ISEE sotto 22.000€ hai diritto a riduzione o esonero totale delle tasse universitarie.',
+    desc: 'Con ISEE sotto 22.000€ hai diritto a riduzione o esonero totale delle tasse universitarie. Richiede ISEE universitario (diverso dall\'ordinario). Presentare alla segreteria ateneo.',
     dove: '→ Segreteria Ateneo con ISEE universitario',
     condizioni: { stati: ['studente'], isee: ['basso','medio_basso','medio'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
   },
-
   // ─── LAVORATORI DIPENDENTI ───
   {
     id: 'fringe_benefit',
-    nome: '🎁 Fringe Benefit con Figli 2026',
+    nome: '🎁 Fringe Benefit con Figli a Carico',
     importo: 'fino a 2.000€ esentasse',
     importoClass: 'blue',
-    desc: 'Benefit aziendali esenti da tasse fino a 2.000€ per chi ha figli a carico. Richiede comunicazione al datore di lavoro.',
-    dove: '→ Ufficio HR / busta paga',
+    desc: 'Benefit aziendali esenti da tasse fino a 2.000€ per dipendenti con figli a carico. Include rimborso bollette, buoni carburante, buoni spesa. Richiede comunicazione scritta al datore di lavoro.',
+    dove: '→ Ufficio HR / modulo interno aziendale',
     condizioni: { stati: ['dipendente'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['minorenni','disabili'] }
   },
   {
-    id: 'detrazioni_figli',
-    nome: '📊 Detrazioni Fiscali Figli a Carico',
-    importo: 'risparmio fiscale in busta paga',
-    importoClass: 'green',
-    desc: 'Detrazione IRPEF per figli a carico. Comunicalo al datore di lavoro o al CAF in fase di 730.',
-    dove: '→ CAF / dichiarazione redditi',
-    condizioni: { stati: ['dipendente','autonomo'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['minorenni','disabili'] }
-  },
-  {
     id: '730_precompilato',
-    nome: '📋 730 Precompilato 2026 — Detrazioni',
+    nome: '📋 730 Precompilato — Recupero Detrazioni',
     importo: 'Rimborso IRPEF variabile',
     importoClass: 'blue',
-    desc: 'Detrazioni per spese mediche, scolastiche, sport, veterinarie, ristrutturazioni e altro. Invia il 730 entro settembre 2026.',
-    dove: '→ CAF (gratuito) o agenziaentrate.gov.it',
-    condizioni: { stati: ['dipendente'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
+    desc: 'Detrazioni per spese mediche (19%), interessi mutuo, spese scolastiche, ristrutturazioni. Presentazione tramite CAF (gratuita) o direttamente su agenziaentrate.gov.it. Scadenza: 30 settembre.',
+    dove: '→ CAF gratuito o agenziaentrate.gov.it con SPID',
+    condizioni: { stati: ['dipendente','pensionato'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
   },
-
+  // ─── CASA ───
+  {
+    id: 'bonus_ristrutturazione',
+    nome: '🔨 Bonus Ristrutturazione Casa 2026',
+    importo: '50% prima casa / 36% seconda casa',
+    importoClass: 'blue',
+    desc: 'Detrazione IRPEF per lavori di ristrutturazione. 50% per abitazione principale (spesa max 96.000€), 36% per altri immobili. Recupero in 10 rate annuali. Valido fino al 31/12/2026.',
+    dove: '→ CAF / dichiarazione redditi (730 o Unico)',
+    condizioni: { stati: ['dipendente','pensionato','autonomo','genitore'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
+  },
+  {
+    id: 'bonus_affitto',
+    nome: '🏠 Contributo Affitto (Fondo Morosità)',
+    importo: 'variabile per Comune',
+    importoClass: 'blue',
+    desc: 'Contributo del Comune per il pagamento dell\'affitto per inquilini in difficoltà con ISEE basso. Gestito dai singoli Comuni — verifica disponibilità e scadenze nel tuo Comune.',
+    dove: '→ Comune di residenza (servizi sociali)',
+    condizioni: { stati: ['disoccupato','dipendente','genitore'], isee: ['basso','medio_basso'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
+  },
   // ─── PENSIONATI ───
   {
     id: 'integrazione_pensione',
-    nome: '🏦 Integrazione al Minimo Pensione 2026',
-    importo: 'fino a ~600€/mese',
+    nome: '🏦 Integrazione al Minimo Pensione',
+    importo: 'fino a ~598€/mese',
     importoClass: 'green',
-    desc: 'Se la pensione è bassa, INPS la integra fino al minimo vitale rivalutato per il 2026. Si ottiene automaticamente se i redditi sono bassi.',
-    dove: '→ Patronato INPS',
-    condizioni: { stati: ['pensionato'], isee: ['basso','medio_basso'], cittad: ['italiana'], figli: ['nessuno','minorenni','disabili'] }
-  },
-  {
-    id: 'quattordicesima',
-    nome: '💰 Quattordicesima Pensionati 2026',
-    importo: 'fino a 655€ una tantum (luglio)',
-    importoClass: 'green',
-    desc: 'Bonus una tantum erogato a luglio per pensionati con reddito basso (sotto 1,5 volte il trattamento minimo). Importo varia in base agli anni di contribuzione.',
-    dove: '→ Automatico INPS (luglio 2026)',
+    desc: 'Se la pensione è bassa, INPS la integra fino al minimo vitale. Si ottiene automaticamente se i redditi sono bassi. Verifica con il Patronato ogni anno.',
+    dove: '→ Patronato INPS (gratuito)',
     condizioni: { stati: ['pensionato'], isee: ['basso','medio_basso'], cittad: ['italiana'], figli: ['nessuno','minorenni','disabili'] }
   },
   {
     id: 'bonus_anziani',
-    nome: '🧓 Bonus Anziani Non Autosufficienti 2026',
+    nome: '🧓 Bonus Anziani Non Autosufficienti',
     importo: 'fino a 850€/mese',
     importoClass: 'orange',
-    desc: 'Per over 80 non autosufficienti con ISEE sotto 6.000€. Contributo per assistenza domiciliare.',
+    desc: 'Per over 80 non autosufficienti con ISEE sotto 6.000€. Contributo per assistenza domiciliare. Presentare domanda tramite INPS o Patronato.',
     dove: '→ INPS.it o Patronato',
     condizioni: { stati: ['pensionato'], isee: ['basso','medio_basso'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
   },
-
   // ─── DISOCCUPATI ───
   {
     id: 'naspi',
     nome: '💼 NASpI 2026 — Indennità Disoccupazione',
-    importo: '75% dello stipendio (max ~1.550€/mese)',
+    importo: 'max 1.584,70€/mese',
     importoClass: 'orange',
-    desc: 'Per lavoratori dipendenti che hanno perso involontariamente il lavoro. Dura fino a 24 mesi. Richiesta entro 68 giorni dal licenziamento. Massimale 2026: ~1.550,42€/mese.',
-    dove: '→ INPS.it con SPID o Patronato',
+    desc: 'Per dipendenti che hanno perso il lavoro involontariamente. 75% dello stipendio medio degli ultimi 4 anni. Dura max 24 mesi. Domanda entro 68 giorni. Novità 2026: NASpI anticipata in 2 tranche (70%+30%).',
+    dove: '→ INPS.it con SPID o Patronato (entro 68 giorni)',
     condizioni: { stati: ['disoccupato'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
   },
-  {
-    id: 'dis_coll',
-    nome: '📄 DIS-COLL 2026 — Disoccupazione Co.co.co',
-    importo: '75% del reddito precedente',
-    importoClass: 'orange',
-    desc: 'Per collaboratori coordinati e continuativi iscritti alla Gestione Separata INPS che hanno perso il contratto.',
-    dove: '→ INPS.it con SPID',
-    condizioni: { stati: ['disoccupato','autonomo'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
-  },
-
   // ─── PARTITA IVA / AUTONOMI ───
   {
     id: 'regime_forfettario',
-    nome: '📊 Regime Forfettario — Flat Tax 15%',
-    importo: 'Tasse al 15% (5% start-up)',
+    nome: '📊 Regime Forfettario 2026 — Flat Tax 15%',
+    importo: 'Tasse al 15% (5% start-up) — max 85.000€ ricavi',
     importoClass: 'blue',
-    desc: 'Regime fiscale agevolato per autonomi con ricavi sotto 85.000€. Niente IVA, niente ritenute, contabilità semplificata.',
-    dove: '→ Commercialista / Agenzia Entrate',
+    desc: 'Regime fiscale agevolato per autonomi. Niente IVA, contabilità semplificata. Nuova attività: 5% per i primi 5 anni. Contributi INPS ridotti del 35% (50% nei primi 36 mesi per nuove attività).',
+    dove: '→ Apertura gratuita su agenziaentrate.gov.it con SPID',
     condizioni: { stati: ['autonomo'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
   },
-  {
-    id: 'iscro',
-    nome: '📄 ISCRO 2026 — Indennità Straordinaria Autonomi',
-    importo: '25% del reddito precedente per 6 mesi',
-    importoClass: 'orange',
-    desc: 'Per lavoratori autonomi iscritti alla Gestione Separata con calo del reddito ≥50% rispetto alla media biennale. Domanda entro il 31 ottobre.',
-    dove: '→ INPS.it con SPID (entro 31 ottobre)',
-    condizioni: { stati: ['autonomo'], isee: ['basso','medio_basso'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
-  },
-
-  // ─── DISABILI ───
-  {
-    id: 'bonus_disabilita',
-    nome: '♿ Assegno di Accompagnamento / Invalidità 2026',
-    importo: 'da 286€ a 527€/mese',
-    importoClass: 'green',
-    desc: 'Per persone con invalidità riconosciuta. Importo varia in base al grado di invalidità. Non ha limiti di reddito.',
-    dove: '→ INPS.it con verbale INPS o Patronato',
-    condizioni: { stati: ['studente','disoccupato','dipendente','pensionato','genitore','autonomo'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['disabili'] }
-  },
-
   // ─── EXTRA-UE ───
   {
     id: 'ssn_stranieri',
-    nome: '💊 Iscrizione SSN per Stranieri 2026',
-    importo: 'Gratuito con permesso',
+    nome: '💊 Iscrizione SSN per Stranieri',
+    importo: 'Gratuito con permesso regolare',
     importoClass: 'green',
-    desc: 'Con permesso di soggiorno valido hai diritto al medico di base e alle cure del SSN gratuito.',
-    dove: '→ Sportello ASL di residenza',
+    desc: 'Con permesso di soggiorno valido hai diritto a medico di base, tessera sanitaria e cure del SSN gratuite. Iscriviti all\'ASL di residenza.',
+    dove: '→ Sportello ASL di residenza (porta permesso + codice fiscale)',
     condizioni: { stati: ['studente','disoccupato','dipendente','pensionato','genitore','autonomo'], isee: ['basso','medio_basso','medio','alto'], cittad: ['extraue'], figli: ['nessuno','minorenni','disabili'] }
   },
   {
     id: 'reddito_inclusione_stranieri',
-    nome: '🌍 ADI per Stranieri Lungo-soggiornanti',
+    nome: '🌍 ADI per Lungo-soggiornanti Stranieri',
     importo: 'fino a 500€/mese',
     importoClass: 'orange',
-    desc: 'Gli stranieri con permesso CE per soggiornanti di lungo periodo (5 anni) o permesso unico lavoro >6 mesi possono accedere all\'Assegno di Inclusione con ISEE ≤9.360€.',
+    desc: 'Gli stranieri con permesso CE per soggiornanti di lungo periodo (5+ anni di residenza) possono accedere all\'Assegno di Inclusione con le stesse regole dei cittadini italiani.',
     dove: '→ INPS.it con SPID o CAF',
     condizioni: { stati: ['disoccupato','genitore'], isee: ['basso'], cittad: ['extraue'], figli: ['minorenni','disabili'] }
   },
-
-  // ─── CASA ───
+  // ─── DISABILI ───
   {
-    id: 'bonus_affitto',
-    nome: '🏠 Bonus Affitto (Fondo Morosità)',
-    importo: 'variabile per comune',
-    importoClass: 'blue',
-    desc: 'Contributo per il pagamento dell\'affitto per inquilini in difficoltà. Gestito dai singoli Comuni — verifica disponibilità nel tuo Comune.',
-    dove: '→ Comune di residenza (ufficio servizi sociali)',
-    condizioni: { stati: ['disoccupato','dipendente','genitore'], isee: ['basso','medio_basso'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
-  },
-  {
-    id: 'superbonus_detrazione',
-    nome: '🔨 Detrazioni Ristrutturazione Casa 2026',
-    importo: 'dal 36% al 65% della spesa',
-    importoClass: 'blue',
-    desc: 'Detrazione IRPEF per lavori di ristrutturazione, risparmio energetico, sicurezza sismica. Aliquota ridotta al 36% per seconde case dal 2025. Recupero in 10 anni.',
-    dove: '→ CAF / Dichiarazione redditi',
-    condizioni: { stati: ['dipendente','pensionato','autonomo'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['nessuno','minorenni','disabili'] }
+    id: 'bonus_disabilita',
+    nome: '♿ Assegno di Accompagnamento / Invalidità',
+    importo: 'da 286€ a 527€/mese (senza limite reddito)',
+    importoClass: 'green',
+    desc: 'Per persone con invalidità certificata dall\'INPS. Non ha limiti di reddito o ISEE. Importo varia per grado di invalidità. Richiedere visita INPS (Commissione Medica).',
+    dove: '→ INPS.it con SPID o Patronato (con verbale medico)',
+    condizioni: { stati: ['studente','disoccupato','dipendente','pensionato','genitore','autonomo'], isee: ['basso','medio_basso','medio','alto'], cittad: ['italiana','extraue'], figli: ['disabili'] }
   }
 ];
 
@@ -1111,84 +1497,57 @@ function avviaRadarBonusModal() {
     setTimeout(() => document.getElementById('radarComuneInput').style.borderColor = '', 2000);
     return;
   }
-
-  const stato   = document.getElementById('radarStato').value;
-  const figli   = document.getElementById('radarFigli').value;
-  const isee    = document.getElementById('radarIsee').value;
-  const cittad  = document.getElementById('radarCittad').value;
+  const stato = document.getElementById('radarStato').value;
+  const figli = document.getElementById('radarFigli').value;
+  const isee  = document.getElementById('radarIsee').value;
+  const cittad = document.getElementById('radarCittad').value;
 
   const bonusAttivi = BONUS_DB.filter(b => {
     const c = b.condizioni;
-    return c.stati.includes(stato) &&
-           c.figli.includes(figli) &&
-           c.isee.includes(isee) &&
-           c.cittad.includes(cittad);
+    return c.stati.includes(stato) && c.figli.includes(figli) && c.isee.includes(isee) && c.cittad.includes(cittad);
   });
 
   const statoLabel = {
-    studente: 'Studente Universitario',
-    disoccupato: 'Disoccupato / In cerca di lavoro',
-    dipendente: 'Lavoratore Dipendente',
-    pensionato: 'Pensionato',
-    genitore: 'Genitore / Nucleo Familiare',
-    autonomo: 'Lavoratore Autonomo / P.IVA'
+    studente: 'Studente Universitario', disoccupato: 'Disoccupato / In cerca di lavoro',
+    dipendente: 'Lavoratore Dipendente', pensionato: 'Pensionato',
+    genitore: 'Genitore / Nucleo Familiare', autonomo: 'Lavoratore Autonomo / P.IVA'
   }[stato];
 
-  let html = `
-    <div class="bonus-result">
-      <div style="padding-bottom:1rem;border-bottom:1px solid #f0f0f0;margin-bottom:1rem;">
-        <div style="font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:var(--muted);margin-bottom:8px;">
-          📍 ${escapeHtml(comuneVal)} · ${escapeHtml(statoLabel)}
-        </div>
-        <div class="bonus-count-badge">
-          🎯 ${bonusAttivi.length} bonus 2026 trovati per il tuo profilo
-        </div>
-      </div>`;
+  let html = `<div class="bonus-result">
+    <div style="padding-bottom:1rem;border-bottom:1px solid #f0f0f0;margin-bottom:1rem;">
+      <div style="font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:var(--muted);margin-bottom:8px;">
+        📍 ${escapeHtml(comuneVal)} · ${escapeHtml(statoLabel)} · Importi 2026
+      </div>
+      <div class="bonus-count-badge">🎯 ${bonusAttivi.length} bonus trovati per il tuo profilo</div>
+    </div>`;
 
   if (bonusAttivi.length === 0) {
-    html += `<div class="no-bonus">⚠️ Nessun bonus specifico trovato per questo profilo. Considera di aggiornare l'ISEE 2026 o rivolgerti a un CAF per una verifica personalizzata.</div>`;
+    html += `<div class="no-bonus">⚠️ Nessun bonus specifico trovato. Rivolgiti a un CAF per una verifica personalizzata.</div>`;
   } else {
     const priorita = bonusAttivi.filter(b => b.importoClass === 'orange');
     const standard = bonusAttivi.filter(b => b.importoClass !== 'orange');
-
     if (priorita.length > 0) {
       html += `<div class="bonus-section-title">🔴 Bonus Prioritari — Fai domanda subito</div>`;
       priorita.forEach(b => { html += bonusCard(b); });
     }
-
     if (standard.length > 0) {
       html += `<div class="bonus-section-title">✅ Altri Bonus Disponibili</div>`;
       standard.forEach(b => { html += bonusCard(b); });
     }
   }
 
-  html += `
-      <div class="warn-box" style="margin-top:1.25rem;">
-        <strong>⚠️ Nota 2026:</strong> Importi aggiornati alla Legge di Bilancio 2026 e Circ. INPS n.7/2026. Il tuo Comune potrebbe avere agevolazioni locali aggiuntive — chiedi all'ufficio Servizi Sociali del Comune o a un CAF.
-      </div>
-      <div class="partner-box">
-        <div class="partner-text">💼 <strong>Vuoi che qualcuno si occupi di tutto?</strong><br>Un <strong>CAF o patronato</strong> vicino a te può compilare le pratiche al posto tuo, spesso gratuitamente.</div>
-        <button class="partner-btn" onclick="chiudiModalBtn('radarModal'); avviaConsulenza();">🗺️ Trova un esperto vicino a te →</button>
-      </div>
-    </div>`;
+  html += `<div class="warn-box" style="margin-top:1.25rem;"><strong>⚠️ Nota 2026:</strong> Dati aggiornati a giugno 2026. Il tuo Comune potrebbe avere agevolazioni locali aggiuntive — chiedi ai Servizi Sociali o a un CAF.</div>
+    <div class="partner-box">
+      <div class="partner-text">💼 <strong>Vuoi che qualcuno si occupi di tutto?</strong><br>Un <strong>CAF o patronato</strong> vicino a te può compilare le pratiche al posto tuo, spesso gratuitamente.</div>
+      <button class="partner-btn" onclick="chiudiModalBtn('radarModal'); avviaConsulenza();">🗺️ Trova un esperto vicino a te →</button>
+    </div></div>`;
 
   document.getElementById('radarModalResult').innerHTML = html;
-
-  setTimeout(() => {
-    document.getElementById('radarModalResult').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, 100);
+  setTimeout(() => { document.getElementById('radarModalResult').scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
 }
 
 function bonusCard(b) {
-  return `
-    <div class="bonus-card">
-      <div class="bonus-card-header">
-        <div class="bonus-card-name">${b.nome}</div>
-        <span class="bonus-importo ${b.importoClass}">${b.importo}</span>
-      </div>
-      <div class="bonus-desc">${b.desc}</div>
-      <div class="bonus-dove">${b.dove}</div>
-    </div>`;
+  return `<div class="bonus-card"><div class="bonus-card-header"><div class="bonus-card-name">${b.nome}</div><span class="bonus-importo ${b.importoClass}">${b.importo}</span></div><div class="bonus-desc">${b.desc}</div><div class="bonus-dove">${b.dove}</div></div>`;
 }
 
 // =====================================================
@@ -1303,15 +1662,12 @@ function aggiornaStatusBar(tipo, icona, testo) {
 function mostraIframeGoogleMaps(lat, lng, query) {
   currentMapQuery = query;
   const src = `https://maps.google.com/maps?q=${encodeURIComponent(query)}&ll=${lat},${lng}&z=14&output=embed&hl=it`;
-  document.getElementById('mapContent').innerHTML = `
-    <iframe id="googleMapFrame" src="${src}" style="flex:1;width:100%;border:none;min-height:320px;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
+  document.getElementById('mapContent').innerHTML = `<iframe id="googleMapFrame" src="${src}" style="flex:1;width:100%;border:none;min-height:320px;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
   document.getElementById('mapFooter').style.display = 'flex';
 }
 
 function apriGoogleMapsCaf() {
-  if (userLat && userLng) {
-    window.open(`https://www.google.com/maps/search/${encodeURIComponent(currentMapQuery)}/@${userLat},${userLng},14z`, '_blank');
-  }
+  if (userLat && userLng) window.open(`https://www.google.com/maps/search/${encodeURIComponent(currentMapQuery)}/@${userLat},${userLng},14z`, '_blank');
 }
 
 function cercaTipoLuogo(tipo) {
@@ -1325,11 +1681,7 @@ function cercaTipoLuogo(tipo) {
 function avviaConsulenza() {
   userLat = null; userLng = null;
   document.getElementById('mapModalTitle').textContent = 'CAF e Patronati vicino a te';
-  document.getElementById('mapContent').innerHTML = `
-    <div class="map-full-loading" id="mapLoader">
-      <div class="spinner" style="width:36px;height:36px;"></div>
-      <p>Stiamo cercando la tua posizione…<br><small>Concedi l'accesso alla geolocalizzazione quando richiesto.</small></p>
-    </div>`;
+  document.getElementById('mapContent').innerHTML = `<div class="map-full-loading" id="mapLoader"><div class="spinner" style="width:36px;height:36px;"></div><p>Stiamo cercando la tua posizione…<br><small>Concedi l'accesso alla geolocalizzazione quando richiesto.</small></p></div>`;
   document.getElementById('mapFooter').style.display = 'none';
   aggiornaStatusBar('loading-bar', '⏳', 'Rilevamento posizione GPS in corso…');
   document.getElementById('mapModalOverlay').classList.add('open');
@@ -1339,11 +1691,9 @@ function avviaConsulenza() {
     mostraIframeGoogleMaps(41.9028, 12.4964, 'CAF patronato consulenza fiscale Italia');
     return;
   }
-
   navigator.geolocation.getCurrentPosition(
     (pos) => {
-      userLat = pos.coords.latitude;
-      userLng = pos.coords.longitude;
+      userLat = pos.coords.latitude; userLng = pos.coords.longitude;
       const acc = Math.round(pos.coords.accuracy);
       aggiornaStatusBar('', '✅', `Posizione trovata · precisione ${acc < 100 ? 'alta' : acc < 500 ? 'media' : 'bassa'} (±${acc}m)`);
       mostraIframeGoogleMaps(userLat, userLng, 'CAF patronato consulenza fiscale');
@@ -1351,21 +1701,7 @@ function avviaConsulenza() {
     (err) => {
       if (err.code === 1) {
         aggiornaStatusBar('error', '🚫', 'Accesso alla posizione negato');
-        document.getElementById('mapContent').innerHTML = `
-          <div class="map-full-loading">
-            <div class="map-perm-denied">
-              <strong>📍 Posizione non disponibile</strong>
-              Hai negato l'accesso alla geolocalizzazione.<br><br>
-              Per abilitarla:<br>
-              • <strong>Chrome/Edge:</strong> clicca il lucchetto 🔒 nella barra → Posizione → Consenti<br>
-              • <strong>Safari:</strong> Impostazioni → Privacy → Servizi di localizzazione<br>
-              • <strong>Firefox:</strong> barra URL → ✕ → Rimuovi blocco posizione
-            </div>
-            <a href="https://www.google.com/maps/search/CAF+patronato+Italia" target="_blank"
-               style="display:inline-block;margin-top:12px;padding:12px 20px;background:var(--green);color:white;border-radius:10px;font-weight:700;font-family:'Sora',sans-serif;font-size:14px;text-decoration:none;">
-              🔍 Cerca su Google Maps →
-            </a>
-          </div>`;
+        document.getElementById('mapContent').innerHTML = `<div class="map-full-loading"><div class="map-perm-denied"><strong>📍 Posizione non disponibile</strong>Hai negato l'accesso alla geolocalizzazione.<br><br>Per abilitarla:<br>• <strong>Chrome/Edge:</strong> clicca il lucchetto 🔒 nella barra → Posizione → Consenti<br>• <strong>Safari:</strong> Impostazioni → Privacy → Servizi di localizzazione<br>• <strong>Firefox:</strong> barra URL → ✕ → Rimuovi blocco posizione</div><a href="https://www.google.com/maps/search/CAF+patronato+Italia" target="_blank" style="display:inline-block;margin-top:12px;padding:12px 20px;background:var(--green);color:white;border-radius:10px;font-weight:700;font-family:'Sora',sans-serif;font-size:14px;text-decoration:none;">🔍 Cerca su Google Maps →</a></div>`;
       } else {
         aggiornaStatusBar('error', '⚠️', 'Posizione non rilevata — mappa generica');
         mostraIframeGoogleMaps(41.9028, 12.4964, 'CAF patronato consulenza fiscale Italia');
@@ -1375,22 +1711,19 @@ function avviaConsulenza() {
   );
 }
 
-function chiudiMappa(e) {
-  if (e.target === document.getElementById('mapModalOverlay')) chiudiMappaBtn();
-}
+function chiudiMappa(e) { if (e.target === document.getElementById('mapModalOverlay')) chiudiMappaBtn(); }
 function chiudiMappaBtn() {
   document.getElementById('mapModalOverlay').classList.remove('open');
   const frame = document.getElementById('googleMapFrame');
   if (frame) frame.src = '';
 }
 
-// =====================================================
-// UTILITY
-// =====================================================
 function escapeHtml(str) {
   if (!str) return '';
   return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
 </script>
+<a href="https://www.iubenda.com/privacy-policy/24529420" class="iubenda-white iubenda-noiframe iubenda-embed" title="Privacy Policy ">Privacy Policy</a><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
+<a href="https://www.iubenda.com/privacy-policy/24529420/cookie-policy" class="iubenda-white iubenda-noiframe iubenda-embed" title="Cookie Policy ">Cookie Policy</a><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
 </body>
-</html>b
+</html>
