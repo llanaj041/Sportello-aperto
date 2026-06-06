@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<script type="text/javascript" src="https://embeds.iubenda.com/widgets/eb73ec9b-0d3f-421d-856a-d2018da13743.js"></script>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#4A6CF7">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Sportello Aperto">
+<link rel="manifest" href="data:application/json,%7B%22name%22%3A%22Sportello%20Aperto%22%2C%22short_name%22%3A%22Sportello%22%2C%22description%22%3A%22Burocrazia%20italiana%20semplice%22%2C%22start_url%22%3A%22.%2F%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23F5F3EE%22%2C%22theme_color%22%3A%22%234A6CF7%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%2520xmlns%3D%2527http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%2527%2520viewBox%3D%25270%25200%2520512%2520512%2527%253E%253Crect%2520width%3D%2527512%2527%2520height%3D%2527512%2527%2520rx%3D%2527100%2527%2520fill%3D%2527%25234A6CF7%2527%2F%253E%253C%2Fsvg%253E%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%5D%7D">
 <title>Sportello Aperto — Burocrazia Italiana Semplice</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,6 +35,12 @@
   --purple-bg: rgba(124,58,237,0.09);
   --teal: #0D9488;
   --teal-bg: rgba(13,148,136,0.09);
+  --indigo: #4338CA;
+  --indigo-bg: rgba(67,56,202,0.09);
+  --rose: #E11D48;
+  --rose-bg: rgba(225,29,72,0.09);
+  --amber: #B45309;
+  --amber-bg: rgba(180,83,9,0.09);
   --radius: 14px;
   --radius-sm: 8px;
   --shadow: 0 1px 3px rgba(0,0,0,0.07), 0 4px 16px rgba(0,0,0,0.06);
@@ -41,6 +50,23 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* forza iubenda a non creare spazio in cima */
+body > div[id^="iubenda"],
+body > div[class*="iubenda"],
+body > #iubenda-cs-banner,
+body > .iubenda-cs-container,
+#iubenda-cs-banner,
+.iubenda-cs-container,
+[id*="iubenda"],
+[class*="iubenda-cs"] {
+  position: fixed !important;
+  bottom: 0 !important;
+  top: auto !important;
+  z-index: 9999 !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
 
 body {
   font-family: 'Instrument Sans', system-ui, sans-serif;
@@ -220,11 +246,47 @@ body::after {
 .pratica-btn.active.patronato-item { background: var(--orange-bg); color: var(--orange); border-color: rgba(217,119,6,0.25); }
 .pratica-btn.active.pa-item { background: var(--purple-bg); color: var(--purple); border-color: rgba(124,58,237,0.25); }
 
+.pratica-btn.active.salute-item { background: var(--teal-bg); color: var(--teal); border-color: rgba(13,148,136,0.25); }
+.pratica-btn.active.casa-item { background: var(--orange-bg); color: var(--orange); border-color: rgba(217,119,6,0.25); }
+.pratica-btn.active.lavoro-item { background: var(--indigo-bg); color: var(--indigo); border-color: rgba(67,56,202,0.25); }
+.pratica-btn.active.mobilita-item { background: var(--accent-bg); color: var(--accent2); border-color: var(--accent-border); }
+.pratica-btn.active.scuola-item { background: var(--purple-bg); color: var(--purple); border-color: rgba(124,58,237,0.25); }
+.pratica-btn.active.immigrazione-item { background: var(--rose-bg); color: var(--rose); border-color: rgba(225,29,72,0.25); }
+
+.cat-header.salute-h.active { border-color: rgba(13,148,136,0.3); background: var(--teal-bg); color: var(--teal); }
+.cat-header.casa-h.active { border-color: rgba(217,119,6,0.3); background: var(--orange-bg); color: var(--orange); }
+.cat-header.lavoro-h.active { border-color: rgba(67,56,202,0.3); background: var(--indigo-bg); color: var(--indigo); }
+.cat-header.mobilita-h.active { border-color: rgba(74,108,247,0.3); background: var(--accent-bg); color: var(--accent2); }
+.cat-header.scuola-h.active { border-color: rgba(124,58,237,0.3); background: var(--purple-bg); color: var(--purple); }
+.cat-header.immigrazione-h.active { border-color: rgba(225,29,72,0.3); background: var(--rose-bg); color: var(--rose); }
+
+.pratica-icon.salute-icon { background: var(--teal-bg); border: 1px solid rgba(13,148,136,0.2); }
+.pratica-icon.casa-icon { background: var(--orange-bg); border: 1px solid rgba(217,119,6,0.2); }
+.pratica-icon.lavoro-icon { background: var(--indigo-bg); border: 1px solid rgba(67,56,202,0.2); }
+.pratica-icon.mobilita-icon { background: var(--accent-bg); border: 1px solid var(--accent-border); }
+.pratica-icon.scuola-icon { background: var(--purple-bg); border: 1px solid rgba(124,58,237,0.2); }
+.pratica-icon.immigrazione-icon { background: var(--rose-bg); border: 1px solid rgba(225,29,72,0.2); }
+
+.step-num.t { background: var(--teal-bg); color: var(--teal); border-color: rgba(13,148,136,0.3); }
+.step-num.i { background: var(--indigo-bg); color: var(--indigo); border-color: rgba(67,56,202,0.3); }
+.step-num.r { background: var(--rose-bg); color: var(--rose); border-color: rgba(225,29,72,0.3); }
+
+/* Push banner top — always show on first visit */
+.push-top-banner {
+  background: linear-gradient(90deg, #4A6CF7 0%, #1A9E62 100%);
+  color: white; padding: 10px 1.5rem;
+  display: none;
+  align-items: center; gap: 12px;
+  font-size: 13px; font-weight: 600;
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+}
+.push-top-banner .push-close { margin-left:auto; background:rgba(255,255,255,0.2); border:none; color:white; width:24px; height:24px; border-radius:5px; cursor:pointer; font-size:13px; }
+.push-top-banner .push-cta { background:white; color:#4A6CF7; padding:5px 14px; border-radius:6px; border:none; font-size:12px; font-weight:700; cursor:pointer; white-space:nowrap; font-family:'Instrument Sans',sans-serif; }
+.push-top-banner .push-cta:hover { background:#f0f0f0; }
+
 .sidebar-divider {
   height: 1px; background: var(--border2); margin: 0.8rem 0;
 }
-
-/* trova esperto sidebar btn */
 .find-expert-btn {
   width: 100%; margin-top: 1rem;
   padding: 10px 12px;
@@ -472,16 +534,89 @@ body::after {
 }
 .privacy-footer a:hover { background: var(--surface); color: var(--text2); border-color: var(--border2); }
 
+/* ─── HAMBURGER BUTTON ─── */
+.menu-toggle {
+  display: none;
+  width: 40px; height: 40px; border-radius: 9px;
+  border: 1px solid var(--border2); background: var(--surface);
+  align-items: center; justify-content: center;
+  cursor: pointer; flex-shrink: 0;
+  color: var(--text2); transition: all 0.15s;
+}
+.menu-toggle:hover { background: var(--surface2); }
+
+/* ─── MOBILE DRAWER ─── */
+.mob-drawer {
+  display: none;
+  position: fixed; inset: 0; z-index: 9000;
+}
+.mob-drawer.open { display: block; }
+.mob-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(30,26,20,0.5);
+}
+.mob-panel {
+  position: absolute; top: 0; left: 0; bottom: 0;
+  width: 80vw; max-width: 290px;
+  background: var(--surface);
+  border-right: 1px solid var(--border2);
+  padding: 1rem 0.8rem 2rem;
+  overflow-y: auto;
+  transform: translateX(-100%);
+  transition: transform 0.28s cubic-bezier(0.22,1,0.36,1);
+}
+.mob-drawer.open .mob-panel { transform: translateX(0); }
+.mob-close {
+  float: right; width: 30px; height: 30px; border-radius: 6px;
+  border: 1px solid var(--border2); background: var(--surface2);
+  color: var(--text3); font-size: 15px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 8px;
+}
+
+/* ─── INSTALL BANNER ─── */
+.install-banner {
+  display: none;
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 8000;
+  background: var(--surface); border-top: 1px solid var(--border2);
+  box-shadow: 0 -8px 32px rgba(0,0,0,0.12);
+  padding: 1rem 1.2rem calc(1rem + env(safe-area-inset-bottom));
+}
+.install-banner.show { display: block; }
+.install-banner-row {
+  display: flex; align-items: center; gap: 12px; max-width: 500px; margin: 0 auto;
+}
+.install-logo {
+  width: 44px; height: 44px; border-radius: 11px; flex-shrink: 0;
+  background: var(--accent); display: flex; align-items: center; justify-content: center;
+}
+.install-text { flex: 1; }
+.install-text strong { display: block; font-size: 14px; font-weight: 700; }
+.install-text span { font-size: 12px; color: var(--text2); }
+.install-actions { display: flex; gap: 8px; }
+.btn-install {
+  padding: 9px 15px; border-radius: 8px; border: none;
+  background: var(--accent); color: white; font-size: 13px; font-weight: 700;
+  cursor: pointer; font-family: 'Instrument Sans', sans-serif; white-space: nowrap;
+}
+.btn-dismiss {
+  padding: 9px 11px; border-radius: 8px;
+  border: 1px solid var(--border2); background: transparent;
+  color: var(--text3); font-size: 13px; cursor: pointer;
+  font-family: 'Instrument Sans', sans-serif;
+}
+
 /* ─── RESPONSIVE ─── */
 @media (max-width: 768px) {
-  :root { --sidebar-w: 100%; }
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; height: auto; position: static; top: auto; border-right: none; border-bottom: 1px solid var(--border2); padding: 1rem; }
-  .main { padding: 1.2rem 1rem 3rem; }
-  .news-grid { grid-template-columns: 1fr; }
-  .top-search { width: 160px; }
-  .top-search:focus { width: 200px; }
+  .menu-toggle { display: flex; }
   .tagline-small { display: none; }
+  .top-search { width: 140px; }
+  .top-search:focus { width: 180px; }
+  .sidebar { display: none; }
+  .layout { display: block; }
+  .main { padding: 1.2rem 1rem 4rem; }
+  .news-grid { grid-template-columns: 1fr; }
+  .home-hero h1 { font-size: 1.5rem; }
 }
 </style>
 </head>
@@ -489,7 +624,19 @@ body::after {
 
 <!-- TOP BAR -->
 <div class="top-bar">
-  <div class="logo-icon">🚪</div>
+  <button class="menu-toggle" onclick="aprDrawer()" aria-label="Menu">
+    <svg width="18" height="13" viewBox="0 0 18 13" fill="none"><rect width="18" height="2" rx="1" fill="currentColor"/><rect y="5.5" width="18" height="2" rx="1" fill="currentColor"/><rect y="11" width="12" height="2" rx="1" fill="currentColor"/></svg>
+  </button>
+  <div class="logo-icon" style="background:linear-gradient(135deg,#4A6CF7,#1A9E62);border:none;box-shadow:0 2px 10px rgba(74,108,247,0.35);">
+    <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+      <rect x="4" y="6" width="10" height="2.2" rx="1.1" fill="white"/>
+      <rect x="4" y="10.4" width="10" height="2.2" rx="1.1" fill="rgba(255,255,255,0.8)"/>
+      <rect x="4" y="14.8" width="6" height="2.2" rx="1.1" fill="rgba(255,255,255,0.6)"/>
+      <circle cx="19.5" cy="17.5" r="5.5" fill="white" opacity="0.18"/>
+      <circle cx="19.5" cy="17.5" r="4" fill="white"/>
+      <path d="M17.2 17.5l1.8 1.8 3.2-3.6" stroke="#1A9E62" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
   <span class="logo-text">Sportello Aperto</span>
   <span class="tagline-small">La burocrazia italiana semplice • Aggiornato 2026</span>
   <div class="top-bar-right">
@@ -561,6 +708,87 @@ body::after {
         <button class="pratica-btn pa-item" onclick="mostraPratica('edilizia')">🏗️ Pratiche Edilizie / SUAP</button>
         <button class="pratica-btn pa-item" onclick="mostraPratica('iscrizioni')">🎒 Iscrizioni Scolastiche</button>
         <button class="pratica-btn pa-item" onclick="mostraPratica('tributi')">💰 Tributi Locali</button>
+      </div>
+    </div>
+
+    <!-- Salute e Assistenza -->
+    <div class="cat-group">
+      <div class="cat-header salute-h" id="salute-cat" onclick="toggleCat('salute')">
+        <span>🏥</span>
+        <span>Salute e Assistenza</span>
+        <span class="cat-caret">▶</span>
+      </div>
+      <div class="cat-items" id="salute-items">
+        <button class="pratica-btn salute-item" onclick="mostraPratica('cup')">📅 Prenotazioni Sanitarie (CUP)</button>
+        <button class="pratica-btn salute-item" onclick="mostraPratica('medico')">🩺 Scelta del Medico di Base</button>
+        <button class="pratica-btn salute-item" onclick="mostraPratica('esenzioni')">💊 Esenzioni Ticket</button>
+      </div>
+    </div>
+
+    <!-- Casa e Abitare -->
+    <div class="cat-group">
+      <div class="cat-header casa-h" id="casa-cat" onclick="toggleCat('casa')">
+        <span>🏘️</span>
+        <span>Casa e Abitare</span>
+        <span class="cat-caret">▶</span>
+      </div>
+      <div class="cat-items" id="casa-items">
+        <button class="pratica-btn casa-item" onclick="mostraPratica('affitto')">📝 Contratti di Affitto</button>
+        <button class="pratica-btn casa-item" onclick="mostraPratica('primacase')">🏠 Agevolazioni Prima Casa</button>
+        <button class="pratica-btn casa-item" onclick="mostraPratica('utenze')">💡 Utenze (Luce, Gas, Acqua)</button>
+      </div>
+    </div>
+
+    <!-- Lavoro e Concorsi -->
+    <div class="cat-group">
+      <div class="cat-header lavoro-h" id="lavoro-cat" onclick="toggleCat('lavoro')">
+        <span>💼</span>
+        <span>Lavoro e Concorsi</span>
+        <span class="cat-caret">▶</span>
+      </div>
+      <div class="cat-items" id="lavoro-items">
+        <button class="pratica-btn lavoro-item" onclick="mostraPratica('cpi')">🏢 Centro per l'Impiego</button>
+        <button class="pratica-btn lavoro-item" onclick="mostraPratica('concorsi')">📋 Concorsi Pubblici</button>
+      </div>
+    </div>
+
+    <!-- Mobilità -->
+    <div class="cat-group">
+      <div class="cat-header mobilita-h" id="mobilita-cat" onclick="toggleCat('mobilita')">
+        <span>🚗</span>
+        <span>Mobilità</span>
+        <span class="cat-caret">▶</span>
+      </div>
+      <div class="cat-items" id="mobilita-items">
+        <button class="pratica-btn mobilita-item" onclick="mostraPratica('patente')">🪪 Patente di Guida</button>
+        <button class="pratica-btn mobilita-item" onclick="mostraPratica('contrassegno')">♿ Contrassegno Disabili</button>
+      </div>
+    </div>
+
+    <!-- Scuola e Formazione -->
+    <div class="cat-group">
+      <div class="cat-header scuola-h" id="scuola-cat" onclick="toggleCat('scuola')">
+        <span>🎓</span>
+        <span>Scuola e Formazione</span>
+        <span class="cat-caret">▶</span>
+      </div>
+      <div class="cat-items" id="scuola-items">
+        <button class="pratica-btn scuola-item" onclick="mostraPratica('borse')">💰 Borse di Studio</button>
+        <button class="pratica-btn scuola-item" onclick="mostraPratica('iscrizioniscuola')">📚 Iscrizioni Scolastiche</button>
+      </div>
+    </div>
+
+    <!-- Immigrazione -->
+    <div class="cat-group">
+      <div class="cat-header immigrazione-h" id="immigrazione-cat" onclick="toggleCat('immigrazione')">
+        <span>🌍</span>
+        <span>Immigrazione</span>
+        <span class="cat-caret">▶</span>
+      </div>
+      <div class="cat-items" id="immigrazione-items">
+        <button class="pratica-btn immigrazione-item" onclick="mostraPratica('cittadinanza')">🇮🇹 Cittadinanza Italiana</button>
+        <button class="pratica-btn immigrazione-item" onclick="mostraPratica('permesso')">📄 Permesso di Soggiorno</button>
+        <button class="pratica-btn immigrazione-item" onclick="mostraPratica('ricongiungimento')">👨‍👩‍👧 Ricongiungimento Familiare</button>
       </div>
     </div>
 
@@ -686,8 +914,8 @@ body::after {
       </div>
       <div class="info-section">
         <div class="info-section-title">🔗 Link Ufficiali</div>
-        <a class="link-ufficiale" href="https://www.agenziaentrate.gov.it/portale/web/guest/dichiarazioni/730-precompilato" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">730 Precompilato <span class="badge-official">UFFICIALE</span></div><div class="link-url">agenziaentrate.gov.it — dichiarazioni/730-precompilato</div></div><span class="link-arrow">→</span></a>
-        <a class="link-ufficiale" href="https://www.agenziaentrate.gov.it/portale/web/guest/schede/dichiarazioni/mod.-730-persone-fisiche" target="_blank"><div class="link-icon">📄</div><div class="link-text"><div class="link-name">Istruzioni Modello 730/2026 <span class="badge-official">UFFICIALE</span></div><div class="link-url">agenziaentrate.gov.it — modello 730 persone fisiche</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.agenziaentrate.gov.it/portale/dichiarazione-precompilata" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">730 Precompilato <span class="badge-official">UFFICIALE</span></div><div class="link-url">agenziaentrate.gov.it — dichiarazioni/730-precompilato</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.agenziaentrate.gov.it/portale/modello-730" target="_blank"><div class="link-icon">📄</div><div class="link-text"><div class="link-name">Istruzioni Modello 730/2026 <span class="badge-official">UFFICIALE</span></div><div class="link-url">agenziaentrate.gov.it — modello 730 persone fisiche</div></div><span class="link-arrow">→</span></a>
         <a class="link-ufficiale" href="https://www.cafcisl.it/" target="_blank"><div class="link-icon">📋</div><div class="link-text"><div class="link-name">CAF CISL — Prenota appuntamento</div><div class="link-url">cafcisl.it</div></div><span class="link-arrow">→</span></a>
       </div>
       <div class="warn-box">⚠️ <strong>Scadenza 730/2026:</strong> entro il <strong>30 giugno 2026</strong> tramite CAF. Entro il <strong>30 settembre 2026</strong> per l'invio autonomo online. Il 730 integrativo è possibile entro il <strong>25 ottobre 2026</strong>.</div>
@@ -699,38 +927,52 @@ body::after {
         <div class="pratica-icon caf-icon">📝</div>
         <div class="pratica-header-text">
           <h2>Modello RED</h2>
-          <p>Dichiarazione reddituale per pensionati INPS</p>
+          <p>Dichiarazione reddituale annuale per pensionati INPS</p>
         </div>
       </div>
       <div class="info-section">
         <div class="info-section-title">💡 A cosa serve</div>
-        <div class="info-box">Il modello RED è la dichiarazione che i <strong>pensionati INPS</strong> devono presentare per comunicare i redditi propri e dei familiari a carico. Serve all'INPS per verificare il diritto a prestazioni collegate al reddito (pensioni di invalidità, assegni sociali, pensioni ai superstiti) e per calcolare le detrazioni spettanti.</div>
+        <div class="info-box">Il <strong>Modello RED</strong> è la dichiarazione reddituale che alcuni pensionati INPS devono presentare ogni anno per comunicare i redditi propri e dei familiari a carico che non risultano dalle dichiarazioni fiscali ordinarie. L'INPS lo utilizza per verificare il diritto e l'importo corretto di prestazioni legate al reddito:<br><br>
+        • <strong>Pensione di invalidità civile</strong> e assegno di accompagnamento<br>
+        • <strong>Assegno sociale</strong> (ex pensione sociale)<br>
+        • <strong>Pensione ai superstiti</strong> (reversibilità) — l'importo varia in base al reddito del beneficiario<br>
+        • <strong>Integrazioni al minimo</strong> della pensione<br>
+        • <strong>Maggiorazioni sociali</strong> (es. i 70€/mese degli over 70)<br><br>
+        ⚠️ Se non si presenta il RED entro i termini, l'INPS sospende o riduce la prestazione, anche retroattivamente, con possibile richiesta di restituzione di somme già percepite.</div>
       </div>
       <div class="info-section">
         <div class="info-section-title">🪜 Passi da seguire</div>
         <ol class="step-list">
-          <li class="step-item"><div class="step-num g">1</div><div class="step-content"><div class="step-title">Verifica se sei obbligato</div><div class="step-desc">L'INPS invia una comunicazione ai pensionati tenuti a presentare il RED. Se ricevi la lettera, sei obbligato. Il CAF può verificarlo per te.</div></div></li>
-          <li class="step-item"><div class="step-num g">2</div><div class="step-content"><div class="step-title">Raccogli i documenti reddituali</div><div class="step-desc">Raccoglie tutte le certificazioni di reddito del 2025: pensioni estere, redditi da fabbricati, rendite, capitali, ecc.</div></div></li>
-          <li class="step-item"><div class="step-num g">3</div><div class="step-content"><div class="step-title">Presentazione al CAF o online INPS</div><div class="step-desc">Il CAF compila e invia il modello RED gratuitamente. In alternativa puoi inviarlo autonomamente dal sito INPS con SPID/CIE.</div></div></li>
+          <li class="step-item"><div class="step-num g">1</div><div class="step-content"><div class="step-title">Verifica se sei obbligato a presentarlo</div><div class="step-desc">L'INPS invia ogni anno (solitamente tra marzo e giugno) una lettera o comunicazione via portale ai pensionati obbligati. Se ricevi la comunicazione sei obbligato. Il CAF può verificare la tua posizione gratuitamente consultando il PIN o il fascicolo INPS.</div></div></li>
+          <li class="step-item"><div class="step-num g">2</div><div class="step-content"><div class="step-title">Raccogli tutti i documenti reddituali dell'anno precedente</div><div class="step-desc">Servono tutte le fonti di reddito del 2025 non già dichiarate nel 730/CU: pensioni di enti esteri, redditi da fabbricati non tassati a cedolare secca, rendite finanziarie, rendite vitalizie, redditi da lavoro autonomo occasionale, redditi dei familiari a carico che incidono sulla prestazione.</div></div></li>
+          <li class="step-item"><div class="step-num g">3</div><div class="step-content"><div class="step-title">Porta tutto al CAF con la lettera INPS</div><div class="step-desc">Il CAF compila e invia telematicamente il modello RED all'INPS in modo completamente gratuito. È il modo più sicuro per evitare errori. Porta la lettera ricevuta dall'INPS, documento d'identità, codice fiscale, cedolino pensione e tutti i documenti reddituali.</div></div></li>
+          <li class="step-item"><div class="step-num g">4</div><div class="step-content"><div class="step-title">Rispetta la scadenza indicata nella comunicazione INPS</div><div class="step-desc">La scadenza viene indicata nella lettera INPS (solitamente luglio-settembre). Non rispettarla causa sospensione automatica della prestazione. In caso di sospensione, presenta il RED il prima possibile: la pensione viene ripristinata e i ratei sospesi pagati con arretrati.</div></div></li>
         </ol>
       </div>
       <div class="info-section">
         <div class="info-section-title">📎 Documenti necessari</div>
         <ul class="doc-list">
-          <li class="doc-item">Documento d'identità e codice fiscale</li>
-          <li class="doc-item">Cedolino pensione INPS (disponibile sul sito INPS)</li>
-          <li class="doc-item">Certificazione redditi esteri (se percepiti)</li>
-          <li class="doc-item">Certificazione redditi da fabbricati (visura catastale / F24 IMU)</li>
-          <li class="doc-item">Documentazione redditi da capitale o rendite finanziarie</li>
+          <li class="doc-item">Lettera/comunicazione INPS che richiede il RED</li>
+          <li class="doc-item">Documento d'identità e codice fiscale del pensionato</li>
+          <li class="doc-item">Ultimo cedolino di pensione INPS (o estratto conto pensionistico dal portale INPS)</li>
+          <li class="doc-item">Certificazione redditi esteri 2025 (pensioni, rendite, affitti all'estero)</li>
+          <li class="doc-item">Dichiarazione dei redditi dei familiari a carico (se richiesto dalla prestazione)</li>
+          <li class="doc-item">Documentazione redditi da fabbricati 2025 (visure catastali, F24 IMU, contratti affitto)</li>
+          <li class="doc-item">Estratto conto bancario o postale per giacenze e rendite finanziarie (se richiesto)</li>
         </ul>
       </div>
       <div class="info-section">
+        <div class="info-section-title">⚠️ Cosa succede se non si presenta</div>
+        <div class="info-box">L'INPS sospende automaticamente la prestazione alla scadenza indicata. Se la presentazione avviene in ritardo, la pensione viene ripristinata ma le mensilità sospese vengono restituite solo in parte o con calcolo pro-rata. In caso di reddito dichiarato superiore alla soglia, l'INPS riduce l'importo mensile e può chiedere la restituzione delle somme percepite in eccesso negli anni precedenti.</div>
+      </div>
+      <div class="info-section">
         <div class="info-section-title">📍 Dove si fa</div>
-        <div class="dove-box"><p>Al <strong>CAF</strong> gratuitamente oppure direttamente sul <strong>portale INPS</strong> con SPID o CIE. Il patronato può assistere i pensionati più anziani.</p></div>
+        <div class="dove-box"><p>Al <strong>CAF</strong> più vicino (servizio gratuito — consigliato per anziani e per chi non ha familiarità con il digitale). Oppure direttamente sul <strong>portale INPS</strong> con SPID o CIE, sezione "Dichiarazione reddituale RED". Il <strong>Patronato</strong> può assistere i pensionati più anziani anche a domicilio in alcuni casi.</p></div>
       </div>
       <div class="info-section">
         <div class="info-section-title">🔗 Link Ufficiali</div>
-        <a class="link-ufficiale" href="https://www.inps.it/it/it/dettaglio-scheda.schede-servizio-e-prestazioni.50165.dichiarazione-reddituale-red-.html" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Modello RED — INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — dichiarazione-reddituale-red</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.inps.it/it/dettaglio-scheda.schede-servizio-e-prestazioni.50165.dichiarazione-reddituale-modello-red.html" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Modello RED — Portale INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — dichiarazione-reddituale-red</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.inps.it/it/home.html" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Accesso ai Servizi INPS con SPID/CIE <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — home</div></div><span class="link-arrow">→</span></a>
       </div>
     </div>
 
@@ -773,8 +1015,8 @@ body::after {
       </div>
       <div class="info-section">
         <div class="info-section-title">🔗 Link Ufficiali</div>
-        <a class="link-ufficiale" href="https://www.inps.it/it/it/dettaglio-scheda.schede-servizio-e-prestazioni.50090.isee.html" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">ISEE — Portale INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — isee</div></div><span class="link-arrow">→</span></a>
-        <a class="link-ufficiale" href="https://servizi.inps.it/servizi/IseePrestazioni/" target="_blank"><div class="link-icon">📊</div><div class="link-text"><div class="link-name">ISEE Precompilato Online <span class="badge-official">UFFICIALE</span></div><div class="link-url">servizi.inps.it — IseePrestazioni</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.inps.it/it/dettaglio-scheda.schede-servizio-e-prestazioni.50090.indicatore-della-situazione-economica-equivalente-isee-.html" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">ISEE — Portale INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — isee</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.inps.it/it/home.html" target="_blank"><div class="link-icon">📊</div><div class="link-text"><div class="link-name">ISEE Precompilato Online <span class="badge-official">UFFICIALE</span></div><div class="link-url">servizi.inps.it — IseePrestazioni</div></div><span class="link-arrow">→</span></a>
       </div>
       <div class="warn-box">⚠️ L'ISEE scade il <strong>31 dicembre</strong> di ogni anno. Per non perdere agevolazioni nel 2027, rinnovalo prima della fine del 2026.</div>
     </div>
@@ -816,7 +1058,7 @@ body::after {
       <div class="info-section">
         <div class="info-section-title">🔗 Link Ufficiali</div>
         <a class="link-ufficiale" href="https://www.finanze.gov.it/it/fiscalita-locale/IMU/" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">IMU — Ministero delle Finanze <span class="badge-official">UFFICIALE</span></div><div class="link-url">finanze.gov.it — fiscalita-locale/IMU</div></div><span class="link-arrow">→</span></a>
-        <a class="link-ufficiale" href="https://www.agenziaentrate.gov.it/portale/web/guest/schede/versamenti/modello-f24" target="_blank"><div class="link-icon">📄</div><div class="link-text"><div class="link-name">Modello F24 — Agenzia delle Entrate <span class="badge-official">UFFICIALE</span></div><div class="link-url">agenziaentrate.gov.it — modello-f24</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.agenziaentrate.gov.it/portale/modello-f24" target="_blank"><div class="link-icon">📄</div><div class="link-text"><div class="link-name">Modello F24 — Agenzia delle Entrate <span class="badge-official">UFFICIALE</span></div><div class="link-url">agenziaentrate.gov.it — modello-f24</div></div><span class="link-arrow">→</span></a>
       </div>
       <div class="warn-box">⚠️ <strong>Scadenze IMU 2026:</strong> Prima rata entro il <strong>16 giugno 2026</strong>. Saldo entro il <strong>16 dicembre 2026</strong>.</div>
     </div>
@@ -848,9 +1090,9 @@ body::after {
       </div>
       <div class="info-section">
         <div class="info-section-title">🔗 Link Ufficiali</div>
-        <a class="link-ufficiale" href="https://www.inps.it/it/it/dettaglio-scheda.schede-servizio-e-prestazioni.50100.assegno-unico-e-universale-per-i-figli-a-carico.html" target="_blank"><div class="link-icon">👶</div><div class="link-text"><div class="link-name">Assegno Unico Universale — INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — assegno-unico-universale</div></div><span class="link-arrow">→</span></a>
-        <a class="link-ufficiale" href="https://www.acquirenteunico.it/servizi/bonus-sociale" target="_blank"><div class="link-icon">⚡</div><div class="link-text"><div class="link-name">Bonus Sociale Bollette <span class="badge-official">UFFICIALE</span></div><div class="link-url">acquirenteunico.it — bonus-sociale</div></div><span class="link-arrow">→</span></a>
-        <a class="link-ufficiale" href="https://www.inps.it/it/it/dettaglio-scheda.schede-servizio-e-prestazioni.50180.bonus-asilo-nido-e-forme-di-supporto-presso-la-propria-abitazione.html" target="_blank"><div class="link-icon">🍼</div><div class="link-text"><div class="link-name">Bonus Nido — INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — bonus-asilo-nido</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.inps.it/it/dettaglio-scheda.schede-servizio-e-prestazioni.50100.assegno-unico-e-universale.html" target="_blank"><div class="link-icon">👶</div><div class="link-text"><div class="link-name">Assegno Unico Universale — INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — assegno-unico-universale</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.arera.it/it/bonus_sociali.html" target="_blank"><div class="link-icon">⚡</div><div class="link-text"><div class="link-name">Bonus Sociale Bollette <span class="badge-official">UFFICIALE</span></div><div class="link-url">acquirenteunico.it — bonus-sociale</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.inps.it/it/dettaglio-scheda.schede-servizio-e-prestazioni.50180.bonus-asilo-nido.html" target="_blank"><div class="link-icon">🍼</div><div class="link-text"><div class="link-name">Bonus Nido — INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — bonus-asilo-nido</div></div><span class="link-arrow">→</span></a>
       </div>
     </div>
 
@@ -865,35 +1107,51 @@ body::after {
       </div>
       <div class="info-section">
         <div class="info-section-title">💡 A cosa serve</div>
-        <div class="info-box">La dichiarazione di successione è obbligatoria entro <strong>12 mesi dalla data del decesso</strong> e va presentata all'Agenzia delle Entrate. Serve a comunicare il patrimonio del defunto (immobili, conti, titoli, veicoli) e a liquidare l'eventuale imposta di successione.</div>
+        <div class="info-box">La <strong>dichiarazione di successione</strong> è l'adempimento fiscale obbligatorio che deve essere presentato all'Agenzia delle Entrate entro <strong>12 mesi dalla data del decesso</strong>. Serve a comunicare il patrimonio lasciato dal defunto (l'asse ereditario) e a liquidare l'eventuale <strong>imposta di successione</strong>.<br><br>
+        È obbligatoria salvo che:<br>
+        • l'eredità è devoluta al coniuge e/o ai parenti in linea retta (figli, genitori)<br>
+        • l'attivo ereditario netto non supera <strong>100.000€</strong><br>
+        • non comprende beni immobili o diritti reali immobiliari<br><br>
+        Se si eredita un immobile, la dichiarazione di successione è <strong>sempre obbligatoria</strong> indipendentemente dal valore, perché serve per volturare il catasto a nome degli eredi.</div>
       </div>
       <div class="info-section">
         <div class="info-section-title">🪜 Passi da seguire</div>
         <ol class="step-list">
-          <li class="step-item"><div class="step-num g">1</div><div class="step-content"><div class="step-title">Raccoglie la documentazione entro 12 mesi</div><div class="step-desc">Il termine è perentorio: 12 mesi dalla data del decesso. In caso di violazione si applicano sanzioni.</div></div></li>
-          <li class="step-item"><div class="step-num g">2</div><div class="step-content"><div class="step-title">Compila il modello con il CAF o un professionista</div><div class="step-desc">Il CAF o un notaio compilano il modello SuccessioniOnLine e lo trasmettono telematicamente all'Agenzia delle Entrate.</div></div></li>
-          <li class="step-item"><div class="step-num g">3</div><div class="step-content"><div class="step-title">Paga le imposte con F24 Elide</div><div class="step-desc">L'imposta di successione si calcola sul valore dell'asse ereditario. Esistono franchigie: 1 milione per coniuge/figli, 100.000€ per fratelli/sorelle.</div></div></li>
+          <li class="step-item"><div class="step-num g">1</div><div class="step-content"><div class="step-title">Entro 12 mesi dal decesso: raccoglie tutta la documentazione</div><div class="step-desc">Il termine è perentorio. In caso di ritardo si applicano sanzioni (dal 30% dell'imposta + interessi). In caso di omissione totale la sanzione va dal 120% al 240% dell'imposta. Inizia subito a raccogliere i documenti.</div></div></li>
+          <li class="step-item"><div class="step-num g">2</div><div class="step-content"><div class="step-title">Verifica se c'è un testamento</div><div class="step-desc">Se il defunto ha lasciato testamento, questo va pubblicato da un notaio prima della dichiarazione di successione. Il notaio verifica l'autenticità e le quote assegnate. In assenza di testamento si applica la successione legittima (coniuge, figli, genitori secondo quote di legge).</div></div></li>
+          <li class="step-item"><div class="step-num g">3</div><div class="step-content"><div class="step-title">Calcola l'asse ereditario con il CAF o un professionista</div><div class="step-desc">L'asse ereditario comprende: immobili (valore catastale rivalutato), conti correnti e depositi (saldo al giorno del decesso), titoli e investimenti (valore al decesso), autoveicoli, crediti. Si deducono i debiti del defunto documentati (mutui residui, debiti accertati).</div></div></li>
+          <li class="step-item"><div class="step-num g">4</div><div class="step-content"><div class="step-title">Compila e presenta il modello online</div><div class="step-desc">Il modello si compila e si trasmette online tramite il portale <strong>SuccessioniOnLine</strong> dell'Agenzia delle Entrate (con SPID/CIE), oppure tramite CAF abilitato o notaio. Il CAF è consigliato per patrimoni non troppo complessi e costa molto meno del notaio.</div></div></li>
+          <li class="step-item"><div class="step-num g">5</div><div class="step-content"><div class="step-title">Paga l'imposta con F24 Elide</div><div class="step-desc">L'imposta si calcola sulla quota ereditata da ciascun erede, al netto delle franchigie:<br>• <strong>Coniuge e figli:</strong> franchigia 1.000.000€ per erede, aliquota 4% sul superamento<br>• <strong>Fratelli/sorelle:</strong> franchigia 100.000€, aliquota 6%<br>• <strong>Altri parenti fino al 4° grado:</strong> nessuna franchigia, aliquota 6%<br>• <strong>Altri soggetti:</strong> nessuna franchigia, aliquota 8%<br>• <strong>Persone con disabilità grave:</strong> franchigia 1.500.000€</div></div></li>
+          <li class="step-item"><div class="step-num g">6</div><div class="step-content"><div class="step-title">Voltura catastale degli immobili</div><div class="step-desc">Dopo la dichiarazione di successione, gli eredi devono presentare la domanda di voltura catastale per trasferire gli immobili a loro nome. Il CAF o il notaio la presentano contestualmente. Senza voltura non è possibile vendere o ipotecare l'immobile ereditato.</div></div></li>
         </ol>
       </div>
       <div class="info-section">
         <div class="info-section-title">📎 Documenti necessari</div>
         <ul class="doc-list">
-          <li class="doc-item">Certificato di morte del defunto</li>
-          <li class="doc-item">Stato di famiglia storico del defunto</li>
-          <li class="doc-item">Documenti d'identità e codici fiscali di tutti gli eredi</li>
-          <li class="doc-item">Atti di proprietà degli immobili / visure catastali</li>
-          <li class="doc-item">Saldi conti correnti e dossier titoli al giorno del decesso</li>
-          <li class="doc-item">Certificazione veicoli (Carta di circolazione)</li>
-          <li class="doc-item">Eventuale testamento (atto notarile)</li>
+          <li class="doc-item">Certificato di morte del defunto (rilasciato dal Comune)</li>
+          <li class="doc-item">Stato di famiglia storico del defunto (dal Comune, per ricostruire i rapporti familiari)</li>
+          <li class="doc-item">Documento d'identità e codice fiscale di tutti gli eredi</li>
+          <li class="doc-item">Eventuale testamento (originale o copia autentica notarile)</li>
+          <li class="doc-item">Visure catastali e atti di proprietà di tutti gli immobili del defunto</li>
+          <li class="doc-item">Estratto conto e saldo certificato dei conti correnti e libretti postali al giorno del decesso</li>
+          <li class="doc-item">Dossier titoli valorizzato al giorno del decesso (dalla banca)</li>
+          <li class="doc-item">Carta di circolazione di autoveicoli intestati al defunto</li>
+          <li class="doc-item">Documentazione di eventuali debiti del defunto (mutui residui, finanziamenti)</li>
+          <li class="doc-item">Planimetrie catastali degli immobili (per la voltura)</li>
         </ul>
       </div>
       <div class="info-section">
+        <div class="info-section-title">⚠️ Attenzione: accettazione o rinuncia all'eredità</div>
+        <div class="info-box">Prima di presentare la dichiarazione di successione, gli eredi devono decidere se <strong>accettare</strong> l'eredità (anche con beneficio di inventario) o <strong>rinunciarvi</strong>. La rinuncia si fa con atto notarile. Il <strong>beneficio di inventario</strong> protegge l'erede dai debiti del defunto superiori all'attivo: va presentato al Tribunale entro 3 mesi dall'apertura della successione se si è già in possesso dei beni, o entro 10 anni altrimenti.</div>
+      </div>
+      <div class="info-section">
         <div class="info-section-title">📍 Dove si fa</div>
-        <div class="dove-box"><p>Online tramite il portale <strong>SuccessioniOnLine dell'Agenzia delle Entrate</strong> con SPID/CIE, oppure con l'assistenza di un <strong>CAF abilitato</strong> o di un <strong>notaio</strong>.</p></div>
+        <div class="dove-box"><p>Online tramite il portale <strong>SuccessioniOnLine dell'Agenzia delle Entrate</strong> con SPID/CIE. Oppure con l'assistenza di un <strong>CAF abilitato</strong> (consigliato per la semplicità e il costo contenuto) o di un <strong>notaio</strong> (obbligatorio se il patrimonio è complesso o ci sono controversie tra eredi).</p></div>
       </div>
       <div class="info-section">
         <div class="info-section-title">🔗 Link Ufficiali</div>
-        <a class="link-ufficiale" href="https://www.agenziaentrate.gov.it/portale/web/guest/schede/versamenti/dichiarazione-di-successione" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Dichiarazione di Successione — Agenzia delle Entrate <span class="badge-official">UFFICIALE</span></div><div class="link-url">agenziaentrate.gov.it — dichiarazione-di-successione</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.agenziaentrate.gov.it/portale/dichiarazione-di-successione" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Successioni Online — Agenzia delle Entrate <span class="badge-official">UFFICIALE</span></div><div class="link-url">agenziaentrate.gov.it — dichiarazione-di-successione</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.agenziaentrate.gov.it/portale/modello-f24" target="_blank"><div class="link-icon">📄</div><div class="link-text"><div class="link-name">Modello F24 Elide — Pagamento Imposte <span class="badge-official">UFFICIALE</span></div><div class="link-url">agenziaentrate.gov.it — modello-f24</div></div><span class="link-arrow">→</span></a>
       </div>
     </div>
 
@@ -905,39 +1163,58 @@ body::after {
         <div class="pratica-icon patronato-icon">👴</div>
         <div class="pratica-header-text">
           <h2>Pensioni 2026</h2>
-          <p>Pensione di vecchiaia, anticipata, Quota 103, Opzione Donna</p>
+          <p>Pensione di vecchiaia, anticipata, Quota 103, Opzione Donna, APe Sociale</p>
         </div>
       </div>
       <div class="info-section">
-        <div class="info-section-title">💡 A cosa serve</div>
-        <div class="info-box">La domanda di pensione va presentata all'INPS prima del raggiungimento dei requisiti. Nel 2026 le principali tipologie sono: <strong>Pensione di vecchiaia</strong> (67 anni + 20 contributi), <strong>Pensione anticipata</strong> (42a10m/41a10m), <strong>Quota 103</strong> (62 anni + 41 anni contributi), <strong>Opzione Donna</strong>, <strong>APe Sociale</strong> per categorie gravose.</div>
+        <div class="info-section-title">💡 Le tipologie di pensione nel 2026</div>
+        <div class="info-box">
+        🔵 <strong>Pensione di Vecchiaia:</strong> 67 anni di età + almeno 20 anni di contributi. Importo: calcolato sul montante contributivo (sistema misto o contributivo puro). È la pensione "ordinaria".<br><br>
+        ⏩ <strong>Pensione Anticipata:</strong> indipendentemente dall'età, con <strong>42 anni e 10 mesi</strong> di contributi (uomini) o <strong>41 anni e 10 mesi</strong> (donne). Finestra mobile di 3 mesi.<br><br>
+        🟠 <strong>Quota 103:</strong> almeno <strong>62 anni</strong> di età + <strong>41 anni</strong> di contributi. Importo massimo: 4 volte il minimo INPS (~2.200€/mese). Finestra di 7 mesi (dipendenti) o 9 mesi (autonomi).<br><br>
+        👩 <strong>Opzione Donna:</strong> donne con almeno <strong>61 anni</strong> (ridotto in presenza di figli) + <strong>35 anni</strong> di contributi in categorie gravose (caregiver, invalide, dipendenti da aziende in crisi). Calcolo interamente contributivo.<br><br>
+        🤝 <strong>APe Sociale:</strong> 63 anni e 5 mesi + 30/36 anni di contributi per categorie specifiche (disoccupati, caregiver, lavoratori gravosi, invalidi ≥74%). Indennità mensile fino alla pensione ordinaria.<br><br>
+        🎓 <strong>Pensione anticipata contributiva:</strong> chi ha iniziato a lavorare dopo il 1995 (sistema contributivo puro): 64 anni + 20 anni contributi + importo pensione ≥ 3 volte il minimo INPS.</div>
       </div>
       <div class="info-section">
         <div class="info-section-title">🪜 Passi da seguire</div>
         <ol class="step-list">
-          <li class="step-item"><div class="step-num o">1</div><div class="step-content"><div class="step-title">Verifica i requisiti con l'estratto conto contributivo</div><div class="step-desc">Accedi al portale INPS con SPID/CIE e controlla il tuo estratto conto previdenziale. Il Patronato lo fa per te gratuitamente.</div></div></li>
-          <li class="step-item"><div class="step-num o">2</div><div class="step-content"><div class="step-title">Scegli la tipologia di pensione più conveniente</div><div class="step-desc">Il Patronato analizza la tua situazione e ti consiglia il tipo di pensione più vantaggioso in base all'importo e all'età di uscita.</div></div></li>
-          <li class="step-item"><div class="step-num o">3</div><div class="step-content"><div class="step-title">Presenta domanda all'INPS</div><div class="step-desc">La domanda si presenta online sul portale INPS oppure tramite Patronato (consigliato). Serve SPID o CIE.</div></div></li>
-          <li class="step-item"><div class="step-num o">4</div><div class="step-content"><div class="step-title">Attendi la decorrenza</div><div class="step-desc">La pensione decorre dal mese successivo alla presentazione della domanda (o dalla finestra prevista). Il Patronato monitora la pratica.</div></div></li>
+          <li class="step-item"><div class="step-num o">1</div><div class="step-content"><div class="step-title">Controlla l'estratto conto contributivo INPS</div><div class="step-desc">Accedi al portale INPS con SPID/CIE → "Il mio fascicolo previdenziale" → "Estratto conto". Verifica il totale delle settimane/anni di contribuzione e le gestioni (INPS lavoratori dipendenti, artigiani, commercianti, gestione separata). Il Patronato lo fa gratuitamente per te e interpreta i dati.</div></div></li>
+          <li class="step-item"><div class="step-num o">2</div><div class="step-content"><div class="step-title">Verifica la data di maturazione dei requisiti</div><div class="step-desc">Usa il simulatore INPS "La mia pensione futura" per calcolare la data esatta e l'importo stimato. Il Patronato effettua un calcolo più preciso considerando tutte le gestioni, eventuali periodi di cassa integrazione, congedi, riscatti e ricongiunzioni.</div></div></li>
+          <li class="step-item"><div class="step-num o">3</div><div class="step-content"><div class="step-title">Richiedi il riconoscimento di periodi non ancora accreditati</div><div class="step-desc">Se hai lacune contributive (periodi di CIG, lavoro nero, servizio militare, laurea), il Patronato verifica se è possibile recuperarli con ricongiunzione, totalizzazione o riscatto. Questa operazione può anticipare di mesi o anni la data di pensionamento.</div></div></li>
+          <li class="step-item"><div class="step-num o">4</div><div class="step-content"><div class="step-title">Presenta la domanda di pensione con congruo anticipo</div><div class="step-desc">Presenta la domanda almeno 3-4 mesi prima della data di pensionamento prevista (alcune tipologie hanno finestre di 7-9 mesi). La domanda si presenta tramite Patronato (consigliato) o portale INPS con SPID/CIE. Comunicare al datore di lavoro la data di cessazione.</div></div></li>
+          <li class="step-item"><div class="step-num o">5</div><div class="step-content"><div class="step-title">Attendi la liquidazione e il cedolino</div><div class="step-desc">L'INPS liquida la pensione e invia il primo cedolino. Se l'importo è diverso dal previsto, il Patronato può fare ricorso amministrativo all'INPS o ricorso al giudice del lavoro. Verifica sempre che tutti i periodi contributivi siano stati considerati.</div></div></li>
         </ol>
       </div>
       <div class="info-section">
         <div class="info-section-title">📎 Documenti necessari</div>
         <ul class="doc-list">
           <li class="doc-item">Documento d'identità e codice fiscale</li>
-          <li class="doc-item">Estratto conto contributivo INPS (scaricabile con SPID)</li>
-          <li class="doc-item">IBAN del conto corrente su cui accreditare la pensione</li>
-          <li class="doc-item">Per Quota 103 / Opzione Donna: documentazione specifica dell'ultimo datore di lavoro</li>
+          <li class="doc-item">Estratto conto contributivo INPS (scaricabile con SPID dal portale INPS)</li>
+          <li class="doc-item">Buste paga degli ultimi mesi o CU dell'ultimo anno</li>
+          <li class="doc-item">IBAN del conto corrente o libretto postale per l'accredito della pensione</li>
+          <li class="doc-item">Per Quota 103/Opzione Donna/APe Sociale: documentazione specifica (attestato datore di lavoro, certificato invalidità, ecc.)</li>
+          <li class="doc-item">Eventuale libretto di lavoro o documenti di periodi contributivi non INPS (casse professionali, esteri)</li>
         </ul>
       </div>
       <div class="info-section">
+        <div class="info-section-title">⚠️ Cose importanti</div>
+        <div class="info-box">
+        • <strong>Cumulo contributi:</strong> se hai versato contributi in gestioni diverse (INPS + casse professionali), puoi cumulare gratuitamente i periodi senza oneri. Il Patronato gestisce la procedura.<br>
+        • <strong>Totalizzazione:</strong> alternativa al cumulo per periodi internazionali o in casse non cumulabili.<br>
+        • <strong>Pensione e lavoro:</strong> alcune pensioni anticipate sono cumulabili con redditi da lavoro solo entro certi limiti. Verifica sempre prima di riprendere a lavorare.<br>
+        • <strong>Maggiorazioni e supplementi:</strong> una volta in pensione, se hai accumulato ulteriori contributi da lavoro, puoi richiedere un supplemento di pensione ogni 2 anni.
+        </div>
+      </div>
+      <div class="info-section">
         <div class="info-section-title">📍 Dove si fa</div>
-        <div class="dove-box"><p>Tramite <strong>Patronato</strong> (gratuito — INCA CGIL, INAS CISL, ITAL UIL, ACLI, ecc.) oppure direttamente sul <strong>portale INPS</strong> con SPID/CIE.</p></div>
+        <div class="dove-box"><p>Tramite <strong>Patronato</strong> (gratuito e vivamente consigliato — INCA CGIL, INAS CISL, ITAL UIL, ACLI, ENPAS, ecc.) oppure direttamente sul <strong>portale INPS</strong> con SPID/CIE. Il Patronato monitora la pratica fino alla liquidazione e gestisce eventuali ricorsi.</p></div>
       </div>
       <div class="info-section">
         <div class="info-section-title">🔗 Link Ufficiali</div>
-        <a class="link-ufficiale" href="https://www.inps.it/it/it/dettaglio-scheda.schede-servizio-e-prestazioni.50082.pensione-di-vecchiaia.html" target="_blank"><div class="link-icon">👴</div><div class="link-text"><div class="link-name">Pensione di Vecchiaia — INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — pensione-di-vecchiaia</div></div><span class="link-arrow">→</span></a>
-        <a class="link-ufficiale" href="https://www.inps.it/it/it/dettaglio-scheda.schede-servizio-e-prestazioni.50081.pensione-anticipata.html" target="_blank"><div class="link-icon">⏩</div><div class="link-text"><div class="link-name">Pensione Anticipata — INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — pensione-anticipata</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.inps.it/it/dettaglio-scheda.schede-servizio-e-prestazioni.50082.pensione-di-vecchiaia.html" target="_blank"><div class="link-icon">👴</div><div class="link-text"><div class="link-name">Pensione di Vecchiaia — INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — pensione-di-vecchiaia</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.inps.it/it/dettaglio-scheda.schede-servizio-e-prestazioni.50081.pensione-anticipata.html" target="_blank"><div class="link-icon">⏩</div><div class="link-text"><div class="link-name">Pensione Anticipata — INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — pensione-anticipata</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.inps.it/it/home.html" target="_blank"><div class="link-icon">📊</div><div class="link-text"><div class="link-name">La Mia Pensione Futura — Simulatore INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — la-mia-pensione-futura</div></div><span class="link-arrow">→</span></a>
       </div>
     </div>
 
@@ -978,8 +1255,8 @@ body::after {
       </div>
       <div class="info-section">
         <div class="info-section-title">🔗 Link Ufficiali</div>
-        <a class="link-ufficiale" href="https://www.inps.it/it/it/dettaglio-scheda.schede-servizio-e-prestazioni.50091.naspi.html" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">NASpI — Portale INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — naspi</div></div><span class="link-arrow">→</span></a>
-        <a class="link-ufficiale" href="https://servizi.inps.it/servizi/NaspiOnline/" target="_blank"><div class="link-icon">💻</div><div class="link-text"><div class="link-name">NASpI Online — Domanda digitale <span class="badge-official">UFFICIALE</span></div><div class="link-url">servizi.inps.it — NaspiOnline</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.inps.it/it/dettaglio-scheda.schede-servizio-e-prestazioni.50091.nuova-assicurazione-sociale-per-l-impiego-naspi-.html" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">NASpI — Portale INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — naspi</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.inps.it/it/dettaglio-scheda.schede-servizio-e-prestazioni.50091.nuova-assicurazione-sociale-per-l-impiego-naspi-.html" target="_blank"><div class="link-icon">💻</div><div class="link-text"><div class="link-name">NASpI Online — Domanda digitale <span class="badge-official">UFFICIALE</span></div><div class="link-url">servizi.inps.it — NaspiOnline</div></div><span class="link-arrow">→</span></a>
       </div>
       <div class="warn-box">⚠️ <strong>Dal 2026</strong> la NASpI anticipata viene corrisposta in <strong>due rate</strong>: 70% subito e 30% entro 6 mesi dalla domanda.</div>
     </div>
@@ -990,28 +1267,49 @@ body::after {
         <div class="pratica-icon patronato-icon">🤱</div>
         <div class="pratica-header-text">
           <h2>Maternità / Paternità 2026</h2>
-          <p>Congedo obbligatorio e facoltativo, indennità INPS</p>
+          <p>Congedo obbligatorio, facoltativo e parentale — indennità INPS</p>
         </div>
       </div>
       <div class="info-section">
-        <div class="info-section-title">💡 A cosa serve</div>
-        <div class="info-box"><strong>Congedo di maternità:</strong> 5 mesi obbligatori (2 mesi prima + 3 dopo il parto) con indennità all'80% della retribuzione.<br><br><strong>Congedo di paternità:</strong> 10 giorni obbligatori entro i 5 mesi dalla nascita (aumentato dalla Legge di Bilancio 2025) con indennità al 100%.<br><br><strong>Congedo parentale:</strong> fino a 9 mesi entro i 12 anni del figlio. Nel 2026: 3 mesi al 80% per ciascun genitore, resto al 30%.</div>
+        <div class="info-section-title">💡 I congedi disponibili nel 2026</div>
+        <div class="info-box">
+        🤱 <strong>Congedo di maternità obbligatorio:</strong> 5 mesi totali (flessibili: 1+4 o 2+3 mesi prima/dopo il parto). Indennità all'<strong>80% della retribuzione</strong> a carico INPS. Per lavoratrici dipendenti, autonome, parasubordinate e disoccupate (con contribuzione minima).<br><br>
+        👨‍👶 <strong>Congedo di paternità obbligatorio:</strong> <strong>10 giorni lavorativi</strong> (aumentati nel 2025) da usare entro 5 mesi dalla nascita/adozione, anche non continuativi. Indennità al <strong>100% della retribuzione</strong> a carico INPS.<br><br>
+        👪 <strong>Congedo parentale facoltativo:</strong> ciascun genitore può astenersi dal lavoro fino al <strong>12° anno del figlio</strong> per un totale di 9 mesi (entrambi i genitori insieme). Dal 2024: 3 mesi al <strong>80%</strong> per ciascun genitore (non cedibili), restante periodo al 30%.<br><br>
+        🏥 <strong>Congedo per malattia del figlio:</strong> illimitato fino ai 3 anni (senza indennità nei primi 30 giorni poi 30% della retribuzione), fino a 5 giorni all'anno fino agli 8 anni.</div>
       </div>
       <div class="info-section">
-        <div class="info-section-title">🪜 Passi da seguire</div>
+        <div class="info-section-title">🪜 Passi da seguire — lavoratrice dipendente</div>
         <ol class="step-list">
-          <li class="step-item"><div class="step-num o">1</div><div class="step-content"><div class="step-title">Comunica al datore di lavoro l'astensione</div><div class="step-desc">Prima di iniziare il congedo, notifica per iscritto al datore di lavoro. Per il congedo obbligatorio bastano le date previste dalla legge.</div></div></li>
-          <li class="step-item"><div class="step-num o">2</div><div class="step-content"><div class="step-title">Presenta domanda di indennità all'INPS</div><div class="step-desc">Tramite Patronato o portale INPS (per lavoratrici dipendenti e autonome). Il datore di lavoro anticipa l'indennità per le dipendenti.</div></div></li>
+          <li class="step-item"><div class="step-num o">1</div><div class="step-content"><div class="step-title">Comunica al datore di lavoro l'inizio del congedo</div><div class="step-desc">La comunicazione va fatta per iscritto con congruo anticipo (almeno 1 mese prima della data di inizio del congedo obbligatorio). Allega il certificato medico di gravidanza con la data presunta del parto. Per il congedo di paternità: comunica al datore almeno 15 giorni prima, indicando le date.</div></div></li>
+          <li class="step-item"><div class="step-num o">2</div><div class="step-content"><div class="step-title">Presenta domanda di indennità di maternità all'INPS</div><div class="step-desc">Per dipendenti privati: il datore di lavoro anticipa l'indennità e si recupera dall'INPS. Per dipendenti pubblici: l'indennità è pagata direttamente dall'ente. Per autonome e parasubordinate (CO.CO.CO., partite IVA con gestione separata): domanda diretta all'INPS tramite Patronato o portale INPS.</div></div></li>
+          <li class="step-item"><div class="step-num o">3</div><div class="step-content"><div class="step-title">Dopo il parto: comunica la nascita all'INPS e al datore</div><div class="step-desc">Entro 30 giorni dalla nascita del bambino, presenta all'INPS la comunicazione della nascita (tramite portale o Patronato). Aggiorna il datore di lavoro sulla data di fine congedo. Prenota visita neonatale al pediatra entro i primi giorni.</div></div></li>
+          <li class="step-item"><div class="step-num o">4</div><div class="step-content"><div class="step-title">Richiedi il congedo parentale (se necessario)</div><div class="step-desc">Il congedo parentale si comunica al datore di lavoro con almeno 5 giorni di preavviso (2 giorni per congedo a ore). La domanda di indennità si presenta all'INPS tramite Patronato o portale. Valuta la convenienza: i primi 3 mesi all'80% sono i più vantaggiosi.</div></div></li>
         </ol>
       </div>
       <div class="info-section">
+        <div class="info-section-title">📎 Documenti necessari</div>
+        <ul class="doc-list">
+          <li class="doc-item">Certificato medico di gravidanza con data presunta del parto (dal ginecologo)</li>
+          <li class="doc-item">Documento d'identità e codice fiscale</li>
+          <li class="doc-item">Certificato di nascita del bambino (per congedo di paternità e parentale)</li>
+          <li class="doc-item">IBAN per accredito indennità (per autonome e parasubordinate)</li>
+          <li class="doc-item">Per adozione: provvedimento di adozione o affidamento</li>
+        </ul>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">⚠️ Tutele contro il licenziamento</div>
+        <div class="info-box">La lavoratrice è protetta dal <strong>divieto di licenziamento</strong> dall'inizio della gravidanza fino al compimento del primo anno di vita del bambino. Il licenziamento intimato durante questo periodo è nullo (salvo giusta causa). Il Patronato può assistere la lavoratrice in caso di comportamenti illegittimi del datore di lavoro.</div>
+      </div>
+      <div class="info-section">
         <div class="info-section-title">📍 Dove si fa</div>
-        <div class="dove-box"><p>Tramite <strong>Patronato</strong> (gratuito) oppure sul <strong>portale INPS</strong> con SPID/CIE.</p></div>
+        <div class="dove-box"><p>Tramite <strong>Patronato</strong> (gratuito e consigliato per evitare errori) oppure sul <strong>portale INPS</strong> con SPID/CIE. Il datore di lavoro deve essere informato per iscritto dell'inizio del congedo.</p></div>
       </div>
       <div class="info-section">
         <div class="info-section-title">🔗 Link Ufficiali</div>
-        <a class="link-ufficiale" href="https://www.inps.it/it/it/dettaglio-scheda.schede-servizio-e-prestazioni.50099.maternita-congedo-di-maternita-.html" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Congedo di Maternità — INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — maternita-congedo</div></div><span class="link-arrow">→</span></a>
-        <a class="link-ufficiale" href="https://www.inps.it/it/it/dettaglio-scheda.schede-servizio-e-prestazioni.50126.congedo-di-paternita-.html" target="_blank"><div class="link-icon">👨‍👶</div><div class="link-text"><div class="link-name">Congedo di Paternità — INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — congedo-di-paternita</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.inps.it/it/dettaglio-scheda.schede-servizio-e-prestazioni.50099.indennita-di-maternita-obbligatoria.html" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Indennità di Maternità — INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — maternita-obbligatoria</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.inps.it/it/dettaglio-scheda.schede-servizio-e-prestazioni.50126.congedo-di-paternita-obbligatorio.html" target="_blank"><div class="link-icon">👨‍👶</div><div class="link-text"><div class="link-name">Congedo di Paternità Obbligatorio — INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — congedo-paternita</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.inps.it/it/dettaglio-scheda.schede-servizio-e-prestazioni.50100.assegno-unico-e-universale.html" target="_blank"><div class="link-icon">👶</div><div class="link-text"><div class="link-name">Assegno Unico Universale (per ogni figlio) — INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — assegno-unico-universale</div></div><span class="link-arrow">→</span></a>
       </div>
     </div>
 
@@ -1021,29 +1319,49 @@ body::after {
         <div class="pratica-icon patronato-icon">♿</div>
         <div class="pratica-header-text">
           <h2>Invalidità Civile</h2>
-          <p>Riconoscimento disabilità e accesso ai benefici INPS</p>
+          <p>Riconoscimento disabilità, benefici economici e agevolazioni</p>
         </div>
       </div>
       <div class="info-section">
-        <div class="info-section-title">💡 A cosa serve</div>
-        <div class="info-box">Il riconoscimento dell'invalidità civile permette di accedere a: <strong>assegno mensile</strong> (dal 74%), <strong>pensione di invalidità</strong> (dal 100%), indennità di accompagnamento (non deambulanti o non autosufficienti), agevolazioni fiscali, esenzione ticket, parcheggio disabili.</div>
+        <div class="info-section-title">💡 A cosa serve e benefici in base alla percentuale</div>
+        <div class="info-box">Il riconoscimento dell'invalidità civile permette di accedere a una serie di benefici in base alla percentuale riconosciuta dalla commissione medica:<br><br>
+        📋 <strong>Dal 34%:</strong> agevolazioni fiscali (detrazione IRPEF spese mediche senza franchigia), esenzione ticket sanitario per le patologie.<br>
+        💊 <strong>Dal 46%:</strong> esenzione totale dal ticket sanitario (codice esenzione).<br>
+        💼 <strong>Dal 46% al 67%:</strong> collocamento mirato obbligatorio (categorie protette — le aziende devono assumere disabili).<br>
+        💰 <strong>Dal 74%:</strong> assegno mensile INPS (≈ 333€/mese nel 2026) per chi ha reddito basso e non lavora.<br>
+        💰 <strong>Al 100%:</strong> pensione di inabilità INPS (≈ 333€/mese) + eventuale indennità di accompagnamento se non deambulante o non autosufficiente (≈ 534€/mese).<br>
+        🚗 <strong>Indennità di accompagnamento:</strong> per chi non è in grado di deambulare senza aiuto o di compiere gli atti quotidiani della vita autonomamente. Non dipende dal reddito.<br>
+        🚙 <strong>Agevolazioni auto:</strong> IVA agevolata (4%) sull'acquisto veicolo, detrazione IRPEF, esenzione bollo auto per alcune categorie.</div>
       </div>
       <div class="info-section">
         <div class="info-section-title">🪜 Passi da seguire</div>
         <ol class="step-list">
-          <li class="step-item"><div class="step-num o">1</div><div class="step-content"><div class="step-title">Il medico di base certifica la patologia</div><div class="step-desc">Il medico invia telematicamente all'INPS il certificato medico introduttivo con le patologie che motivano la domanda.</div></div></li>
-          <li class="step-item"><div class="step-num o">2</div><div class="step-content"><div class="step-title">Presenta domanda all'INPS tramite Patronato</div><div class="step-desc">Il Patronato presenta la domanda online entro 90 giorni dall'emissione del certificato medico. In caso contrario il certificato scade.</div></div></li>
-          <li class="step-item"><div class="step-num o">3</div><div class="step-content"><div class="step-title">Visita della commissione medica INPS</div><div class="step-desc">L'INPS convoca per visita presso l'ASL di competenza. Dal 2024 è possibile anche la visita telematica per alcune categorie.</div></div></li>
-          <li class="step-item"><div class="step-num o">4</div><div class="step-content"><div class="step-title">Ricevi il verbale e attiva i benefici</div><div class="step-desc">In caso di accoglimento, il Patronato ti assiste per attivare le prestazioni economiche spettanti.</div></div></li>
+          <li class="step-item"><div class="step-num o">1</div><div class="step-content"><div class="step-title">Il medico di base invia il certificato medico introduttivo all'INPS</div><div class="step-desc">Il medico curante (di base o specialista) compila e invia telematicamente all'INPS il <strong>certificato medico introduttivo</strong> con le diagnosi e le patologie. Ricevi un codice univoco della domanda. Questo certificato ha validità 90 giorni.</div></div></li>
+          <li class="step-item"><div class="step-num o">2</div><div class="step-content"><div class="step-title">Presenta la domanda all'INPS entro 90 giorni</div><div class="step-desc">Tramite Patronato (consigliato) o portale INPS con SPID/CIE. La domanda deve essere presentata entro 90 giorni dall'emissione del certificato medico, altrimenti il certificato scade e bisogna ricominciare. Il Patronato gestisce tutta la procedura gratuitamente.</div></div></li>
+          <li class="step-item"><div class="step-num o">3</div><div class="step-content"><div class="step-title">Visita della commissione medica INPS/ASL</div><div class="step-desc">L'INPS fissa la visita presso la commissione medica integrata (medici INPS + ASL). Ricevi convocazione via raccomandata o SMS. Porta tutti i documenti clinici (cartelle cliniche, referti, lettere di dimissioni ospedaliere, certificazioni specialistiche). Dal 2024 alcune categorie possono essere visitate in modalità telematica o a domicilio.</div></div></li>
+          <li class="step-item"><div class="step-num o">4</div><div class="step-content"><div class="step-title">Ricevi il verbale e impugna se necessario</div><div class="step-desc">Il verbale viene inviato a casa e pubblicato sul portale INPS. Se il riconoscimento non è corretto o la percentuale è troppo bassa, puoi fare <strong>ricorso amministrativo</strong> all'INPS entro 90 giorni, oppure ricorso giudiziario al Tribunale entro 6 mesi. Il Patronato ti assiste in entrambi i casi.</div></div></li>
+          <li class="step-item"><div class="step-num o">5</div><div class="step-content"><div class="step-title">Attiva i benefici economici e le agevolazioni</div><div class="step-desc">Una volta ottenuto il verbale positivo, il Patronato ti aiuta a presentare domanda per le prestazioni economiche spettanti (assegno mensile, pensione, indennità di accompagnamento) e ti informa su tutte le agevolazioni fiscali e pratiche disponibili.</div></div></li>
         </ol>
       </div>
       <div class="info-section">
+        <div class="info-section-title">📎 Documenti da portare alla visita</div>
+        <ul class="doc-list">
+          <li class="doc-item">Documento d'identità e tessera sanitaria</li>
+          <li class="doc-item">Cartella clinica o lettere di dimissioni ospedaliere</li>
+          <li class="doc-item">Referti di visite specialistiche recenti relativi alla patologia</li>
+          <li class="doc-item">Esami di laboratorio e diagnostici (TAC, RMN, radiografie, ecc.)</li>
+          <li class="doc-item">Elenco farmaci assunti (anche foglietti illustrativi)</li>
+          <li class="doc-item">Eventuali verbali di precedenti accertamenti (INPS, ASL, INAIL)</li>
+        </ul>
+      </div>
+      <div class="info-section">
         <div class="info-section-title">📍 Dove si fa</div>
-        <div class="dove-box"><p>Domanda tramite <strong>Patronato</strong> (gratuito e consigliato) o portale INPS. La visita presso la <strong>commissione medica della ASL</strong> di competenza.</p></div>
+        <div class="dove-box"><p>La domanda tramite <strong>Patronato</strong> (gratuito e vivamente consigliato) o portale INPS. La visita presso la <strong>commissione medica della ASL</strong> di competenza. Il Patronato segue tutta la pratica fino all'attivazione dei benefici e gestisce eventuali ricorsi.</p></div>
       </div>
       <div class="info-section">
         <div class="info-section-title">🔗 Link Ufficiali</div>
-        <a class="link-ufficiale" href="https://www.inps.it/it/it/dettaglio-scheda.schede-servizio-e-prestazioni.50068.invalidita-civile.html" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Invalidità Civile — INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — invalidita-civile</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.inps.it/it/dettaglio-scheda.schede-servizio-e-prestazioni.50068.invalidita-civile-cecita-civile-sordomutismo.html" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Invalidità Civile — INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — invalidita-civile</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.inps.it/it/home.html" target="_blank"><div class="link-icon">📋</div><div class="link-text"><div class="link-name">Indennità di Accompagnamento — INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — indennita-di-accompagnamento</div></div><span class="link-arrow">→</span></a>
       </div>
     </div>
 
@@ -1074,7 +1392,7 @@ body::after {
       </div>
       <div class="info-section">
         <div class="info-section-title">🔗 Link Ufficiali</div>
-        <a class="link-ufficiale" href="https://www.inps.it/it/it/dettaglio-scheda.schede-servizio-e-prestazioni.50110.riscatto-di-laurea.html" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Riscatto di Laurea — INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — riscatto-di-laurea</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.inps.it/it/dettaglio-scheda.schede-servizio-e-prestazioni.50110.riscatto-degli-anni-di-laurea.html" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Riscatto di Laurea — INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — riscatto-di-laurea</div></div><span class="link-arrow">→</span></a>
       </div>
     </div>
 
@@ -1105,7 +1423,7 @@ body::after {
       </div>
       <div class="info-section">
         <div class="info-section-title">🔗 Link Ufficiali</div>
-        <a class="link-ufficiale" href="https://www.inail.it/cs/internet/attivita/prestazioni/infortuni-e-malattie-professionali.html" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Infortuni e Malattie Professionali — INAIL <span class="badge-official">UFFICIALE</span></div><div class="link-url">inail.it — infortuni-e-malattie-professionali</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.inail.it/cs/internet/attivita/prestazioni/infortuni-sul-lavoro.html" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Infortuni e Malattie Professionali — INAIL <span class="badge-official">UFFICIALE</span></div><div class="link-url">inail.it — infortuni-e-malattie-professionali</div></div><span class="link-arrow">→</span></a>
       </div>
     </div>
 
@@ -1156,7 +1474,7 @@ body::after {
         <div class="info-section-title">🔗 Link Ufficiali</div>
         <a class="link-ufficiale" href="https://www.spid.gov.it/richiedi-spid" target="_blank"><div class="link-icon">🔑</div><div class="link-text"><div class="link-name">Richiedi SPID — sito ufficiale AGID <span class="badge-official">UFFICIALE</span></div><div class="link-url">spid.gov.it/richiedi-spid</div></div><span class="link-arrow">→</span></a>
         <a class="link-ufficiale" href="https://www.cartaidentita.interno.gov.it/" target="_blank"><div class="link-icon">🪪</div><div class="link-text"><div class="link-name">CIE — Carta d'Identità Elettronica <span class="badge-official">UFFICIALE</span></div><div class="link-url">cartaidentita.interno.gov.it</div></div><span class="link-arrow">→</span></a>
-        <a class="link-ufficiale" href="https://www.agid.gov.it/it/piattaforme/spid" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">SPID — AGID (provider autorizzati) <span class="badge-official">UFFICIALE</span></div><div class="link-url">agid.gov.it/it/piattaforme/spid</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.spid.gov.it/richiedi-spid" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">SPID — AGID (provider autorizzati) <span class="badge-official">UFFICIALE</span></div><div class="link-url">agid.gov.it/it/piattaforme/spid</div></div><span class="link-arrow">→</span></a>
       </div>
     </div>
 
@@ -1197,7 +1515,7 @@ body::after {
       </div>
       <div class="info-section">
         <div class="info-section-title">🔗 Link Ufficiali</div>
-        <a class="link-ufficiale" href="https://www.interno.gov.it/it/temi/identita-digitale-e-anagrafe/anagrafe" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Anagrafe — Ministero dell'Interno <span class="badge-official">UFFICIALE</span></div><div class="link-url">interno.gov.it — anagrafe</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.interno.gov.it/it/temi/identita-digitale-e-anagrafe/anagrafe-e-stato-civile" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Anagrafe — Ministero dell'Interno <span class="badge-official">UFFICIALE</span></div><div class="link-url">interno.gov.it — anagrafe</div></div><span class="link-arrow">→</span></a>
         <a class="link-ufficiale" href="https://anpr.interno.gov.it/" target="_blank"><div class="link-icon">🇮🇹</div><div class="link-text"><div class="link-name">ANPR — Anagrafe Nazionale Popolazione Residente <span class="badge-official">UFFICIALE</span></div><div class="link-url">anpr.interno.gov.it</div></div><span class="link-arrow">→</span></a>
       </div>
     </div>
@@ -1228,7 +1546,7 @@ body::after {
       </div>
       <div class="info-section">
         <div class="info-section-title">🔗 Link Ufficiali</div>
-        <a class="link-ufficiale" href="https://www.anpr.interno.gov.it/portale-anpr/" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">ANPR — Scarica certificati online <span class="badge-official">UFFICIALE</span></div><div class="link-url">anpr.interno.gov.it/portale-anpr</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.anpr.interno.gov.it/" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">ANPR — Scarica certificati online <span class="badge-official">UFFICIALE</span></div><div class="link-url">anpr.interno.gov.it/portale-anpr</div></div><span class="link-arrow">→</span></a>
       </div>
     </div>
 
@@ -1260,7 +1578,7 @@ body::after {
       <div class="info-section">
         <div class="info-section-title">🔗 Link Ufficiali</div>
         <a class="link-ufficiale" href="https://www.impresainungiorno.gov.it/" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Impresa in un Giorno — SUAP Online <span class="badge-official">UFFICIALE</span></div><div class="link-url">impresainungiorno.gov.it</div></div><span class="link-arrow">→</span></a>
-        <a class="link-ufficiale" href="https://www.governo.it/it/dipartimenti/funzione-pubblica/18618" target="_blank"><div class="link-icon">🏗️</div><div class="link-text"><div class="link-name">Titoli Abilitativi Edilizi — Governo.it <span class="badge-official">UFFICIALE</span></div><div class="link-url">governo.it — titoli-abilitativi-edilizi</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.mit.gov.it/comunicazione/news/titoli-abilitativi" target="_blank"><div class="link-icon">🏗️</div><div class="link-text"><div class="link-name">Titoli Abilitativi Edilizi — Governo.it <span class="badge-official">UFFICIALE</span></div><div class="link-url">governo.it — titoli-abilitativi-edilizi</div></div><span class="link-arrow">→</span></a>
       </div>
     </div>
 
@@ -1290,7 +1608,7 @@ body::after {
       </div>
       <div class="info-section">
         <div class="info-section-title">🔗 Link Ufficiali</div>
-        <a class="link-ufficiale" href="https://www.istruzione.it/iscrizionionline/" target="_blank"><div class="link-icon">🏫</div><div class="link-text"><div class="link-name">Iscrizioni Scolastiche Online — MIM <span class="badge-official">UFFICIALE</span></div><div class="link-url">istruzione.it/iscrizionionline</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.istruzione.it/iscrizioni/" target="_blank"><div class="link-icon">🏫</div><div class="link-text"><div class="link-name">Iscrizioni Scolastiche Online — MIM <span class="badge-official">UFFICIALE</span></div><div class="link-url">istruzione.it/iscrizionionline</div></div><span class="link-arrow">→</span></a>
         <a class="link-ufficiale" href="https://www.universitaly.it/" target="_blank"><div class="link-icon">🎓</div><div class="link-text"><div class="link-name">Universitaly — Iscrizioni Università <span class="badge-official">UFFICIALE</span></div><div class="link-url">universitaly.it</div></div><span class="link-arrow">→</span></a>
       </div>
     </div>
@@ -1323,7 +1641,595 @@ body::after {
       <div class="info-section">
         <div class="info-section-title">🔗 Link Ufficiali</div>
         <a class="link-ufficiale" href="https://www.pagopa.gov.it/" target="_blank"><div class="link-icon">💳</div><div class="link-text"><div class="link-name">pagoPA — Pagamenti verso la PA <span class="badge-official">UFFICIALE</span></div><div class="link-url">pagopa.gov.it</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.pagopa.gov.it/" target="_blank"><div class="link-icon">💳</div><div class="link-text"><div class="link-name">pagoPA — Pagamenti verso la PA <span class="badge-official">UFFICIALE</span></div><div class="link-url">pagopa.gov.it</div></div><span class="link-arrow">→</span></a>
         <a class="link-ufficiale" href="https://www.finanze.gov.it/it/fiscalita-locale/" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Fiscalità Locale — MEF <span class="badge-official">UFFICIALE</span></div><div class="link-url">finanze.gov.it — fiscalita-locale</div></div><span class="link-arrow">→</span></a>
+      </div>
+    </div>
+
+    <!-- ============ SALUTE E ASSISTENZA PANELS ============ -->
+
+    <!-- CUP -->
+    <div class="pratica-panel" id="panel-cup">
+      <div class="pratica-header">
+        <div class="pratica-icon salute-icon">📅</div>
+        <div class="pratica-header-text">
+          <h2>Prenotazioni Sanitarie (CUP)</h2>
+          <p>Come prenotare visite ed esami online o tramite farmacia</p>
+        </div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">💡 A cosa serve</div>
+        <div class="info-box">Il <strong>CUP (Centro Unico di Prenotazione)</strong> è il sistema per prenotare visite specialistiche, esami diagnostici e laboratorio presso strutture del Servizio Sanitario Nazionale. La prenotazione può avvenire online, per telefono, tramite l'app o in farmacia convenzionata.</div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">🪜 Passi da seguire</div>
+        <ol class="step-list">
+          <li class="step-item"><div class="step-num t">1</div><div class="step-content"><div class="step-title">Ottieni la ricetta dal medico di base</div><div class="step-desc">Il medico di base emette la ricetta elettronica (dematerializzata). Ricevi un SMS o cartaceo con il codice NRE da usare per la prenotazione.</div></div></li>
+          <li class="step-item"><div class="step-num t">2</div><div class="step-content"><div class="step-title">Scegli come prenotare</div><div class="step-desc">Online sul portale CUP della tua Regione (con SPID/CIE), telefonando al numero CUP regionale, in farmacia convenzionata, oppure di persona allo sportello CUP dell'ospedale/ASL.</div></div></li>
+          <li class="step-item"><div class="step-num t">3</div><div class="step-content"><div class="step-title">Verifica il ticket da pagare</div><div class="step-desc">Se non esente, paga il ticket sanitario. Il pagamento può avvenire online, in farmacia o allo sportello. I codici esenzione sono sulla tessera sanitaria o da richiedere all'ASL.</div></div></li>
+        </ol>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">📍 Dove si fa</div>
+        <div class="dove-box"><p>Online tramite il <strong>portale CUP della tua Regione</strong>, in <strong>farmacia convenzionata</strong>, allo sportello CUP dell'<strong>ASL/ospedale</strong> o tramite numero verde regionale.</p></div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">🔗 Link Ufficiali</div>
+        <a class="link-ufficiale" href="https://www.salute.gov.it/portale/documentazione/p6_2_2_1.jsp?lingua=italiano&id=2660" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Prenotazione SSN — Ministero della Salute <span class="badge-official">UFFICIALE</span></div><div class="link-url">salute.gov.it — prenotazioni-ssn</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.fascicolo-sanitario.gov.it/" target="_blank"><div class="link-icon">💊</div><div class="link-text"><div class="link-name">Fascicolo Sanitario Elettronico <span class="badge-official">UFFICIALE</span></div><div class="link-url">fascicolo-sanitario.gov.it</div></div><span class="link-arrow">→</span></a>
+      </div>
+    </div>
+
+    <!-- MEDICO DI BASE -->
+    <div class="pratica-panel" id="panel-medico">
+      <div class="pratica-header">
+        <div class="pratica-icon salute-icon">🩺</div>
+        <div class="pratica-header-text">
+          <h2>Scelta del Medico di Base</h2>
+          <p>Come scegliere o cambiare il medico curante</p>
+        </div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">💡 A cosa serve</div>
+        <div class="info-box">Ogni cittadino iscritto al SSN ha diritto a scegliere il proprio <strong>Medico di Medicina Generale (medico di base)</strong>. Il cambio è possibile in qualsiasi momento e gratuitamente presso l'ASL di competenza. Il medico di base è il punto di accesso a tutto il sistema sanitario.</div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">🪜 Passi da seguire</div>
+        <ol class="step-list">
+          <li class="step-item"><div class="step-num t">1</div><div class="step-content"><div class="step-title">Verifica i medici disponibili nel tuo Comune</div><div class="step-desc">Controlla l'elenco dei medici di base disponibili sul portale della tua ASL o Regione. I medici con massimale pieno (1.500 pazienti) non possono accettare nuovi assistiti.</div></div></li>
+          <li class="step-item"><div class="step-num t">2</div><div class="step-content"><div class="step-title">Iscrizione all'ASL (anche online)</div><div class="step-desc">Puoi richiedere la scelta/cambio online sul portale regionale (con SPID/CIE), oppure di persona allo sportello anagrafe sanitaria dell'ASL con tessera sanitaria e documento d'identità.</div></div></li>
+          <li class="step-item"><div class="step-num t">3</div><div class="step-content"><div class="step-title">Ricevi conferma e tessera aggiornata</div><div class="step-desc">L'aggiornamento è immediato o avviene entro pochi giorni. Il nuovo medico è attivo dalla data di iscrizione.</div></div></li>
+        </ol>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">📎 Documenti necessari</div>
+        <ul class="doc-list">
+          <li class="doc-item">Tessera sanitaria / codice fiscale</li>
+          <li class="doc-item">Documento d'identità valido</li>
+          <li class="doc-item">Permesso di soggiorno (per cittadini extra-UE)</li>
+        </ul>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">📍 Dove si fa</div>
+        <div class="dove-box"><p>Allo sportello <strong>Anagrafe Sanitaria della ASL</strong> di competenza, oppure online tramite il <strong>portale della Regione</strong> con SPID/CIE.</p></div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">🔗 Link Ufficiali</div>
+        <a class="link-ufficiale" href="https://www.salute.gov.it/portale/lea/dettaglioContenutiLea.jsp?lingua=italiano&id=4713&area=Lea&menu=vuoto" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Medicina Generale — Ministero della Salute <span class="badge-official">UFFICIALE</span></div><div class="link-url">salute.gov.it — medicina-generale</div></div><span class="link-arrow">→</span></a>
+      </div>
+    </div>
+
+    <!-- ESENZIONI -->
+    <div class="pratica-panel" id="panel-esenzioni">
+      <div class="pratica-header">
+        <div class="pratica-icon salute-icon">💊</div>
+        <div class="pratica-header-text">
+          <h2>Esenzioni Ticket Sanitario</h2>
+          <p>Esenzioni per reddito, patologia o altre condizioni</p>
+        </div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">💡 A cosa serve</div>
+        <div class="info-box">Le <strong>esenzioni dal ticket sanitario</strong> permettono di usufruire gratuitamente (o a tariffa ridotta) di visite specialistiche, esami e farmaci. Esistono esenzioni per <strong>reddito</strong> (codice 6-E7-E12), per <strong>patologia cronica o rara</strong> (codice con lettera), per <strong>invalidità</strong> e per categorie speciali (gravidanza, over 65 con reddito basso, bambini under 6).</div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">🪜 Passi da seguire</div>
+        <ol class="step-list">
+          <li class="step-item"><div class="step-num t">1</div><div class="step-content"><div class="step-title">Individua il tipo di esenzione</div><div class="step-desc">Esenzione per reddito: se il tuo reddito familiare rientra nelle soglie stabilite (es. E01/E02/E03 per reddito basso, disoccupati, pensionati minimi). Esenzione per patologia: il medico specialista certifica la patologia cronica o rara.</div></div></li>
+          <li class="step-item"><div class="step-num t">2</div><div class="step-content"><div class="step-title">Richiedi il codice esenzione all'ASL</div><div class="step-desc">Per le esenzioni per reddito: presenta autocertificazione del reddito allo sportello ASL o online. Per patologia: il medico invia la certificazione telematicamente all'ASL che emette il tesserino esenzione.</div></div></li>
+          <li class="step-item"><div class="step-num t">3</div><div class="step-content"><div class="step-title">Usa il codice quando prenoti</div><div class="step-desc">Comunica il codice esenzione al CUP in fase di prenotazione o all'accettazione. Il codice è visibile anche sul Fascicolo Sanitario Elettronico.</div></div></li>
+        </ol>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">📍 Dove si fa</div>
+        <div class="dove-box"><p>Allo sportello <strong>Anagrafe Sanitaria dell'ASL</strong>, tramite il <strong>medico di base o specialista</strong> (per esenzioni per patologia), oppure online sul <strong>portale regionale</strong> con SPID/CIE.</p></div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">🔗 Link Ufficiali</div>
+        <a class="link-ufficiale" href="https://www.salute.gov.it/portale/temi/p2_6.jsp?lingua=italiano&id=3594&area=ticket&menu=esenzioni" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Esenzioni Ticket — Ministero della Salute <span class="badge-official">UFFICIALE</span></div><div class="link-url">salute.gov.it — esenzioni-ticket</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.fascicolo-sanitario.gov.it/" target="_blank"><div class="link-icon">💉</div><div class="link-text"><div class="link-name">Fascicolo Sanitario Elettronico <span class="badge-official">UFFICIALE</span></div><div class="link-url">fascicolo-sanitario.gov.it</div></div><span class="link-arrow">→</span></a>
+      </div>
+    </div>
+
+    <!-- ============ CASA E ABITARE PANELS ============ -->
+
+    <!-- CONTRATTI AFFITTO -->
+    <div class="pratica-panel" id="panel-affitto">
+      <div class="pratica-header">
+        <div class="pratica-icon casa-icon">📝</div>
+        <div class="pratica-header-text">
+          <h2>Contratti di Affitto</h2>
+          <p>Registrazione, risoluzione o proroga presso l'Agenzia delle Entrate</p>
+        </div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">💡 A cosa serve</div>
+        <div class="info-box">Il contratto di locazione (affitto) deve essere <strong>registrato obbligatoriamente all'Agenzia delle Entrate entro 30 giorni</strong> dalla firma, se di durata superiore a 30 giorni complessivi nell'anno. La mancata registrazione è sanzionata e rende il contratto invalido ai fini legali. Il <strong>canone concordato</strong> (4+2 anni) beneficia di agevolazioni fiscali (cedolare secca al 10%).</div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">🪜 Passi da seguire</div>
+        <ol class="step-list">
+          <li class="step-item"><div class="step-num o">1</div><div class="step-content"><div class="step-title">Stipula il contratto scritto e firmato</div><div class="step-desc">Il contratto deve essere in forma scritta, firmato da entrambe le parti. Le tipologie più comuni: 4+4 anni (libero mercato), 3+2 anni (canone concordato), uso transitorio, uso studenti.</div></div></li>
+          <li class="step-item"><div class="step-num o">2</div><div class="step-content"><div class="step-title">Registra online con RLI o al CAF</div><div class="step-desc">Online tramite il servizio RLI (Registrazione Locazioni Immobili) dell'Agenzia delle Entrate con SPID/CIE, oppure tramite un CAF o commercialista. Il locatore paga l'imposta di registro (2% del canone annuo per i 4+4).</div></div></li>
+          <li class="step-item"><div class="step-num o">3</div><div class="step-content"><div class="step-title">Comunica la proroga o la risoluzione anticipata</div><div class="step-desc">Anche la proroga (con modello RLI) e la risoluzione anticipata del contratto vanno comunicate all'Agenzia delle Entrate entro 30 giorni.</div></div></li>
+        </ol>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">📎 Documenti necessari</div>
+        <ul class="doc-list">
+          <li class="doc-item">Contratto di locazione firmato (2 originali)</li>
+          <li class="doc-item">Documenti d'identità e codici fiscali di locatore e conduttore</li>
+          <li class="doc-item">Planimetria catastale dell'immobile</li>
+          <li class="doc-item">F24 per il pagamento dell'imposta di registro (se non cedolare secca)</li>
+        </ul>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">📍 Dove si fa</div>
+        <div class="dove-box"><p>Online su <strong>Agenzia delle Entrate — RLI Web</strong> con SPID/CIE, oppure tramite <strong>CAF</strong> o uno sportello dell'Agenzia delle Entrate.</p></div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">🔗 Link Ufficiali</div>
+        <a class="link-ufficiale" href="https://www.agenziaentrate.gov.it/portale/locazioni-immobili" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Registrazione Locazioni (RLI) — Agenzia Entrate <span class="badge-official">UFFICIALE</span></div><div class="link-url">agenziaentrate.gov.it — locazioni-immobili</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.agenziaentrate.gov.it/portale/cedolare-secca" target="_blank"><div class="link-icon">📋</div><div class="link-text"><div class="link-name">Cedolare Secca sulle Locazioni <span class="badge-official">UFFICIALE</span></div><div class="link-url">agenziaentrate.gov.it — cedolare-secca</div></div><span class="link-arrow">→</span></a>
+      </div>
+    </div>
+
+    <!-- PRIMA CASA -->
+    <div class="pratica-panel" id="panel-primacase">
+      <div class="pratica-header">
+        <div class="pratica-icon casa-icon">🏠</div>
+        <div class="pratica-header-text">
+          <h2>Agevolazioni Prima Casa</h2>
+          <p>Requisiti e benefici fiscali sull'acquisto della prima abitazione</p>
+        </div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">💡 A cosa serve</div>
+        <div class="info-box">Le agevolazioni <strong>"Prima Casa"</strong> riducono le imposte sull'acquisto dell'abitazione principale: <strong>imposta di registro al 2%</strong> (invece del 9%) per acquisti da privato; <strong>IVA al 4%</strong> (invece del 10%) per acquisti da costruttore. Anche le imposte ipotecaria e catastale si abbassano a 50 euro ciascuna. Le agevolazioni valgono anche per i mutui prima casa (detrazione interessi passivi al 19%).</div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">🪜 Requisiti principali</div>
+        <ol class="step-list">
+          <li class="step-item"><div class="step-num o">1</div><div class="step-content"><div class="step-title">L'immobile deve essere nel Comune di residenza (o lavoro)</div><div class="step-desc">O il Comune dove si intende trasferirsi entro 18 mesi dall'acquisto. Non deve essere di categoria catastale A/1 (abitazioni di lusso), A/8 o A/9.</div></div></li>
+          <li class="step-item"><div class="step-num o">2</div><div class="step-content"><div class="step-title">Non essere già proprietario di altra abitazione con agevolazioni</div><div class="step-desc">Non si devono avere diritti di proprietà (o usufrutto, uso, abitazione) su altre abitazioni acquistate con agevolazioni prima casa su tutto il territorio nazionale.</div></div></li>
+          <li class="step-item"><div class="step-num o">3</div><div class="step-content"><div class="step-title">Dichiarare le agevolazioni nell'atto notarile</div><div class="step-desc">Le agevolazioni si richiedono nel rogito notarile. Il notaio applica le aliquote ridotte. È necessario dichiarare di possedere i requisiti.</div></div></li>
+        </ol>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">📍 Dove si fa</div>
+        <div class="dove-box"><p>Le agevolazioni si applicano automaticamente al momento del <strong>rogito notarile</strong>. Per il mutuo, contatta la banca. Il CAF ti assiste per la detrazione interessi passivi nel 730.</p></div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">🔗 Link Ufficiali</div>
+        <a class="link-ufficiale" href="https://www.agenziaentrate.gov.it/portale/agevolazione-prima-casa" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Agevolazione Prima Casa — Agenzia Entrate <span class="badge-official">UFFICIALE</span></div><div class="link-url">agenziaentrate.gov.it — agevolazione-prima-casa</div></div><span class="link-arrow">→</span></a>
+      </div>
+    </div>
+
+    <!-- UTENZE -->
+    <div class="pratica-panel" id="panel-utenze">
+      <div class="pratica-header">
+        <div class="pratica-icon casa-icon">💡</div>
+        <div class="pratica-header-text">
+          <h2>Utenze: Luce, Gas, Acqua</h2>
+          <p>Voltura e subentro per luce, gas e acqua</p>
+        </div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">💡 A cosa serve</div>
+        <div class="info-box">La <strong>voltura</strong> trasferisce un'utenza attiva dal nome del vecchio intestatario al nuovo (es. acquisto casa). Il <strong>subentro</strong> riattiva un contatore disattivato. Per il <strong>gas e l'elettricità</strong> il mercato è liberalizzato: puoi scegliere il fornitore. Per l'<strong>acqua</strong> il servizio è gestito dal gestore locale (es. Comune o azienda municipalizzata).</div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">🪜 Passi da seguire</div>
+        <ol class="step-list">
+          <li class="step-item"><div class="step-num o">1</div><div class="step-content"><div class="step-title">Voltura luce/gas: contatta il fornitore del vecchio intestatario</div><div class="step-desc">Serve il codice POD (luce) o PDR (gas) che trovi sulla bolletta o sul contatore. Puoi fare la voltura con lo stesso fornitore o cambiare operatore contestualmente.</div></div></li>
+          <li class="step-item"><div class="step-num o">2</div><div class="step-content"><div class="step-title">Subentro: riattiva il contatore disattivato</div><div class="step-desc">Contatta il distributore locale (non il fornitore commerciale). Il distributore invia un tecnico per riattivare. I tempi sono di solito 5-10 giorni lavorativi.</div></div></li>
+          <li class="step-item"><div class="step-num o">3</div><div class="step-content"><div class="step-title">Acqua: contatta il gestore locale</div><div class="step-desc">Per la voltura dell'acqua, contatta il gestore locale del tuo Comune (es. ABC Napoli, ACEA Roma, MM Milano). Di solito si fa allo sportello o online sul sito del gestore.</div></div></li>
+        </ol>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">📎 Documenti necessari (voltura)</div>
+        <ul class="doc-list">
+          <li class="doc-item">Documento d'identità e codice fiscale del nuovo intestatario</li>
+          <li class="doc-item">Codice POD (elettricità) o PDR (gas) — sulla bolletta o sul contatore</li>
+          <li class="doc-item">IBAN per addebito bollette</li>
+          <li class="doc-item">Atto di compravendita o contratto d'affitto (per dimostrare l'occupazione)</li>
+        </ul>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">📍 Dove si fa</div>
+        <div class="dove-box"><p>Online sul sito del fornitore o distributore, per telefono al servizio clienti, oppure presso gli sportelli fisici del gestore. Il <strong>Portale Consumi ARERA</strong> ti aiuta a trovare i dati della tua utenza.</p></div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">🔗 Link Ufficiali</div>
+        <a class="link-ufficiale" href="https://www.portaleofferte.arera.it/" target="_blank"><div class="link-icon">⚡</div><div class="link-text"><div class="link-name">Portale Offerte ARERA — Confronta Tariffe Luce/Gas <span class="badge-official">UFFICIALE</span></div><div class="link-url">portaleofferte.arera.it</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.arera.it/consumatori/tutele-e-agevolazioni" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">ARERA — Tutele e Agevolazioni Energia <span class="badge-official">UFFICIALE</span></div><div class="link-url">arera.it — tutele-agevolazioni</div></div><span class="link-arrow">→</span></a>
+      </div>
+    </div>
+
+    <!-- ============ LAVORO E CONCORSI PANELS ============ -->
+
+    <!-- CPI -->
+    <div class="pratica-panel" id="panel-cpi">
+      <div class="pratica-header">
+        <div class="pratica-icon lavoro-icon">🏢</div>
+        <div class="pratica-header-text">
+          <h2>Centro per l'Impiego</h2>
+          <p>Iscrizione, Patto di Servizio e offerte di lavoro</p>
+        </div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">💡 A cosa serve</div>
+        <div class="info-box">Il <strong>Centro per l'Impiego (CPI)</strong> è lo sportello pubblico per chi cerca lavoro. Offre: iscrizione come disoccupato, Dichiarazione di Immediata Disponibilità (DID), Patto di Servizio Personalizzato (PSP), orientamento professionale e offerte di lavoro. L'iscrizione è necessaria per accedere alla NASpI, al SFL (Supporto per la Formazione e il Lavoro) e ad altri sussidi.</div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">🪜 Passi da seguire</div>
+        <ol class="step-list">
+          <li class="step-item"><div class="step-num i">1</div><div class="step-content"><div class="step-title">Rendi la Dichiarazione di Immediata Disponibilità (DID)</div><div class="step-desc">La DID può essere presentata online sul portale MyANPAL con SPID/CIE, oppure di persona al CPI. È il primo passo obbligatorio per accedere ai servizi e ai sussidi.</div></div></li>
+          <li class="step-item"><div class="step-num i">2</div><div class="step-content"><div class="step-title">Sottoscrivi il Patto di Servizio Personalizzato (PSP)</div><div class="step-desc">Entro 30 giorni dalla DID, il CPI ti convoca per definire il piano personalizzato: attività di ricerca, formazione, disponibilità alle offerte. Il PSP è obbligatorio per mantenere i sussidi.</div></div></li>
+          <li class="step-item"><div class="step-num i">3</div><div class="step-content"><div class="step-title">Cerca offerte di lavoro e partecipa ai percorsi formativi</div><div class="step-desc">Il CPI propone offerte di lavoro locali e percorsi di formazione finanziati. Puoi anche consultare il portale ANPAL Servizi per le offerte nazionali.</div></div></li>
+        </ol>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">📍 Dove si fa</div>
+        <div class="dove-box"><p>Al <strong>Centro per l'Impiego</strong> della tua provincia (trovalo sul sito della Regione), oppure online su <strong>MyANPAL</strong> con SPID/CIE per la DID.</p></div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">🔗 Link Ufficiali</div>
+        <a class="link-ufficiale" href="https://www.anpal.gov.it/" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">ANPAL — Agenzia Nazionale Politiche Attive del Lavoro <span class="badge-official">UFFICIALE</span></div><div class="link-url">anpal.gov.it</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.lavoro.gov.it/temi-e-priorita/mercato-del-lavoro/focus-on/centri-per-l-impiego" target="_blank"><div class="link-icon">💼</div><div class="link-text"><div class="link-name">Centri per l'Impiego — Ministero del Lavoro <span class="badge-official">UFFICIALE</span></div><div class="link-url">lavoro.gov.it — centri-per-l-impiego</div></div><span class="link-arrow">→</span></a>
+      </div>
+    </div>
+
+    <!-- CONCORSI -->
+    <div class="pratica-panel" id="panel-concorsi">
+      <div class="pratica-header">
+        <div class="pratica-icon lavoro-icon">📋</div>
+        <div class="pratica-header-text">
+          <h2>Concorsi Pubblici</h2>
+          <p>Come orientarsi nei bandi e sul portale inPA</p>
+        </div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">💡 A cosa serve</div>
+        <div class="info-box">Il <strong>portale inPA</strong> (inpa.gov.it) è la piattaforma unica del reclutamento pubblico in Italia. Tutti i bandi di concorso delle PA centrali e locali sono pubblicati qui. Per iscriversi a un concorso occorre un account inPA (con SPID/CIE). Il bando specifica requisiti, prove, scadenze e punteggi.</div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">🪜 Come partecipare a un concorso</div>
+        <ol class="step-list">
+          <li class="step-item"><div class="step-num i">1</div><div class="step-content"><div class="step-title">Leggi il bando con attenzione</div><div class="step-desc">Verifica: requisiti di ammissione (titoli di studio, età, cittadinanza), tipo di prove (scritte, orali, pratiche), scadenza della domanda, e punteggi attribuiti ai titoli.</div></div></li>
+          <li class="step-item"><div class="step-num i">2</div><div class="step-content"><div class="step-title">Registrati su inPA e presenta la domanda</div><div class="step-desc">Con SPID o CIE accedi a inpa.gov.it, completa il profilo e presenta la domanda di partecipazione entro la scadenza del bando. La domanda è telematica e gratuita.</div></div></li>
+          <li class="step-item"><div class="step-num i">3</div><div class="step-content"><div class="step-title">Preparati alle prove e segui le comunicazioni</div><div class="step-desc">Le comunicazioni ufficiali arrivano via email o sul portale. Tieni monitorato l'account inPA. Per alcuni concorsi è prevista una prova preselettiva.</div></div></li>
+        </ol>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">📍 Dove si fa</div>
+        <div class="dove-box"><p>Online su <strong>inpa.gov.it</strong> con SPID/CIE per la maggior parte dei concorsi. Alcuni enti locali pubblicano bandi anche sul proprio sito istituzionale.</p></div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">🔗 Link Ufficiali</div>
+        <a class="link-ufficiale" href="https://www.inpa.gov.it/" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Portale inPA — Reclutamento Pubblico <span class="badge-official">UFFICIALE</span></div><div class="link-url">inpa.gov.it</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.gazzettaufficiale.it/concorsi" target="_blank"><div class="link-icon">📰</div><div class="link-text"><div class="link-name">Gazzetta Ufficiale — Concorsi <span class="badge-official">UFFICIALE</span></div><div class="link-url">gazzettaufficiale.it — concorsi</div></div><span class="link-arrow">→</span></a>
+      </div>
+    </div>
+
+    <!-- ============ MOBILITÀ PANELS ============ -->
+
+    <!-- PATENTE -->
+    <div class="pratica-panel" id="panel-patente">
+      <div class="pratica-header">
+        <div class="pratica-icon mobilita-icon">🪪</div>
+        <div class="pratica-header-text">
+          <h2>Patente di Guida</h2>
+          <p>Rinnovo, duplicato e gestione punti patente</p>
+        </div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">💡 A cosa serve</div>
+        <div class="info-box">La <strong>patente di guida</strong> ha scadenza variabile in base all'età: ogni 10 anni fino ai 50 anni, ogni 5 anni tra 50 e 70, ogni 3 anni oltre i 70. Il <strong>rinnovo</strong> si effettua presso uno studio medico autorizzato. Il <strong>duplicato</strong> per smarrimento o deterioramento si richiede alla Motorizzazione. La <strong>decurtazione punti</strong> si controlla online sul portale MIT.</div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">🪜 Passi da seguire</div>
+        <ol class="step-list">
+          <li class="step-item"><div class="step-num b">1</div><div class="step-content"><div class="step-title">Rinnovo: visita medica autorizzata</div><div class="step-desc">Recati presso un medico autorizzato dalla Motorizzazione (UMC — Unità Medico Legale), un'autoscuola o uno studio medico abilitato. Porta la patente scaduta e una fototessera. Il rinnovo può essere fatto anche 1 anno prima della scadenza.</div></div></li>
+          <li class="step-item"><div class="step-num b">2</div><div class="step-content"><div class="step-title">Duplicato per smarrimento</div><div class="step-desc">Denuncia il furto o smarrimento alle forze dell'ordine, poi richiedi il duplicato alla Motorizzazione (UMC) online o in sede, allegando la denuncia e una fototessera. Il costo è circa 16€ (Bollo) + diritti.</div></div></li>
+          <li class="step-item"><div class="step-num b">3</div><div class="step-content"><div class="step-title">Verifica i punti patente</div><div class="step-desc">Accedi al portale MIT con SPID/CIE o tramite SMS al 4820 (servizio gratuito). Se hai perso tutti i punti, la patente è revocata e devi sostenere nuovamente gli esami.</div></div></li>
+        </ol>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">📍 Dove si fa</div>
+        <div class="dove-box"><p>Rinnovo: studi medici autorizzati, autoscuole, alcune farmacie. Duplicato e pratiche: <strong>Motorizzazione Civile (UMC)</strong> della tua provincia, online su portale MIT o tramite autoscuola.</p></div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">🔗 Link Ufficiali</div>
+        <a class="link-ufficiale" href="https://www.mit.gov.it/comunicazione/news/patente-di-guida" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Patenti — Ministero delle Infrastrutture e Trasporti <span class="badge-official">UFFICIALE</span></div><div class="link-url">mit.gov.it — patenti</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.ilportaledellautomobilista.it/" target="_blank"><div class="link-icon">🚗</div><div class="link-text"><div class="link-name">Portale dell'Automobilista — Verifica Punti <span class="badge-official">UFFICIALE</span></div><div class="link-url">ilportaledellautomobilista.it</div></div><span class="link-arrow">→</span></a>
+      </div>
+    </div>
+
+    <!-- CONTRASSEGNO DISABILI -->
+    <div class="pratica-panel" id="panel-contrassegno">
+      <div class="pratica-header">
+        <div class="pratica-icon mobilita-icon">♿</div>
+        <div class="pratica-header-text">
+          <h2>Contrassegno Disabili</h2>
+          <p>Richiesta del permesso di parcheggio disabili al Comune</p>
+        </div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">💡 A cosa serve</div>
+        <div class="info-box">Il <strong>contrassegno invalidi</strong> (il disco arancione, omologato EU) permette di parcheggiare negli spazi riservati ai disabili e in zone altrimenti vietate, in tutta Europa. Si rilascia a chi ha capacità di deambulazione sensibilmente ridotta o cecità. È personale e non cedibile.</div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">🪜 Passi da seguire</div>
+        <ol class="step-list">
+          <li class="step-item"><div class="step-num b">1</div><div class="step-content"><div class="step-title">Certificato medico del medico legale ASL</div><div class="step-desc">Il medico legale dell'ASL certifica la ridotta capacità di deambulazione o la cecità. Il certificato va presentato al Comune.</div></div></li>
+          <li class="step-item"><div class="step-num b">2</div><div class="step-content"><div class="step-title">Richiesta al Comune di residenza</div><div class="step-desc">Presenta la domanda allo sportello del Comune (o online se disponibile) con il certificato medico, documento d'identità, codice fiscale e foto tessera. Il Comune emette il contrassegno.</div></div></li>
+          <li class="step-item"><div class="step-num b">3</div><div class="step-content"><div class="step-title">Rinnovo ogni 5 anni (o annuale per condizioni temporanee)</div><div class="step-desc">Il contrassegno permanente dura 5 anni e si rinnova con un certificato del medico curante che attesta la persistenza della condizione. Quello temporaneo ha durata pari al periodo indicato dal medico.</div></div></li>
+        </ol>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">📍 Dove si fa</div>
+        <div class="dove-box"><p>Prima dal <strong>medico legale dell'ASL</strong> per il certificato, poi allo <strong>sportello del Comune</strong> di residenza (Ufficio Mobilità o Polizia Municipale).</p></div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">🔗 Link Ufficiali</div>
+        <a class="link-ufficiale" href="https://www.mit.gov.it/comunicazione/news/patente-di-guida" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Contrassegno Disabili — MIT <span class="badge-official">UFFICIALE</span></div><div class="link-url">mit.gov.it — contrassegno-disabili</div></div><span class="link-arrow">→</span></a>
+      </div>
+    </div>
+
+    <!-- ============ SCUOLA E FORMAZIONE PANELS ============ -->
+
+    <!-- BORSE DI STUDIO -->
+    <div class="pratica-panel" id="panel-borse">
+      <div class="pratica-header">
+        <div class="pratica-icon scuola-icon">💰</div>
+        <div class="pratica-header-text">
+          <h2>Borse di Studio</h2>
+          <p>Dove trovare i bandi regionali, comunali e universitari</p>
+        </div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">💡 A cosa serve</div>
+        <div class="info-box">Le <strong>borse di studio</strong> sono contributi economici per studenti meritevoli con reddito ISEE basso. Esistono a diversi livelli: <strong>borse universitarie</strong> (erogate dagli enti regionali — DSU/EDISU/ARDISS), <strong>borse scolastiche</strong> (scuola superiore, erogate da Regione o Comune), borse di studio comunali (per merito o reddito), e borse per l'estero (es. Erasmus+, borse MAE).</div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">🪜 Passi da seguire</div>
+        <ol class="step-list">
+          <li class="step-item"><div class="step-num p">1</div><div class="step-content"><div class="step-title">Calcola l'ISEE del tuo nucleo familiare</div><div class="step-desc">La maggior parte delle borse richiede un ISEE sotto una soglia (es. 23.000€ per le borse universitarie DSU). Fai l'ISEE al CAF prima di scadenza dei bandi.</div></div></li>
+          <li class="step-item"><div class="step-num p">2</div><div class="step-content"><div class="step-title">Cerca il bando sul sito dell'ente regionale o del Comune</div><div class="step-desc">Università: cerca il DSU/EDISU/ARDISS della tua Regione. Scuola superiore: sito della Regione (solitamente aprile-ottobre). Comune: sezione bandi del sito del tuo Comune.</div></div></li>
+          <li class="step-item"><div class="step-num p">3</div><div class="step-content"><div class="step-title">Presenta domanda entro i termini</div><div class="step-desc">La domanda si presenta online sul portale dell'ente con SPID. Allega ISEE, certificato di iscrizione, e documenti richiesti dal bando.</div></div></li>
+        </ol>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">📍 Dove si fa</div>
+        <div class="dove-box"><p>Sul portale del <strong>DSU/EDISU/ARDISS regionale</strong> per le borse universitarie; sul sito della <strong>Regione</strong> per le scolastiche; sul sito del <strong>Comune</strong> per le borse comunali.</p></div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">🔗 Link Ufficiali</div>
+        <a class="link-ufficiale" href="https://www.mur.gov.it/it/temi/borse-di-studio-e-agevolazioni" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Borse di Studio — MUR (Università) <span class="badge-official">UFFICIALE</span></div><div class="link-url">mur.gov.it — borse-di-studio</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.mur.gov.it/it/temi/borse-di-studio-e-agevolazioni" target="_blank"><div class="link-icon">🎒</div><div class="link-text"><div class="link-name">Borse di Studio Scolastiche — MIM <span class="badge-official">UFFICIALE</span></div><div class="link-url">istruzione.it — borse-di-studio</div></div><span class="link-arrow">→</span></a>
+      </div>
+    </div>
+
+    <!-- ISCRIZIONI SCOLASTICHE (nuova) -->
+    <div class="pratica-panel" id="panel-iscrizioniscuola">
+      <div class="pratica-header">
+        <div class="pratica-icon scuola-icon">📚</div>
+        <div class="pratica-header-text">
+          <h2>Iscrizioni Scolastiche 2026</h2>
+          <p>Date e procedure per tutti gli ordini di scuola</p>
+        </div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">💡 A cosa serve</div>
+        <div class="info-box">Le <strong>iscrizioni alle scuole statali</strong> si aprono ogni anno a gennaio per l'anno scolastico successivo (2026/2027). Si effettuano online tramite il portale del Ministero dell'Istruzione. Per la <strong>scuola dell'infanzia pubblica e nidi comunali</strong> i termini e le modalità variano per Comune. Per le <strong>scuole paritarie</strong> ci si iscrive direttamente presso l'istituto.</div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">🪜 Passi da seguire</div>
+        <ol class="step-list">
+          <li class="step-item"><div class="step-num p">1</div><div class="step-content"><div class="step-title">Accedi al portale iscrizioni.istruzione.it</div><div class="step-desc">Con SPID o CIE del genitore, accedi al portale dal 15 gennaio al 15 febbraio circa. Seleziona la scuola, compila il modulo e invia. Il servizio è gratuito.</div></div></li>
+          <li class="step-item"><div class="step-num p">2</div><div class="step-content"><div class="step-title">Per asili nido comunali: verifica il sito del Comune</div><div class="step-desc">I Comuni pubblicano i propri bandi per asili nido sul sito istituzionale, spesso con graduatorie ISEE. I termini variano (generalmente febbraio-aprile).</div></div></li>
+          <li class="step-item"><div class="step-num p">3</div><div class="step-content"><div class="step-title">Conferma l'iscrizione</div><div class="step-desc">La scuola riceve la domanda e comunica l'esito. In caso di scuola non disponibile, vengono proposte alternative. Ricorda di consegnare i documenti richiesti dalla scuola.</div></div></li>
+        </ol>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">🔗 Link Ufficiali</div>
+        <a class="link-ufficiale" href="https://www.istruzione.it/iscrizioni/" target="_blank"><div class="link-icon">🏫</div><div class="link-text"><div class="link-name">Iscrizioni Scolastiche Online — MIM <span class="badge-official">UFFICIALE</span></div><div class="link-url">istruzione.it/iscrizioni</div></div><span class="link-arrow">→</span></a>
+      </div>
+    </div>
+
+    <!-- ============ IMMIGRAZIONE PANELS ============ -->
+
+    <!-- CITTADINANZA -->
+    <div class="pratica-panel" id="panel-cittadinanza">
+      <div class="pratica-header">
+        <div class="pratica-icon immigrazione-icon">🇮🇹</div>
+        <div class="pratica-header-text">
+          <h2>Cittadinanza Italiana</h2>
+          <p>Guida completa: per residenza, matrimonio, origine (ius sanguinis) e naturalizzazione</p>
+        </div>
+      </div>
+
+      <div class="info-section">
+        <div class="info-section-title">💡 Cos'è e a cosa serve</div>
+        <div class="info-box">La <strong>cittadinanza italiana</strong> conferisce tutti i diritti del cittadino: passaporto italiano/UE, diritto di voto, libera circolazione in Europa, accesso ai concorsi pubblici. Si può acquisire in quattro modi principali:<br><br>
+        🔵 <strong>Per residenza</strong> — soggiorno continuativo in Italia (10 anni per extracomunitari, 4 per cittadini UE, 5 per rifugiati e apolidi, 3 per chi è nato in Italia).<br>
+        💍 <strong>Per matrimonio</strong> — coniuge di cittadino italiano (2 anni di residenza in Italia dopo le nozze, oppure 3 anni all'estero; ridotti della metà in presenza di figli).<br>
+        🧬 <strong>Per origine / ius sanguinis</strong> — discendenti di avo italiano per linea diretta ininterrotta (non ci sono limiti di generazioni, purché la cittadinanza non sia stata perduta prima della nascita del figlio).<br>
+        🏅 <strong>Per meriti speciali</strong> — concessione con decreto del Presidente della Repubblica per chi ha reso servigi eccezionali all'Italia.
+        </div>
+      </div>
+
+      <div class="info-section">
+        <div class="info-section-title">🔵 Percorso A — Per Residenza</div>
+        <ol class="step-list">
+          <li class="step-item"><div class="step-num r">1</div><div class="step-content"><div class="step-title">Verifica i requisiti</div><div class="step-desc">Devi avere: permesso di soggiorno valido, residenza anagrafica continua e regolare per il periodo richiesto (10 anni per non-UE), reddito annuo non inferiore a circa 8.500€ (imponibile), assenza di condanne penali in Italia e all'estero, assenza di pericolosità per la sicurezza della Repubblica.</div></div></li>
+          <li class="step-item"><div class="step-num r">2</div><div class="step-content"><div class="step-title">Raccogli i documenti</div><div class="step-desc">Servono: estratto dell'atto di nascita con traduzione e legalizzazione/apostille; certificato penale del Paese d'origine (legalizzato); documentazione reddituale degli ultimi 3 anni (CU, 730 o Modello Unico); permesso di soggiorno; stato di famiglia storico dal Comune.</div></div></li>
+          <li class="step-item"><div class="step-num r">3</div><div class="step-content"><div class="step-title">Presenta la domanda online</div><div class="step-desc">Accedi al portale <strong>cittadinanza.dlci.interno.gov.it</strong> con SPID o CIE. Compila la domanda, allega i documenti scansionati e paga il contributo di <strong>250€</strong> tramite pagoPA. Conserva la ricevuta.</div></div></li>
+          <li class="step-item"><div class="step-num r">4</div><div class="step-content"><div class="step-title">Attendi l'istruttoria (2–4 anni)</div><div class="step-desc">La Prefettura istruisce la pratica. Puoi controllare lo stato online sul portale in qualsiasi momento. Possono essere richiesti documenti integrativi: rispondi entro i termini indicati per non perdere la pratica.</div></div></li>
+          <li class="step-item"><div class="step-num r">5</div><div class="step-content"><div class="step-title">Giuramento e iscrizione all'anagrafe</div><div class="step-desc">In caso di esito positivo ricevi comunicazione via portale. Devi prestare <strong>giuramento di fedeltà alla Repubblica</strong> davanti al Sindaco (o delegato) entro 6 mesi dalla notifica, altrimenti il decreto decade. Dopo il giuramento sei cittadino italiano a tutti gli effetti.</div></div></li>
+        </ol>
+      </div>
+
+      <div class="info-section">
+        <div class="info-section-title">💍 Percorso B — Per Matrimonio</div>
+        <ol class="step-list">
+          <li class="step-item"><div class="step-num r">1</div><div class="step-content"><div class="step-title">Requisiti specifici</div><div class="step-desc">Essere coniuge (non separato legalmente) di cittadino/a italiano/a. Residenza legale in Italia da almeno <strong>2 anni</strong> dalla data del matrimonio (oppure <strong>3 anni</strong> se si risiede all'estero). I termini si dimezzano in presenza di figli (anche adottivi) nati dal matrimonio o adottati dalla coppia.</div></div></li>
+          <li class="step-item"><div class="step-num r">2</div><div class="step-content"><div class="step-title">Documenti aggiuntivi rispetto alla residenza</div><div class="step-desc">In più rispetto ai documenti standard servono: estratto dell'atto di matrimonio (del Comune italiano o legalizzato se celebrato all'estero); eventuale certificato di nascita dei figli comuni.</div></div></li>
+          <li class="step-item"><div class="step-num r">3</div><div class="step-content"><div class="step-title">Stessa procedura online + giuramento</div><div class="step-desc">La domanda si presenta sullo stesso portale (cittadinanza.dlci.interno.gov.it), con SPID/CIE e contributo di 250€. I tempi di attesa sono simili (2–3 anni). Il giuramento finale è identico al percorso per residenza.</div></div></li>
+        </ol>
+      </div>
+
+      <div class="info-section">
+        <div class="info-section-title">🧬 Percorso C — Per Origine (Ius Sanguinis)</div>
+        <ol class="step-list">
+          <li class="step-item"><div class="step-num r">1</div><div class="step-content"><div class="step-title">Verifica la discendenza</div><div class="step-desc">Devi dimostrare la discendenza diretta (padre, nonno, bisnonno…) da un cittadino italiano che <strong>non abbia rinunciato</strong> alla cittadinanza italiana prima della nascita del figlio. Per la linea materna, il riconoscimento vale solo per i nati dopo il 1° gennaio 1948 (prima sentenza Corte Costituzionale n. 30/1983).</div></div></li>
+          <li class="step-item"><div class="step-num r">2</div><div class="step-content"><div class="step-title">Raccogli tutti gli atti di stato civile della catena</div><div class="step-desc">Servono gli atti di nascita di ogni anello della catena genealogica (dall'avo italiano fino a te), gli atti di matrimonio, e l'eventuale atto di naturalizzazione straniera dell'avo (per verificare se e quando ha perso la cittadinanza italiana). Tutti devono essere legalizzati/apostillati e tradotti in italiano.</div></div></li>
+          <li class="step-item"><div class="step-num r">3</div><div class="step-content"><div class="step-title">Presenta la domanda al Consolato (se residi all'estero) o al Comune (se residi in Italia)</div><div class="step-desc">Se vivi all'estero: prenota appuntamento al Consolato italiano competente per territorio. I tempi consolari possono essere molto lunghi (anche 5–10 anni in alcuni Paesi come Brasile e Argentina). Se sei già residente in Italia: richiedi il riconoscimento direttamente al Comune di residenza, allegando tutta la documentazione.</div></div></li>
+          <li class="step-item"><div class="step-num r">4</div><div class="step-content"><div class="step-title">Iscrizione AIRE (se all'estero)</div><div class="step-desc">Una volta riconosciuta la cittadinanza, dovrai iscriverti all'<strong>AIRE</strong> (Anagrafe Italiani Residenti all'Estero) presso il Consolato. Potrai poi richiedere passaporto e carta d'identità italiana.</div></div></li>
+        </ol>
+      </div>
+
+      <div class="info-section">
+        <div class="info-section-title">📎 Documenti comuni a tutti i percorsi</div>
+        <ul class="doc-list">
+          <li class="doc-item">Estratto dell'atto di nascita (legalizzato con apostille e tradotto in italiano)</li>
+          <li class="doc-item">Certificato del casellario giudiziario del Paese d'origine (legalizzato e tradotto)</li>
+          <li class="doc-item">Permesso di soggiorno o carta di soggiorno UE in corso di validità</li>
+          <li class="doc-item">Documentazione reddituale ultimi 3 anni (CU, 730, Mod. Unico o equivalente estero)</li>
+          <li class="doc-item">Ricevuta pagamento contributo di 250€ (tramite pagoPA)</li>
+          <li class="doc-item">Copia del passaporto straniero in corso di validità</li>
+          <li class="doc-item">Stato di famiglia storico rilasciato dal Comune italiano di residenza</li>
+        </ul>
+      </div>
+
+      <div class="info-section">
+        <div class="info-section-title">⚠️ Cose importanti da sapere</div>
+        <div class="info-box">
+        • <strong>Continuità della residenza:</strong> anche una breve assenza dall'Italia (superiore a certi limiti) può interrompere il computo degli anni. Controlla i timbri del passaporto e le iscrizioni anagrafiche.<br>
+        • <strong>Doppia cittadinanza:</strong> l'Italia ammette la doppia (o multipla) cittadinanza. Non sei obbligato a rinunciare alla tua cittadinanza attuale.<br>
+        • <strong>Tempi reali:</strong> i tempi ufficiali sono 730 giorni (2 anni) ma nella pratica si arriva spesso a 3–4 anni. Puoi fare diffida al Ministero dopo 2 anni di silenzio.<br>
+        • <strong>Patronato gratuito:</strong> i patronati (INCA-CGIL, ACLI, ITAL-UIL ecc.) offrono assistenza gratuita per tutta la procedura.
+        </div>
+      </div>
+
+      <div class="info-section">
+        <div class="info-section-title">📍 Dove si fa</div>
+        <div class="dove-box"><p>La domanda per <strong>residenza e matrimonio</strong> si presenta online sul portale <strong>cittadinanza.dlci.interno.gov.it</strong> con SPID o CIE. Per il percorso <strong>ius sanguinis dall'estero</strong>, ci si rivolge al <strong>Consolato italiano</strong> competente. Per ius sanguinis da residente in Italia, al proprio <strong>Comune</strong>. Il <strong>Patronato</strong> offre assistenza gratuita.</p></div>
+      </div>
+
+      <div class="info-section">
+        <div class="info-section-title">🔗 Link Ufficiali</div>
+        <a class="link-ufficiale" href="https://cittadinanza.dlci.interno.gov.it/" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Portale Cittadinanza — domanda online <span class="badge-official">UFFICIALE</span></div><div class="link-url">cittadinanza.dlci.interno.gov.it</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.interno.gov.it/it/temi/cittadinanza-e-altri-diritti-civili/cittadinanza" target="_blank"><div class="link-icon">🇮🇹</div><div class="link-text"><div class="link-name">Guida Cittadinanza — Ministero dell'Interno <span class="badge-official">UFFICIALE</span></div><div class="link-url">interno.gov.it — cittadinanza</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.esteri.it/it/servizi-consolari-e-visti/italiani-all-estero/cittadinanza/" target="_blank"><div class="link-icon">✈️</div><div class="link-text"><div class="link-name">Cittadinanza per italiani all'estero — Farnesina <span class="badge-official">UFFICIALE</span></div><div class="link-url">esteri.it — cittadinanza italiani estero</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.aire.interno.gov.it/" target="_blank"><div class="link-icon">📋</div><div class="link-text"><div class="link-name">AIRE — Anagrafe Italiani Residenti all'Estero <span class="badge-official">UFFICIALE</span></div><div class="link-url">aire.interno.gov.it</div></div><span class="link-arrow">→</span></a>
+      </div>
+    </div>
+
+    <!-- PERMESSO DI SOGGIORNO -->
+    <div class="pratica-panel" id="panel-permesso">
+      <div class="pratica-header">
+        <div class="pratica-icon immigrazione-icon">📄</div>
+        <div class="pratica-header-text">
+          <h2>Permesso di Soggiorno</h2>
+          <p>Richiesta, rinnovo e dove controllare lo stato della pratica</p>
+        </div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">💡 A cosa serve</div>
+        <div class="info-box">Il <strong>permesso di soggiorno</strong> è il documento che autorizza i cittadini extracomunitari (non UE) a soggiornare in Italia. Va richiesto entro 8 giorni dall'ingresso in Italia presso uno <strong>Sportello Unico Immigrazione</strong> o le <strong>Poste Italiane</strong> (kit giallo). Il rinnovo va presentato prima della scadenza. Per i lungo residenti (dopo 5 anni) è disponibile la <strong>carta di soggiorno UE</strong>.</div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">🪜 Passi da seguire</div>
+        <ol class="step-list">
+          <li class="step-item"><div class="step-num r">1</div><div class="step-content"><div class="step-title">Ritira il kit al Pronto Poste (Ufficio Postale)</div><div class="step-desc">Il kit (busta gialla) contiene il modulo di domanda del permesso. Dopo aver compilato il kit, torna in posta per la consegna e il pagamento dei diritti (circa 30-50€ + marca da bollo 16€).</div></div></li>
+          <li class="step-item"><div class="step-num r">2</div><div class="step-content"><div class="step-title">Ricevi la convocazione della Questura</div><div class="step-desc">La Questura ti convoca per fotografie e impronte digitali. Porta tutti i documenti originali. Il permesso viene poi spedito a casa o ritirato allo sportello.</div></div></li>
+          <li class="step-item"><div class="step-num r">3</div><div class="step-content"><div class="step-title">Controlla lo stato della pratica online</div><div class="step-desc">Sul sito del Ministero dell'Interno puoi verificare lo stato del tuo permesso inserendo il codice fiscale e il numero della ricevuta postale. Puoi anche controllare tramite l'app "Portale Immigrazione".</div></div></li>
+        </ol>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">📎 Documenti principali (prima richiesta)</div>
+        <ul class="doc-list">
+          <li class="doc-item">Passaporto in corso di validità con visto d'ingresso</li>
+          <li class="doc-item">4 foto tessera recenti</li>
+          <li class="doc-item">Marca da bollo da 16€</li>
+          <li class="doc-item">Documentazione specifica per il tipo di permesso (lavoro, studio, famiglia, ecc.)</li>
+          <li class="doc-item">Prova di alloggio (contratto affitto, dichiarazione ospitalità)</li>
+        </ul>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">📍 Dove si fa</div>
+        <div class="dove-box"><p>La domanda si presenta alle <strong>Poste Italiane abilitate</strong> (kit giallo). La convocazione avviene presso la <strong>Questura</strong> della provincia di residenza. Il <strong>Patronato</strong> offre assistenza gratuita.</p></div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">🔗 Link Ufficiali</div>
+        <a class="link-ufficiale" href="https://www.portaleimmigrazione.it/" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Portale Immigrazione — Stato Pratica <span class="badge-official">UFFICIALE</span></div><div class="link-url">portaleimmigrazione.it</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.interno.gov.it/it/temi/immigrazione-e-asilo/permesso-soggiorno" target="_blank"><div class="link-icon">📋</div><div class="link-text"><div class="link-name">Permesso di Soggiorno — Ministero dell'Interno <span class="badge-official">UFFICIALE</span></div><div class="link-url">interno.gov.it — permesso-di-soggiorno</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.poste.it/prodotti/kit-per-permesso-di-soggiorno.html" target="_blank"><div class="link-icon">📮</div><div class="link-text"><div class="link-name">Kit Permesso di Soggiorno — Poste Italiane <span class="badge-official">UFFICIALE</span></div><div class="link-url">poste.it — kit-permesso-soggiorno</div></div><span class="link-arrow">→</span></a>
+      </div>
+      <div class="warn-box">⚠️ <strong>Attenzione:</strong> presenta la domanda entro <strong>8 giorni</strong> dall'ingresso in Italia. Il ritardo può comportare sanzioni. In caso di rinnovo, presentare la domanda <strong>60 giorni prima</strong> della scadenza.</div>
+    </div>
+
+    <!-- RICONGIUNGIMENTO FAMILIARE -->
+    <div class="pratica-panel" id="panel-ricongiungimento">
+      <div class="pratica-header">
+        <div class="pratica-icon immigrazione-icon">👨‍👩‍👧</div>
+        <div class="pratica-header-text">
+          <h2>Ricongiungimento Familiare</h2>
+          <p>Come portare i familiari in Italia con il visto per ricongiungimento</p>
+        </div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">💡 A cosa serve</div>
+        <div class="info-box">Il <strong>ricongiungimento familiare</strong> permette al cittadino straniero regolarmente soggiornante in Italia di far venire i propri familiari stretti (coniuge, figli minori, figli maggiorenni a carico e inabili, genitori a carico). È necessario un permesso di soggiorno di almeno 1 anno e il possesso di requisiti di reddito e alloggio.</div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">🪜 Passi da seguire</div>
+        <ol class="step-list">
+          <li class="step-item"><div class="step-num r">1</div><div class="step-content"><div class="step-title">Verifica i requisiti di reddito e alloggio</div><div class="step-desc">Il reddito minimo richiesto per il 2026 è circa 6.000€/anno per un familiare, più circa 1.000€ per ogni ulteriore familiare. L'alloggio deve essere idoneo (certificato ASL o documento analogo).</div></div></li>
+          <li class="step-item"><div class="step-num r">2</div><div class="step-content"><div class="step-title">Presenta la domanda allo Sportello Unico Immigrazione</div><div class="step-desc">La domanda (modulo W) si presenta allo Sportello Unico per l'Immigrazione della Prefettura di residenza oppure online sul Portale Immigrazione. Allega i documenti del familiare dall'estero (legalizzati e tradotti).</div></div></li>
+          <li class="step-item"><div class="step-num r">3</div><div class="step-content"><div class="step-title">Il familiare richiede il visto al Consolato italiano</div><div class="step-desc">Dopo l'approvazione (nulla osta), il familiare richiede il visto per ricongiungimento familiare al Consolato italiano nel Paese di residenza. All'arrivo in Italia deve richiedere il permesso di soggiorno entro 8 giorni.</div></div></li>
+        </ol>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">📎 Documenti principali</div>
+        <ul class="doc-list">
+          <li class="doc-item">Permesso di soggiorno del richiedente (almeno 1 anno di durata residua)</li>
+          <li class="doc-item">Documentazione del rapporto di parentela (certificati legalizzati e tradotti)</li>
+          <li class="doc-item">Ultime buste paga o CU per dimostrare il reddito</li>
+          <li class="doc-item">Certificato di idoneità alloggiativa</li>
+          <li class="doc-item">Passaporto del familiare da ricongiungere</li>
+        </ul>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">📍 Dove si fa</div>
+        <div class="dove-box"><p>Allo <strong>Sportello Unico per l'Immigrazione</strong> della Prefettura di residenza, oppure online sul <strong>Portale Immigrazione</strong>. Il <strong>Patronato</strong> offre assistenza gratuita per tutta la procedura.</p></div>
+      </div>
+      <div class="info-section">
+        <div class="info-section-title">🔗 Link Ufficiali</div>
+        <a class="link-ufficiale" href="https://www.portaleimmigrazione.it/" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Portale Immigrazione — Ricongiungimento Familiare <span class="badge-official">UFFICIALE</span></div><div class="link-url">portaleimmigrazione.it</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.interno.gov.it/it/temi/immigrazione-e-asilo/ricongiungimento-familiare" target="_blank"><div class="link-icon">👨‍👩‍👧</div><div class="link-text"><div class="link-name">Ricongiungimento Familiare — Ministero Interno <span class="badge-official">UFFICIALE</span></div><div class="link-url">interno.gov.it — ricongiungimento-familiare</div></div><span class="link-arrow">→</span></a>
       </div>
     </div>
 
@@ -1385,9 +2291,11 @@ function toggleCat(cat) {
   const hdr = document.getElementById(cat + '-cat');
   const isOpen = items.classList.contains('open');
   // chiudi tutte
-  ['caf','patronato','pa'].forEach(c => {
-    document.getElementById(c + '-items').classList.remove('open');
-    document.getElementById(c + '-cat').classList.remove('active');
+  ['caf','patronato','pa','salute','casa','lavoro','mobilita','scuola','immigrazione'].forEach(c => {
+    const el = document.getElementById(c + '-items');
+    const hd = document.getElementById(c + '-cat');
+    if(el) el.classList.remove('open');
+    if(hd) hd.classList.remove('active');
   });
   if (!isOpen) {
     items.classList.add('open');
@@ -1415,9 +2323,24 @@ const PRATICHE_INDEX = [
   { id:'edilizia', label:'Pratiche Edilizie', cat:'PA', keys:['edilizia','suap','permesso costruire','scia','cila','lavori'] },
   { id:'iscrizioni', label:'Iscrizioni Scolastiche', cat:'PA', keys:['scuola','università','iscrizione','studente','miur'] },
   { id:'tributi', label:'Tributi Locali', cat:'PA', keys:['tari','tassa rifiuti','tributi','comune','pagopa','bolletta'] },
+  { id:'cup', label:'Prenotazioni Sanitarie (CUP)', cat:'Salute', keys:['cup','prenotazione','visita','esame','medico','ssn','asl','ticket'] },
+  { id:'medico', label:'Medico di Base', cat:'Salute', keys:['medico','mmg','curante','scelta medico','cambio medico','asl'] },
+  { id:'esenzioni', label:'Esenzioni Ticket', cat:'Salute', keys:['esenzione','ticket','patologia','reddito','farmaci','asl'] },
+  { id:'affitto', label:'Contratti di Affitto', cat:'Casa', keys:['affitto','locazione','contratto','agenzia entrate','cedolare','inquilino'] },
+  { id:'primacase', label:'Agevolazioni Prima Casa', cat:'Casa', keys:['prima casa','agevolazione','acquisto','imposta registro','mutuo','iva'] },
+  { id:'utenze', label:'Utenze Luce Gas Acqua', cat:'Casa', keys:['utenze','luce','gas','acqua','voltura','subentro','bolletta','pod','pdr'] },
+  { id:'cpi', label:'Centro per l\'Impiego', cat:'Lavoro', keys:['centro impiego','cpi','did','patto servizio','disoccupato','lavoro','anpal'] },
+  { id:'concorsi', label:'Concorsi Pubblici', cat:'Lavoro', keys:['concorso','inpa','bando','pubblica amministrazione','reclutamento','gazzetta'] },
+  { id:'patente', label:'Patente di Guida', cat:'Mobilità', keys:['patente','rinnovo','punti patente','motorizzazione','duplicato','guida'] },
+  { id:'contrassegno', label:'Contrassegno Disabili', cat:'Mobilità', keys:['contrassegno','disabili','parcheggio','invalidi','comune','mobilità'] },
+  { id:'borse', label:'Borse di Studio', cat:'Scuola', keys:['borsa studio','dsu','edisu','mur','università','reddito','isee','merito'] },
+  { id:'iscrizioniscuola', label:'Iscrizioni Scolastiche', cat:'Scuola', keys:['iscrizione','scuola','miur','mim','nido','infanzia','studente','portale'] },
+  { id:'cittadinanza', label:'Cittadinanza Italiana', cat:'Immigrazione', keys:['cittadinanza','naturalizzazione','matrimonio','ius sanguinis','residenza','straniero'] },
+  { id:'permesso', label:'Permesso di Soggiorno', cat:'Immigrazione', keys:['permesso soggiorno','questura','poste','kit giallo','immigrazione','straniero','extracomunitario'] },
+  { id:'ricongiungimento', label:'Ricongiungimento Familiare', cat:'Immigrazione', keys:['ricongiungimento','familiare','visto','nulla osta','prefettura','immigrazione'] },
 ];
 
-const CAT_MAP = { 'CAF': 'caf', 'Patronato': 'patronato', 'PA': 'pa' };
+const CAT_MAP = { 'CAF': 'caf', 'Patronato': 'patronato', 'PA': 'pa', 'Salute': 'salute', 'Casa': 'casa', 'Lavoro': 'lavoro', 'Mobilità': 'mobilita', 'Scuola': 'scuola', 'Immigrazione': 'immigrazione' };
 
 function cercaGlobale(q) {
   const drop = document.getElementById('searchDrop');
@@ -1439,12 +2362,16 @@ function selezionaRisultato(id, cat) {
   chiudiSearch();
   document.getElementById('topSearch').value = '';
   // apri la cat giusta nella sidebar
-  ['caf','patronato','pa'].forEach(c => {
-    document.getElementById(c + '-items').classList.remove('open');
-    document.getElementById(c + '-cat').classList.remove('active');
+  ['caf','patronato','pa','salute','casa','lavoro','mobilita','scuola','immigrazione'].forEach(c => {
+    var el = document.getElementById(c + '-items');
+    var hd = document.getElementById(c + '-cat');
+    if(el) el.classList.remove('open');
+    if(hd) hd.classList.remove('active');
   });
-  document.getElementById(cat + '-items').classList.add('open');
-  document.getElementById(cat + '-cat').classList.add('active');
+  var target = document.getElementById(cat + '-items');
+  var thdr = document.getElementById(cat + '-cat');
+  if(target) target.classList.add('open');
+  if(thdr) thdr.classList.add('active');
   mostraPratica(id);
 }
 
@@ -1505,6 +2432,209 @@ function apriGoogleMaps() {
 document.getElementById('mapModal').addEventListener('click', function(e) {
   if (e.target === this) chiudiMapModal();
 });
+
+// ─── MOBILE DRAWER ────────────────────────────────────────────
+function aprDrawer() {
+  document.getElementById('mobDrawer').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function chiDrawer() {
+  document.getElementById('mobDrawer').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function togMob(cat) {
+  var cats = ['caf','patronato','pa','salute','casa','lavoro','mobilita','scuola','immigrazione'];
+  cats.forEach(function(c) {
+    var el = document.getElementById('mi-'+c);
+    var hd = document.getElementById('mc-'+c);
+    if(el) el.classList.remove('open');
+    if(hd) hd.classList.remove('active');
+  });
+  var target = document.getElementById('mi-'+cat);
+  var thdg = document.getElementById('mc-'+cat);
+  if(target) target.classList.add('open');
+  if(thdg) thdg.classList.add('active');
+}
+function selMob(id) {
+  mostraPratica(id);
+  chiDrawer();
+}
+
+// ─── PUSH TOP BANNER ───────────────────────────────────────────
+var deferredPromptTop = null;
+(function() {
+  if (!sessionStorage.getItem('pushTopDismissed')) {
+    document.getElementById('pushTopBanner').style.display = 'flex';
+  }
+})();
+function chiudiPushTop() {
+  document.getElementById('pushTopBanner').style.display = 'none';
+  sessionStorage.setItem('pushTopDismissed','1');
+}
+
+// ─── INSTALL BANNER ───────────────────────────────────────────
+var deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', function(e) {
+  e.preventDefault();
+  deferredPrompt = e;
+  deferredPromptTop = e;
+  // wire up top banner cta
+  document.getElementById('pushTopCta').addEventListener('click', function() {
+    if (deferredPromptTop) { deferredPromptTop.prompt(); deferredPromptTop = null; }
+    chiudiPushTop();
+  });
+  setTimeout(function() {
+    if (!sessionStorage.getItem('bannerDismissed')) {
+      document.getElementById('installBanner').classList.add('show');
+    }
+  }, 3000);
+});
+document.getElementById('btnInstall').addEventListener('click', function() {
+  if (deferredPrompt) { deferredPrompt.prompt(); deferredPrompt = null; }
+  dimBanner();
+});
+function dimBanner() {
+  document.getElementById('installBanner').classList.remove('show');
+  sessionStorage.setItem('bannerDismissed','1');
+}
+// iOS Safari hint
+(function() {
+  var ios = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  var standalone = window.navigator.standalone;
+  if (ios && !standalone && !sessionStorage.getItem('bannerDismissed')) {
+    setTimeout(function() {
+      var banner = document.getElementById('installBanner');
+      banner.classList.add('show');
+      document.getElementById('btnInstall').textContent = '📱 Come installare';
+      document.getElementById('btnInstall').onclick = function() {
+        alert('Su iPhone/iPad:\n1. Tocca il tasto Condividi (□↑)\n2. Scorri e tocca "Aggiungi a schermata Home"\n3. Tocca Aggiungi');
+        dimBanner();
+      };
+    }, 3000);
+  }
+})();
 </script>
+
+<!-- MOBILE DRAWER -->
+<div class="mob-drawer" id="mobDrawer">
+  <div class="mob-backdrop" onclick="chiDrawer()"></div>
+  <div class="mob-panel">
+    <button class="mob-close" onclick="chiDrawer()">✕</button>
+    <button class="pratica-btn" onclick="selMob('home')" style="font-weight:700;font-size:13px;margin-bottom:4px;clear:both;">🏠 Home</button>
+    <div class="sidebar-divider"></div>
+    <div class="cat-group">
+      <div class="cat-header caf-h" id="mc-caf" onclick="togMob('caf')"><span>📋</span><span>CAF</span><span class="cat-caret">▶</span></div>
+      <div class="cat-items" id="mi-caf">
+        <button class="pratica-btn caf-item" onclick="selMob('730')">📄 Modello 730</button>
+        <button class="pratica-btn caf-item" onclick="selMob('red')">📝 Modello RED</button>
+        <button class="pratica-btn caf-item" onclick="selMob('isee')">📊 ISEE</button>
+        <button class="pratica-btn caf-item" onclick="selMob('imu')">🏡 IMU</button>
+        <button class="pratica-btn caf-item" onclick="selMob('bonus')">🎁 Bonus Vari</button>
+        <button class="pratica-btn caf-item" onclick="selMob('successioni')">🔏 Successioni</button>
+      </div>
+    </div>
+    <div class="cat-group">
+      <div class="cat-header patronato-h" id="mc-patronato" onclick="togMob('patronato')"><span>🤝</span><span>Patronato</span><span class="cat-caret">▶</span></div>
+      <div class="cat-items" id="mi-patronato">
+        <button class="pratica-btn patronato-item" onclick="selMob('pensioni')">👴 Pensioni</button>
+        <button class="pratica-btn patronato-item" onclick="selMob('naspi')">💼 NASpI</button>
+        <button class="pratica-btn patronato-item" onclick="selMob('maternita')">🤱 Maternità/Paternità</button>
+        <button class="pratica-btn patronato-item" onclick="selMob('invalidita')">♿ Invalidità Civile</button>
+        <button class="pratica-btn patronato-item" onclick="selMob('riscatto')">🎓 Riscatto Laurea</button>
+        <button class="pratica-btn patronato-item" onclick="selMob('infortuni')">⚕️ Infortuni sul Lavoro</button>
+      </div>
+    </div>
+    <div class="cat-group">
+      <div class="cat-header pa-h" id="mc-pa" onclick="togMob('pa')"><span>🏛️</span><span>PA Digitale</span><span class="cat-caret">▶</span></div>
+      <div class="cat-items" id="mi-pa">
+        <button class="pratica-btn pa-item" onclick="selMob('spid')">🪪 SPID / CIE</button>
+        <button class="pratica-btn pa-item" onclick="selMob('residenza')">🏠 Residenza</button>
+        <button class="pratica-btn pa-item" onclick="selMob('certificati')">📜 Certificati</button>
+        <button class="pratica-btn pa-item" onclick="selMob('edilizia')">🏗️ Pratiche Edilizie</button>
+        <button class="pratica-btn pa-item" onclick="selMob('iscrizioni')">🎒 Iscrizioni Scolastiche</button>
+        <button class="pratica-btn pa-item" onclick="selMob('tributi')">💰 Tributi Locali</button>
+      </div>
+    </div>
+    <div class="cat-group">
+      <div class="cat-header salute-h" id="mc-salute" onclick="togMob('salute')"><span>🏥</span><span>Salute</span><span class="cat-caret">▶</span></div>
+      <div class="cat-items" id="mi-salute">
+        <button class="pratica-btn salute-item" onclick="selMob('cup')">📅 Prenotazioni (CUP)</button>
+        <button class="pratica-btn salute-item" onclick="selMob('medico')">🩺 Medico di Base</button>
+        <button class="pratica-btn salute-item" onclick="selMob('esenzioni')">💊 Esenzioni Ticket</button>
+      </div>
+    </div>
+    <div class="cat-group">
+      <div class="cat-header casa-h" id="mc-casa" onclick="togMob('casa')"><span>🏘️</span><span>Casa e Abitare</span><span class="cat-caret">▶</span></div>
+      <div class="cat-items" id="mi-casa">
+        <button class="pratica-btn casa-item" onclick="selMob('affitto')">📝 Contratti Affitto</button>
+        <button class="pratica-btn casa-item" onclick="selMob('primacase')">🏠 Agevolazioni Prima Casa</button>
+        <button class="pratica-btn casa-item" onclick="selMob('utenze')">💡 Utenze</button>
+      </div>
+    </div>
+    <div class="cat-group">
+      <div class="cat-header lavoro-h" id="mc-lavoro" onclick="togMob('lavoro')"><span>💼</span><span>Lavoro e Concorsi</span><span class="cat-caret">▶</span></div>
+      <div class="cat-items" id="mi-lavoro">
+        <button class="pratica-btn lavoro-item" onclick="selMob('cpi')">🏢 Centro per l'Impiego</button>
+        <button class="pratica-btn lavoro-item" onclick="selMob('concorsi')">📋 Concorsi Pubblici</button>
+      </div>
+    </div>
+    <div class="cat-group">
+      <div class="cat-header mobilita-h" id="mc-mobilita" onclick="togMob('mobilita')"><span>🚗</span><span>Mobilità</span><span class="cat-caret">▶</span></div>
+      <div class="cat-items" id="mi-mobilita">
+        <button class="pratica-btn mobilita-item" onclick="selMob('patente')">🪪 Patente</button>
+        <button class="pratica-btn mobilita-item" onclick="selMob('contrassegno')">♿ Contrassegno Disabili</button>
+      </div>
+    </div>
+    <div class="cat-group">
+      <div class="cat-header scuola-h" id="mc-scuola" onclick="togMob('scuola')"><span>🎓</span><span>Scuola e Formazione</span><span class="cat-caret">▶</span></div>
+      <div class="cat-items" id="mi-scuola">
+        <button class="pratica-btn scuola-item" onclick="selMob('borse')">💰 Borse di Studio</button>
+        <button class="pratica-btn scuola-item" onclick="selMob('iscrizioniscuola')">📚 Iscrizioni Scolastiche</button>
+      </div>
+    </div>
+    <div class="cat-group">
+      <div class="cat-header immigrazione-h" id="mc-immigrazione" onclick="togMob('immigrazione')"><span>🌍</span><span>Immigrazione</span><span class="cat-caret">▶</span></div>
+      <div class="cat-items" id="mi-immigrazione">
+        <button class="pratica-btn immigrazione-item" onclick="selMob('cittadinanza')">🇮🇹 Cittadinanza Italiana</button>
+        <button class="pratica-btn immigrazione-item" onclick="selMob('permesso')">📄 Permesso di Soggiorno</button>
+        <button class="pratica-btn immigrazione-item" onclick="selMob('ricongiungimento')">👨‍👩‍👧 Ricongiungimento Familiare</button>
+      </div>
+    </div>
+    <div class="sidebar-divider"></div>
+    <button class="find-expert-btn" onclick="avviaConsulenza();chiDrawer()">🗺️ Trova un esperto</button>
+  </div>
+</div>
+
+<!-- PUSH TOP BANNER -->
+<div class="push-top-banner" id="pushTopBanner">
+  <svg width="22" height="22" viewBox="0 0 26 26" fill="none" style="flex-shrink:0"><rect x="4" y="6" width="10" height="2.2" rx="1.1" fill="white"/><rect x="4" y="10.4" width="10" height="2.2" rx="1.1" fill="rgba(255,255,255,0.8)"/><rect x="4" y="14.8" width="6" height="2.2" rx="1.1" fill="rgba(255,255,255,0.6)"/><circle cx="19.5" cy="17.5" r="4" fill="white" opacity="0.25"/><circle cx="19.5" cy="17.5" r="3" fill="white"/><path d="M17.8 17.5l1.4 1.4 2.4-2.8" stroke="#4A6CF7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span>📲 Aggiungi <strong>Sportello Aperto</strong> alla schermata Home — usalo come app, anche offline!</span>
+  <button class="push-cta" id="pushTopCta">Installa ora</button>
+  <button class="push-close" onclick="chiudiPushTop()">✕</button>
+</div>
+
+<!-- INSTALL BANNER -->
+<div class="install-banner" id="installBanner">
+  <div class="install-banner-row">
+      <div class="install-logo">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+          <rect x="4" y="6" width="10" height="2.2" rx="1.1" fill="white"/>
+          <rect x="4" y="10.4" width="10" height="2.2" rx="1.1" fill="rgba(255,255,255,0.8)"/>
+          <rect x="4" y="14.8" width="6" height="2.2" rx="1.1" fill="rgba(255,255,255,0.6)"/>
+          <circle cx="19.5" cy="17.5" r="4" fill="white" opacity="0.25"/>
+          <circle cx="19.5" cy="17.5" r="3" fill="white"/>
+          <path d="M17.8 17.5l1.4 1.4 2.4-2.8" stroke="#4A6CF7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    <div class="install-text">
+      <strong>Aggiungi alla schermata Home</strong>
+      <span>Usa Sportello Aperto come un'app</span>
+    </div>
+    <div class="install-actions">
+      <button class="btn-install" id="btnInstall">📲 Installa</button>
+      <button class="btn-dismiss" onclick="dimBanner()">✕</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
