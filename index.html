@@ -118,7 +118,10 @@ body::after {
   font-weight: 400;
   font-style: italic;
   letter-spacing: -0.4px;
+  transition: opacity 0.15s;
 }
+.logo-text:hover { opacity: 0.75; }
+.logo-icon:hover { opacity: 0.85; }
 .tagline-small {
   font-size: 12px;
   color: var(--text3);
@@ -627,7 +630,7 @@ body::after {
   <button class="menu-toggle" onclick="aprDrawer()" aria-label="Menu">
     <svg width="18" height="13" viewBox="0 0 18 13" fill="none"><rect width="18" height="2" rx="1" fill="currentColor"/><rect y="5.5" width="18" height="2" rx="1" fill="currentColor"/><rect y="11" width="12" height="2" rx="1" fill="currentColor"/></svg>
   </button>
-  <div class="logo-icon" style="background:linear-gradient(135deg,#4A6CF7,#1A9E62);border:none;box-shadow:0 2px 10px rgba(74,108,247,0.35);">
+  <div class="logo-icon" onclick="mostraPratica('home')" style="background:linear-gradient(135deg,#4A6CF7,#1A9E62);border:none;box-shadow:0 2px 10px rgba(74,108,247,0.35);cursor:pointer;" title="Torna alla Home">
     <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
       <rect x="4" y="6" width="10" height="2.2" rx="1.1" fill="white"/>
       <rect x="4" y="10.4" width="10" height="2.2" rx="1.1" fill="rgba(255,255,255,0.8)"/>
@@ -637,7 +640,7 @@ body::after {
       <path d="M17.2 17.5l1.8 1.8 3.2-3.6" stroke="#1A9E62" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </div>
-  <span class="logo-text">Sportello Aperto</span>
+  <span class="logo-text" onclick="mostraPratica('home')" style="cursor:pointer;" title="Torna alla Home">Sportello Aperto</span>
   <span class="tagline-small">La burocrazia italiana semplice • Aggiornato 2026</span>
   <div class="top-bar-right">
     <div class="search-wrap">
@@ -1360,8 +1363,8 @@ body::after {
       </div>
       <div class="info-section">
         <div class="info-section-title">🔗 Link Ufficiali</div>
-        <a class="link-ufficiale" href="https://www.inps.it/it/dettaglio-scheda.schede-servizio-e-prestazioni.50068.invalidita-civile-cecita-civile-sordomutismo.html" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Invalidità Civile — INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — invalidita-civile</div></div><span class="link-arrow">→</span></a>
-        <a class="link-ufficiale" href="https://www.inps.it/it/home.html" target="_blank"><div class="link-icon">📋</div><div class="link-text"><div class="link-name">Indennità di Accompagnamento — INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — indennita-di-accompagnamento</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.inps.it/it/it/dettaglio-scheda.schede-servizio-e-prestazioni.50068.invalidita-civile-cecita-civile-sordomutismo.html" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Invalidità Civile — INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — invalidita-civile</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.inps.it/it/it/dettaglio-scheda.schede-servizio-e-prestazioni.50063.indennita-di-accompagnamento.html" target="_blank"><div class="link-icon">📋</div><div class="link-text"><div class="link-name">Indennità di Accompagnamento — INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — indennita-di-accompagnamento</div></div><span class="link-arrow">→</span></a>
       </div>
     </div>
 
@@ -1392,7 +1395,7 @@ body::after {
       </div>
       <div class="info-section">
         <div class="info-section-title">🔗 Link Ufficiali</div>
-        <a class="link-ufficiale" href="https://www.inps.it/it/dettaglio-scheda.schede-servizio-e-prestazioni.50110.riscatto-degli-anni-di-laurea.html" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Riscatto di Laurea — INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — riscatto-di-laurea</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.inps.it/it/it/dettaglio-scheda.schede-servizio-e-prestazioni.50110.riscatto-degli-anni-di-laurea.html" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Riscatto di Laurea — INPS <span class="badge-official">UFFICIALE</span></div><div class="link-url">inps.it — riscatto-di-laurea</div></div><span class="link-arrow">→</span></a>
       </div>
     </div>
 
@@ -1423,7 +1426,7 @@ body::after {
       </div>
       <div class="info-section">
         <div class="info-section-title">🔗 Link Ufficiali</div>
-        <a class="link-ufficiale" href="https://www.inail.it/cs/internet/attivita/prestazioni/infortuni-sul-lavoro.html" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Infortuni e Malattie Professionali — INAIL <span class="badge-official">UFFICIALE</span></div><div class="link-url">inail.it — infortuni-e-malattie-professionali</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.inail.it/cs/internet/attivita/prestazioni/infortuni-e-malattie-professionali.html" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Infortuni e Malattie Professionali — INAIL <span class="badge-official">UFFICIALE</span></div><div class="link-url">inail.it — infortuni-e-malattie-professionali</div></div><span class="link-arrow">→</span></a>
       </div>
     </div>
 
@@ -1474,7 +1477,7 @@ body::after {
         <div class="info-section-title">🔗 Link Ufficiali</div>
         <a class="link-ufficiale" href="https://www.spid.gov.it/richiedi-spid" target="_blank"><div class="link-icon">🔑</div><div class="link-text"><div class="link-name">Richiedi SPID — sito ufficiale AGID <span class="badge-official">UFFICIALE</span></div><div class="link-url">spid.gov.it/richiedi-spid</div></div><span class="link-arrow">→</span></a>
         <a class="link-ufficiale" href="https://www.cartaidentita.interno.gov.it/" target="_blank"><div class="link-icon">🪪</div><div class="link-text"><div class="link-name">CIE — Carta d'Identità Elettronica <span class="badge-official">UFFICIALE</span></div><div class="link-url">cartaidentita.interno.gov.it</div></div><span class="link-arrow">→</span></a>
-        <a class="link-ufficiale" href="https://www.spid.gov.it/richiedi-spid" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">SPID — AGID (provider autorizzati) <span class="badge-official">UFFICIALE</span></div><div class="link-url">agid.gov.it/it/piattaforme/spid</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.agid.gov.it/it/piattaforme/spid" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">SPID — AGID (provider autorizzati) <span class="badge-official">UFFICIALE</span></div><div class="link-url">agid.gov.it/it/piattaforme/spid</div></div><span class="link-arrow">→</span></a>
       </div>
     </div>
 
@@ -1963,10 +1966,6 @@ body::after {
         <div class="info-section-title">🔗 Link Ufficiali</div>
         <a class="link-ufficiale" href="https://www.mit.gov.it/comunicazione/news/patente-di-guida" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Patenti — Ministero delle Infrastrutture e Trasporti <span class="badge-official">UFFICIALE</span></div><div class="link-url">mit.gov.it — patenti</div></div><span class="link-arrow">→</span></a>
         <a class="link-ufficiale" href="https://www.ilportaledellautomobilista.it/" target="_blank"><div class="link-icon">🚗</div><div class="link-text"><div class="link-name">Portale dell'Automobilista — Verifica Punti <span class="badge-official">UFFICIALE</span></div><div class="link-url">ilportaledellautomobilista.it</div></div><span class="link-arrow">→</span></a>
-      </div>
-    </div>
-
-    <!-- CONTRASSEGNO DISABILI -->
     <div class="pratica-panel" id="panel-contrassegno">
       <div class="pratica-header">
         <div class="pratica-icon mobilita-icon">♿</div>
@@ -1993,7 +1992,7 @@ body::after {
       </div>
       <div class="info-section">
         <div class="info-section-title">🔗 Link Ufficiali</div>
-        <a class="link-ufficiale" href="https://www.mit.gov.it/comunicazione/news/patente-di-guida" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Contrassegno Disabili — MIT <span class="badge-official">UFFICIALE</span></div><div class="link-url">mit.gov.it — contrassegno-disabili</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.mit.gov.it/comunicazione/news/contrassegno-parcheggio-disabili" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Contrassegno Disabili — MIT <span class="badge-official">UFFICIALE</span></div><div class="link-url">mit.gov.it — contrassegno-disabili</div></div><span class="link-arrow">→</span></a>
       </div>
     </div>
 
@@ -2027,7 +2026,7 @@ body::after {
       <div class="info-section">
         <div class="info-section-title">🔗 Link Ufficiali</div>
         <a class="link-ufficiale" href="https://www.mur.gov.it/it/temi/borse-di-studio-e-agevolazioni" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Borse di Studio — MUR (Università) <span class="badge-official">UFFICIALE</span></div><div class="link-url">mur.gov.it — borse-di-studio</div></div><span class="link-arrow">→</span></a>
-        <a class="link-ufficiale" href="https://www.mur.gov.it/it/temi/borse-di-studio-e-agevolazioni" target="_blank"><div class="link-icon">🎒</div><div class="link-text"><div class="link-name">Borse di Studio Scolastiche — MIM <span class="badge-official">UFFICIALE</span></div><div class="link-url">istruzione.it — borse-di-studio</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.istruzione.it/borse_di_studio/" target="_blank"><div class="link-icon">🎒</div><div class="link-text"><div class="link-name">Borse di Studio Scolastiche — MIM <span class="badge-official">UFFICIALE</span></div><div class="link-url">istruzione.it — borse-di-studio</div></div><span class="link-arrow">→</span></a>
       </div>
     </div>
 
@@ -2186,6 +2185,7 @@ body::after {
         <div class="info-section-title">🔗 Link Ufficiali</div>
         <a class="link-ufficiale" href="https://www.portaleimmigrazione.it/" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><div class="link-name">Portale Immigrazione — Stato Pratica <span class="badge-official">UFFICIALE</span></div><div class="link-url">portaleimmigrazione.it</div></div><span class="link-arrow">→</span></a>
         <a class="link-ufficiale" href="https://www.interno.gov.it/it/temi/immigrazione-e-asilo/permesso-soggiorno" target="_blank"><div class="link-icon">📋</div><div class="link-text"><div class="link-name">Permesso di Soggiorno — Ministero dell'Interno <span class="badge-official">UFFICIALE</span></div><div class="link-url">interno.gov.it — permesso-di-soggiorno</div></div><span class="link-arrow">→</span></a>
+        <a class="link-ufficiale" href="https://www.poliziadistato.it/articolo/191" target="_blank"><div class="link-icon">👮</div><div class="link-text"><div class="link-name">Verifica Permesso di Soggiorno — Polizia di Stato <span class="badge-official">UFFICIALE</span></div><div class="link-url">poliziadistato.it — verifica permesso di soggiorno</div></div><span class="link-arrow">→</span></a>
         <a class="link-ufficiale" href="https://www.poste.it/prodotti/kit-per-permesso-di-soggiorno.html" target="_blank"><div class="link-icon">📮</div><div class="link-text"><div class="link-name">Kit Permesso di Soggiorno — Poste Italiane <span class="badge-official">UFFICIALE</span></div><div class="link-url">poste.it — kit-permesso-soggiorno</div></div><span class="link-arrow">→</span></a>
       </div>
       <div class="warn-box">⚠️ <strong>Attenzione:</strong> presenta la domanda entro <strong>8 giorni</strong> dall'ingresso in Italia. Il ritardo può comportare sanzioni. In caso di rinnovo, presentare la domanda <strong>60 giorni prima</strong> della scadenza.</div>
