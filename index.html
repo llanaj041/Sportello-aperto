@@ -1,315 +1,380 @@
-
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sportello Aperto — Burocrazia Italiana Semplice</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:var(--font-sans);background:#f5f5f5;color:var(--color-text-primary)}
+body{font-family:system-ui,-apple-system,sans-serif;background:#eef2f7;color:#1a1a1a;min-height:100vh}
 a{text-decoration:none;color:inherit}
 
-/* TOP BAR */
-.topbar{background:#003da5;color:#fff;font-size:12px;padding:5px 0;text-align:center}
-.topbar a{color:#cce0ff;margin:0 10px}
-.topbar a:hover{color:#fff;text-decoration:underline}
-
 /* HEADER */
-.header{background:#fff;border-bottom:2px solid #003da5;padding:0}
-.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;gap:16px}
+.header{background:#003da5;padding:0}
+.header-inner{max-width:1140px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:13px 20px;gap:16px}
 .logo{display:flex;align-items:center;gap:10px}
-.logo-icon{width:40px;height:40px;background:#003da5;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:15px;flex-shrink:0}
-.logo-text{line-height:1.2}
-.logo-name{font-size:20px;font-weight:700;color:#003da5;letter-spacing:-0.3px}
-.logo-tag{font-size:11px;color:#666;text-transform:uppercase;letter-spacing:0.5px}
-.header-actions{display:flex;align-items:center;gap:12px;flex-shrink:0}
-.btn-verde{background:#003da5;color:#fff;border:none;padding:7px 14px;border-radius:5px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap}
-.btn-verde:hover{background:#002d82}
-.btn-accedi{background:#fff;color:#003da5;border:1.5px solid #003da5;padding:6px 14px;border-radius:5px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap}
-.btn-accedi:hover{background:#e8f0ff}
-.header-tel{font-size:12px;color:#333;display:flex;align-items:center;gap:4px}
-.header-tel strong{color:#003da5}
+.logo-icon{width:42px;height:42px;background:#fff;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#003da5;font-weight:800;font-size:14px;flex-shrink:0;letter-spacing:-1px}
+.logo-name{font-size:21px;font-weight:800;color:#fff;letter-spacing:-0.3px}
+.logo-tag{font-size:11px;color:#9ec3ff;text-transform:uppercase;letter-spacing:0.6px}
+.btn-trova-hdr{background:#e8831a;color:#fff;border:none;padding:9px 18px;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:inherit}
+.btn-trova-hdr:hover{background:#d0740e}
 
 /* NAV */
-.nav{background:#003da5}
-.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:stretch;padding:0 20px;gap:0}
-.nav-item{color:#cce0ff;font-size:13px;font-weight:500;padding:10px 14px;cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;transition:color .15s,border-color .15s;display:flex;align-items:center;gap:4px}
+.nav{background:#002d82;border-bottom:2px solid #001f60}
+.nav-inner{max-width:1140px;margin:0 auto;display:flex;align-items:stretch;padding:0 20px;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-item{color:#9ec3ff;font-size:13px;font-weight:500;padding:11px 13px;cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;display:flex;align-items:center;gap:5px;transition:color .15s,border-color .15s}
 .nav-item:hover,.nav-item.active{color:#fff;border-bottom-color:#fff}
-.nav-item i{font-size:14px}
 
 /* HERO */
-.hero{background:linear-gradient(135deg,#003da5 60%,#1a5cbf 100%);padding:32px 20px}
-.hero-inner{max-width:1100px;margin:0 auto}
-.hero h1{color:#fff;font-size:26px;font-weight:700;margin-bottom:6px}
-.hero p{color:#b8d4ff;font-size:14px;margin-bottom:20px}
-.search-bar{display:flex;background:#fff;border-radius:6px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.15);max-width:600px}
-.search-bar input{flex:1;border:none;padding:12px 16px;font-size:14px;outline:none;color:#333}
-.search-bar button{background:#e8831a;color:#fff;border:none;padding:12px 20px;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap}
+.hero{background:linear-gradient(135deg,#003da5 0%,#0050d0 100%);padding:32px 20px 36px}
+.hero-inner{max-width:1140px;margin:0 auto}
+.hero h1{color:#fff;font-size:26px;font-weight:800;margin-bottom:6px;line-height:1.2}
+.hero p{color:#9ec3ff;font-size:14px;margin-bottom:18px}
+.search-wrap{max-width:640px}
+.search-bar{display:flex;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.25)}
+.search-bar input{flex:1;border:none;padding:14px 18px;font-size:15px;outline:none;color:#333;font-family:inherit}
+.search-bar button{background:#e8831a;color:#fff;border:none;padding:14px 22px;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:inherit;display:flex;align-items:center;gap:6px}
 .search-bar button:hover{background:#d0740e}
-.hero-badges{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
-.badge{background:rgba(255,255,255,0.15);color:#e0edff;font-size:11px;padding:4px 10px;border-radius:20px;cursor:pointer;border:1px solid rgba(255,255,255,0.2)}
-.badge:hover{background:rgba(255,255,255,0.25)}
+.search-hint{font-size:12px;color:#9ec3ff;margin-top:8px}
+.hero-badges{display:flex;gap:7px;margin-top:14px;flex-wrap:wrap}
+.badge{background:rgba(255,255,255,0.13);color:#dceeff;font-size:12px;padding:5px 12px;border-radius:20px;cursor:pointer;border:1px solid rgba(255,255,255,0.22);transition:background .15s}
+.badge:hover{background:rgba(255,255,255,0.26)}
 
-/* SCADENZE STRIP */
-.scadenze-strip{background:#fff3cd;border-bottom:1px solid #ffc107;padding:7px 20px}
-.scadenze-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:10px;overflow:hidden}
-.scad-label{font-size:11px;font-weight:700;color:#856404;text-transform:uppercase;letter-spacing:0.5px;white-space:nowrap}
-.scad-items{display:flex;gap:16px;overflow:hidden}
-.scad-item{font-size:12px;color:#664d03;white-space:nowrap;display:flex;align-items:center;gap:4px}
-.scad-date{background:#856404;color:#fff;border-radius:3px;padding:1px 5px;font-size:10px;font-weight:700}
+/* SCADENZE */
+.scad-strip{background:#fff8e1;border-bottom:2px solid #f9a825;padding:8px 20px}
+.scad-inner{max-width:1140px;margin:0 auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.scad-label{font-size:11px;font-weight:800;color:#795c0a;text-transform:uppercase;letter-spacing:0.6px;white-space:nowrap;display:flex;align-items:center;gap:4px}
+.scad-items{display:flex;gap:16px;flex-wrap:wrap}
+.scad-item{font-size:12px;color:#5d4410;white-space:nowrap;display:flex;align-items:center;gap:5px;cursor:pointer}
+.scad-item:hover{color:#e8831a}
+.scad-date{background:#795c0a;color:#fff;border-radius:4px;padding:2px 6px;font-size:10px;font-weight:800}
+.scad-urgente{background:#c62828;color:#fff;border-radius:4px;padding:2px 6px;font-size:10px;font-weight:800}
 
-/* MAIN */
-.main{max-width:1100px;margin:0 auto;padding:24px 20px;display:grid;grid-template-columns:1fr 280px;gap:24px}
-@media(max-width:800px){.main{grid-template-columns:1fr}}
+/* SEARCH RESULTS */
+#search-results{display:none;max-width:1140px;margin:0 auto;padding:20px}
+.sr-header{font-size:13px;color:#555;margin-bottom:12px}
+.sr-header strong{color:#003da5}
+.result-item{background:#fff;border:1px solid #dce6f5;border-radius:10px;padding:15px 18px;margin-bottom:8px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:border-color .15s,box-shadow .15s}
+.result-item:hover{border-color:#003da5;box-shadow:0 2px 10px rgba(0,61,165,0.1)}
+.result-left{display:flex;align-items:center;gap:12px}
+.result-icon{width:38px;height:38px;background:#e8f0ff;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#003da5;font-size:18px;flex-shrink:0}
+.result-name{font-size:14px;font-weight:700;color:#1a1a1a}
+.result-cat{font-size:11px;color:#888;margin-top:2px}
+.result-desc{font-size:12px;color:#555;margin-top:2px}
+.result-link{font-size:12px;color:#003da5;font-weight:700;white-space:nowrap;display:flex;align-items:center;gap:4px}
+.no-results{padding:30px 20px;text-align:center;color:#888;font-size:14px;background:#fff;border-radius:10px;border:1px solid #dce6f5}
 
-/* SECTION TITLE */
-.section-title{font-size:13px;font-weight:700;color:#003da5;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #003da5;display:flex;align-items:center;justify-content:space-between}
-.section-title a{font-size:11px;color:#666;font-weight:500;text-transform:none;letter-spacing:0}
+/* MAIN LAYOUT */
+.main{max-width:1140px;margin:0 auto;padding:22px 20px;display:grid;grid-template-columns:1fr 280px;gap:22px}
+@media(max-width:768px){.main{grid-template-columns:1fr}}
 
-/* SERVIZI PIU RICHIESTI */
-.richiesti-list{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
-.richiesti-chip{background:#e8f0ff;color:#003da5;font-size:12px;padding:5px 12px;border-radius:20px;cursor:pointer;border:1px solid #b8d0f8;font-weight:500}
-.richiesti-chip:hover{background:#003da5;color:#fff}
+/* SECTION TITLES */
+.section-title{font-size:11px;font-weight:800;color:#003da5;text-transform:uppercase;letter-spacing:0.9px;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #003da5;display:flex;align-items:center;justify-content:space-between}
+.section-title-icon{margin-right:6px;font-size:14px;vertical-align:-2px}
 
-/* CATEGORY GRID */
-.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-bottom:24px}
-.cat-card{background:#fff;border:1px solid #e0e8f8;border-radius:8px;padding:14px 10px;text-align:center;cursor:pointer;transition:border-color .15s,box-shadow .15s}
-.cat-card:hover{border-color:#003da5;box-shadow:0 2px 10px rgba(0,61,165,0.12)}
-.cat-icon{width:44px;height:44px;background:#e8f0ff;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;color:#003da5;font-size:20px}
-.cat-card:hover .cat-icon{background:#003da5;color:#fff}
-.cat-name{font-size:12px;color:#222;font-weight:600;line-height:1.3}
-.cat-count{font-size:10px;color:#888;margin-top:2px}
-.cat-entra{display:block;font-size:10px;color:#003da5;margin-top:4px;font-weight:600}
+/* CHIPS */
+.chips{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:22px}
+.chip{background:#e8f0ff;color:#003da5;font-size:12px;padding:6px 13px;border-radius:20px;cursor:pointer;border:1px solid #b8d0f8;font-weight:600;transition:all .15s}
+.chip:hover{background:#003da5;color:#fff;border-color:#003da5}
 
-/* NEWS / SIDEBAR */
-.news-card{background:#fff;border:1px solid #e0e8f8;border-radius:8px;padding:14px;margin-bottom:12px}
-.news-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding:2px 7px;border-radius:3px;display:inline-block;margin-bottom:6px}
-.tag-caf{background:#e8f0ff;color:#003da5}
-.tag-patronato{background:#e6f9f0;color:#0a6640}
-.tag-pa{background:#fef3e2;color:#92420a}
-.news-title{font-size:13px;font-weight:700;color:#222;margin-bottom:4px;line-height:1.4}
-.news-body{font-size:12px;color:#555;line-height:1.5}
-.news-fonte{font-size:10px;color:#888;margin-top:6px}
-
-/* TROVA ESPERTO */
-.trova-card{background:#003da5;color:#fff;border-radius:8px;padding:16px;margin-bottom:12px;text-align:center}
-.trova-card h3{font-size:15px;font-weight:700;margin-bottom:6px}
-.trova-card p{font-size:12px;color:#b8d4ff;margin-bottom:12px;line-height:1.5}
-.btn-trova{background:#e8831a;color:#fff;border:none;padding:9px 18px;border-radius:5px;font-size:13px;font-weight:600;cursor:pointer;width:100%}
-.btn-trova:hover{background:#d0740e}
-
-/* PERCHE SCEGLIERCI */
-.perche{background:#fff;border:1px solid #e0e8f8;border-radius:8px;padding:16px;margin-bottom:12px}
-.perche-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid #f0f4fc}
-.perche-item:last-child{border-bottom:none;padding-bottom:0}
-.perche-icon{width:32px;height:32px;background:#e8f0ff;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#003da5;flex-shrink:0;font-size:15px}
-.perche-text{flex:1}
-.perche-text strong{font-size:12px;color:#222;display:block}
-.perche-text span{font-size:11px;color:#666}
-
-/* PROMO ROW */
-.promo-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:24px}
-.promo-card{background:#fff;border:1px solid #e0e8f8;border-radius:8px;padding:14px;position:relative}
-.promo-card:hover{border-color:#003da5}
-.promo-badge{position:absolute;top:10px;right:10px;background:#d32f2f;color:#fff;font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px}
-.promo-name{font-size:13px;font-weight:700;color:#222;margin-bottom:4px}
-.promo-ente{font-size:10px;color:#888;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.4px}
-.promo-time{font-size:10px;color:#555;margin-bottom:10px;display:flex;align-items:center;gap:4px}
-.promo-time i{font-size:12px;color:#003da5}
-.promo-btn{background:#003da5;color:#fff;border:none;width:100%;padding:7px;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;text-transform:uppercase;letter-spacing:0.5px}
+/* PROMO CARDS */
+.promo-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(192px,1fr));gap:11px;margin-bottom:24px}
+.promo-card{background:#fff;border:1.5px solid #dce6f5;border-radius:10px;padding:15px;position:relative;cursor:pointer;transition:border-color .15s,box-shadow .15s}
+.promo-card:hover{border-color:#003da5;box-shadow:0 3px 14px rgba(0,61,165,0.1)}
+.promo-badge-urg{position:absolute;top:10px;right:10px;background:#c62828;color:#fff;font-size:9px;font-weight:800;padding:3px 7px;border-radius:4px;letter-spacing:0.3px}
+.promo-badge-new{position:absolute;top:10px;right:10px;background:#1b5e20;color:#fff;font-size:9px;font-weight:800;padding:3px 7px;border-radius:4px;letter-spacing:0.3px}
+.promo-icon{width:36px;height:36px;background:#e8f0ff;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#003da5;font-size:18px;margin-bottom:10px}
+.promo-name{font-size:13px;font-weight:800;color:#1a1a1a;margin-bottom:3px;line-height:1.3}
+.promo-ente{font-size:10px;color:#888;margin-bottom:7px;text-transform:uppercase;letter-spacing:0.4px}
+.promo-time{font-size:11px;color:#555;margin-bottom:11px;display:flex;align-items:center;gap:4px}
+.promo-btn{background:#003da5;color:#fff;border:none;width:100%;padding:8px;border-radius:5px;font-size:11px;font-weight:800;cursor:pointer;text-transform:uppercase;letter-spacing:0.4px;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:5px;transition:background .15s}
 .promo-btn:hover{background:#002d82}
 
+/* CAT GRID */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-bottom:24px}
+.cat-card{background:#fff;border:1.5px solid #dce6f5;border-radius:10px;padding:15px 10px;text-align:center;cursor:pointer;transition:border-color .15s,box-shadow .15s}
+.cat-card:hover{border-color:#003da5;box-shadow:0 3px 14px rgba(0,61,165,0.1)}
+.cat-icon{width:44px;height:44px;background:#e8f0ff;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;color:#003da5;font-size:21px;transition:all .15s}
+.cat-card:hover .cat-icon{background:#003da5;color:#fff}
+.cat-name{font-size:12px;color:#1a1a1a;font-weight:700;line-height:1.3}
+.cat-count{font-size:10px;color:#888;margin-top:3px}
+.cat-entra{display:block;font-size:10px;color:#003da5;margin-top:4px;font-weight:700}
+
+/* SIDEBAR */
+.trova-card{background:#003da5;color:#fff;border-radius:10px;padding:18px;margin-bottom:14px;text-align:center}
+.trova-card h3{font-size:15px;font-weight:800;margin-bottom:6px;color:#fff}
+.trova-card p{font-size:12px;color:#9ec3ff;margin-bottom:14px;line-height:1.6}
+.btn-trova{background:#e8831a;color:#fff;border:none;padding:10px 18px;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer;width:100%;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .15s}
+.btn-trova:hover{background:#d0740e}
+.perche{background:#fff;border:1.5px solid #dce6f5;border-radius:10px;padding:15px;margin-bottom:14px}
+.perche-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid #f0f4fc}
+.perche-item:last-child{border-bottom:none;padding-bottom:0}
+.perche-icon{width:30px;height:30px;background:#e8f0ff;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#003da5;flex-shrink:0;font-size:14px}
+.perche-text strong{font-size:12px;color:#1a1a1a;display:block;font-weight:700}
+.perche-text span{font-size:11px;color:#666}
+
+/* NEWS */
+.news-card{background:#fff;border:1.5px solid #dce6f5;border-radius:10px;padding:14px;margin-bottom:10px}
+.news-tag{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;padding:2px 8px;border-radius:4px;display:inline-block;margin-bottom:6px}
+.tag-caf{background:#e8f0ff;color:#003da5}
+.tag-patronato{background:#e6f9f0;color:#1b5e20}
+.tag-pa{background:#fff8e1;color:#795c0a}
+.tag-bonus{background:#fce4ec;color:#880e4f}
+.news-title{font-size:13px;font-weight:700;color:#1a1a1a;margin-bottom:4px;line-height:1.4}
+.news-body{font-size:12px;color:#555;line-height:1.6}
+.news-fonte{font-size:10px;color:#888;margin-top:6px}
+
+/* MODAL OVERLAY */
+.modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.55);z-index:1000;padding:20px;overflow-y:auto}
+.modal-overlay.open{display:flex;align-items:flex-start;justify-content:center}
+.modal{background:#fff;border-radius:14px;max-width:720px;width:100%;margin:auto;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+.modal-header{background:#003da5;padding:20px 24px;display:flex;align-items:center;justify-content:space-between}
+.modal-header h2{color:#fff;font-size:18px;font-weight:800}
+.modal-header .modal-cat{color:#9ec3ff;font-size:11px;text-transform:uppercase;letter-spacing:0.6px;margin-top:3px}
+.modal-close{background:rgba(255,255,255,0.15);border:none;color:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.modal-close:hover{background:rgba(255,255,255,0.28)}
+.modal-body{padding:24px}
+.modal-desc{font-size:14px;color:#333;line-height:1.7;margin-bottom:20px;background:#f0f4fa;border-radius:8px;padding:14px;border-left:4px solid #003da5}
+.steps-title{font-size:12px;font-weight:800;color:#003da5;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:14px}
+.step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start}
+.step-num{width:30px;height:30px;background:#003da5;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0}
+.step-content strong{font-size:13px;color:#1a1a1a;display:block;font-weight:700;margin-bottom:3px}
+.step-content p{font-size:12px;color:#555;line-height:1.6}
+.step-content .step-link{font-size:12px;color:#003da5;font-weight:700;display:inline-flex;align-items:center;gap:4px;margin-top:4px;background:#e8f0ff;padding:4px 10px;border-radius:4px}
+.docs-box{background:#fff8e1;border:1.5px solid #f9a825;border-radius:8px;padding:14px;margin:16px 0}
+.docs-box .docs-title{font-size:11px;font-weight:800;color:#795c0a;text-transform:uppercase;letter-spacing:0.6px;margin-bottom:8px;display:flex;align-items:center;gap:5px}
+.docs-list{list-style:none;padding:0}
+.docs-list li{font-size:12px;color:#5d4410;padding:3px 0;display:flex;align-items:center;gap:6px}
+.docs-list li::before{content:"";width:6px;height:6px;background:#f9a825;border-radius:50%;flex-shrink:0}
+.cost-box{background:#e8f9ee;border:1.5px solid #4caf50;border-radius:8px;padding:14px;margin:16px 0}
+.cost-box .cost-title{font-size:11px;font-weight:800;color:#1b5e20;text-transform:uppercase;letter-spacing:0.6px;margin-bottom:6px}
+.cost-box p{font-size:12px;color:#2e7d32;line-height:1.6}
+.warn-box{background:#fff3f3;border:1.5px solid #ef9a9a;border-radius:8px;padding:14px;margin:16px 0}
+.warn-box .warn-title{font-size:11px;font-weight:800;color:#b71c1c;text-transform:uppercase;letter-spacing:0.6px;margin-bottom:6px;display:flex;align-items:center;gap:5px}
+.warn-box p{font-size:12px;color:#c62828;line-height:1.6}
+.modal-actions{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.btn-official{background:#003da5;color:#fff;border:none;padding:11px 20px;border-radius:7px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:6px;transition:background .15s}
+.btn-official:hover{background:#002d82}
+.btn-caf{background:#e8831a;color:#fff;border:none;padding:11px 20px;border-radius:7px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:6px;transition:background .15s}
+.btn-caf:hover{background:#d0740e}
+.modal-time-info{background:#e8f0ff;border-radius:8px;padding:12px 14px;margin:16px 0;display:flex;align-items:center;gap:10px}
+.modal-time-info .ti{color:#003da5;font-size:18px;flex-shrink:0}
+.modal-time-info p{font-size:12px;color:#333;line-height:1.6}
+.modal-time-info strong{color:#003da5}
+
 /* FOOTER */
-.footer{background:#1a2a4a;color:#aac0e8;margin-top:32px;padding:28px 20px 16px}
-.footer-inner{max-width:1100px;margin:0 auto}
-.footer-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:24px;margin-bottom:24px}
-.footer-col h4{color:#fff;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.7px;margin-bottom:10px}
-.footer-col a{display:block;color:#aac0e8;font-size:12px;margin-bottom:5px;line-height:1.4}
+.footer{background:#1a2a4a;color:#aac0e8;margin-top:30px;padding:28px 20px 16px}
+.footer-inner{max-width:1140px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:22px;margin-bottom:22px}
+.footer-col h4{color:#fff;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.7px;margin-bottom:10px}
+.footer-col a{display:block;color:#aac0e8;font-size:12px;margin-bottom:5px;line-height:1.4;cursor:pointer}
 .footer-col a:hover{color:#fff}
 .footer-bottom{border-top:1px solid #2d4070;padding-top:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
 .footer-bottom p{font-size:11px;color:#6a88b8}
-.footer-logo{font-size:16px;font-weight:700;color:#fff}
-.aggiornato{background:#0a6640;color:#fff;font-size:10px;padding:2px 8px;border-radius:3px;font-weight:600}
-
+.footer-logo{font-size:17px;font-weight:800;color:#fff}
+.aggiornato{background:#1b5e20;color:#a5d6a7;font-size:10px;padding:3px 9px;border-radius:4px;font-weight:700}
 </style>
+</head>
+<body>
 
-<div class="topbar">
-  <a href="#">Numero Verde Gratuito</a>
-  <a href="#">Area Personale</a>
-  <a href="#">Chi Siamo</a>
-  <a href="#">Contatti</a>
-  <span class="aggiornato">✓ Aggiornato Giugno 2026</span>
-</div>
-
+<!-- HEADER -->
 <div class="header">
   <div class="header-inner">
     <div class="logo">
       <div class="logo-icon">SA</div>
-      <div class="logo-text">
+      <div>
         <div class="logo-name">Sportello Aperto</div>
         <div class="logo-tag">Burocrazia Italiana Semplice</div>
       </div>
     </div>
-    <div class="header-tel">
-      <i class="ti ti-phone" aria-hidden="true"></i>
-      Assistenza: <strong>800 000 000</strong>
-    </div>
-    <div class="header-actions">
-      <button class="btn-accedi"><i class="ti ti-user" aria-hidden="true" style="font-size:13px;vertical-align:-1px;margin-right:3px"></i> Accedi</button>
-      <button class="btn-verde">Trova un Esperto</button>
-    </div>
+    <button class="btn-trova-hdr" onclick="scrollToTrova()"><i class="ti ti-map-pin" aria-hidden="true"></i> Trova un Esperto</button>
   </div>
 </div>
 
+<!-- NAV -->
 <div class="nav">
   <div class="nav-inner">
-    <div class="nav-item active"><i class="ti ti-home" aria-hidden="true"></i> Home</div>
-    <div class="nav-item"><i class="ti ti-building-community" aria-hidden="true"></i> CAF</div>
-    <div class="nav-item"><i class="ti ti-users" aria-hidden="true"></i> Patronato</div>
-    <div class="nav-item"><i class="ti ti-landmark" aria-hidden="true"></i> PA Digitale</div>
-    <div class="nav-item"><i class="ti ti-heart-rate-monitor" aria-hidden="true"></i> Salute</div>
-    <div class="nav-item"><i class="ti ti-home-2" aria-hidden="true"></i> Casa</div>
-    <div class="nav-item"><i class="ti ti-briefcase" aria-hidden="true"></i> Lavoro</div>
-    <div class="nav-item"><i class="ti ti-world" aria-hidden="true"></i> Immigrazione</div>
-    <div class="nav-item" style="margin-left:auto"><i class="ti ti-map-pin" aria-hidden="true"></i> Trova Esperto</div>
+    <div class="nav-item active" onclick="showAll(this)"><i class="ti ti-home" aria-hidden="true"></i> Home</div>
+    <div class="nav-item" onclick="filterCat('CAF',this)"><i class="ti ti-calculator" aria-hidden="true"></i> CAF</div>
+    <div class="nav-item" onclick="filterCat('Patronato',this)"><i class="ti ti-users" aria-hidden="true"></i> Patronato</div>
+    <div class="nav-item" onclick="filterCat('PA',this)"><i class="ti ti-landmark" aria-hidden="true"></i> PA Digitale</div>
+    <div class="nav-item" onclick="filterCat('Salute',this)"><i class="ti ti-heart-rate-monitor" aria-hidden="true"></i> Salute</div>
+    <div class="nav-item" onclick="filterCat('Casa',this)"><i class="ti ti-home-2" aria-hidden="true"></i> Casa</div>
+    <div class="nav-item" onclick="filterCat('Lavoro',this)"><i class="ti ti-briefcase" aria-hidden="true"></i> Lavoro</div>
+    <div class="nav-item" onclick="filterCat('Immigrazione',this)"><i class="ti ti-world" aria-hidden="true"></i> Immigrazione</div>
+    <div class="nav-item" style="margin-left:auto" onclick="scrollToTrova()"><i class="ti ti-map-pin" aria-hidden="true"></i> Trova Esperto</div>
   </div>
 </div>
 
+<!-- HERO -->
 <div class="hero">
   <div class="hero-inner">
     <h1>Burocrazia italiana, finalmente semplice.</h1>
-    <p>Guide aggiornate, documenti necessari, link ufficiali. Tutto in un posto.</p>
-    <div class="search-bar">
-      <input type="text" placeholder="Cerca una pratica (es. ISEE, pensione, SPID, permesso di soggiorno…)" />
-      <button><i class="ti ti-search" aria-hidden="true" style="margin-right:5px;vertical-align:-2px"></i> Cerca</button>
+    <p>Guide passo-passo aggiornate, documenti necessari e link ufficiali. Tutto in un posto.</p>
+    <div class="search-wrap">
+      <div class="search-bar">
+        <input id="search-input" type="text" placeholder="Cerca una pratica (es. ISEE, 730, pensione, SPID…)" oninput="doSearch(this.value)" onkeydown="if(event.key==='Enter')doSearch(this.value)"/>
+        <button onclick="doSearch(document.getElementById('search-input').value)"><i class="ti ti-search" aria-hidden="true"></i> Cerca</button>
+      </div>
+      <div class="search-hint"><i class="ti ti-keyboard" aria-hidden="true"></i> Premi Invio o clicca Cerca per trovare la pratica</div>
     </div>
     <div class="hero-badges">
-      <span class="badge">730 / Modello Redditi</span>
-      <span class="badge">ISEE 2026</span>
-      <span class="badge">Pensioni</span>
-      <span class="badge">NASpI</span>
-      <span class="badge">SPID / CIE</span>
-      <span class="badge">Permesso Soggiorno</span>
+      <span class="badge" onclick="doSearch('730')">Modello 730</span>
+      <span class="badge" onclick="doSearch('ISEE')">ISEE 2026</span>
+      <span class="badge" onclick="doSearch('pensione')">Pensioni</span>
+      <span class="badge" onclick="doSearch('NASpI')">NASpI</span>
+      <span class="badge" onclick="doSearch('SPID')">SPID</span>
+      <span class="badge" onclick="doSearch('permesso soggiorno')">Permesso Soggiorno</span>
+      <span class="badge" onclick="doSearch('invalidità')">Invalidità</span>
+      <span class="badge" onclick="doSearch('IMU')">IMU 2026</span>
     </div>
   </div>
 </div>
 
-<div class="scadenze-strip">
-  <div class="scadenze-inner">
-    <div class="scad-label"><i class="ti ti-calendar-event" aria-hidden="true" style="font-size:13px;vertical-align:-2px;margin-right:3px"></i> Scadenze</div>
+<!-- SCADENZE -->
+<div class="scad-strip">
+  <div class="scad-inner">
+    <div class="scad-label"><i class="ti ti-calendar-event" aria-hidden="true"></i> Scadenze 2026</div>
     <div class="scad-items">
-      <div class="scad-item"><span class="scad-date">16 GIU</span> Prima rata IMU 2026</div>
-      <div class="scad-item"><span class="scad-date">30 GIU</span> Termine 730 via CAF</div>
-      <div class="scad-item"><span class="scad-date">16 DIC</span> Saldo IMU seconda rata</div>
-      <div class="scad-item"><span class="scad-date">31 DIC</span> Scadenza ISEE 2026</div>
+      <div class="scad-item" onclick="openModal('imu')"><span class="scad-urgente">16 GIU</span> Prima rata IMU 2026</div>
+      <div class="scad-item" onclick="openModal('730')"><span class="scad-urgente">30 GIU</span> 730 via CAF</div>
+      <div class="scad-item" onclick="openModal('730-prec')"><span class="scad-date">30 SET</span> 730 precompilato</div>
+      <div class="scad-item" onclick="openModal('imu')"><span class="scad-date">16 DIC</span> Saldo IMU 2ª rata</div>
+      <div class="scad-item" onclick="openModal('isee')"><span class="scad-date">31 DIC</span> Scadenza ISEE 2026</div>
     </div>
   </div>
 </div>
 
-<div class="main">
+<!-- SEARCH RESULTS -->
+<div id="search-results"></div>
+
+<!-- MAIN -->
+<div class="main" id="main-content">
   <div>
-    <!-- SERVIZI PIU RICHIESTI -->
-    <div class="section-title">
-      <span><i class="ti ti-star" aria-hidden="true" style="font-size:14px;vertical-align:-2px;margin-right:5px"></i> I più richiesti</span>
-    </div>
-    <div class="richiesti-list">
-      <span class="richiesti-chip">Modello 730</span>
-      <span class="richiesti-chip">ISEE</span>
-      <span class="richiesti-chip">NASpI</span>
-      <span class="richiesti-chip">Pensione di Vecchiaia</span>
-      <span class="richiesti-chip">SPID</span>
-      <span class="richiesti-chip">Cambio Residenza</span>
-      <span class="richiesti-chip">Invalidità Civile</span>
-      <span class="richiesti-chip">Permesso di Soggiorno</span>
-      <span class="richiesti-chip">IMU</span>
+    <!-- CHIPS -->
+    <div class="section-title"><span><i class="ti ti-star section-title-icon" aria-hidden="true"></i> I più richiesti</span></div>
+    <div class="chips">
+      <span class="chip" onclick="openModal('730')">Modello 730</span>
+      <span class="chip" onclick="openModal('isee')">ISEE</span>
+      <span class="chip" onclick="openModal('naspi')">NASpI</span>
+      <span class="chip" onclick="openModal('pensione-vecchiaia')">Pensione di Vecchiaia</span>
+      <span class="chip" onclick="openModal('spid')">SPID</span>
+      <span class="chip" onclick="openModal('residenza')">Cambio Residenza</span>
+      <span class="chip" onclick="openModal('invalidita')">Invalidità Civile</span>
+      <span class="chip" onclick="openModal('permesso-soggiorno')">Permesso di Soggiorno</span>
+      <span class="chip" onclick="openModal('imu')">IMU</span>
+      <span class="chip" onclick="openModal('bonus-ristrutturazione')">Bonus Ristrutturazione</span>
+      <span class="chip" onclick="openModal('assegno-unico')">Assegno Unico</span>
+      <span class="chip" onclick="openModal('cie')">CIE</span>
     </div>
 
-    <!-- SERVIZI IN EVIDENZA -->
-    <div class="section-title">
-      <span><i class="ti ti-bolt" aria-hidden="true" style="font-size:14px;vertical-align:-2px;margin-right:5px"></i> Pratiche in scadenza</span>
-    </div>
+    <!-- PROMO (URGENTI) -->
+    <div class="section-title"><span><i class="ti ti-bolt section-title-icon" aria-hidden="true"></i> Pratiche in scadenza</span></div>
     <div class="promo-row">
-      <div class="promo-card">
-        <div class="promo-badge">URGENTE</div>
+      <div class="promo-card" onclick="openModal('730')">
+        <div class="promo-badge-urg">URGENTE</div>
+        <div class="promo-icon"><i class="ti ti-file-invoice" aria-hidden="true"></i></div>
         <div class="promo-name">Modello 730 / 2026</div>
-        <div class="promo-ente">Agenzia delle Entrate · CAF</div>
-        <div class="promo-time"><i class="ti ti-clock" aria-hidden="true"></i> Scadenza 30 Giugno 2026</div>
-        <button class="promo-btn">Vedi la guida</button>
+        <div class="promo-ente">Agenzia Entrate · CAF</div>
+        <div class="promo-time"><i class="ti ti-clock" aria-hidden="true" style="color:#c62828"></i> Scadenza 30 Giugno 2026</div>
+        <button class="promo-btn"><i class="ti ti-book" aria-hidden="true"></i> Guida completa</button>
       </div>
-      <div class="promo-card">
-        <div class="promo-badge">URGENTE</div>
+      <div class="promo-card" onclick="openModal('imu')">
+        <div class="promo-badge-urg">URGENTE</div>
+        <div class="promo-icon"><i class="ti ti-home-2" aria-hidden="true"></i></div>
         <div class="promo-name">IMU — Prima Rata</div>
         <div class="promo-ente">Comune · Modello F24</div>
-        <div class="promo-time"><i class="ti ti-clock" aria-hidden="true"></i> Scadenza 16 Giugno 2026</div>
-        <button class="promo-btn">Vedi la guida</button>
+        <div class="promo-time"><i class="ti ti-clock" aria-hidden="true" style="color:#c62828"></i> Scadenza 16 Giugno 2026</div>
+        <button class="promo-btn"><i class="ti ti-book" aria-hidden="true"></i> Guida completa</button>
       </div>
-      <div class="promo-card">
+      <div class="promo-card" onclick="openModal('isee')">
+        <div class="promo-icon"><i class="ti ti-chart-bar" aria-hidden="true"></i></div>
         <div class="promo-name">ISEE 2026</div>
         <div class="promo-ente">INPS · CAF</div>
-        <div class="promo-time"><i class="ti ti-clock" aria-hidden="true"></i> Valido fino al 31/12/2026</div>
-        <button class="promo-btn">Vedi la guida</button>
+        <div class="promo-time"><i class="ti ti-clock" aria-hidden="true" style="color:#003da5"></i> Valido fino 31/12/2026</div>
+        <button class="promo-btn"><i class="ti ti-book" aria-hidden="true"></i> Guida completa</button>
       </div>
-      <div class="promo-card">
+      <div class="promo-card" onclick="openModal('730-prec')">
+        <div class="promo-icon"><i class="ti ti-device-laptop" aria-hidden="true"></i></div>
         <div class="promo-name">730 Precompilato</div>
         <div class="promo-ente">Agenzia delle Entrate</div>
-        <div class="promo-time"><i class="ti ti-clock" aria-hidden="true"></i> Online fino al 30 Sett. 2026</div>
-        <button class="promo-btn">Vedi la guida</button>
+        <div class="promo-time"><i class="ti ti-clock" aria-hidden="true" style="color:#003da5"></i> Online fino 30 Sett. 2026</div>
+        <button class="promo-btn"><i class="ti ti-book" aria-hidden="true"></i> Guida completa</button>
+      </div>
+      <div class="promo-card" onclick="openModal('assegno-unico')">
+        <div class="promo-badge-new">2026</div>
+        <div class="promo-icon"><i class="ti ti-baby" aria-hidden="true"></i></div>
+        <div class="promo-name">Assegno Unico</div>
+        <div class="promo-ente">INPS · Famiglie</div>
+        <div class="promo-time"><i class="ti ti-clock" aria-hidden="true" style="color:#1b5e20"></i> Richiedi entro 30 Giugno</div>
+        <button class="promo-btn"><i class="ti ti-book" aria-hidden="true"></i> Guida completa</button>
+      </div>
+      <div class="promo-card" onclick="openModal('bonus-ristrutturazione')">
+        <div class="promo-icon"><i class="ti ti-tool" aria-hidden="true"></i></div>
+        <div class="promo-name">Bonus Casa 2026</div>
+        <div class="promo-ente">Agenzia Entrate · CAF</div>
+        <div class="promo-time"><i class="ti ti-clock" aria-hidden="true" style="color:#003da5"></i> Detrazioni in vigore</div>
+        <button class="promo-btn"><i class="ti ti-book" aria-hidden="true"></i> Guida completa</button>
       </div>
     </div>
 
-    <!-- TUTTE LE CATEGORIE -->
-    <div class="section-title">
-      <span><i class="ti ti-layout-grid" aria-hidden="true" style="font-size:14px;vertical-align:-2px;margin-right:5px"></i> Tutte le categorie</span>
-      <a href="#">Vedi tutte →</a>
-    </div>
+    <!-- CATEGORIE -->
+    <div class="section-title"><span><i class="ti ti-layout-grid section-title-icon" aria-hidden="true"></i> Tutte le categorie</span></div>
     <div class="cat-grid">
-      <div class="cat-card">
+      <div class="cat-card" onclick="filterCat('CAF',null)">
         <div class="cat-icon"><i class="ti ti-calculator" aria-hidden="true"></i></div>
         <div class="cat-name">CAF & Fiscale</div>
-        <div class="cat-count">7 pratiche</div>
+        <div class="cat-count">730, ISEE, IMU, RED…</div>
         <span class="cat-entra">Entra →</span>
       </div>
-      <div class="cat-card">
+      <div class="cat-card" onclick="filterCat('Patronato',null)">
         <div class="cat-icon"><i class="ti ti-users" aria-hidden="true"></i></div>
         <div class="cat-name">Patronato</div>
-        <div class="cat-count">6 pratiche</div>
+        <div class="cat-count">Pensioni, NASpI, Maternità…</div>
         <span class="cat-entra">Entra →</span>
       </div>
-      <div class="cat-card">
+      <div class="cat-card" onclick="filterCat('PA',null)">
         <div class="cat-icon"><i class="ti ti-landmark" aria-hidden="true"></i></div>
-        <div class="cat-name">PA Digitale & Comune</div>
-        <div class="cat-count">6 pratiche</div>
+        <div class="cat-name">PA Digitale</div>
+        <div class="cat-count">SPID, CIE, Residenza…</div>
         <span class="cat-entra">Entra →</span>
       </div>
-      <div class="cat-card">
+      <div class="cat-card" onclick="filterCat('Salute',null)">
         <div class="cat-icon"><i class="ti ti-heart-rate-monitor" aria-hidden="true"></i></div>
-        <div class="cat-name">Salute & Assistenza</div>
-        <div class="cat-count">3 pratiche</div>
+        <div class="cat-name">Salute</div>
+        <div class="cat-count">Invalidità, CUP, Esenzioni…</div>
         <span class="cat-entra">Entra →</span>
       </div>
-      <div class="cat-card">
+      <div class="cat-card" onclick="filterCat('Casa',null)">
         <div class="cat-icon"><i class="ti ti-home-2" aria-hidden="true"></i></div>
         <div class="cat-name">Casa & Abitare</div>
-        <div class="cat-count">3 pratiche</div>
+        <div class="cat-count">Affitti, Bonus, Edilizia…</div>
         <span class="cat-entra">Entra →</span>
       </div>
-      <div class="cat-card">
+      <div class="cat-card" onclick="filterCat('Lavoro',null)">
         <div class="cat-icon"><i class="ti ti-briefcase" aria-hidden="true"></i></div>
-        <div class="cat-name">Lavoro & Concorsi</div>
-        <div class="cat-count">2 pratiche</div>
+        <div class="cat-name">Lavoro</div>
+        <div class="cat-count">Contratti, Concorsi…</div>
         <span class="cat-entra">Entra →</span>
       </div>
-      <div class="cat-card">
+      <div class="cat-card" onclick="filterCat('Mobilità',null)">
         <div class="cat-icon"><i class="ti ti-car" aria-hidden="true"></i></div>
         <div class="cat-name">Mobilità</div>
-        <div class="cat-count">2 pratiche</div>
+        <div class="cat-count">Patente, Bollo, ZTL…</div>
         <span class="cat-entra">Entra →</span>
       </div>
-      <div class="cat-card">
+      <div class="cat-card" onclick="filterCat('Scuola',null)">
         <div class="cat-icon"><i class="ti ti-school" aria-hidden="true"></i></div>
-        <div class="cat-name">Scuola & Formazione</div>
-        <div class="cat-count">2 pratiche</div>
+        <div class="cat-name">Scuola</div>
+        <div class="cat-count">Borse, Diplomi, Corsi…</div>
         <span class="cat-entra">Entra →</span>
       </div>
-      <div class="cat-card">
+      <div class="cat-card" onclick="filterCat('Immigrazione',null)">
         <div class="cat-icon"><i class="ti ti-world" aria-hidden="true"></i></div>
         <div class="cat-name">Immigrazione</div>
-        <div class="cat-count">3 pratiche</div>
+        <div class="cat-count">Permessi, Cittadinanza…</div>
         <span class="cat-entra">Entra →</span>
       </div>
     </div>
@@ -317,125 +382,773 @@ a{text-decoration:none;color:inherit}
 
   <!-- SIDEBAR -->
   <div>
-    <!-- TROVA ESPERTO -->
-    <div class="trova-card">
-      <h3><i class="ti ti-map-pin" aria-hidden="true" style="margin-right:5px;vertical-align:-2px"></i> Trova un esperto vicino a te</h3>
-      <p>CAF, Patronato, e sportelli comunali nella tua zona.</p>
-      <button class="btn-trova"><i class="ti ti-current-location" aria-hidden="true" style="margin-right:5px;vertical-align:-2px"></i> Usa la mia posizione</button>
+    <div class="trova-card" id="trova-section">
+      <h3><i class="ti ti-map-pin" aria-hidden="true"></i> Trova un esperto vicino a te</h3>
+      <p>CAF, Patronato e sportelli comunali nella tua zona. Servizio gratuito.</p>
+      <button class="btn-trova" onclick="openExternal('https://www.cafonline.it/trova-caf')"><i class="ti ti-current-location" aria-hidden="true"></i> Trova CAF</button>
+      <button class="btn-trova" style="margin-top:8px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3)" onclick="openExternal('https://www.inps.it/it/it/contatti/sedi-e-contatti.html')"><i class="ti ti-building-bank" aria-hidden="true"></i> Trova Patronato INPS</button>
     </div>
 
-    <!-- PERCHE SCEGLIERCI -->
     <div class="perche">
-      <div class="section-title" style="margin-bottom:10px;font-size:11px">
-        <span><i class="ti ti-shield-check" aria-hidden="true" style="font-size:13px;vertical-align:-2px;margin-right:4px"></i> Perché Sportello Aperto</span>
-      </div>
+      <div class="section-title" style="margin-bottom:10px;font-size:11px"><span><i class="ti ti-shield-check section-title-icon" aria-hidden="true"></i> Perché Sportello Aperto</span></div>
       <div class="perche-item">
         <div class="perche-icon"><i class="ti ti-check" aria-hidden="true"></i></div>
-        <div class="perche-text">
-          <strong>Guide sempre aggiornate</strong>
-          <span>Contenuti verificati a giugno 2026</span>
-        </div>
+        <div class="perche-text"><strong>Guide passo-passo complete</strong><span>Ogni pratica spiegata dall'inizio alla fine</span></div>
       </div>
       <div class="perche-item">
         <div class="perche-icon"><i class="ti ti-link" aria-hidden="true"></i></div>
-        <div class="perche-text">
-          <strong>Link ufficiali diretti</strong>
-          <span>INPS, Agenzia Entrate, AGID e altri</span>
-        </div>
+        <div class="perche-text"><strong>Link ufficiali verificati</strong><span>INPS, Agenzia Entrate, AGID</span></div>
       </div>
       <div class="perche-item">
-        <div class="perche-icon"><i class="ti ti-free-rights" aria-hidden="true"></i></div>
-        <div class="perche-text">
-          <strong>Completamente gratuito</strong>
-          <span>Nessuna registrazione richiesta</span>
-        </div>
+        <div class="perche-icon"><i class="ti ti-heart" aria-hidden="true"></i></div>
+        <div class="perche-text"><strong>Completamente gratuito</strong><span>Nessuna registrazione richiesta</span></div>
       </div>
       <div class="perche-item">
         <div class="perche-icon"><i class="ti ti-device-mobile" aria-hidden="true"></i></div>
-        <div class="perche-text">
-          <strong>Funziona come app</strong>
-          <span>Installabile su telefono, anche offline</span>
-        </div>
+        <div class="perche-text"><strong>Funziona come app</strong><span>Installabile su telefono (PWA)</span></div>
       </div>
     </div>
 
-    <!-- ULTIME NOTIZIE -->
-    <div class="section-title" style="font-size:11px">
-      <span><i class="ti ti-news" aria-hidden="true" style="font-size:13px;vertical-align:-2px;margin-right:4px"></i> Ultime notizie</span>
-      <a href="#">Tutte →</a>
-    </div>
+    <div class="section-title" style="font-size:11px"><span><i class="ti ti-news section-title-icon" aria-hidden="true"></i> Ultime notizie</span></div>
     <div class="news-card">
       <span class="news-tag tag-caf">CAF — Fiscale</span>
       <div class="news-title">730/2026: scadenza 30 giugno per il CAF</div>
-      <div class="news-body">Il termine per la presentazione del 730/2026 tramite CAF è il 30 giugno 2026. Le spese sono detraibili solo con pagamento tracciabile.</div>
+      <div class="news-body">Il termine per presentare il 730/2026 tramite CAF è il 30 giugno 2026. Spese sanitarie detraibili solo con pagamento tracciabile.</div>
       <div class="news-fonte">Agenzia delle Entrate · Aprile 2026</div>
     </div>
     <div class="news-card">
       <span class="news-tag tag-patronato">Patronato — NASpI</span>
-      <div class="news-title">NASpI 2026: importo massimo 1.584,70 €</div>
-      <div class="news-body">Dal 2026 la NASpI anticipata non è più in unica soluzione: 70% subito e 30% entro 6 mesi.</div>
+      <div class="news-title">NASpI 2026: importo massimo 1.595,61 €</div>
+      <div class="news-body">Rivalutato l'importo massimo NASpI per il 2026. La anticipazione per avvio impresa ora è 70% subito e 30% dopo 6 mesi.</div>
       <div class="news-fonte">INPS Circolare n.4/2026 · Gennaio 2026</div>
     </div>
     <div class="news-card">
       <span class="news-tag tag-pa">PA — Identità Digitale</span>
       <div class="news-title">SPID e CIE: entrambi validi nel 2026</div>
-      <div class="news-body">Il governo sposta gradualmente l'accesso verso la CIE come sistema principale per l'EU Digital Identity Wallet.</div>
+      <div class="news-body">Graduale migrazione verso CIE come sistema principale, in preparazione EU Digital Identity Wallet entro 2027.</div>
       <div class="news-fonte">AGID · Maggio 2026</div>
+    </div>
+    <div class="news-card">
+      <span class="news-tag tag-bonus">Bonus Casa 2026</span>
+      <div class="news-title">Superbonus sceso al 65% nel 2026</div>
+      <div class="news-body">Il Superbonus 110% è terminato. Nel 2026 rimane al 65% per lavori già avviati. Bonus ristrutturazione ordinario al 50% confermato.</div>
+      <div class="news-fonte">Agenzia delle Entrate · Gennaio 2026</div>
     </div>
   </div>
 </div>
 
+<!-- FOOTER -->
 <div class="footer">
   <div class="footer-inner">
     <div class="footer-grid">
       <div class="footer-col">
         <div class="footer-logo">Sportello Aperto</div>
-        <p style="font-size:11px;margin-top:6px;line-height:1.6">Burocrazia italiana semplice. Guide aggiornate per cittadini e famiglie.</p>
+        <p style="font-size:11px;margin-top:7px;line-height:1.7;color:#aac0e8">Burocrazia italiana semplice. Guide aggiornate per cittadini e famiglie italiane.</p>
+        <div style="margin-top:9px"><span class="aggiornato">✓ Aggiornato Giugno 2026</span></div>
       </div>
       <div class="footer-col">
         <h4>CAF & Fiscale</h4>
-        <a href="#">Modello 730</a>
-        <a href="#">Modello RED</a>
-        <a href="#">ISEE 2026</a>
-        <a href="#">IMU</a>
-        <a href="#">Bonus Vari</a>
-        <a href="#">Successioni</a>
+        <a onclick="openModal('730')">Modello 730</a>
+        <a onclick="openModal('730-prec')">730 Precompilato</a>
+        <a onclick="openModal('isee')">ISEE 2026</a>
+        <a onclick="openModal('imu')">IMU</a>
+        <a onclick="openModal('bonus-ristrutturazione')">Bonus Casa 2026</a>
+        <a onclick="openModal('successioni')">Successioni</a>
       </div>
       <div class="footer-col">
         <h4>Patronato</h4>
-        <a href="#">Pensioni</a>
-        <a href="#">NASpI</a>
-        <a href="#">Maternità / Paternità</a>
-        <a href="#">Invalidità Civile</a>
-        <a href="#">Infortuni sul Lavoro</a>
+        <a onclick="openModal('pensione-vecchiaia')">Pensione di Vecchiaia</a>
+        <a onclick="openModal('pensione-anticipata')">Pensione Anticipata</a>
+        <a onclick="openModal('naspi')">NASpI</a>
+        <a onclick="openModal('maternita')">Maternità / Paternità</a>
+        <a onclick="openModal('invalidita')">Invalidità Civile</a>
+        <a onclick="openModal('assegno-unico')">Assegno Unico</a>
       </div>
       <div class="footer-col">
         <h4>PA Digitale</h4>
-        <a href="#">SPID / CIE</a>
-        <a href="#">Cambio Residenza</a>
-        <a href="#">Certificati</a>
-        <a href="#">Pratiche Edilizie</a>
-        <a href="#">Tributi Locali</a>
+        <a onclick="openModal('spid')">SPID</a>
+        <a onclick="openModal('cie')">CIE</a>
+        <a onclick="openModal('residenza')">Cambio Residenza</a>
+        <a onclick="openModal('certificati')">Certificati Anagrafici</a>
+        <a onclick="openModal('pec')">PEC</a>
       </div>
       <div class="footer-col">
         <h4>Altri Servizi</h4>
-        <a href="#">Salute & CUP</a>
-        <a href="#">Contratti Affitto</a>
-        <a href="#">Concorsi Pubblici</a>
-        <a href="#">Cittadinanza</a>
-        <a href="#">Permesso Soggiorno</a>
+        <a onclick="openModal('esenzione-ticket')">Esenzione Ticket</a>
+        <a onclick="openModal('contratto-affitto')">Contratti Affitto</a>
+        <a onclick="openModal('concorsi')">Concorsi Pubblici</a>
+        <a onclick="openModal('cittadinanza')">Cittadinanza</a>
+        <a onclick="openModal('permesso-soggiorno')">Permesso Soggiorno</a>
       </div>
       <div class="footer-col">
-        <h4>Info</h4>
-        <a href="#">Chi siamo</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Cookie Policy</a>
-        <a href="#">Trova un Esperto</a>
+        <h4>Link Ufficiali</h4>
+        <a onclick="openExternal('https://www.inps.it')">INPS</a>
+        <a onclick="openExternal('https://www.agenziaentrate.gov.it')">Agenzia Entrate</a>
+        <a onclick="openExternal('https://www.agid.gov.it')">AGID</a>
+        <a onclick="openExternal('https://www.interno.gov.it')">Min. Interno</a>
+        <a onclick="openExternal('https://www.governo.it')">Governo Italiano</a>
+        <a onclick="openExternal('https://www.cafonline.it/trova-caf')">Trova CAF</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 Sportello Aperto — Burocrazia Italiana Semplice. Contenuti aggiornati a giugno 2026.</p>
+      <p>© 2026 Sportello Aperto — Burocrazia Italiana Semplice. Contenuti verificati a giugno 2026.</p>
       <p>Tutti i link rimandano a fonti ufficiali della Pubblica Amministrazione italiana.</p>
     </div>
   </div>
 </div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModalOutside(event)">
+  <div class="modal" id="modal-box">
+    <div class="modal-header">
+      <div>
+        <h2 id="modal-title"></h2>
+        <div class="modal-cat" id="modal-cat"></div>
+      </div>
+      <button class="modal-close" onclick="closeModal()" aria-label="Chiudi"><i class="ti ti-x" aria-hidden="true"></i></button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+const SERVIZI = [
+  {id:'730',nome:'Modello 730 / 2026',cat:'CAF',icon:'ti-file-invoice',desc:'Dichiarazione dei redditi persone fisiche — anno d\'imposta 2025',keys:'730 redditi dichiarazione irpef fiscale caf modello'},
+  {id:'730-prec',nome:'730 Precompilato Online',cat:'CAF',icon:'ti-device-laptop',desc:'Accesso e modifica del 730 precompilato sul sito Agenzia Entrate',keys:'730 precompilato online agenzia entrate dichiarazione'},
+  {id:'isee',nome:'ISEE 2026',cat:'CAF',icon:'ti-chart-bar',desc:'Dichiarazione Sostitutiva Unica (DSU) per calcolo ISEE',keys:'isee dsu situazione economica caf inps indicatore'},
+  {id:'imu',nome:'IMU — Imposta Municipale',cat:'CAF',icon:'ti-home-2',desc:'Calcolo e pagamento IMU con modello F24',keys:'imu imposta municipale propria comune f24 casa prima seconda'},
+  {id:'modello-red',nome:'Modello RED',cat:'CAF',icon:'ti-file',desc:'Dichiarazione reddituale per pensionati INPS',keys:'red modello pensionati reddito caf dichiarazione'},
+  {id:'successioni',nome:'Successioni',cat:'CAF',icon:'ti-scale',desc:'Dichiarazione di successione e volture catastali',keys:'successione eredità dichiarazione catasto'},
+  {id:'bonus-ristrutturazione',nome:'Bonus Casa 2026',cat:'Casa',icon:'ti-tool',desc:'Detrazioni ristrutturazione, risparmio energetico, sismabonus',keys:'bonus ristrutturazione casa 50% superbonus ecobonus sismabonus detrazioni'},
+  {id:'pensione-vecchiaia',nome:'Pensione di Vecchiaia',cat:'Patronato',icon:'ti-user-check',desc:'Requisiti e domanda pensione di vecchiaia INPS 2026',keys:'pensione vecchiaia inps patronato contributi requisiti età'},
+  {id:'pensione-anticipata',nome:'Pensione Anticipata',cat:'Patronato',icon:'ti-clock-fast',desc:'Quota 103, Opzione Donna, pensione anticipata ordinaria',keys:'pensione anticipata quota 103 opzione donna patronato'},
+  {id:'naspi',nome:'NASpI — Disoccupazione',cat:'Patronato',icon:'ti-currency-euro',desc:'Indennità mensile di disoccupazione involontaria',keys:'naspi disoccupazione indennità inps patronato lavoro'},
+  {id:'maternita',nome:'Maternità / Paternità',cat:'Patronato',icon:'ti-baby-carriage',desc:'Indennità di maternità, paternità e congedo parentale',keys:'maternità paternità congedo parentale inps'},
+  {id:'invalidita',nome:'Invalidità Civile',cat:'Salute',icon:'ti-wheelchair',desc:'Domanda di invalidità, handicap, disabilità e legge 104',keys:'invalidità civile handicap disabilità inps patronato legge 104'},
+  {id:'assegno-unico',nome:'Assegno Unico Universale',cat:'Patronato',icon:'ti-baby',desc:'Beneficio mensile per famiglie con figli fino a 21 anni',keys:'assegno unico universale figli inps famiglie'},
+  {id:'adi',nome:'Assegno di Inclusione (ADI)',cat:'Patronato',icon:'ti-heart-handshake',desc:'Misura di contrasto alla povertà — ex Reddito di Cittadinanza',keys:'assegno inclusione adi reddito cittadinanza povertà'},
+  {id:'spid',nome:'SPID',cat:'PA',icon:'ti-key',desc:'Sistema Pubblico di Identità Digitale — attivazione e gestione',keys:'spid identità digitale accesso servizi pa provider'},
+  {id:'cie',nome:'CIE — Carta d\'Identità Elettronica',cat:'PA',icon:'ti-id',desc:'Richiesta, rinnovo e utilizzo CIE per servizi digitali',keys:'cie carta identità elettronica comune rinnovo'},
+  {id:'residenza',nome:'Cambio Residenza',cat:'PA',icon:'ti-map-pin',desc:'Variazione residenza online tramite ANPR o allo sportello',keys:'residenza cambio trasferimento anpr comune online'},
+  {id:'certificati',nome:'Certificati Anagrafici Online',cat:'PA',icon:'ti-file-certificate',desc:'Scarica certificati di residenza, stato di famiglia gratuitamente',keys:'certificati anagrafici stato famiglia residenza anagrafe'},
+  {id:'pec',nome:'PEC — Posta Elettronica Certificata',cat:'PA',icon:'ti-mail',desc:'Attivazione e utilizzo della PEC per comunicazioni con la PA',keys:'pec posta elettronica certificata pa comunicazioni'},
+  {id:'pratiche-edilizie',nome:'Pratiche Edilizie',cat:'Casa',icon:'ti-building',desc:'SCIA, permesso di costruire, agibilità, DIA',keys:'pratiche edilizie scia permesso costruire comune agibilità dia'},
+  {id:'contratto-affitto',nome:'Contratti di Affitto',cat:'Casa',icon:'ti-file-text',desc:'Registrazione contratti locazione all\'Agenzia delle Entrate',keys:'affitto locazione contratto registrazione agenzia entrate'},
+  {id:'concorsi',nome:'Concorsi Pubblici',cat:'Lavoro',icon:'ti-trophy',desc:'Portale InPA per concorsi nella Pubblica Amministrazione',keys:'concorsi pubblici inpa pa lavoro bando selezione'},
+  {id:'patente',nome:'Patente di Guida',cat:'Mobilità',icon:'ti-car',desc:'Rinnovo, duplicato e conversione patente di guida',keys:'patente guida rinnovo duplicato motorizzazione mit'},
+  {id:'bollo-auto',nome:'Bollo Auto',cat:'Mobilità',icon:'ti-license',desc:'Pagamento, verifica e recupero bollo veicoli',keys:'bollo auto veicolo tassa aci regione pagamento'},
+  {id:'permesso-soggiorno',nome:'Permesso di Soggiorno',cat:'Immigrazione',icon:'ti-passport',desc:'Richiesta, rinnovo e conversione permesso di soggiorno',keys:'permesso soggiorno immigrazione stranieri rinnovo kit postale'},
+  {id:'cittadinanza',nome:'Cittadinanza Italiana',cat:'Immigrazione',icon:'ti-flag',desc:'Acquisizione per matrimonio, residenza o iure sanguinis',keys:'cittadinanza italiana acquisizione matrimonio sangue jure'},
+  {id:'esenzione-ticket',nome:'Esenzione Ticket Sanitario',cat:'Salute',icon:'ti-stethoscope',desc:'Esenzione per reddito, età o patologia cronica',keys:'esenzione ticket sanitario reddito malattia cronica ssn'},
+  {id:'cup',nome:'CUP — Prenotazione Visite',cat:'Salute',icon:'ti-calendar-check',desc:'Centro Unico di Prenotazione visite specialistiche SSN',keys:'cup prenotazione visite ssn medico specialista'},
+];
+
+const GUIDE = {
+  '730': {
+    title: 'Modello 730 / 2026',
+    cat: 'CAF & Fiscale — Anno d\'imposta 2025',
+    url: 'https://www.agenziaentrate.gov.it/portale/web/guest/dichiarazione-dei-redditi-persone-fisiche',
+    url2: 'https://www.cafonline.it/trova-caf',
+    url2label: 'Trova un CAF',
+    desc: 'Il Modello 730 è la dichiarazione dei redditi per lavoratori dipendenti e pensionati. Permette di indicare spese detraibili (mediche, scolastiche, ristrutturazioni) e ottenere rimborsi direttamente in busta paga o nella pensione. Per il 2026 si dichiara il reddito dell\'anno d\'imposta 2025.',
+    scadenza: '<strong>Scadenza 30 Giugno 2026</strong> tramite CAF o intermediario abilitato. Se si fa da soli online (730 precompilato), scadenza 30 Settembre 2026.',
+    docs: ['Documento d\'identità valido','Tessera sanitaria / Codice fiscale','CU (Certificazione Unica) del datore di lavoro o INPS','Scontrini/fatture spese mediche 2025','Ricevute pagamenti mutuo (interessi passivi)','Documentazione spese universitarie','Ricevute lavori in casa (se presenti)','F24 versamenti IMU/TASI 2025'],
+    steps: [
+      {t:'Raccogli tutti i documenti',d:'Recupera la CU dal datore di lavoro (disponibile entro fine marzo), le spese mediche dell\'anno, le fatture per eventuali lavori in casa e tutti i documenti fiscali del 2025.'},
+      {t:'Scegli come presentare',d:'Hai 3 opzioni: (1) CAF gratuito con ISEE sotto soglia, (2) Commercialista o patronato a pagamento, (3) Online in autonomia sul sito dell\'Agenzia delle Entrate con SPID/CIE.'},
+      {t:'Prenota appuntamento CAF (se scegli CAF)',d:'Cerca il CAF più vicino su cafonline.it, chiama per appuntamento o prenota online. Porta tutti i documenti elencati sopra.'},
+      {t:'Accesso al 730 precompilato (se fai da solo)',d:'Vai su dichiarazioneprecompilata.agenziaentrate.gov.it, accedi con SPID o CIE, verifica le informazioni già inserite dall\'Agenzia delle Entrate e aggiungi le spese mancanti.'},
+      {t:'Controlla e integra i dati',d:'Verifica che tutti i redditi siano corretti, inserisci le spese detraibili (sanitarie, interessi mutuo, affitti, ecc.) e le detrazioni a cui hai diritto.'},
+      {t:'Invio e conferma',d:'Il CAF invia telematicamente entro il 30 giugno. Se fai da solo, invia entro il 30 settembre. Riceverai ricevuta di presentazione.'},
+      {t:'Rimborso in busta paga',d:'Se risulta un credito, il rimborso viene accreditato direttamente in busta paga a luglio/agosto (lavoratori dipendenti) o sulla pensione di agosto (pensionati). Se sei a debito, il pagamento viene trattenuto dalla busta paga di luglio.'},
+    ],
+    costo: 'Gratuito presso CAF se hai ISEE entro la soglia di accesso ai servizi. A pagamento da commercialista (indicativamente 50–150 €). Online da soli: completamente gratuito.',
+    attenzione: 'Dal 2025 le spese sanitarie sono detraibili SOLO se pagate in modo tracciabile (bancomat, carta, bonifico). I pagamenti in contanti non danno diritto alla detrazione.'
+  },
+  '730-prec': {
+    title: '730 Precompilato Online',
+    cat: 'CAF & Fiscale — Agenzia delle Entrate',
+    url: 'https://dichiarazioneprecompilata.agenziaentrate.gov.it',
+    desc: 'L\'Agenzia delle Entrate mette a disposizione il 730 già parzialmente compilato con i dati in suo possesso: redditi da lavoro, pensione, spese mediche già registrate al Sistema Tessera Sanitaria, interessi mutuo, ecc. Puoi accettarlo, modificarlo o integrarlo direttamente online.',
+    scadenza: '<strong>Scadenza 30 Settembre 2026</strong> per la presentazione autonoma online.',
+    docs: ['SPID o CIE per accedere','CU del datore di lavoro (per verificare i dati)','Documenti spese NON già presenti (es. spese veterinarie, università privata)','Dati immobili (se hai immobili da dichiarare)'],
+    steps: [
+      {t:'Accedi al sito',d:'Vai su dichiarazioneprecompilata.agenziaentrate.gov.it e clicca su "Accedi". Hai bisogno di SPID (livello 2) o CIE con PIN.'},
+      {t:'Visualizza la precompilata',d:'Trovi il tuo 730 già parzialmente compilato dall\'Agenzia. Controlla redditi, detrazioni automatiche (spese mediche, interessi mutuo ecc.) e verifica se ci sono avvisi.'},
+      {t:'Accetta o modifica',d:'Se i dati sono corretti, puoi accettare il 730 così com\'è. Se hai spese aggiuntive o correzioni, clicca "Modifica" e integra manualmente.'},
+      {t:'Aggiungi spese mancanti',d:'Inserisci eventuali spese non già presenti: veterinario, università privata, affitti, bonus edilizi, donazioni a onlus ecc.'},
+      {t:'Controlla il risultato',d:'Il sistema calcola automaticamente l\'imposta dovuta o il rimborso spettante. Verifica l\'importo prima di inviare.'},
+      {t:'Invia la dichiarazione',d:'Clicca su "Invia" entro il 30 settembre 2026. Riceverai una ricevuta elettronica come prova dell\'invio.'},
+    ],
+    costo: 'Completamente gratuito.',
+    attenzione: 'Se accetti il 730 precompilato senza modifiche, non sei soggetto a controlli formali da parte dell\'Agenzia delle Entrate. Se lo modifichi, potresti essere soggetto a verifica solo sulle parti modificate.'
+  },
+  'isee': {
+    title: 'ISEE 2026',
+    cat: 'CAF & Fiscale — INPS',
+    url: 'https://servizi2.inps.it/servizi/DSUPrecompilata',
+    url2: 'https://www.cafonline.it/trova-caf',
+    url2label: 'Oppure vai al CAF',
+    desc: 'L\'ISEE (Indicatore della Situazione Economica Equivalente) misura la situazione economica del nucleo familiare. È necessario per accedere a bonus, agevolazioni, tariffe ridotte (asili nido, rette universitarie, bonus luce/gas) e per richiedere l\'Assegno Unico. La DSU compilata ha validità fino al 31 dicembre 2026.',
+    scadenza: '<strong>Nessuna scadenza fissa</strong> per presentare la DSU, ma è conveniente farlo a inizio anno. L\'ISEE 2026 è valido fino al 31/12/2026.',
+    docs: ['Documento d\'identità e codice fiscale di tutti i componenti','Dati del patrimonio immobiliare 2024 (visure catastali)','Saldi e giacenze medie conti correnti al 31/12/2024','Documentazione eventuali partecipazioni societarie','Dati mutui residui al 31/12/2024 (per immobili)','CU 2025 (redditi 2024) di tutti i componenti'],
+    steps: [
+      {t:'Scegli come presentare la DSU',d:'Puoi fare la DSU precompilata online su INPS con SPID/CIE (dati già pre-caricati da INPS) oppure al CAF gratuitamente portando i documenti.'},
+      {t:'Accesso alla DSU precompilata INPS',d:'Vai su servizi2.inps.it/servizi/DSUPrecompilata, accedi con SPID o CIE, e trovi i redditi e il patrimonio già pre-compilati da INPS con i dati 2024.'},
+      {t:'Verifica i dati pre-caricati',d:'Controlla che tutti i redditi e i patrimoni siano corretti. Devi solo aggiungere i dati non in possesso dell\'INPS (es. conti esteri, patrimoni non dichiarati all\'Agenzia Entrate).'},
+      {t:'Inserisci i dati mancanti',d:'Aggiungi eventuali dati non pre-caricati: giacenze medie conti bancari, depositi, saldi al 31/12/2024, partecipazioni societarie ecc.'},
+      {t:'Invia la DSU',d:'Dopo aver verificato tutto, invia telematicamente. L\'ISEE viene calcolato automaticamente entro pochi minuti e ricevi attestazione via email.'},
+      {t:'Scarica l\'attestazione ISEE',d:'Accedi all\'area personale INPS e scarica l\'attestazione ISEE in PDF. Ti servirà per fare richiesta di agevolazioni.'},
+    ],
+    costo: 'Gratuito sia online (INPS) che al CAF.',
+    attenzione: 'Se dichiari dati non veritieri nella DSU, rischi sanzioni penali. I dati sono incrociati con Agenzia delle Entrate, banche e catasto.'
+  },
+  'imu': {
+    title: 'IMU — Imposta Municipale Propria 2026',
+    cat: 'CAF & Fiscale — Comuni',
+    url: 'https://www.agenziaentrate.gov.it/portale/web/guest/imu-imposta-municipale-propria',
+    url2: 'https://www.f24online.mef.gov.it',
+    url2label: 'Paga F24 online (MEF)',
+    desc: 'L\'IMU è l\'imposta dovuta dal proprietario di immobili (esclusa la prima casa non di lusso). Si paga in due rate: acconto il 16 giugno e saldo il 16 dicembre. L\'aliquota è fissata dal Comune di riferimento.',
+    scadenza: '<strong>1ª rata: 16 Giugno 2026</strong> (acconto). <strong>2ª rata: 16 Dicembre 2026</strong> (saldo).',
+    docs: ['Visura catastale dell\'immobile (o atto di acquisto)','Codice fiscale del proprietario','Aliquota IMU del Comune (sul sito del Comune)','Dati F24: codice tributo IMU (3912 per terreni agricoli, 3914 per prima casa di lusso, 3918 per altri immobili)'],
+    steps: [
+      {t:'Verifica se devi pagare',d:'La prima casa di residenza principale è ESENTE dall\'IMU, tranne le abitazioni di lusso (A/1, A/8, A/9). Devi pagare per seconde case, immobili affittati, terreni agricoli, negozi, uffici.'},
+      {t:'Trova l\'aliquota del tuo Comune',d:'Vai sul sito del tuo Comune nella sezione "Tributi" o "IMU". Le aliquote variano per tipologia di immobile. Oppure utilizza il calcolatore IMU di Finanze.gov.it.'},
+      {t:'Calcola l\'importo',d:'Formula: Rendita catastale × 1,05 × moltiplicatore catastale (160 per abitazioni) × aliquota comunale. Dividi per 2 per l\'acconto (50% dell\'importo annuo).'},
+      {t:'Compila il modello F24',d:'Puoi compilare F24 online su: banca online, Poste, Fisconline, oppure al CAF/commercialista. Indica il codice comune e il codice tributo corretto.'},
+      {t:'Effettua il pagamento',d:'Paga online tramite F24 semplificato sulla tua banca, alle Poste, o con addebito su conto. Il pagamento deve avvenire entro il 16 giugno (1ª rata).'},
+      {t:'Conserva la ricevuta',d:'Tieni la ricevuta di pagamento per almeno 5 anni in caso di controlli da parte del Comune.'},
+      {t:'Saldo a dicembre',d:'A dicembre, calcola il saldo = IMU totale annua − quanto già pagato a giugno. Paga entro il 16 dicembre.'},
+    ],
+    costo: 'L\'IMU è un\'imposta — l\'importo dipende dal valore catastale e dall\'aliquota. Il F24 è gratuito se compilato online; il CAF può addebitare un piccolo costo di assistenza.',
+    attenzione: 'In caso di omesso pagamento, il Comune applica sanzioni del 30% + interessi legali. È possibile ravvedimento operoso entro i termini previsti.'
+  },
+  'pensione-vecchiaia': {
+    title: 'Pensione di Vecchiaia',
+    cat: 'Patronato — INPS',
+    url: 'https://www.inps.it/it/it/dettaglio-scheda.schede-servizio-e-prestazioni.schede.50062.html',
+    url2: 'https://www.inps.it/it/it/contatti/sedi-e-contatti.html',
+    url2label: 'Trova Patronato / CAF INPS',
+    desc: 'La pensione di vecchiaia consente di andare in pensione al raggiungimento dell\'età anagrafica prevista dalla legge e di un minimo di contributi versati. Nel 2026 i requisiti sono: 67 anni di età e almeno 20 anni di contributi (per chi ha contributi solo dopo il 1996: importo pensione almeno pari a 3 volte l\'assegno sociale).',
+    scadenza: 'La domanda va presentata <strong>prima del mese in cui si matura il diritto</strong>. L\'INPS ci mette da 30 a 90 giorni per rispondere.',
+    docs: ['Documento d\'identità valido','Codice fiscale','Estratto contributivo INPS (scaricabile dal sito)','Dati bancari (IBAN) per accredito pensione','Stato di famiglia','Autocertificazione residenza'],
+    steps: [
+      {t:'Verifica il requisito anagrafico e contributivo',d:'Accedi al tuo fascicolo previdenziale su myinps.inps.it con SPID/CIE. Controlla quanti anni di contributi hai versato e quando compirai 67 anni (2026).'},
+      {t:'Consulta il simulatore pensione INPS',d:'Sul sito INPS c\'è il "Simulatore di pensione" nella tua area personale. Ti mostra l\'importo stimato della pensione in base ai tuoi contributi.'},
+      {t:'Rivolgiti a un Patronato (consigliato)',d:'I patronati (ACLI, INCA-CGIL, ENAS, ENPALS ecc.) assistono gratuitamente nella domanda. Porta tutti i documenti e spiegano situazione contributiva.'},
+      {t:'Presenta la domanda online',d:'Accedi a myinps.inps.it con SPID → "Pensione di vecchiaia e anticipata" → "Nuova domanda". Compila tutti i campi richiesti.'},
+      {t:'Allegati e invio',d:'Carica il documento d\'identità e gli eventuali allegati richiesti. Invia la domanda. Ricevi una ricevuta con numero di protocollo.'},
+      {t:'Attesa esito',d:'L\'INPS esamina la domanda in 30–90 giorni. Puoi monitorare lo stato su myinps.inps.it. Riceverai comunicazione via email o posta.'},
+      {t:'Prima rata pensione',d:'Se accettata, la pensione decorre dal primo giorno del mese successivo alla presentazione della domanda. Il primo pagamento arriva solitamente dopo 1–2 mesi dalla liquidazione.'},
+    ],
+    costo: 'La domanda è gratuita. Il Patronato assiste gratuitamente.',
+    attenzione: 'Non aspettare troppo a presentare domanda: la pensione decorre dal mese DOPO la domanda, non dalla data di maturazione del requisito. Ogni mese di ritardo è pensione persa.'
+  },
+  'naspi': {
+    title: 'NASpI — Indennità di Disoccupazione',
+    cat: 'Patronato — INPS',
+    url: 'https://www.inps.it/it/it/dettaglio-scheda.schede-servizio-e-prestazioni.schede.50061.html',
+    desc: 'La NASpI è l\'indennità mensile di disoccupazione per i lavoratori dipendenti che perdono involontariamente il lavoro. Nel 2026 l\'importo massimo è di circa 1.595,61 €/mese. Dura la metà delle settimane lavorate negli ultimi 4 anni (massimo 24 mesi). Si riduce del 3% ogni mese dopo il 6° mese.',
+    scadenza: 'La domanda va presentata <strong>entro 68 giorni</strong> dalla data di disoccupazione. Dopo, si perde il diritto ai giorni non richiesti.',
+    docs: ['Documento d\'identità','Codice fiscale','IBAN bancario o postale (intestato a te)','Lettera di licenziamento o accordo di risoluzione','DID (Dichiarazione di Immediata Disponibilità al lavoro) — obbligatoria'],
+    steps: [
+      {t:'Verifica i requisiti',d:'Devi avere: stato di disoccupazione involontario (licenziamento, fine contratto a termine, risoluzione consensuale in sede protetta), almeno 13 settimane di contributi negli ultimi 4 anni, e almeno 30 giorni lavorativi nell\'ultimo anno.'},
+      {t:'Rilascia la DID',d:'Prima di fare domanda, devi rendere la Dichiarazione di Immediata Disponibilità al lavoro: puoi farlo online su ANPAL (anpal.gov.it) o al Centro per l\'Impiego della tua città.'},
+      {t:'Presenta domanda online',d:'Accedi a myinps.inps.it con SPID/CIE → "NASpI" → "Domanda NASpI". Compila tutti i campi entro 68 giorni dal licenziamento.'},
+      {t:'In alternativa: Patronato',d:'Rivolgiti a un Patronato (CGIL, CISL, UIL ecc.) che compila e trasmette la domanda gratuitamente. Porta lettera di licenziamento e IBAN.'},
+      {t:'Verifica lo stato della domanda',d:'Su myinps.inps.it puoi seguire lo stato della domanda. L\'INPS risponde di solito in 15–30 giorni.'},
+      {t:'Primo pagamento',d:'Il primo pagamento viene accreditato sull\'IBAN indicato generalmente entro il mese successivo all\'accettazione della domanda. L\'indennità è mensile posticipata.'},
+      {t:'Obbligo di partecipazione attiva',d:'Devi rimanere disponibile al lavoro e partecipare ai programmi del Centro per l\'Impiego. Se rifiuti un\'offerta di lavoro "congrua", perdi la NASpI.'},
+    ],
+    costo: 'Gratuito. Il Patronato assiste senza costi.',
+    attenzione: 'Se inizi un lavoro autonomo durante la NASpI, devi comunicarlo subito all\'INPS. Dal 2026 l\'anticipo in unica soluzione per avviare impresa è abolito: 70% subito e 30% dopo 6 mesi dall\'avvio.'
+  },
+  'spid': {
+    title: 'SPID — Identità Digitale',
+    cat: 'PA Digitale',
+    url: 'https://www.spid.gov.it',
+    desc: 'Lo SPID (Sistema Pubblico di Identità Digitale) è lo strumento di identificazione per accedere online a tutti i servizi della Pubblica Amministrazione: INPS, Agenzia delle Entrate, fascicolo sanitario, concorsi pubblici, ecc. Nel 2026 rimane valido insieme alla CIE, ma il governo sta progressivamente privilegiando la CIE come sistema principale.',
+    scadenza: 'Nessuna scadenza: puoi attivarlo in qualsiasi momento. Non scade.',
+    docs: ['Documento d\'identità valido (CI, patente o passaporto)','Tessera sanitaria / Codice fiscale','Numero di cellulare attivo','Indirizzo email attivo'],
+    steps: [
+      {t:'Scegli il provider SPID',d:'Ci sono vari provider accreditati: Poste ID (Poste Italiane), Aruba ID, TIM ID, Namirial, Intesa, Sielte, SpidItalia. I più usati sono PosteID e Aruba. Vai sul sito del provider scelto.'},
+      {t:'Registrazione online',d:'Vai su posteid.poste.it (o altro provider), clicca su "Registrati" e inserisci: nome, cognome, codice fiscale, email, numero di cellulare, e crea le credenziali SPID (username e password).'},
+      {t:'Verifica dell\'identità',d:'Ogni provider offre varie modalità di identificazione. Le più comuni: (1) Video selfie con documento + chip NFC del documento, (2) Sportello fisico di Poste o del provider, (3) Webcam con operatore, (4) Con CIE + lettore NFC.'},
+      {t:'Attivazione SPID',d:'Dopo la verifica dell\'identità (di solito 24–48 ore), ricevi email di conferma. Il tuo SPID è attivo al livello 1 e 2 (autenticazione a due fattori con OTP su cellulare).'},
+      {t:'Come usare SPID',d:'Quando un sito PA chiede di accedere con SPID, clicca su "Entra con SPID", scegli il tuo provider, inserisci username e password e poi l\'OTP ricevuto via SMS. Accesso completato.'},
+    ],
+    costo: 'Gratuito con PosteID e molti provider. Alcuni provider offrono SPID premium a pagamento con caratteristiche aggiuntive.',
+    attenzione: 'Non condividere mai le credenziali SPID con nessuno. Lo SPID è personale e la sua cessione è reato. Se perdi il cellulare, cambia subito la password e contatta il provider.'
+  },
+  'cie': {
+    title: 'CIE — Carta d\'Identità Elettronica',
+    cat: 'PA Digitale — Comune',
+    url: 'https://www.cartaidentita.interno.gov.it',
+    desc: 'La Carta d\'Identità Elettronica (CIE) è il documento di identità italiano che dal 2026 è anche il principale sistema di autenticazione per i servizi digitali della PA, progressivamente preferito allo SPID. Contiene chip NFC con dati biometrici e permette l\'accesso ai servizi online con il PIN ricevuto al Comune.',
+    scadenza: 'Puoi rinnovarla <strong>180 giorni prima della scadenza</strong>. Per i minori: 3 anni (0-3 anni), 5 anni (3-18), 10 anni (18+).',
+    docs: ['1 foto formato tessera su sfondo bianco (o la scatta il Comune)','Codice fiscale / tessera sanitaria','Vecchia carta d\'identità (se è un rinnovo) o denuncia di furto/smarrimento','€ 22,21 (costo di rilascio fisso nazionale)'],
+    steps: [
+      {t:'Prenota appuntamento online',d:'Vai su prenotazionicie.interno.gov.it, inserisci il tuo Comune e prenota un appuntamento allo sportello anagrafe. È obbligatorio in molti Comuni.'},
+      {t:'Vai allo sportello anagrafe',d:'Porta tutti i documenti. Il funzionario scatta la foto (o acquisisce quella portata da te), registra le tue impronte digitali e firma digitale.'},
+      {t:'Scegli modalità di ritiro',d:'Puoi scegliere di ricevere la CIE a casa tua tramite raccomandata (in 6 giorni lavorativi) o di ritirarla in Comune.'},
+      {t:'Ricevi il PIN/PUK',d:'Al momento della richiesta ti vengono dati metà del PIN in Comune e l\'altra metà arriva a casa con la CIE. Il PUK ti serve per sbloccare il PIN se lo dimentichi.'},
+      {t:'Attiva l\'accesso digitale con CIE',d:'Per usare la CIE come SPID: installa l\'app "CIE ID" sul tuo smartphone (iOS e Android), avvicina la CIE al telefono con NFC, inserisci il PIN completo. Poi puoi accedere ai siti PA.'},
+    ],
+    costo: '€ 22,21 (tariffa nazionale fissa) + eventuale diritto di segreteria del Comune (di solito 1–2 €).',
+    attenzione: 'La CIE non è richiedibile online da casa: devi andare fisicamente al Comune. Porta tutti i documenti già al primo appuntamento per evitare ritorni.'
+  },
+  'residenza': {
+    title: 'Cambio Residenza',
+    cat: 'PA Digitale — Comune / ANPR',
+    url: 'https://www.servizi.anpr.it/residenza',
+    desc: 'Il cambio di residenza è l\'aggiornamento dell\'indirizzo di residenza anagrafica presso il Comune. Dal 2022 è possibile farlo online tramite il portale ANPR (Anagrafe Nazionale Popolazione Residente) senza andare allo sportello. Devi comunicare il cambio entro 20 giorni dal trasferimento.',
+    scadenza: 'Obbligo di comunicare entro <strong>20 giorni dal trasferimento</strong>.',
+    docs: ['SPID o CIE (per la procedura online)','Dati dell\'immobile in cui ti trasferisci (indirizzo esatto)','Dati di tutti i componenti del nucleo familiare (se si trasferiscono insieme)','Per immobile in affitto: contratto di locazione'],
+    steps: [
+      {t:'Accedi al portale ANPR',d:'Vai su servizi.anpr.it/residenza e accedi con SPID o CIE. Il servizio è disponibile 24 ore su 24, 7 giorni su 7.'},
+      {t:'Seleziona tipo di cambio',d:'Scegli: cambio di indirizzo nello stesso Comune, o trasferimento da altro Comune (iscrizione). Se trasferisci tutta la famiglia, indica tutti i componenti.'},
+      {t:'Inserisci i nuovi dati',d:'Inserisci l\'indirizzo completo della nuova abitazione: via, numero civico, CAP, interno. Per immobili in affitto, potresti dover caricare il contratto.'},
+      {t:'Invia la dichiarazione',d:'Conferma e invia. Ricevi una ricevuta elettronica. Il Comune ha 45 giorni per fare i controlli; nel frattempo la residenza è registrata "provvisoriamente".'},
+      {t:'Verifica da parte del Comune',d:'Un agente della Polizia Municipale potrebbe verificare la tua effettiva presenza nel nuovo indirizzo. È normale e obbligatorio per legge.'},
+      {t:'Aggiornamento documenti',d:'Dopo il cambio, ricordati di: aggiornare la patente (entro 30 giorni), comunicare il nuovo indirizzo a banca, assicurazioni, datore di lavoro, INPS ecc.'},
+    ],
+    costo: 'Completamente gratuito.',
+    attenzione: 'Dichiarare una residenza falsa è un reato penale (art. 76 DPR 445/2000). Il Comune verifica effettivamente che tu viva nell\'indirizzo dichiarato.'
+  },
+  'invalidita': {
+    title: 'Invalidità Civile e Legge 104',
+    cat: 'Salute & Patronato — INPS / ASL',
+    url: 'https://www.inps.it/it/it/invalidita-civile.html',
+    url2: 'https://www.inps.it/it/it/contatti/sedi-e-contatti.html',
+    url2label: 'Trova Patronato INPS',
+    desc: 'La domanda di invalidità civile permette di ottenere riconoscimenti ufficiali della propria condizione di salute con percentuale di invalidità, e accedere così a pensioni di invalidità, indennità di accompagnamento, agevolazioni fiscali e la certificazione di Handicap (Legge 104/92). Dal 2022 la procedura è completamente telematica tramite INPS.',
+    scadenza: 'Nessuna scadenza: si può fare in qualsiasi momento.',
+    docs: ['Documento d\'identità valido','Codice fiscale','Documentazione medica della patologia (cartelle cliniche, referti specialistici, diagnosi)','IBAN per eventuale pensione/indennità'],
+    steps: [
+      {t:'Raccogli la documentazione medica',d:'Prima di tutto, raccogli tutta la documentazione medica: diagnosi del medico di base, referti specialistici, cartella clinica ospedaliera, esami diagnostici. Più è completa, meglio è.'},
+      {t:'Fai fare il certificato medico introduttivo',d:'Il tuo medico di base (o uno specialista) deve compilare il "Certificato medico introduttivo" direttamente online sul sito INPS. Lui/lei ha le credenziali. Questo genera un numero di certificato che userai nella domanda.'},
+      {t:'Presenta domanda INPS online (o al Patronato)',d:'Vai su myinps.inps.it con SPID/CIE → "Invalidità civile" → "Nuova domanda". Inserisci il numero del certificato medico introduttivo. In alternativa, il Patronato lo fa gratuitamente.'},
+      {t:'Convocazione a visita medica',d:'L\'INPS convoca per la visita medica di accertamento (commissione ASL integrata con medici INPS). I tempi variano: da 30 giorni a 6 mesi. Porta tutta la documentazione medica in originale.'},
+      {t:'Visita medica',d:'La commissione valuta la tua condizione e determina la percentuale di invalidità e/o l\'esistenza di Handicap ai sensi della L.104. Hanno 90 giorni per inviare il verbale.'},
+      {t:'Verifica del verbale',d:'Ricevi il verbale per posta e online su myinps.inps.it. Se non sei d\'accordo con il risultato, puoi fare ricorso amministrativo entro 60 giorni o ricorso giudiziario entro 6 mesi.'},
+      {t:'Accesso ai benefici',d:'Con il verbale, puoi richiedere all\'INPS (tramite patronato): pensione di invalidità, indennità di accompagnamento, assegno mensile. Comunica al datore di lavoro la L.104 per avere i permessi mensili retribuiti.'},
+    ],
+    costo: 'Gratuito. Il Patronato assiste senza costo.',
+    attenzione: 'La domanda di invalidità civile e la domanda per la Legge 104 sono procedure SEPARATE ma si fanno spesso insieme. Assicurati di specificare nella domanda cosa vuoi richiedere.'
+  },
+  'assegno-unico': {
+    title: 'Assegno Unico Universale',
+    cat: 'Patronato — INPS · Famiglie',
+    url: 'https://www.inps.it/it/it/dettaglio-scheda.schede-servizio-e-prestazioni.schede.50080.html',
+    desc: 'L\'Assegno Unico Universale è un beneficio mensile per le famiglie con figli a carico fino a 21 anni (senza limiti di età per figli disabili). L\'importo dipende dall\'ISEE: da circa 57 € a 199,40 € per figlio al mese (2026). È cumulabile con altri bonus. Si rinnova ogni anno presentando nuova domanda.',
+    scadenza: 'La domanda va presentata entro <strong>28 febbraio 2026</strong> per ricevere gli arretrati da gennaio. Dopo, decorre dal mese di presentazione. Per il rinnovo: ogni anno entro febbraio.',
+    docs: ['SPID o CIE','ISEE 2026 aggiornato (fondamentale per determinare l\'importo)','IBAN bancario intestato al richiedente','Dati dei figli a carico (codice fiscale)','Documentazione disabilità (se applicabile)'],
+    steps: [
+      {t:'Calcola e presenta l\'ISEE 2026',d:'Prima di fare domanda Assegno Unico, assicurati di avere l\'ISEE 2026 valido. Senza ISEE ricevi solo l\'importo minimo. Con ISEE ottieni l\'importo pieno.'},
+      {t:'Accedi al portale INPS',d:'Vai su myinps.inps.it con SPID/CIE → "Assegno Unico e Universale" → "Fai domanda". Seleziona il richiedente (di solito la madre, ma può essere il padre).'},
+      {t:'Inserisci i dati dei figli',d:'Aggiungi i codici fiscali di tutti i figli a carico, indica l\'eventuale disabilità (con la documentazione INPS), e i dati di frequenza scolastica per figli tra 18 e 21 anni.'},
+      {t:'Inserisci l\'IBAN',d:'Indica l\'IBAN del conto bancario intestato a te (o a entrambi i genitori). L\'INPS accredita ogni mese il 20-21 del mese.'},
+      {t:'Invia la domanda',d:'Controlla tutti i dati, carica eventuali allegati (documentazione disabilità) e invia. Ricevi ricevuta con numero di protocollo.'},
+      {t:'Primo accredito',d:'Se la domanda è approvata (di solito 30–45 giorni), il primo pagamento arriva con gli eventuali arretrati. Da quel momento, l\'accredito è mensile.'},
+    ],
+    costo: 'Gratuito.',
+    attenzione: 'L\'Assegno Unico si può cumulare con bonus asilo nido, detrazioni fiscali per figli e Reddito di Cittadinanza (ADI). Ricordati di rinnovarlo ogni anno presentando l\'ISEE aggiornato.'
+  },
+  'permesso-soggiorno': {
+    title: 'Permesso di Soggiorno',
+    cat: 'Immigrazione — Questura / Sportello Unico Immigrazione',
+    url: 'https://www.portaleimmigrazione.it',
+    desc: 'Il permesso di soggiorno è il documento che autorizza i cittadini non UE a risiedere in Italia. Può essere per lavoro, famiglia, studio, asilo, protezione ecc. Il rinnovo va richiesto prima della scadenza. Si presenta tramite il Kit Postale presso gli uffici postali abilitati.',
+    scadenza: 'Il rinnovo va richiesto <strong>60 giorni prima della scadenza</strong> del permesso attuale.',
+    docs: ['Passaporto in corso di validità','Permesso di soggiorno attuale (per rinnovi)','Foto formato tessera (4 foto)','Marca da bollo € 16,00','Moduli del Kit Postale compilati (si ritirano alle Poste)','Documentazione del motivo (contratto lavoro, documentazione familiare, ecc.)','Ricevuta pagamento contributo (importo varia per tipo di permesso)'],
+    steps: [
+      {t:'Ritira il Kit Postale',d:'Vai in un Ufficio Postale che offre il servizio "Sportello Amico" e ritira il Kit Postale per stranieri. È gratuito. Contiene i moduli da compilare e le istruzioni.'},
+      {t:'Compila i moduli',d:'Compila con attenzione tutti i moduli del Kit. Per aiuto, rivolgiti a un patronato o uno sportello immigrazione del tuo Comune (servizio gratuito o a basso costo).'},
+      {t:'Prepara tutti i documenti',d:'Raccogli passaporto, permesso scaduto, foto, marca da bollo, ricevuta pagamento contributo (che trovi nelle istruzioni del Kit: importo dipende dal tipo e durata).'},
+      {t:'Consegna il Kit alle Poste',d:'Torna all\'ufficio postale con tutto il materiale. Il postino verifica i documenti e ti rilascia una ricevuta con il numero di pratica e la data di convocazione in Questura.'},
+      {t:'Appuntamento in Questura',d:'Alla data indicata sulla ricevuta, vai alla Questura (Ufficio Immigrazione) con tutta la documentazione originale. Ti rilevano le impronte digitali.'},
+      {t:'Ritiro permesso',d:'Ricevi SMS quando il permesso è pronto. Torna alla Questura per il ritiro. In alternativa, in alcune città, lo mandano via posta raccomandata.'},
+    ],
+    costo: 'Marca da bollo € 16. Contributo permesso soggiorno: da € 80 a € 200 a seconda del tipo e durata. + eventuali costi del CAF/patronato per assistenza.',
+    attenzione: 'Non aspettare la scadenza per rinnovare. Se il permesso scade, sei in posizione irregolare e rischi l\'espulsione. La marca da bollo va acquistata PRIMA di andare alle Poste.'
+  },
+  'bonus-ristrutturazione': {
+    title: 'Bonus Casa & Detrazioni 2026',
+    cat: 'Casa & Fiscale — Agenzia delle Entrate',
+    url: 'https://www.agenziaentrate.gov.it/portale/web/guest/bonus-ristrutturazioni-edilizie',
+    desc: 'Nel 2026 sono disponibili diverse detrazioni fiscali per interventi sulla casa. Il Superbonus 110% è terminato; per lavori già avviati con SAL è al 65%. Il bonus ristrutturazione ordinario al 50% è confermato. L\'Ecobonus è al 50-65%. Il Sismabonus fino all\'85%. Tutte le detrazioni si recuperano in dichiarazione dei redditi in quote annuali.',
+    scadenza: 'I lavori devono iniziare e terminare entro l\'anno fiscale in cui si vuole la detrazione. Le fatture devono essere pagate con bonifico parlante.',
+    docs: ['Fatture e bonifici parlanti dei lavori','Abilitazione lavori (CILA, SCIA dove richiesta)','Comunicazione ENEA (per Ecobonus e Superbonus)','Asseverazioni tecniche (per Superbonus)','Documenti catastali immobile'],
+    steps: [
+      {t:'Identifica il tipo di intervento e il bonus applicabile',d:'Ristrutturazione ordinaria: 50% detrazione IRPEF. Efficienza energetica (Ecobonus): 50-65%. Sismabonus: 70-85%. Superbonus 65% (solo lavori già avviati con SAL). Barriere architettoniche: 75%.'},
+      {t:'Verifica i requisiti dell\'immobile',d:'La casa deve essere tua (proprietario o nudo proprietario) o in affitto con consenso del proprietario. Non deve avere irregolarità edilizie pendenti.'},
+      {t:'Consulta un tecnico abilitato',d:'Per interventi significativi, un geometra, architetto o ingegnere ti dice quali pratiche edilizie servono (CILA, SCIA ecc.) e se serve asseverazione tecnica (obbligatoria per Superbonus).'},
+      {t:'Avvia i lavori con documentazione in ordine',d:'Prima di iniziare: presenta le pratiche edilizie al Comune, scegli imprese con partita IVA e rilascio di fattura, firma contratto scritto.'},
+      {t:'Paga con bonifico parlante',d:'FONDAMENTALE: tutti i pagamenti devono essere con bonifico bancario "parlante" (con causale che riporta la normativa fiscale di riferimento: art. 16-bis DPR 917/86 per ristrutturazioni). I pagamenti in contanti non danno diritto alla detrazione.'},
+      {t:'Comunicazione ENEA (se Ecobonus)',d:'Per interventi di risparmio energetico, entro 90 giorni dalla fine lavori devi fare la comunicazione obbligatoria all\'ENEA su: portale.efficienzaenergetica.enea.it.'},
+      {t:'Detrazione nella dichiarazione dei redditi',d:'Inserisci le spese sostenute nella dichiarazione 730 o Redditi PF. La detrazione si suddivide in 10 rate annuali uguali (o 5 per Bonus Ristrutturazione).'},
+    ],
+    costo: 'I bonus si recuperano come detrazione IRPEF. Nessun costo aggiuntivo rispetto al costo dei lavori.',
+    attenzione: 'Dal 2025 non è più possibile cedere il credito fiscale o lo sconto in fattura per la maggior parte dei bonus. La detrazione si ottiene solo in dichiarazione dei redditi. Assicurati di avere IRPEF sufficiente per beneficiarne.'
+  },
+  'maternita': {
+    title: 'Maternità, Paternità e Congedo',
+    cat: 'Patronato — INPS',
+    url: 'https://www.inps.it/it/it/dettaglio-scheda.schede-servizio-e-prestazioni.schede.50063.html',
+    desc: 'L\'indennità di maternità spetta alle lavoratrici dipendenti per i 5 mesi di congedo obbligatorio (2+3 o 1+4). L\'indennità è pari all\'80% della retribuzione. Dal 2023 è disponibile il "mese di flessibilità" per il padre (1 mese non cedibile). Il congedo parentale è al 80% per il 1° mese, 60% per il 2°, poi al 30%.',
+    scadenza: 'La domanda maternità va presentata <strong>almeno 30 giorni prima</strong> dell\'inizio del congedo obbligatorio.',
+    docs: ['Documento d\'identità','Codice fiscale','Certificato di gravidanza del ginecologo con data presunta parto','IBAN per pagamento (se il datore non anticipa)','Certificato di nascita (per congedo post-parto)'],
+    steps: [
+      {t:'Certificato di gravidanza',d:'Il ginecologo rilascia il certificato di gravidanza con la data presunta del parto. Questo documento è alla base di tutte le richieste successive.'},
+      {t:'Comunica la maternità al datore',d:'Consegna al datore di lavoro il certificato di gravidanza e comunica le date di inizio congedo obbligatorio. Il datore non può licenziarti dall\'inizio gravidanza fino a 1 anno dopo il parto.'},
+      {t:'Presenta domanda all\'INPS',d:'Vai su myinps.inps.it con SPID/CIE → "Maternità e Paternità" → scegli il tipo di prestazione. In alternativa, il Patronato lo fa gratuitamente.'},
+      {t:'Domanda congedo di paternità',d:'Il padre ha diritto a 10 giorni di congedo obbligatorio retribuito (da fare entro 5 mesi dal parto), più 1 mese facoltativo all\'80%. Deve farne domanda separata su myinps.inps.it.'},
+      {t:'Congedo parentale facoltativo',d:'Dopo il congedo obbligatorio, entrambi i genitori possono prendere congedo parentale (fino al 12° anno del bambino) con i nuovi importi 2026: 80% per 1° mese, 60% per 2° mese, 30% per i restanti.'},
+      {t:'Ricevere il pagamento',d:'Il datore di lavoro di solito anticipa l\'indennità in busta paga e poi si recupera dall\'INPS. Se il datore non anticipa, INPS paga direttamente sull\'IBAN indicato.'},
+    ],
+    costo: 'Gratuito.',
+    attenzione: 'Le lavoratrici autonome e le collaboratrici hanno regole diverse. L\'indennità maternità per autonome è pari all\'80% del reddito medio giornaliero degli ultimi 2 anni. Verifica la tua categoria su INPS.'
+  },
+  'pensione-anticipata': {
+    title: 'Pensione Anticipata 2026',
+    cat: 'Patronato — INPS',
+    url: 'https://www.inps.it/it/it/pensione-anticipata.html',
+    desc: 'Nel 2026 esistono diverse forme di pensione anticipata: Pensione Anticipata Ordinaria (42 anni e 10 mesi uomini, 41 e 10 mesi donne), Quota 103 (62 anni + 41 anni contributi, con limite mensile assegno), Opzione Donna (35 anni contributi + 61 anni, solo alcune categorie), APe Sociale (63 anni per categorie protette).',
+    scadenza: 'La domanda va presentata <strong>prima del mese di decorrenza</strong> desiderata.',
+    docs: ['Documento d\'identità','Estratto contributivo INPS completo','Dati pensione complementare (se esistente)','IBAN'],
+    steps: [
+      {t:'Verifica quale opzione ti compete',d:'Ogni forma di pensione anticipata ha requisiti diversi. Accedi a myinps.inps.it → "La mia pensione futura" per vedere quando maturerai il diritto a ciascuna opzione.'},
+      {t:'Consulta un Patronato',d:'Le pensioni anticipate sono complesse: un esperto di un Patronato ti spiega esattamente quando e come puoi andare in pensione. Porta l\'estratto contributivo.'},
+      {t:'Presenta domanda',d:'Su myinps.inps.it oppure tramite Patronato → "Pensione anticipata" → scegli la forma più adatta → compila e invia.'},
+      {t:'Attendi l\'esito',d:'I tempi sono di 30–90 giorni. Se accettata, la pensione decorre dal mese successivo alla domanda (non alla maturazione del requisito).'},
+    ],
+    costo: 'Gratuito.',
+    attenzione: 'Con Quota 103 nel 2026, la pensione è "a ricalcolo contributivo" che può ridurre l\'importo rispetto alla pensione normale. Valuta attentamente con un esperto prima di scegliere.'
+  },
+  'contratto-affitto': {
+    title: 'Registrazione Contratto di Affitto',
+    cat: 'Casa — Agenzia delle Entrate',
+    url: 'https://www.agenziaentrate.gov.it/portale/web/guest/contratti-di-locazione',
+    desc: 'Tutti i contratti di locazione (affitto) di durata superiore a 30 giorni vanno registrati all\'Agenzia delle Entrate entro 30 giorni dalla firma. La registrazione è obbligatoria per legge sia per il proprietario che per il conduttore (inquilino). Si può fare online o allo sportello.',
+    scadenza: '<strong>Entro 30 giorni</strong> dalla data di stipula del contratto.',
+    docs: ['Contratto di locazione firmato da entrambe le parti (2 copie)','Documento d\'identità di entrambe le parti','Codice fiscale di entrambe le parti','Marca da bollo € 16 ogni 4 facciate del contratto (o 100 righe)','Modello RLI compilato (scaricabile dal sito AE)'],
+    steps: [
+      {t:'Prepara il contratto',d:'Il contratto deve essere scritto (per contratti > 30 gg), firmato da entrambe le parti, e contenere: dati delle parti, descrizione immobile, durata, canone, eventuali clausole.'},
+      {t:'Applica le marche da bollo',d:'Ogni 4 facciate (o 100 righe) del contratto vanno applicate marche da bollo da € 16 (€ 8 per contratti a canone concordato). Acquistale in tabaccheria o online.'},
+      {t:'Compila il Modello RLI',d:'Scarica e compila il Modello RLI da agenziaentrate.gov.it. Indica tipo contratto, durata, canone, dati delle parti e dell\'immobile.'},
+      {t:'Registrazione online (consigliato)',d:'Accedi a agenziaentrate.gov.it con SPID/CIE → "RLI web" → inserisci i dati e carica il contratto scansionato. Paga l\'imposta di registro online (2% del canone annuo per contratti liberi; 67 € fisso per contratti concordati).'},
+      {t:'In alternativa: sportello AE',d:'Puoi registrare allo sportello Agenzia delle Entrate del tuo Comune. Porta 2 copie del contratto, il modello RLI e le marche da bollo.'},
+      {t:'Conserva la ricevuta',d:'Ricevi la registrazione con numero di serie. Conserva copia registrata per tutta la durata del contratto.'},
+    ],
+    costo: 'Imposta di registro: 2% del canone annuo per contratti a canone libero (es. 4+4). 67 € per contratti a canone concordato (3+2). Più marche da bollo.',
+    attenzione: 'Un contratto non registrato è NULLO ai sensi di legge. Il proprietario rischia sanzioni e l\'inquilino può chiedere la restituzione di quanto pagato oltre al canone di registro.'
+  },
+  'esenzione-ticket': {
+    title: 'Esenzione Ticket Sanitario',
+    cat: 'Salute — ASL / Regione',
+    url: 'https://www.salute.gov.it/portale/esenzioni/homePaginaEsenzioni.jsp',
+    desc: 'Il ticket sanitario (quota partecipazione per visite specialistiche e farmaci) può essere ridotto o azzerato in base al reddito, all\'età, alla tipologia di patologia o allo stato occupazionale. Esistono esenzioni per reddito (codice E01-E05), per patologia cronica (R es. R99), per invalidità, gravidanza, ecc.',
+    scadenza: 'Varia: alcune esenzioni vanno rinnovate ogni anno (per reddito); altre sono permanenti (patologie croniche, invalidità).',
+    docs: ['Tessera sanitaria','Documento d\'identità','DSU/ISEE (per esenzioni per reddito)','Documentazione medica (per esenzioni per patologia)','Modulo richiesta esenzione (presso ASL o online)'],
+    steps: [
+      {t:'Identifica il tipo di esenzione',d:'(A) Per reddito: ISEE familiare sotto soglie specifiche (E01-E05). (B) Per patologia cronica: malattie riconosciute dal SSN con codice R. (C) Per invalidità: percentuale di invalidità ≥ 67%. (D) Per età: under 6 o over 65 con reddito familiare ≤ 36.151,98 €. (E) Disoccupati e familiari a carico (E06).'},
+      {t:'Calcola o aggiorna il tuo ISEE (se esenzione per reddito)',d:'Per richiedere esenzione per reddito devi avere ISEE 2026 aggiornato. Il codice esenzione dipende dall\'importo ISEE e dalla composizione familiare.'},
+      {t:'Vai alla tua ASL o online',d:'Recati allo sportello CUP/ASL con i documenti o accedi al portale della tua Regione (molte regioni permettono richiesta online). Compila il modulo di esenzione.'},
+      {t:'Ricevi il codice di esenzione',d:'Ti viene rilasciato un codice di esenzione (es. E01, R99, A04) che viene inserito nella tua tessera sanitaria. Mostralo al medico/farmacista quando presenti la ricetta.'},
+      {t:'Rinnovo annuale (se necessario)',d:'Le esenzioni per reddito vanno rinnovate ogni anno, di solito in autunno presentando l\'ISEE aggiornato. Le esenzioni per patologia cronica sono solitamente permanenti.'},
+    ],
+    costo: 'Gratuito.',
+    attenzione: 'Utilizzare un codice di esenzione non spettante è reato di truffa aggravata ai danni dello Stato. I controlli sono sistematici. In caso di dubbio, paga il ticket.'
+  },
+  'certificati': {
+    title: 'Certificati Anagrafici Online',
+    cat: 'PA Digitale — ANPR',
+    url: 'https://www.anpr.interno.it/portale/',
+    desc: 'Dal 2022 è possibile scaricare gratuitamente i certificati anagrafici direttamente dal portale ANPR (Anagrafe Nazionale Popolazione Residente) senza andare in Comune. Sono disponibili: certificato di residenza, stato di famiglia, nascita, cittadinanza, esistenza in vita, matrimonio e altri.',
+    scadenza: 'I certificati scaricati online hanno validità 6 mesi (come tutti i certificati anagrafici).',
+    docs: ['SPID o CIE per accedere (obbligatorio)'],
+    steps: [
+      {t:'Accedi al portale ANPR',d:'Vai su anpr.interno.it e clicca su "Accedi ai servizi". Serve SPID (livello 2) o CIE con PIN.'},
+      {t:'Scegli il tipo di certificato',d:'Seleziona il certificato che ti serve: residenza, stato di famiglia, nascita, matrimonio, ecc.'},
+      {t:'Seleziona il soggetto e la lingua',d:'Puoi richiedere certificati per te stesso e per i membri del tuo nucleo familiare. I certificati sono disponibili anche in inglese, tedesco, francese e spagnolo.'},
+      {t:'Scarica o stampa',d:'Il certificato viene generato in PDF con timbro digitale. Puoi scaricarlo, stamparlo o inviarlo direttamente.'},
+    ],
+    costo: 'Completamente gratuito online (i certificati cartacei allo sportello Comune costano € 0,52 per la marca da bollo).',
+    attenzione: 'I certificati scaricati da ANPR sono validi per i privati (banche, assicurazioni). Per la PA italiana non servono certificati: basta l\'autocertificazione (DPR 445/2000).'
+  },
+  'pec': {
+    title: 'PEC — Posta Elettronica Certificata',
+    cat: 'PA Digitale',
+    url: 'https://www.agid.gov.it/it/piattaforme/pec',
+    desc: 'La PEC è l\'indirizzo email con valore legale per comunicare con la Pubblica Amministrazione. Inviare una PEC equivale a una raccomandata con ricevuta di ritorno. È obbligatoria per le imprese; fortemente consigliata per i privati che hanno rapporti frequenti con la PA.',
+    scadenza: 'Nessuna scadenza per attivazione. I provider hanno piani annuali da rinnovare.',
+    docs: ['Documento d\'identità','Codice fiscale','Email ordinaria (per la registrazione)'],
+    steps: [
+      {t:'Scegli un provider PEC accreditato',d:'I principali provider accreditati AgID sono: Aruba PEC (da 1,40 €/anno), Poste Italiane (Libero Mail PEC), InfoCert, Namirial, Register.it. Confronta prezzi e funzionalità su elenco-fornitori-pec.agid.gov.it.'},
+      {t:'Registrati sul sito del provider',d:'Vai sul sito del provider scelto, clicca su "Attiva PEC" e scegli l\'indirizzo. Completa il modulo di registrazione con i tuoi dati.'},
+      {t:'Verifica dell\'identità',d:'Alcuni provider richiedono verifica identità (via SPID, documento, o di persona). Aruba ad esempio permette verifica online con documento + selfie.'},
+      {t:'Attivazione',d:'Dopo la verifica, la casella PEC è attiva in poche ore. Ricevi credenziali di accesso via email.'},
+      {t:'Usa la PEC per comunicazioni PA',d:'Configura la PEC nel tuo client email (Outlook, Thunderbird) o accedi via webmail. Quando invii da PEC a PEC, hai ricevuta di consegna con valore legale.'},
+    ],
+    costo: 'Da € 1,40/anno (Aruba) a € 10/anno circa. Alcune banche offrono PEC gratuita ai correntisti.',
+    attenzione: 'La PEC è valida solo se sia mittente che destinatario usano PEC. Una PEC inviata a un indirizzo ordinario non ha valore legale. Ricordati di rinnovare il piano annuale per non perdere la casella.'
+  },
+  'concorsi': {
+    title: 'Concorsi Pubblici (InPA)',
+    cat: 'Lavoro — PA',
+    url: 'https://www.inpa.gov.it',
+    desc: 'Il portale InPA è la piattaforma ufficiale del Governo per tutte le selezioni pubbliche nella Pubblica Amministrazione italiana. Pubblica bandi, gestisce le candidature, le prove preselettive informatizzate e le graduatorie.',
+    scadenza: 'Varia per ogni bando. Iscriviti ad InPA per ricevere notifiche sui bandi di tuo interesse.',
+    docs: ['SPID o CIE (obbligatorio per registrarsi su InPA)','Curriculum vitae aggiornato','Titolo di studio richiesto dal bando','Eventuali certificazioni specifiche richieste'],
+    steps: [
+      {t:'Registrati su InPA',d:'Vai su inpa.gov.it e accedi con SPID o CIE. Crea il tuo profilo, carica il CV e imposta le preferenze (regioni, settori, livello contrattuale).'},
+      {t:'Cerca il bando di interesse',d:'Usa i filtri: ente, regione, profilo professionale, tipo contratto, titolo richiesto. Leggi attentamente il bando e il profilo richiesto.'},
+      {t:'Presenta la domanda online',d:'Per ogni bando, clicca su "Partecipa" entro la scadenza. Compila i campi richiesti (titoli, esperienze, dichiarazioni sostitutive) e carica i documenti.'},
+      {t:'Prova preselettiva (se prevista)',d:'Per bandi con molti candidati, c\'è una prova preselettiva informatizzata su piattaforma InPA (quiz a risposta multipla). Studia sui manuali ufficiali.'},
+      {t:'Prove scritte e orali',d:'Segui le convocazioni dell\'ente bandente. Porta documento d\'identità valido e SPID per l\'identificazione digitale.'},
+      {t:'Graduatoria e assunzione',d:'Dopo le prove, l\'ente pubblica la graduatoria. Se sei in posizione utile, ricevi convocazione per l\'assunzione e firma del contratto.'},
+    ],
+    costo: 'Di solito gratuito. Alcuni bandi richiedono contributo di partecipazione di € 10–15.',
+    attenzione: 'Attenzione alle truffe online che chiedono soldi per "preparare" la domanda o garantire il superamento delle prove. Usa SOLO il portale ufficiale InPA.'
+  },
+  'patente': {
+    title: 'Patente di Guida — Rinnovo',
+    cat: 'Mobilità — MIT',
+    url: 'https://www.mit.gov.it/comunicazione/news/patente-di-guida',
+    desc: 'La patente B deve essere rinnovata ogni 10 anni (fino a 50 anni), ogni 5 anni (50-70 anni), ogni 3 anni (70-80 anni), ogni 2 anni (over 80). Il rinnovo si fa tramite visita medica e non richiede l\'esame di guida.',
+    scadenza: 'Puoi rinnovarla entro la data di scadenza indicata sulla patente. Il medico può convalidarla con un anticipo di 30 giorni.',
+    docs: ['Patente da rinnovare','1 foto formato tessera','Documento d\'identità','Bollo da € 16','Pagamento diritti per il rinnovo (circa € 9)'],
+    steps: [
+      {t:'Prenota visita medica',d:'Rivolgiti al tuo medico di base (medico monocratico) o alle commissioni mediche locali della ASL. Alcuni CAF e autoscuole offrono il servizio di visita per il rinnovo patente.'},
+      {t:'Visita medica',d:'Il medico verifica: vista, udito, riflessi, eventuale uso di farmaci. Se tutto è ok, rilascia il certificato di idoneità.'},
+      {t:'Pagamento diritti e marca da bollo',d:'Paga: marca da bollo € 16 (tabaccheria) + diritti MIT circa € 9 (tramite bonifico su conto corrente MIT o online). Importi verificabili sul sito MIT.'},
+      {t:'Consegna in Motorizzazione o spedizione',d:'Con il certificato medico, la vecchia patente, la foto e le ricevute di pagamento: consegna alla Motorizzazione o spedisci per raccomandata. La nuova patente arriva a casa in 2–4 settimane.'},
+    ],
+    costo: 'Circa € 25–30 totali (visita medica + bollo + diritti). Visita medica dal medico di base: gratuita (ticket se non esente).',
+    attenzione: 'Guidare con patente scaduta è reato penale e comporta il ritiro immediato della patente e multa. Rinnova almeno 30 giorni prima della scadenza.'
+  },
+  'bollo-auto': {
+    title: 'Bollo Auto — Pagamento 2026',
+    cat: 'Mobilità — ACI / Regione',
+    url: 'https://www.aci.it/i-servizi/bollo-auto.html',
+    desc: 'Il bollo auto è una tassa regionale dovuta ogni anno dal proprietario del veicolo. L\'importo dipende dalla potenza (kW) del motore e dalla classe ambientale del veicolo. Si paga entro l\'ultimo giorno del mese successivo alla scadenza.',
+    scadenza: 'Dipende dal mese di prima immatricolazione del veicolo (o dall\'ultimo pagamento). Solitamente entro l\'ultimo giorno del mese successivo alla scadenza annuale.',
+    docs: ['Targa del veicolo','Codice fiscale del proprietario','Carta di credito/debito per pagamento online'],
+    steps: [
+      {t:'Calcola l\'importo',d:'Vai su aci.it/bollo-auto o sul sito della tua Regione. Inserisci la targa e trovi subito l\'importo da pagare e la scadenza.'},
+      {t:'Paga online',d:'Puoi pagare: (1) Sul sito ACI con carta o MyPay, (2) Sul portale della tua Regione, (3) Tramite app IO, (4) Alle Poste, (5) In banca, (6) In tabaccheria con PagoPA.'},
+      {t:'Conserva la ricevuta',d:'Salva la ricevuta di pagamento come prova. Non serve più il tagliando cartaceo sul parabrezza dal 2021: tutto è elettronico.'},
+    ],
+    costo: 'Dipende dal veicolo. Indicativamente: utilitaria 70kW → circa € 180/anno. Veicoli ibridi e auto storiche (>30 anni) hanno riduzioni.',
+    attenzione: 'Il mancato pagamento comporta sanzioni del 30% + interessi. La Regione può procedere al fermo amministrativo del veicolo. Controlla scadenza su aci.it inserendo la targa.'
+  },
+  'cittadinanza': {
+    title: 'Cittadinanza Italiana',
+    cat: 'Immigrazione — Ministero Interno',
+    url: 'https://www.interno.gov.it/it/temi/cittadinanza-e-altri-diritti-civili/acquisto-della-cittadinanza-italiana',
+    desc: 'La cittadinanza italiana si può acquisire per: nascita (iure sanguinis o iure soli in certi casi), matrimonio con cittadino italiano (dopo 2 anni di residenza in Italia o 3 all\'estero), o residenza (10 anni per cittadini extra-UE, 4 anni per cittadini UE). Dal 2023 richiesta solo online su portale dedicato.',
+    scadenza: 'Nessuna scadenza: si può fare domanda in qualsiasi momento una volta maturati i requisiti.',
+    docs: ['Passaporto in corso di validità','Permesso di soggiorno','Certificato penale del Paese di origine (apostillato e tradotto)','Estratto atto di nascita (apostillato e tradotto)','Certificato di residenza e stato di famiglia','Documentazione reddito (CU, 730 o estratto conto)','€ 250 di contributo (per residenza e matrimonio)'],
+    steps: [
+      {t:'Verifica di avere i requisiti',d:'Per residenza: 10 anni di residenza legale continuativa in Italia + reddito sufficiente + nessuna condanna penale. Per matrimonio: 2 anni di matrimonio + residenza in Italia (o 3 anni se all\'estero).'},
+      {t:'Prepara la documentazione',d:'I documenti stranieri devono essere apostillati dal Paese di origine e tradotti in italiano da traduttore ufficiale. Richiede tempo: inizia almeno 3–6 mesi prima.'},
+      {t:'Presenta domanda online',d:'Vai su cittadinanza.interno.gov.it con SPID o CIE. Compila il modulo online e carica tutti i documenti. Paga il contributo di € 250 online.'},
+      {t:'Attesa (lunga)',d:'I tempi sono lunghi: da 2 a 4 anni. Puoi monitorare lo stato su interno.gov.it inserendo il numero di pratica.'},
+      {t:'Giuramento',d:'Quando la cittadinanza è concessa, ricevi convocazione in Comune per il giuramento di fedeltà alla Repubblica. Dal giorno del giuramento sei cittadino italiano.'},
+      {t:'Documenti italiani',d:'Dopo il giuramento: richiedi subito CIE al Comune, poi SPID, codice fiscale italiano, passaporto italiano alla Questura.'},
+    ],
+    costo: '€ 250 di contributo governativo. + costi traduzioni/apostille (variabile, da 200 a 600 €). Il procedimento non ha avvocato obbligatorio ma molti si avvalgono di consulenti.',
+    attenzione: 'I tempi sono molto lunghi (anni). Conserva tutta la documentazione originale. Se cambi indirizzo durante la procedura, comunicalo subito al Ministero. Non fidarti di agenzie che promettono di "velocizzare" la pratica a pagamento.'
+  },
+  'adi': {
+    title: 'Assegno di Inclusione (ADI)',
+    cat: 'Patronato — INPS',
+    url: 'https://www.inps.it/it/it/assegno-di-inclusione.html',
+    desc: 'L\'Assegno di Inclusione (ADI) ha sostituito il Reddito di Cittadinanza dal 2024. È destinato a nuclei familiari con ISEE ≤ 9.360 € che abbiano almeno un componente minorenne, over 60, con disabilità, o in condizione di svantaggio. L\'importo varia fino a circa 6.000 € annui (500 €/mese) + integrazione affitto.',
+    scadenza: 'Nessuna scadenza fissa: si può fare domanda in qualsiasi momento. Va rinnovato ogni anno.',
+    docs: ['SPID o CIE','ISEE 2026 ≤ 9.360 €','Documentazione componenti del nucleo (stato di famiglia)','Documentazione disabilità, minori o over 60 (se applicabile)','IBAN bancario'],
+    steps: [
+      {t:'Verifica i requisiti',d:'ISEE ≤ 9.360 €, reddito familiare ≤ 6.000 €, patrimonio immobiliare (esclusa prima casa) ≤ 30.000 €, patrimonio finanziario ≤ 6.000 €. Almeno un componente "fragile": minore, over 60, disabile, o in difficoltà certificata.'},
+      {t:'Presenta domanda INPS',d:'Vai su myinps.inps.it con SPID/CIE → "Assegno di Inclusione" → "Nuova domanda". In alternativa, il Patronato o il CAF lo fanno gratuitamente.'},
+      {t:'Firma il Patto di Attivazione',d:'Entro 120 giorni dall\'erogazione, tutti i componenti adulti non esclusi devono iscriversi ai Servizi Sociali del Comune per firmare il Patto di Inclusione Sociale.'},
+      {t:'Ricezione della carta ADI',d:'L\'INPS invia una carta prepagata per l\'utilizzo del beneficio. Puoi usarla per spese alimentari, carburante e altre categorie ammesse (non per giochi d\'azzardo, alcol ecc.).'},
+    ],
+    costo: 'Gratuito.',
+    attenzione: 'L\'ADI è incompatibile con il Supporto per la Formazione e il Lavoro (SFL), che è invece per chi può lavorare. Se hai componenti abili al lavoro, considera il SFL per loro.'
+  },
+  'modello-red': {
+    title: 'Modello RED',
+    cat: 'CAF & Fiscale — INPS',
+    url: 'https://www.inps.it/it/it/dettaglio-scheda.schede-servizio-e-prestazioni.schede.50085.html',
+    desc: 'Il Modello RED (Redditi) è la dichiarazione annuale che i pensionati INPS devono presentare per comunicare i redditi percepiti che non risultano già all\'INPS. Serve per il corretto calcolo della pensione e di eventuali prestazioni collegate al reddito (pensione di reversibilità, assegno sociale, ecc.).',
+    scadenza: 'Di solito entro <strong>ottobre/novembre</strong> di ogni anno (scadenza comunicata da INPS).',
+    docs: ['CU (Certificazione Unica) dell\'INPS','Eventuali CU di altri redditi (fitti, collaborazioni)','Documento d\'identità','Codice fiscale'],
+    steps: [
+      {t:'Ricevi l\'invito da INPS',d:'INPS invia la comunicazione con il modulo RED precompilato (via raccomandata o online). Controlla myinps.inps.it.'},
+      {t:'Verifica i dati pre-compilati',d:'Controlla che i redditi indicati siano corretti. Se hai altri redditi non in possesso dell\'INPS, devi integrarli.'},
+      {t:'Presenta tramite CAF o online',d:'Porta il modulo al CAF oppure accedi a myinps.inps.it con SPID/CIE → "Modello RED" → verifica e invia.'},
+    ],
+    costo: 'Gratuito al CAF e online.',
+    attenzione: 'La mancata presentazione del RED porta alla sospensione della pensione. INPS invia promemoria, ma è responsabilità del pensionato rispettare la scadenza.'
+  },
+  'pratiche-edilizie': {
+    title: 'Pratiche Edilizie (SCIA, Permesso)',
+    cat: 'Casa — Comune / SUAP',
+    url: 'https://www.governo.it/it/articolo/scia-segnalazione-certificata-di-inizio-attivita/4939',
+    desc: 'Qualsiasi intervento edilizio diverso dalla normale manutenzione ordinaria richiede una comunicazione o autorizzazione al Comune. La tipologia di pratica dipende dall\'intervento: CILA per piccoli interventi, SCIA per ristrutturazioni, Permesso di Costruire per nuove costruzioni.',
+    scadenza: 'La SCIA/CILA va presentata PRIMA di iniziare i lavori. Il Permesso di Costruire richiede attesa di 30-90 giorni.',
+    docs: ['Elaborati tecnici (planimetrie, relazione tecnica)','Titolo di proprietà dell\'immobile','Dichiarazione del tecnico abilitato (geometra/architetto/ingegnere)','Ricevuta pagamento oneri urbanistici (per Permesso di Costruire)'],
+    steps: [
+      {t:'Consulta un tecnico abilitato',d:'Prima di tutto, rivolgiti a un geometra, architetto o ingegnere di fiducia. Lui valuta il tipo di pratica necessaria e prepara la documentazione tecnica.'},
+      {t:'Identifica il tipo di pratica',d:'CILA: manutenzione straordinaria, apertura porte interne. SCIA: ristrutturazione, cambio destinazione d\'uso. Permesso di Costruire: nuovi edifici, ampliamenti significativi, demolizioni.'},
+      {t:'Presenta al SUAP o allo Sportello Edilizio',d:'La maggior parte dei Comuni ha lo Sportello Unico per le Attività Produttive (SUAP) online. Accedi con SPID, compila il modulo e carica gli elaborati tecnici.'},
+      {t:'Attesa (per Permesso di Costruire)',d:'SCIA e CILA: puoi iniziare i lavori subito dopo presentazione (SCIA) o comunicazione (CILA). Permesso di Costruire: devi aspettare il silenzio-assenso (90 giorni) o l\'approvazione esplicita.'},
+    ],
+    costo: 'CILA: circa € 250–350 (diritti comunali + onorario tecnico). SCIA: € 500–1.500. Permesso di Costruire: oneri urbanistici variabili + onorario tecnico.',
+    attenzione: 'Costruire senza le necessarie autorizzazioni è abuso edilizio, soggetto a sanzioni amministrative e penali, con possibile demolizione a spese del proprietario.'
+  },
+  'cup': {
+    title: 'CUP — Prenotazione Visite Specialistiche',
+    cat: 'Salute — SSN',
+    url: 'https://www.salute.gov.it/portale/salute/p1_4.jsp?lingua=italiano&area=Assistenza_sanitaria',
+    desc: 'Il CUP (Centro Unico di Prenotazione) è il servizio del SSN che gestisce le prenotazioni per visite specialistiche, esami diagnostici e ricoveri. Puoi prenotare via telefono, online, in farmacia, in ospedale o tramite app regionale.',
+    scadenza: 'Nessuna scadenza: prenota appena hai la ricetta del medico.',
+    docs: ['Tessera sanitaria','Ricetta del medico (rossa SSN o bianca) con codice esenzione se applicabile'],
+    steps: [
+      {t:'Ricevi la ricetta dal medico',d:'Il tuo medico di base emette la ricetta dematerializzata (NRE — Numero Ricetta Elettronica) che ricevi via SMS o email. Tienila pronta.'},
+      {t:'Prenota',d:'Puoi prenotare tramite: (1) Numero CUP regionale (es. 800 XXXXX), (2) App della tua ASL/Regione, (3) Online sul portale regionale con SPID, (4) In farmacia convenzionata, (5) Allo sportello CUP.'},
+      {t:'Registra appuntamento',d:'Ricevi conferma con data, ora, luogo e cosa portare. Salva il biglietto di prenotazione (fisico o digitale).'},
+      {t:'Visita',d:'Arriva con: tessera sanitaria, ricetta (NRE), codice esenzione, eventuale documentazione precedente. Paga il ticket (se non esente) allo sportello prima della visita.'},
+    ],
+    costo: 'Il ticket varia da € 0 (con esenzione) a circa € 46,15 (visita specialistica massimo). Esami diagnostici hanno ticket separati.',
+    attenzione: 'Se non puoi presentarti, disdici l\'appuntamento con almeno 2 giorni di anticipo. Le mancate disdette costano allo Stato e allungano le liste d\'attesa.'
+  },
+  'successioni': {
+    title: 'Dichiarazione di Successione',
+    cat: 'CAF & Fiscale — Agenzia delle Entrate',
+    url: 'https://www.agenziaentrate.gov.it/portale/web/guest/successioni',
+    desc: 'Alla morte di una persona, gli eredi devono presentare la dichiarazione di successione all\'Agenzia delle Entrate entro 12 mesi dalla data del decesso. Serve per trasferire la proprietà dei beni immobili e per calcolare l\'imposta di successione (se dovuta).',
+    scadenza: '<strong>Entro 12 mesi</strong> dalla data del decesso.',
+    docs: ['Documento d\'identità degli eredi','Atto di morte del defunto','Atto di nascita e stato di famiglia del defunto','Testamento (se presente)','Visura catastale immobili del defunto','Estratti conto e saldi bancari alla data del decesso','Eventuali contratti di affitto, partecipazioni societarie'],
+    steps: [
+      {t:'Verifica se sei obbligato',d:'La dichiarazione è obbligatoria se il patrimonio del defunto supera € 100.000 o include immobili. Se il patrimonio è solo mobiliare e sotto € 100.000, non è necessaria.'},
+      {t:'Raccogli la documentazione',d:'Recupera tutti i documenti dell\'asse ereditario: documenti del defunto, visure catastali degli immobili, saldi bancari, eventuale testamento autenticato dal notaio.'},
+      {t:'Prepara la dichiarazione (con CAF o notaio)',d:'La dichiarazione di successione è un documento complesso. Puoi farla da solo online su agenziaentrate.gov.it con il software "Dichiara" oppure affidarti a un CAF, commercialista o notaio.'},
+      {t:'Invia telematicamente',d:'La presentazione è obbligatoriamente telematica (salvo eccezioni). Accedi con SPID su agenziaentrate.gov.it, usa il software "Dichiara" e invia.'},
+      {t:'Pagamento imposta (se dovuta)',d:'L\'imposta di successione si paga solo se il patrimonio supera la franchigia: € 1.000.000 per coniuge e figli, € 100.000 per fratelli, nessuna franchigia per altri. L\'aliquota è del 4% (coniuge/figli) o 8% (altri).'},
+      {t:'Voltura catastale',d:'Dopo la successione, fai la voltura catastale degli immobili per aggiornare la titolarità. Si fa all\'Agenzia delle Entrate-Territorio (catasto) o online.'},
+    ],
+    costo: 'Presentazione online: gratuita. Imposta di successione (se dovuta): vedi aliquote sopra. CAF o commercialista: € 200–500 per la pratica.',
+    attenzione: 'La scadenza è 12 mesi dalla morte. In caso di ritardo, le sanzioni sono del 30% + interessi. Non aspettare: raccogliere la documentazione richiede spesso mesi.'
+  }
+};
+
+function openModal(id){
+  const g = GUIDE[id];
+  if(!g){
+    const s = SERVIZI.find(x=>x.id===id);
+    if(s){openExternal(s.url||'#');}
+    return;
+  }
+  document.getElementById('modal-title').textContent = g.title;
+  document.getElementById('modal-cat').textContent = g.cat;
+  let html = `<div class="modal-desc">${g.desc}</div>`;
+  if(g.scadenza){
+    html += `<div class="modal-time-info"><i class="ti ti-clock" aria-hidden="true"></i><p>⏰ ${g.scadenza}</p></div>`;
+  }
+  if(g.docs && g.docs.length){
+    html += `<div class="docs-box"><div class="docs-title"><i class="ti ti-file-check" aria-hidden="true"></i> Documenti necessari</div><ul class="docs-list">`;
+    g.docs.forEach(d=>{ html += `<li>${escHtml(d)}</li>`; });
+    html += `</ul></div>`;
+  }
+  if(g.steps && g.steps.length){
+    html += `<div class="steps-title"><i class="ti ti-list-check" aria-hidden="true" style="font-size:14px;vertical-align:-2px;margin-right:5px"></i> Guida passo-passo</div>`;
+    g.steps.forEach((s,i)=>{
+      html += `<div class="step"><div class="step-num">${i+1}</div><div class="step-content"><strong>${escHtml(s.t)}</strong><p>${escHtml(s.d)}</p></div></div>`;
+    });
+  }
+  if(g.costo){
+    html += `<div class="cost-box"><div class="cost-title"><i class="ti ti-coin-euro" aria-hidden="true" style="font-size:13px;vertical-align:-2px;margin-right:4px"></i> Costo</div><p>${escHtml(g.costo)}</p></div>`;
+  }
+  if(g.attenzione){
+    html += `<div class="warn-box"><div class="warn-title"><i class="ti ti-alert-triangle" aria-hidden="true"></i> Attenzione</div><p>${escHtml(g.attenzione)}</p></div>`;
+  }
+  html += `<div class="modal-actions">`;
+  html += `<button class="btn-official" onclick="openExternal('${g.url}')"><i class="ti ti-external-link" aria-hidden="true"></i> Sito Ufficiale</button>`;
+  if(g.url2){
+    html += `<button class="btn-caf" onclick="openExternal('${g.url2}')"><i class="ti ti-map-pin" aria-hidden="true"></i> ${escHtml(g.url2label)}</button>`;
+  }
+  html += `</div>`;
+  document.getElementById('modal-body').innerHTML = html;
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(){
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeModalOutside(e){
+  if(e.target === document.getElementById('modal-overlay')) closeModal();
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+
+function openExternal(url){
+  if(!url||url==='#') return;
+  window.open(url,'_blank','noopener,noreferrer');
+}
+
+function doSearch(q){
+  const val = (q||'').trim();
+  document.getElementById('search-input').value = val;
+  const sr = document.getElementById('search-results');
+  const mc = document.getElementById('main-content');
+  if(!val){sr.style.display='none';mc.style.display='grid';return;}
+  const terms = val.toLowerCase().split(' ').filter(Boolean);
+  const hits = SERVIZI.filter(s=>{
+    const hay = (s.nome+' '+s.cat+' '+s.desc+' '+s.keys).toLowerCase();
+    return terms.every(t=>hay.includes(t));
+  });
+  mc.style.display = 'none';
+  sr.style.display = 'block';
+  const catIcons = {CAF:'ti-calculator',Patronato:'ti-users',PA:'ti-landmark',Salute:'ti-heart-rate-monitor',Casa:'ti-home-2',Lavoro:'ti-briefcase',Mobilità:'ti-car',Scuola:'ti-school',Immigrazione:'ti-world'};
+  if(hits.length===0){
+    sr.innerHTML = `<div class="no-results"><i class="ti ti-search-off" aria-hidden="true" style="font-size:28px;display:block;margin-bottom:8px;color:#aaa"></i>Nessun risultato per "<strong>${escHtml(val)}</strong>".<br><span style="font-size:12px;color:#aaa">Prova con: 730, ISEE, pensione, SPID, affitto, invalidità…</span></div>`;
+    return;
+  }
+  sr.innerHTML = `<div class="sr-header">Trovati <strong>${hits.length} risultati</strong> per "${escHtml(val)}" — clicca per aprire la guida</div>` +
+    hits.map(s=>`<div class="result-item" onclick="openModal('${s.id}')">
+      <div class="result-left">
+        <div class="result-icon"><i class="ti ${s.icon||catIcons[s.cat]||'ti-file'}" aria-hidden="true"></i></div>
+        <div>
+          <div class="result-name">${escHtml(s.nome)}</div>
+          <div class="result-cat">${escHtml(s.cat)}</div>
+          <div class="result-desc">${escHtml(s.desc)}</div>
+        </div>
+      </div>
+      <span class="result-link"><i class="ti ti-book" aria-hidden="true"></i> Guida</span>
+    </div>`).join('');
+}
+
+function filterCat(cat, el){
+  if(el){ document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active')); el.classList.add('active'); }
+  document.getElementById('search-input').value = cat;
+  doSearch(cat);
+}
+function showAll(el){
+  document.getElementById('search-input').value = '';
+  document.getElementById('search-results').style.display = 'none';
+  document.getElementById('main-content').style.display = 'grid';
+  if(el){ document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active')); el.classList.add('active'); }
+}
+function scrollToTrova(){
+  document.getElementById('trova-section').scrollIntoView({behavior:'smooth'});
+}
+function escHtml(s){
+  if(!s) return '';
+  return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+</script>
+</body>
+</html>
