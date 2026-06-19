@@ -1,1453 +1,339 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>SportelloAperto.it — Guide Pratiche Gratis per Cittadini</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
---teal: #0E7C7B; --teal-dark: #095F5E; --teal-light: #E6F4F4; --teal-mid: #C2E4E4;
---accent: #F59E0B; --accent-bg: #FFFBEB;
---green: #16A34A; --green-bg: #F0FDF4;
---purple: #7C3AED; --purple-bg: #F5F3FF;
---blue: #1D4ED8; --blue-bg: #EFF6FF;
---grey-1: #111827; --grey-2: #374151; --grey-3: #6B7280; --grey-4: #9CA3AF;
---grey-5: #E5E7EB; --grey-6: #F9FAFB; --white: #FFFFFF;
---radius: 8px; --shadow-sm: 0 1px 4px rgba(0,0,0,.07); --shadow-md: 0 4px 16px rgba(0,0,0,.09);
-}
-body { font-family: 'Inter', sans-serif; color: var(--grey-1); background: var(--white); font-size: 15px; line-height: 1.65; }
-a { color: var(--teal); text-decoration: underline; }
-a:hover { color: var(--teal-dark); }
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SportelloAperto.it — In arrivo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-.topbar { background: var(--teal-dark); color: rgba(255,255,255,.8); font-size: 0.78rem; padding: 0.4rem 5%; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
-.topbar strong { color: #fff; }
-.topbar-right { display: flex; gap: 1.5rem; }
-.topbar-right a { color: rgba(255,255,255,.7); text-decoration: none; transition: color .15s; }
-.topbar-right a:hover { color: #fff; }
+    :root {
+      --teal:      #0E7C7B;
+      --teal-dark: #095F5E;
+      --teal-glow: rgba(14,124,123,0.18);
+      --cream:     #F7F9F9;
+      --ink:       #111D1D;
+      --mid:       #4A6161;
+      --border:    rgba(14,124,123,0.15);
+    }
 
-nav { position: sticky; top: 0; z-index: 200; background: var(--white); border-bottom: 1px solid var(--grey-5); box-shadow: var(--shadow-sm); }
-.nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 5%; display: flex; align-items: center; height: 66px; gap: 1.5rem; }
-.nav-logo { display: flex; align-items: center; gap: 0.55rem; white-space: nowrap; text-decoration: none; }
-.nav-logo-icon { width: 36px; height: 36px; border-radius: 8px; background: var(--teal); display: flex; align-items: center; justify-content: center; font-size: 1rem; }
-.nav-logo-text { font-size: 1.15rem; font-weight: 700; color: var(--teal-dark); }
-.nav-logo-text span { color: var(--teal); }
-.nav-search { flex: 1; max-width: 420px; display: flex; align-items: center; background: var(--grey-6); border: 1px solid var(--grey-5); border-radius: 40px; padding: 0 1rem; gap: 0.5rem; }
-.nav-search input { border: none; background: none; outline: none; font-size: 0.88rem; font-family: inherit; width: 100%; padding: 0.55rem 0; color: var(--grey-1); }
-.nav-search input::placeholder { color: var(--grey-4); }
-.nav-links { display: flex; gap: 0.15rem; list-style: none; margin-left: auto; }
-.nav-links a { font-size: 0.82rem; font-weight: 500; color: var(--grey-2); padding: 0.4rem 0.8rem; border-radius: 6px; white-space: nowrap; transition: background .15s, color .15s; text-decoration: none; }
-.nav-links a:hover { background: var(--teal-light); color: var(--teal); }
-.nav-badge { background: var(--green-bg); color: var(--green); font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 40px; border: 1px solid #BBF7D0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.25rem;
+      overflow-x: hidden;
+    }
 
-.hero { background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal) 55%, #2DA7A6 100%); padding: 64px 5% 72px; text-align: center; color: var(--white); position: relative; overflow: hidden; }
-.hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 80% 20%, rgba(255,255,255,.06) 0%, transparent 50%), radial-gradient(circle at 20% 80%, rgba(255,255,255,.04) 0%, transparent 40%); pointer-events: none; }
-.hero-free-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3); color: #fff; font-size: 0.78rem; font-weight: 700; padding: 0.3rem 1rem; border-radius: 40px; margin-bottom: 1.4rem; letter-spacing: .04em; text-transform: uppercase; }
-.hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; line-height: 1.2; margin-bottom: 0.8rem; }
-.hero h1 span { color: #7EEAEA; }
-.hero-sub { font-size: 1rem; color: rgba(255,255,255,.8); max-width: 540px; margin: 0 auto 2.2rem; line-height: 1.75; }
-.hero-search-wrap { max-width: 600px; margin: 0 auto; background: var(--white); border-radius: 10px; display: flex; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,.2); }
-.hero-search-wrap input { flex: 1; border: none; outline: none; padding: 1rem 1.25rem; font-family: inherit; font-size: 0.95rem; color: var(--grey-1); }
-.hero-search-wrap button { background: var(--teal); color: var(--white); border: none; cursor: pointer; padding: 0 1.5rem; font-family: inherit; font-size: 0.9rem; font-weight: 600; white-space: nowrap; transition: background .2s; }
-.hero-search-wrap button:hover { background: var(--teal-dark); }
-.hero-pills { margin-top: 1.2rem; display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; }
-.hero-pill { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22); color: rgba(255,255,255,.9); font-size: 0.78rem; font-weight: 500; padding: 0.28rem 0.8rem; border-radius: 40px; cursor: pointer; transition: background .15s; }
-.hero-pill:hover { background: rgba(255,255,255,.22); }
-.hero-stats { display: flex; justify-content: center; gap: 3rem; margin-top: 3rem; flex-wrap: wrap; }
-.hero-stat-num { font-size: 1.6rem; font-weight: 700; color: #fff; line-height: 1; }
-.hero-stat-label { font-size: 0.72rem; color: rgba(255,255,255,.6); letter-spacing: .06em; text-transform: uppercase; margin-top: 0.2rem; }
+    /* ── Ambient background rings ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 0%,   rgba(14,124,123,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 100%, rgba(14,124,123,0.05) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
 
-.notice-band { background: var(--accent-bg); border-bottom: 1px solid #FDE68A; padding: 0.65rem 5%; display: flex; align-items: center; justify-content: center; gap: 0.6rem; flex-wrap: wrap; font-size: 0.83rem; color: var(--grey-2); }
-.notice-band strong { color: #92400E; }
+    .card {
+      position: relative;
+      z-index: 1;
+      max-width: 560px;
+      width: 100%;
+      text-align: center;
+    }
 
-.section-wrap { max-width: 1200px; margin: 0 auto; padding: 56px 5%; }
-.section-title { font-size: 1.05rem; font-weight: 700; color: var(--grey-1); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.6rem; }
-.section-title::after { content: ''; flex: 1; height: 1px; background: var(--grey-5); }
+    /* ── Logo ── */
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin-bottom: 3.5rem;
+      text-decoration: none;
+    }
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: var(--teal);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      box-shadow: 0 0 0 6px var(--teal-glow);
+    }
+    .logo-text {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--teal-dark);
+      letter-spacing: -0.01em;
+    }
+    .logo-text span { color: var(--teal); }
 
-.cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.75rem; }
-.cat-card { background: var(--white); border: 1px solid var(--grey-5); border-radius: var(--radius); padding: 1.1rem 0.8rem; text-align: center; cursor: pointer; transition: border-color .2s, box-shadow .2s, transform .15s; }
-.cat-card:hover { border-color: var(--teal); box-shadow: 0 0 0 3px var(--teal-light); transform: translateY(-2px); }
-.cat-card.active { border-color: var(--teal); background: var(--teal-light); }
-.cat-card.stranieri { border-color: #DDD6FE; }
-.cat-card.stranieri:hover, .cat-card.stranieri.active { border-color: var(--purple); background: var(--purple-bg); box-shadow: 0 0 0 3px #EDE9FE; }
-.cat-card.studenti { border-color: #BFDBFE; }
-.cat-card.studenti:hover, .cat-card.studenti.active { border-color: var(--blue); background: var(--blue-bg); box-shadow: 0 0 0 3px #DBEAFE; }
-.cat-icon { font-size: 1.7rem; margin-bottom: 0.4rem; }
-.cat-name { font-size: 0.78rem; font-weight: 600; color: var(--grey-2); line-height: 1.3; }
-.cat-count { font-size: 0.7rem; color: var(--grey-4); margin-top: 0.2rem; }
+    /* ── Eyebrow ── */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      background: rgba(14,124,123,0.08);
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.9rem;
+      border-radius: 40px;
+      margin-bottom: 1.6rem;
+    }
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.7); }
+    }
 
-.guides-section { background: var(--grey-6); border-top: 1px solid var(--grey-5); }
-.filter-bar { display: flex; gap: 0.5rem; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; }
-.filter-btn { background: var(--white); border: 1px solid var(--grey-5); color: var(--grey-2); font-size: 0.78rem; font-weight: 500; padding: 0.35rem 0.85rem; border-radius: 40px; cursor: pointer; font-family: inherit; transition: all .15s; }
-.filter-btn:hover, .filter-btn.active { background: var(--teal); border-color: var(--teal); color: var(--white); }
-.guides-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1rem; align-items: start; }
+    /* ── Headline ── */
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+    h1 em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--teal);
+    }
 
-/* ── GUIDE CARD (solo header cliccabile, no body inline) ── */
-.guide-card { background: var(--white); border: 1px solid var(--grey-5); border-radius: var(--radius); box-shadow: var(--shadow-sm); overflow: hidden; transition: box-shadow .2s, border-color .2s, transform .15s; cursor: pointer; }
-.guide-card:hover { box-shadow: var(--shadow-md); border-color: var(--teal); transform: translateY(-2px); }
-.guide-card.cat-stranieri:hover { border-color: var(--purple); }
-.guide-card.cat-studenti:hover { border-color: var(--blue); }
-.guide-header { padding: 1.25rem; display: flex; gap: 0.9rem; align-items: flex-start; }
-.guide-ico { width: 42px; height: 42px; border-radius: 10px; background: var(--teal-light); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
-.guide-ico.stranieri { background: var(--purple-bg); }
-.guide-ico.studenti { background: var(--blue-bg); }
-.guide-header-body { flex: 1; }
-.guide-header-body h3 { font-size: 0.93rem; font-weight: 700; color: var(--grey-1); line-height: 1.35; margin-bottom: 0.3rem; }
-.guide-header-body p { font-size: 0.82rem; color: var(--grey-3); line-height: 1.55; }
-.guide-meta { display: flex; align-items: center; gap: 0.6rem; margin-top: 0.75rem; flex-wrap: wrap; }
-.meta-pill { display: flex; align-items: center; gap: 0.25rem; font-size: 0.7rem; font-weight: 500; padding: 0.18rem 0.55rem; border-radius: 40px; }
-.meta-steps { background: var(--teal-light); color: var(--teal-dark); }
-.meta-steps.stranieri { background: var(--purple-bg); color: var(--purple); }
-.meta-steps.studenti { background: var(--blue-bg); color: var(--blue); }
-.meta-time { background: var(--grey-6); color: var(--grey-3); border: 1px solid var(--grey-5); }
-.meta-diff-easy { background: var(--green-bg); color: var(--green); }
-.meta-diff-med { background: #FEF3C7; color: #92400E; }
-.meta-diff-hard { background: #FEE2E2; color: #B91C1C; }
-.guide-open-arrow { margin-left: auto; width: 28px; height: 28px; border-radius: 50%; background: var(--grey-6); border: 1px solid var(--grey-5); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; flex-shrink: 0; color: var(--teal); font-weight: 700; }
-.guide-card.cat-stranieri .guide-open-arrow { color: var(--purple); }
-.guide-card.cat-studenti .guide-open-arrow { color: var(--blue); }
+    /* ── Subhead ── */
+    .sub {
+      font-size: 1rem;
+      color: var(--mid);
+      line-height: 1.75;
+      max-width: 440px;
+      margin: 1.1rem auto 0;
+    }
 
-/* ══════════════════════════════════════
-MODAL OVERLAY
-══════════════════════════════════════ */
-.modal-overlay {
-display: none;
-position: fixed;
-inset: 0;
-z-index: 1000;
-background: rgba(0,0,0,.55);
-backdrop-filter: blur(3px);
--webkit-backdrop-filter: blur(3px);
-align-items: center;
-justify-content: center;
-padding: 1rem;
-animation: fadeIn .18s ease;
-}
-.modal-overlay.active { display: flex; }
+    /* ── Divider ── */
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: var(--teal);
+      border-radius: 2px;
+      margin: 2rem auto;
+      opacity: 0.5;
+    }
 
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes slideUp { from { opacity: 0; transform: translateY(30px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    /* ── Preview pills ── */
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+    }
+    .pill {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--mid);
+      background: #fff;
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.8rem;
+      border-radius: 40px;
+    }
+    .pill span { margin-right: 0.3rem; }
 
-.modal-box {
-background: var(--white);
-border-radius: 14px;
-max-width: 720px;
-width: 100%;
-max-height: 90vh;
-display: flex;
-flex-direction: column;
-box-shadow: 0 24px 80px rgba(0,0,0,.25);
-animation: slideUp .22s ease;
-overflow: hidden;
-}
+    /* ── Email form ── */
+    .form-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: 0.03em;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+    .form-wrap {
+      display: flex;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .form-wrap input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 0.85rem 1rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      color: var(--ink);
+      background: transparent;
+    }
+    .form-wrap input::placeholder { color: #9AACAC; }
+    .form-wrap button {
+      background: var(--teal);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      padding: 0 1.25rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .form-wrap button:hover { background: var(--teal-dark); }
 
-.modal-header {
-padding: 1.5rem 1.5rem 1.2rem;
-border-bottom: 1px solid var(--grey-5);
-display: flex;
-gap: 1rem;
-align-items: flex-start;
-flex-shrink: 0;
-}
-.modal-header-ico { width: 48px; height: 48px; border-radius: 12px; background: var(--teal-light); display: flex; align-items: center; justify-content: center; font-size: 1.35rem; flex-shrink: 0; }
-.modal-header-ico.stranieri { background: var(--purple-bg); }
-.modal-header-ico.studenti { background: var(--blue-bg); }
-.modal-header-body { flex: 1; }
-.modal-header-body h2 { font-size: 1.1rem; font-weight: 700; color: var(--grey-1); line-height: 1.3; margin-bottom: 0.4rem; }
-.modal-header-body p { font-size: 0.85rem; color: var(--grey-3); }
-.modal-meta { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.6rem; flex-wrap: wrap; }
-.modal-close {
-width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--grey-5);
-background: var(--grey-6); cursor: pointer; font-size: 1.1rem; color: var(--grey-3);
-display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-transition: background .15s, color .15s;
-line-height: 1;
-}
-.modal-close:hover { background: #FEE2E2; color: #B91C1C; border-color: #FECACA; }
+    .form-note {
+      font-size: 0.72rem;
+      color: #9AACAC;
+      margin-top: 0.6rem;
+    }
 
-.modal-body {
-overflow-y: auto;
-padding: 1.75rem 1.5rem;
-flex: 1;
-}
-.modal-body::-webkit-scrollbar { width: 6px; }
-.modal-body::-webkit-scrollbar-track { background: var(--grey-6); }
-.modal-body::-webkit-scrollbar-thumb { background: var(--teal-mid); border-radius: 3px; }
+    /* ── Success message ── */
+    .success {
+      display: none;
+      font-size: 0.88rem;
+      color: var(--teal-dark);
+      background: rgba(14,124,123,0.08);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1.25rem;
+      max-width: 400px;
+      margin: 0 auto;
+    }
 
-/* ── body content (reuse same styles) ── */
-.guide-intro { font-size: 0.88rem; color: var(--grey-2); line-height: 1.7; margin-bottom: 1.5rem; padding: 1rem; background: var(--grey-6); border-radius: var(--radius); border-left: 3px solid var(--teal); }
-.guide-intro.stranieri { border-left-color: var(--purple); }
-.guide-intro.studenti { border-left-color: var(--blue); }
-.steps-list { display: flex; flex-direction: column; gap: 1.25rem; }
-.step-item { display: flex; gap: 1rem; }
-.step-num { width: 30px; height: 30px; border-radius: 50%; background: var(--teal); color: var(--white); font-size: 0.8rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.1rem; }
-.step-num.stranieri { background: var(--purple); }
-.step-num.studenti { background: var(--blue); }
-.step-content h4 { font-size: 0.9rem; font-weight: 700; color: var(--grey-1); margin-bottom: 0.3rem; }
-.step-content p { font-size: 0.83rem; color: var(--grey-3); line-height: 1.65; }
-.step-content a { color: var(--teal); font-weight: 500; }
-.step-content a.stranieri { color: var(--purple); }
-.step-content a.studenti { color: var(--blue); }
-.step-content ul { margin-top: 0.5rem; margin-left: 1.2rem; }
-.step-content ul li { font-size: 0.83rem; color: var(--grey-3); margin-bottom: 0.3rem; line-height: 1.5; }
-.step-alert { margin-top: 0.5rem; padding: 0.6rem 0.9rem; background: var(--accent-bg); border: 1px solid #FDE68A; border-radius: 6px; font-size: 0.8rem; color: #92400E; }
-.guide-links-box { margin-top: 1.5rem; padding: 1rem 1.1rem; background: var(--teal-light); border-radius: var(--radius); }
-.guide-links-box.stranieri { background: var(--purple-bg); }
-.guide-links-box.studenti { background: var(--blue-bg); }
-.guide-links-box h4 { font-size: 0.82rem; font-weight: 700; color: var(--teal-dark); margin-bottom: 0.6rem; }
-.guide-links-box h4.stranieri { color: var(--purple); }
-.guide-links-box h4.studenti { color: var(--blue); }
-.guide-links-box a { display: block; font-size: 0.82rem; color: var(--teal); font-weight: 500; margin-bottom: 0.35rem; }
-.guide-links-box a.stranieri { color: var(--purple); }
-.guide-links-box a.studenti { color: var(--blue); }
+    /* ── Footer note ── */
+    .footer-note {
+      margin-top: 3.5rem;
+      font-size: 0.72rem;
+      color: #9AACAC;
+    }
+    .footer-note a { color: var(--teal); text-decoration: none; }
+    .footer-note a:hover { text-decoration: underline; }
 
-/* rest of page */
-.how-section { background: var(--white); }
-.how-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; }
-.how-step { text-align: center; }
-.how-num { width: 52px; height: 52px; border-radius: 50%; background: var(--teal); color: var(--white); font-size: 1.2rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
-.how-step h3 { font-size: 0.95rem; font-weight: 700; color: var(--grey-1); margin-bottom: 0.4rem; }
-.how-step p { font-size: 0.82rem; color: var(--grey-3); line-height: 1.65; }
+    /* ── Entrance animation ── */
+    .card > * {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.6s ease forwards;
+    }
+    .card > *:nth-child(1) { animation-delay: 0.05s; }
+    .card > *:nth-child(2) { animation-delay: 0.15s; }
+    .card > *:nth-child(3) { animation-delay: 0.22s; }
+    .card > *:nth-child(4) { animation-delay: 0.28s; }
+    .card > *:nth-child(5) { animation-delay: 0.34s; }
+    .card > *:nth-child(6) { animation-delay: 0.40s; }
+    .card > *:nth-child(7) { animation-delay: 0.46s; }
+    .card > *:nth-child(8) { animation-delay: 0.52s; }
+    .card > *:nth-child(9) { animation-delay: 0.58s; }
 
-.popular-list { display: flex; flex-direction: column; gap: 0.6rem; }
-.popular-item { display: flex; align-items: center; gap: 1rem; background: var(--white); border: 1px solid var(--grey-5); border-radius: var(--radius); padding: 1rem 1.25rem; cursor: pointer; transition: border-color .15s, box-shadow .15s; }
-.popular-item:hover { border-color: var(--teal); box-shadow: var(--shadow-sm); }
-.popular-rank { font-size: 0.75rem; font-weight: 700; color: var(--grey-4); min-width: 22px; }
-.popular-icon { font-size: 1.2rem; }
-.popular-info { flex: 1; }
-.popular-info h4 { font-size: 0.9rem; font-weight: 600; color: var(--grey-1); }
-.popular-info span { font-size: 0.75rem; color: var(--grey-4); }
-.popular-views { font-size: 0.72rem; color: var(--grey-4); white-space: nowrap; }
-.popular-arrow { color: var(--teal); font-size: 1rem; text-decoration: none; }
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-.newsletter { background: linear-gradient(135deg, var(--teal-dark), var(--teal)); padding: 56px 5%; text-align: center; color: var(--white); }
-.newsletter h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.5rem; }
-.newsletter p { color: rgba(255,255,255,.75); margin-bottom: 1.75rem; font-size: 0.95rem; }
-.newsletter-form { max-width: 440px; margin: 0 auto; display: flex; background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 6px 24px rgba(0,0,0,.15); }
-.newsletter-form input { flex: 1; border: none; outline: none; padding: 0.9rem 1rem; font-family: inherit; font-size: 0.9rem; color: var(--grey-1); }
-.newsletter-form button { background: var(--teal-dark); color: var(--white); border: none; cursor: pointer; padding: 0 1.25rem; font-family: inherit; font-size: 0.85rem; font-weight: 600; white-space: nowrap; transition: background .2s; }
-.newsletter-form button:hover { background: #074847; }
-.newsletter-note { font-size: 0.75rem; color: rgba(255,255,255,.5); margin-top: 0.75rem; }
+    @media (prefers-reduced-motion: reduce) {
+      .card > * { animation: none; opacity: 1; transform: none; }
+      .dot { animation: none; }
+    }
 
-footer { background: var(--grey-1); color: rgba(255,255,255,.55); padding: 48px 5% 24px; }
-.footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 2.5rem; }
-.footer-logo-wrap { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
-.footer-logo-icon { width: 32px; height: 32px; border-radius: 7px; background: var(--teal); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
-.footer-logo-text { font-size: 1.05rem; font-weight: 700; color: var(--white); }
-.footer-brand p { font-size: 0.82rem; line-height: 1.65; max-width: 260px; }
-.footer-col h4 { font-size: 0.78rem; font-weight: 700; color: var(--white); margin-bottom: 0.9rem; text-transform: uppercase; letter-spacing: .07em; }
-.footer-col ul { list-style: none; }
-.footer-col li { margin-bottom: 0.5rem; }
-.footer-col a { font-size: 0.82rem; color: rgba(255,255,255,.5); transition: color .15s; }
-.footer-col a:hover { color: var(--white); }
-.footer-bottom { max-width: 1200px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,.1); padding-top: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.75rem; }
-.footer-free-note { color: #6EE7B7; font-weight: 600; font-size: 0.75rem; }
-
-@media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } .nav-links { display: none; } }
-@media (max-width: 600px) { .hero { padding: 44px 5% 52px; } .footer-grid { grid-template-columns: 1fr; } .cat-grid { grid-template-columns: repeat(3, 1fr); } .guides-grid { grid-template-columns: 1fr; } .modal-box { max-height: 95vh; border-radius: 12px 12px 0 0; } .modal-overlay { align-items: flex-end; padding: 0; } }
-@media (prefers-reduced-motion: reduce) { .modal-overlay, .modal-box { animation: none; } }
-
-@keyframes fadeUp { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
-.fade { opacity:0; }
-.fade.in { animation: fadeUp .5s ease forwards; }
-@media (prefers-reduced-motion:reduce) { .fade,.fade.in { animation:none; opacity:1; } }
-</style>
+    @media (max-width: 480px) {
+      .form-wrap { flex-direction: column; }
+      .form-wrap button { padding: 0.8rem; width: 100%; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- MODAL OVERLAY -->
-<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-<div class="modal-box" id="modalBox">
-<div class="modal-header" id="modalHeader">
-<div class="modal-header-ico" id="modalIco"></div>
-<div class="modal-header-body">
-<h2 id="modalTitle"></h2>
-<p id="modalSubtitle"></p>
-<div class="modal-meta" id="modalMeta"></div>
-</div>
-<button class="modal-close" id="modalClose" aria-label="Chiudi">✕</button>
-</div>
-<div class="modal-body" id="modalBody"></div>
-</div>
-</div>
+<div class="card">
 
-<div class="topbar">
-<span>🟢 Tutte le guide sono <strong>100% gratuite</strong> — nessuna registrazione richiesta</span>
-<div class="topbar-right">
-<a href="#">Contattaci</a>
-<a href="#">Suggerisci una guida</a>
-</div>
-</div>
+  <a class="logo" href="#">
+    <div class="logo-icon">🏛️</div>
+    <div class="logo-text">Sportello<span>Aperto</span>.it</div>
+  </a>
 
-<nav>
-<div class="nav-inner">
-<a class="nav-logo" href="#">
-<div class="nav-logo-icon">🏛️</div>
-<div class="nav-logo-text">Sportello<span>Aperto</span>.it</div>
-</a>
-<div class="nav-search">
-<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-<input type="text" id="searchInput" placeholder="Cerca una pratica... es. cambio residenza" oninput="searchGuides()"/>
-</div>
-<ul class="nav-links">
-<li><a href="#guide">Guide</a></li>
-<li><a href="#popolari">Più cercate</a></li>
-<li><a href="#come">Come funziona</a></li>
-<li><span class="nav-badge">✅ Gratis</span></li>
-</ul>
-</div>
-</nav>
+  <div class="eyebrow">
+    <span class="dot"></span>
+    In costruzione
+  </div>
 
-<header class="hero">
-<div class="hero-free-badge">✅ 100% Gratuito · Nessuna registrazione</div>
-<h1>La burocrazia italiana,<br/><span>spiegata passo per passo</span></h1>
-<p class="hero-sub">Guide chiare e aggiornate per sbrigare le tue pratiche da solo, senza pagare intermediari e senza perdere tempo agli sportelli.</p>
-<div class="hero-search-wrap">
-<input type="text" id="heroSearch" placeholder="Cosa devi fare? Es. cambio residenza, ISEE, permesso soggiorno..." oninput="searchGuides()"/>
-<button onclick="searchGuides()">🔍 Cerca guida</button>
-</div>
-<div class="hero-pills">
-<span class="hero-pill" onclick="quickSearch('residenza')">Cambio residenza</span>
-<span class="hero-pill" onclick="quickSearch('carta identità')">Carta d'identità</span>
-<span class="hero-pill" onclick="quickSearch('ISEE')">ISEE</span>
-<span class="hero-pill" onclick="quickSearch('permesso')">Permesso soggiorno</span>
-<span class="hero-pill" onclick="quickSearch('bonus')">Bonus casa</span>
-<span class="hero-pill" onclick="quickSearch('borse')">Borse di studio</span>
-<span class="hero-pill" onclick="quickSearch('patente')">Patente</span>
-<span class="hero-pill" onclick="quickSearch('pensione')">Pensione</span>
-</div>
-<div class="hero-stats">
-<div class="hero-stat"><div class="hero-stat-num">180+</div><div class="hero-stat-label">Guide disponibili</div></div>
-<div class="hero-stat"><div class="hero-stat-num">€0</div><div class="hero-stat-label">Costo sempre</div></div>
-<div class="hero-stat"><div class="hero-stat-num">50k+</div><div class="hero-stat-label">Cittadini aiutati</div></div>
-</div>
-</header>
+  <h1>La burocrazia italiana,<br/><em>finalmente semplice.</em></h1>
 
-<div class="notice-band">
-ℹ️ Le informazioni sono a scopo orientativo e aggiornate regolarmente. Per situazioni complesse consulta sempre un professionista abilitato. · <strong>Ultimo aggiornamento: giugno 2026</strong>
-</div>
+  <p class="sub">
+    Stiamo costruendo qualcosa di davvero utile: guide chiare, gratuite e aggiornate per aiutare ogni cittadino a orientarsi nella pubblica amministrazione — senza perdere ore agli sportelli e senza pagare intermediari.
+  </p>
 
-<!-- CATEGORIES -->
-<div class="section-wrap fade">
-<div class="section-title">Sfoglia per categoria</div>
-<div class="cat-grid">
-<div class="cat-card active" onclick="filterCat(this,'tutti')"><div class="cat-icon">🗂️</div><div class="cat-name">Tutte le guide</div><div class="cat-count">180 guide</div></div>
-<div class="cat-card" onclick="filterCat(this,'anagrafe')"><div class="cat-icon">🏘️</div><div class="cat-name">Anagrafe & Comune</div><div class="cat-count">32 guide</div></div>
-<div class="cat-card" onclick="filterCat(this,'documenti')"><div class="cat-icon">🪪</div><div class="cat-name">Documenti personali</div><div class="cat-count">18 guide</div></div>
-<div class="cat-card" onclick="filterCat(this,'casa')"><div class="cat-icon">🏠</div><div class="cat-name">Casa & Immobili</div><div class="cat-count">24 guide</div></div>
-<div class="cat-card" onclick="filterCat(this,'fisco')"><div class="cat-icon">💶</div><div class="cat-name">Fisco & Bonus</div><div class="cat-count">28 guide</div></div>
-<div class="cat-card" onclick="filterCat(this,'famiglia')"><div class="cat-icon">👨‍👩‍👧</div><div class="cat-name">Famiglia & Stato civile</div><div class="cat-count">20 guide</div></div>
-<div class="cat-card" onclick="filterCat(this,'veicoli')"><div class="cat-icon">🚗</div><div class="cat-name">Veicoli & Patente</div><div class="cat-count">14 guide</div></div>
-<div class="cat-card" onclick="filterCat(this,'lavoro')"><div class="cat-icon">💼</div><div class="cat-name">Lavoro & Pensione</div><div class="cat-count">22 guide</div></div>
-<div class="cat-card stranieri" onclick="filterCat(this,'stranieri')"><div class="cat-icon">🌍</div><div class="cat-name">Stranieri in Italia</div><div class="cat-count">16 guide</div></div>
-<div class="cat-card studenti" onclick="filterCat(this,'studenti')"><div class="cat-icon">🎓</div><div class="cat-name">Studenti</div><div class="cat-count">14 guide</div></div>
-</div>
-</div>
+  <div class="divider"></div>
 
-<!-- GUIDES -->
-<div class="guides-section" id="guide">
-<div class="section-wrap fade">
-<div class="section-title">Guide pratiche — clicca per aprire</div>
-<div class="filter-bar">
-<button class="filter-btn active" onclick="setFilter(this,'tutti')">Tutte</button>
-<button class="filter-btn" onclick="setFilter(this,'facili')">Facili</button>
-<button class="filter-btn" onclick="setFilter(this,'aggiornate')">Aggiornate 2026</button>
-</div>
+  <div class="pills">
+    <div class="pill"><span>📊</span>ISEE & Bonus</div>
+    <div class="pill"><span>🏘️</span>Anagrafe</div>
+    <div class="pill"><span>🌍</span>Permesso di soggiorno</div>
+    <div class="pill"><span>🪪</span>Documenti</div>
+    <div class="pill"><span>👶</span>Assegno Unico</div>
+    <div class="pill"><span>💼</span>Lavoro & Pensione</div>
+    <div class="pill"><span>🎓</span>Studenti</div>
+    <div class="pill"><span>🏠</span>Casa & Immobili</div>
+  </div>
 
-<div class="guides-grid" id="guidesGrid">
+  <label class="form-label" for="emailInput">Avvisami quando apriamo</label>
+  <div class="form-wrap" id="formWrap">
+    <input id="emailInput" type="email" placeholder="La tua email..." autocomplete="email"/>
+    <button onclick="handleSubmit()">Avvisami →</button>
+  </div>
+  <div class="success" id="successMsg">✅ Perfetto! Ti avvisiamo non appena SportelloAperto è online.</div>
+  <p class="form-note">Nessuno spam. Solo un messaggio quando siamo pronti.</p>
 
-<!-- ═══════════ ANAGRAFE & COMUNE ═══════════ -->
-<div class="guide-card" data-cat="anagrafe" data-tags="residenza comune anagrafe trasferimento" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico">🏘️</div>
-<div class="guide-header-body">
-<h3>Come fare il cambio di residenza</h3>
-<p>Sposta la residenza nel nuovo Comune in pochi passaggi.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps">📋 6 step</span>
-<span class="meta-pill meta-time">⏱ 15 min</span>
-<span class="meta-pill meta-diff-easy">Facile</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content">
-<div class="guide-intro">Il cambio di residenza è gratuito e puoi richiederlo direttamente online o allo sportello del tuo nuovo Comune. Da quando presenti la domanda hai 20 giorni per completare la procedura. Il Comune ha 45 giorni per verificare la dichiarazione.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Verifica i requisiti</h4><p>Puoi cambiare residenza se hai stabilito la tua dimora abituale nel nuovo Comune. Non è necessario essere proprietari: basta abitare effettivamente nell'immobile (anche in affitto o ospiti).</p></div></div>
-<div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Prepara i documenti</h4><p>Avrai bisogno di:<ul><li>Documento d'identità valido</li><li>Codice fiscale</li><li>Dati catastali dell'immobile (via, numero civico, interno)</li><li>Per veicoli: estremi del libretto di circolazione</li></ul></p></div></div>
-<div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Scegli come presentare la domanda</h4><p><strong>Online:</strong> accedi al portale del tuo Comune con SPID o CIE.<br/><strong>Di persona:</strong> vai allo sportello anagrafe del Comune dove vuoi trasferire la residenza.<br/><strong>Per raccomandata o email PEC:</strong> invia il modulo compilato all'ufficio anagrafe.</p></div></div>
-<div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Compila il modulo ufficiale</h4><p>Scarica il modulo di dichiarazione di residenza dal sito del Ministero dell'Interno: <a href="https://www.interno.gov.it/it/temi/popolazione-e-territorio/modulistica-anagrafica" target="_blank" rel="noopener">Modulistica anagrafica — Ministero dell'Interno</a>. Compila tutte le sezioni, compresa quella dei familiari se ti trasferisci con loro.</p></div></div>
-<div class="step-item"><div class="step-num">5</div><div class="step-content"><h4>Presenta la domanda e attendi la verifica</h4><p>Dopo la presentazione, entro 2 giorni lavorativi il Comune aggiorna provvisoriamente i registri. Nei 45 giorni successivi un agente comunale può passare a verificare la tua effettiva presenza nell'abitazione.</p><div class="step-alert">⚠️ Se l'agente non ti trova o la dichiarazione è falsa, il Comune annulla la variazione e segnala il fatto all'autorità giudiziaria.</div></div></div>
-<div class="step-item"><div class="step-num">6</div><div class="step-content"><h4>Aggiorna i tuoi documenti</h4><p>Dopo la conferma ricorda di aggiornare: patente di guida, libretto dell'auto (sul <a href="https://www.aci.it" target="_blank" rel="noopener">sito ACI</a>) e medico di base (tramite la tua ASL).</p></div></div>
-</div>
-<div class="guide-links-box"><h4>🔗 Link ufficiali utili</h4><a href="https://www.interno.gov.it/it/temi/popolazione-e-territorio/modulistica-anagrafica" target="_blank" rel="noopener">→ Modulistica anagrafica — Ministero dell'Interno</a><a href="https://www.aci.it/i-servizi/pratiche-auto/aggiornamento-residenza.html" target="_blank" rel="noopener">→ Aggiornamento residenza veicoli — ACI</a></div>
-</template>
-</div>
+  <p class="footer-note">
+    © 2026 SportelloAperto.it &nbsp;·&nbsp;
+    <a href="#">Privacy</a> &nbsp;·&nbsp;
+    <a href="mailto:info@sportelloaperto.it">Contatti</a>
+  </p>
 
-<div class="guide-card" data-cat="anagrafe" data-tags="stato famiglia certificato anagrafe comune" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico">👨‍👩‍👧</div>
-<div class="guide-header-body">
-<h3>Richiedere il certificato di stato di famiglia</h3>
-<p>Come ottenere il certificato online o allo sportello.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps">📋 4 step</span>
-<span class="meta-pill meta-time">⏱ 5 min</span>
-<span class="meta-pill meta-diff-easy">Facile</span>
 </div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content">
-<div class="guide-intro">Il certificato di stato di famiglia attesta le persone conviventi nello stesso nucleo familiare alla stessa residenza anagrafica. Da luglio 2022 i certificati anagrafici sono gratuiti e disponibili online su ANPR.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Verifica se sei registrato su ANPR</h4><p>L'Anagrafe Nazionale della Popolazione Residente (ANPR) contiene i dati di tutti i cittadini italiani. Accedi su <a href="https://www.anpr.interno.it" target="_blank" rel="noopener">ANPR — Ministero dell'Interno</a>.</p></div></div>
-<div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Accedi con SPID o CIE</h4><p>Sul portale ANPR, accedi con le tue credenziali SPID o con la Carta d'Identità Elettronica (CIE). Seleziona "Certificati anagrafici" e poi "Stato di famiglia".</p></div></div>
-<div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Scarica il certificato</h4><p>Il certificato è disponibile immediatamente in formato PDF con firma digitale.<div class="step-alert">⚠️ Dal 2022 le PA non possono richiedere certificati anagrafici ai cittadini. Puoi rifiutarti di presentarli.</div></p></div></div>
-<div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Alternativa: sportello comunale</h4><p>Se non riesci ad accedere online, recati allo sportello anagrafe del tuo Comune con documento d'identità. Il certificato è gratuito.</p></div></div>
-</div>
-<div class="guide-links-box"><h4>🔗 Link ufficiali utili</h4><a href="https://www.anpr.interno.it/portale/certificati-anagrafici-online" target="_blank" rel="noopener">→ Certificati online — ANPR</a></div>
-</template>
-</div>
-
-<div class="guide-card" data-cat="anagrafe" data-tags="SPID identità digitale richiesta attivazione" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico">🔐</div>
-<div class="guide-header-body">
-<h3>Come ottenere lo SPID</h3>
-<p>Attiva la tua identità digitale per accedere ai servizi della PA.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps">📋 5 step</span>
-<span class="meta-pill meta-time">⏱ 15 min</span>
-<span class="meta-pill meta-diff-easy">Facile</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content">
-<div class="guide-intro">Lo SPID (Sistema Pubblico di Identità Digitale) è l'identità digitale unica per accedere ai servizi online della Pubblica Amministrazione. È gratuito con la maggior parte dei gestori.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Scegli il gestore di identità</h4><p>I principali gestori sono: Aruba, Infocert, Poste Italiane (PosteID), Register.it, Tim. Confrontali su <a href="https://www.spid.gov.it/richiedi-spid/" target="_blank" rel="noopener">SPID.gov.it</a>.</p></div></div>
-<div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Prepara i documenti</h4><p><ul><li>Documento d'identità valido</li><li>Codice fiscale o tessera sanitaria</li><li>Indirizzo email e numero di cellulare</li></ul></p></div></div>
-<div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Registrati sul sito del gestore</h4><p>Inserisci i tuoi dati anagrafici, documento e contatti sul sito del gestore scelto.</p></div></div>
-<div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Verifica la tua identità</h4><p><ul><li><strong>Webcam/selfie</strong>: carica le foto del documento e fai un selfie</li><li><strong>Di persona</strong> all'ufficio postale</li><li><strong>Con CIE</strong> tramite NFC del telefono</li></ul></p></div></div>
-<div class="step-item"><div class="step-num">5</div><div class="step-content"><h4>Attiva lo SPID</h4><p>Riceverai una email di conferma. Scarica l'app del tuo gestore per il secondo fattore di autenticazione. Da quel momento accedi a oltre 10.000 servizi pubblici.</p></div></div>
-</div>
-<div class="guide-links-box"><h4>🔗 Link ufficiali utili</h4><a href="https://www.spid.gov.it/richiedi-spid/" target="_blank" rel="noopener">→ Richiedi SPID — SPID.gov.it</a><a href="https://www.poste.it/prodotti/posteid.html" target="_blank" rel="noopener">→ PosteID — Poste Italiane</a></div>
-</template>
-</div>
-
-<div class="guide-card" data-cat="anagrafe" data-tags="codice fiscale tessera sanitaria richiesta duplicato" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico">🪪</div>
-<div class="guide-header-body">
-<h3>Richiesta o duplicato del Codice Fiscale</h3>
-<p>Come ottenere la tessera sanitaria con codice fiscale o richiederne il duplicato.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps">📋 4 step</span>
-<span class="meta-pill meta-time">⏱ 10 min</span>
-<span class="meta-pill meta-diff-easy">Facile</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content">
-<div class="guide-intro">Il codice fiscale viene assegnato automaticamente alla nascita e coincide con il numero della Tessera Sanitaria emessa dal MEF. In caso di smarrimento o scadenza puoi richiederlo gratuitamente all'Agenzia delle Entrate o online.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Verifica se puoi ottenerlo online</h4><p>Per il duplicato della tessera sanitaria, accedi con SPID o CIE sul portale dell'Agenzia delle Entrate: <a href="https://www.agenziaentrate.gov.it/portale/web/guest/cittadini/servizi/codice-fiscale-e-tessera-sanitaria" target="_blank" rel="noopener">Codice Fiscale e Tessera Sanitaria</a>.</p></div></div>
-<div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Primo rilascio: vai all'Agenzia delle Entrate</h4><p>Per il primo rilascio (straniero appena arrivato, neonato non registrato) recati fisicamente con documento d'identità e certificato di nascita.</p></div></div>
-<div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Compila il modulo AA4/8</h4><p>Il modulo per la richiesta del codice fiscale è il modello AA4/8. Lo trovi sul sito dell'Agenzia delle Entrate o presso i loro sportelli.</p></div></div>
-<div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Ricevi la tessera sanitaria</h4><p>La tessera viene spedita per posta all'indirizzo di residenza entro 15 giorni.</p></div></div>
-</div>
-<div class="guide-links-box"><h4>🔗 Link ufficiali utili</h4><a href="https://www.agenziaentrate.gov.it/portale/web/guest/cittadini/servizi/codice-fiscale-e-tessera-sanitaria" target="_blank" rel="noopener">→ Codice Fiscale — Agenzia delle Entrate</a></div>
-</template>
-</div>
-
-<div class="guide-card" data-cat="anagrafe" data-tags="anagrafe iscrizione aire residenza estero italiani" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico">✈️</div>
-<div class="guide-header-body">
-<h3>Iscrizione AIRE (italiani all'estero)</h3>
-<p>Come registrarsi all'Anagrafe degli Italiani Residenti all'Estero.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps">📋 5 step</span>
-<span class="meta-pill meta-time">⏱ 15 min</span>
-<span class="meta-pill meta-diff-easy">Facile</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content">
-<div class="guide-intro">L'AIRE è obbligatoria per tutti i cittadini italiani che si trasferiscono all'estero per più di 12 mesi. Consente di votare alle elezioni dall'estero, rinnovare i documenti al Consolato e accedere ai servizi consolari.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Quando iscriversi</h4><p>Devi iscriverti all'AIRE entro 90 giorni dal trasferimento all'estero. L'iscrizione è gratuita.</p></div></div>
-<div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Come fare la domanda</h4><p><ul><li><strong>Online</strong>: tramite il portale <a href="https://www.esteri.it/it/sportello-consolare/fast-it/" target="_blank" rel="noopener">Fast It — Ministero degli Esteri</a>, con SPID o CIE</li><li><strong>In Consolato</strong>: recati al Consolato italiano competente</li></ul></p></div></div>
-<div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Documenti necessari</h4><p><ul><li>Documento d'identità italiano valido</li><li>Codice fiscale</li><li>Indirizzo di residenza estera</li></ul></p></div></div>
-<div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Attendi la conferma del Comune</h4><p>Il Comune italiano di ultima residenza elabora la richiesta e cancella il cittadino dall'anagrafe ordinaria iscrivendolo all'AIRE.</p></div></div>
-<div class="step-item"><div class="step-num">5</div><div class="step-content"><h4>Aggiorna i dati in caso di variazioni</h4><p>Ogni variazione di indirizzo estero va comunicata al Consolato entro 90 giorni. Al rientro definitivo in Italia, chiedi la cancellazione dall'AIRE.</p></div></div>
-</div>
-<div class="guide-links-box"><h4>🔗 Link ufficiali utili</h4><a href="https://www.esteri.it/it/servizi-consolari-e-visti/italiani-all-estero/aire/" target="_blank" rel="noopener">→ AIRE — Ministero degli Esteri</a></div>
-</template>
-</div>
-
-<!-- ═══════════ DOCUMENTI PERSONALI ═══════════ -->
-<div class="guide-card" data-cat="documenti" data-tags="carta identità cie documento rinnovo" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico">🪪</div>
-<div class="guide-header-body">
-<h3>Rinnovo Carta d'Identità Elettronica (CIE)</h3>
-<p>Come prenotare, cosa portare e quanto costa.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps">📋 5 step</span>
-<span class="meta-pill meta-time">⏱ 10 min</span>
-<span class="meta-pill meta-diff-easy">Facile</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content">
-<div class="guide-intro">La CIE ha validità 10 anni per gli adulti, 5 anni per i minori tra 3 e 18 anni, 3 anni per i minori sotto i 3 anni. Può essere rinnovata 180 giorni prima della scadenza.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Prenota l'appuntamento online</h4><p>Vai su <a href="https://www.cartaidentita.interno.gov.it/prenotazione-appuntamento/" target="_blank" rel="noopener">Agenda CIE — Ministero dell'Interno</a> e prenota nel Comune di residenza.</p></div></div>
-<div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Prepara i documenti</h4><p><ul><li>Vecchia carta d'identità (anche scaduta)</li><li>1 fototessera recente (35x45 mm, sfondo bianco)</li><li>Codice fiscale o tessera sanitaria</li></ul></p></div></div>
-<div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Paga il costo</h4><p>Il costo è di <strong>16,79 €</strong> + eventuali diritti comunali (1–5 €). Si paga allo sportello.</p></div></div>
-<div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Presentati allo sportello</h4><p>Vengono acquisite la firma digitale e le impronte digitali. Puoi scegliere se essere donatore di organi.</p></div></div>
-<div class="step-item"><div class="step-num">5</div><div class="step-content"><h4>Ricevi la CIE a casa</h4><p>La CIE viene spedita entro 6 giorni lavorativi con posta raccomandata.</p></div></div>
-</div>
-<div class="guide-links-box"><h4>🔗 Link ufficiali utili</h4><a href="https://www.cartaidentita.interno.gov.it/prenotazione-appuntamento/" target="_blank" rel="noopener">→ Prenotazione CIE — Ministero dell'Interno</a></div>
-</template>
-</div>
-
-<div class="guide-card" data-cat="documenti" data-tags="passaporto viaggio documento rinnovo richiesta" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico">✈️</div>
-<div class="guide-header-body">
-<h3>Come richiedere o rinnovare il Passaporto</h3>
-<p>Prenotazione, documenti, costi e tempi di rilascio.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps">📋 6 step</span>
-<span class="meta-pill meta-time">⏱ 12 min</span>
-<span class="meta-pill meta-diff-easy">Facile</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content">
-<div class="guide-intro">Il passaporto ordinario ha validità 10 anni per gli adulti e 5 anni per i minori. La richiesta si fa in Questura. I tempi medi sono 4–6 settimane.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Prenota online</h4><p>Prenota in Questura tramite <a href="https://www.passaportonline.poliziadistato.it" target="_blank" rel="noopener">Passaporto Online — Polizia di Stato</a>.</p></div></div>
-<div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Effettua i pagamenti</h4><p><ul><li><strong>Bollettino postale da 42,50 €</strong> (cod. 67422)</li><li><strong>Marca da bollo da 73,50 €</strong> in tabaccheria</li></ul></p></div></div>
-<div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Prepara i documenti</h4><p><ul><li>2 fototessere uguali e recenti</li><li>Documento d'identità valido</li><li>Vecchio passaporto (se rinnovo)</li><li>Ricevuta del bollettino e marca da bollo</li></ul></p></div></div>
-<div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Presentati in Questura</h4><p>Vengono acquisite impronte digitali e foto. <div class="step-alert">⚠️ In caso di urgenza puoi richiedere appuntamento urgente allo stesso portale.</div></p></div></div>
-<div class="step-item"><div class="step-num">5</div><div class="step-content"><h4>Ritira il passaporto</h4><p>Dopo 4–6 settimane riceverai un SMS. Puoi ritirarlo in Questura.</p></div></div>
-<div class="step-item"><div class="step-num">6</div><div class="step-content"><h4>Rinnovo</h4><p>Puoi rinnovarlo anche prima della scadenza. La procedura è identica. Il vecchio passaporto viene annullato e restituito.</p></div></div>
-</div>
-<div class="guide-links-box"><h4>🔗 Link ufficiali utili</h4><a href="https://www.passaportonline.poliziadistato.it" target="_blank" rel="noopener">→ Passaporto Online — Polizia di Stato</a></div>
-</template>
-</div>
-
-<div class="guide-card" data-cat="documenti" data-tags="patente guida rinnovo scadenza conducente" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico">🚗</div>
-<div class="guide-header-body">
-<h3>Rinnovo della Patente di Guida</h3>
-<p>Come rinnovare la patente scaduta o in scadenza.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps">📋 5 step</span>
-<span class="meta-pill meta-time">⏱ 10 min</span>
-<span class="meta-pill meta-diff-easy">Facile</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content">
-<div class="guide-intro">La patente categoria B ha validità 10 anni fino ai 50 anni, poi 5 anni fino ai 70, poi 3 anni. Il rinnovo richiede una visita medica presso uno sportello CML o un medico abilitato.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Scegli dove fare la visita medica</h4><p>Medico monocratico abilitato, sportello Motorizzazione Civile, oppure studio medico autorizzato.</p></div></div>
-<div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Porta i documenti</h4><p><ul><li>Patente da rinnovare</li><li>Documento d'identità e codice fiscale</li><li>1 fototessera recente</li><li>Marca da bollo da 16 €</li></ul></p></div></div>
-<div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Effettua la visita medica</h4><p>Il medico verifica idoneità fisica e visiva. Se idoneo, rilascia il certificato medico.</p></div></div>
-<div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Paga i diritti</h4><p>Circa 30–60 € tra visita medica, diritti di rinnovo e marca da bollo.</p></div></div>
-<div class="step-item"><div class="step-num">5</div><div class="step-content"><h4>Ricevi la nuova patente</h4><p>Spedita per posta entro 10–15 giorni. Nel frattempo puoi guidare con la patente scaduta più il certificato medico.<div class="step-alert">⚠️ Non guidare con la patente scaduta senza il certificato medico: la multa può arrivare a 668 €.</div></p></div></div>
-</div>
-<div class="guide-links-box"><h4>🔗 Link ufficiali utili</h4><a href="https://www.motorizzazione.it/patenti/rinnovo-patente.do" target="_blank" rel="noopener">→ Rinnovo patente — Motorizzazione Civile</a></div>
-</template>
-</div>
-
-<!-- ═══════════ CASA & IMMOBILI ═══════════ -->
-<div class="guide-card" data-cat="casa" data-tags="contratto affitto locazione registrazione inquilino proprietario" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico">🏠</div>
-<div class="guide-header-body">
-<h3>Registrazione del contratto di affitto</h3>
-<p>Come registrare il contratto di locazione all'Agenzia delle Entrate.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps">📋 5 step</span>
-<span class="meta-pill meta-time">⏱ 15 min</span>
-<span class="meta-pill meta-diff-easy">Facile</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content">
-<div class="guide-intro">La registrazione del contratto di affitto è obbligatoria entro 30 giorni dalla stipula. Deve essere fatta dal proprietario. Il mancato adempimento comporta sanzioni per entrambe le parti.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Prepara il contratto</h4><p>Il contratto deve essere scritto e firmato da entrambe le parti.</p></div></div>
-<div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Calcola l'imposta di registro</h4><p>L'imposta è pari al 2% del canone annuo. Con la cedolare secca l'imposta di registro non si paga.</p></div></div>
-<div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Scegli come registrare</h4><p><ul><li><strong>Online con SPID/CIE</strong> tramite il servizio RLI</li><li><strong>Allo sportello</strong> dell'Agenzia delle Entrate</li></ul></p></div></div>
-<div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Registra online</h4><p>Accedi a <a href="https://www.agenziaentrate.gov.it/portale/web/guest/cittadini/servizi/registrazione-contratti-di-locazione" target="_blank" rel="noopener">Registrazione Locazioni — Agenzia delle Entrate</a>, compila il modulo RLI, allega il contratto in PDF e paga l'imposta.</p></div></div>
-<div class="step-item"><div class="step-num">5</div><div class="step-content"><h4>Conserva la ricevuta</h4><p>Riceverai il numero di protocollo. Forniscila all'inquilino.<div class="step-alert">⚠️ L'inquilino può registrare il contratto in caso di inerzia del proprietario, detraendo le spese dal canone.</div></p></div></div>
-</div>
-<div class="guide-links-box"><h4>🔗 Link ufficiali utili</h4><a href="https://www.agenziaentrate.gov.it/portale/web/guest/cittadini/servizi/registrazione-contratti-di-locazione" target="_blank" rel="noopener">→ Registrazione locazioni — Agenzia delle Entrate</a></div>
-</template>
-</div>
-
-<div class="guide-card" data-cat="casa" data-tags="mutuo prima casa acquisto immobile agevolazioni" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico">🏡</div>
-<div class="guide-header-body">
-<h3>Agevolazioni Prima Casa</h3>
-<p>Come beneficiare delle agevolazioni fiscali sull'acquisto della prima abitazione.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps">📋 6 step</span>
-<span class="meta-pill meta-time">⏱ 20 min</span>
-<span class="meta-pill meta-diff-med">Media difficoltà</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content">
-<div class="guide-intro">Le agevolazioni prima casa riducono le imposte sull'acquisto: imposta di registro al 2%, IVA al 4% per acquisto dal costruttore, imposta ipotecaria e catastale fisse a 50 € ciascuna.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Verifica i requisiti</h4><p>Immobile non di lusso (non A/1, A/8, A/9), nel Comune di residenza o di lavoro, nessuna altra abitazione acquistata con le stesse agevolazioni.</p></div></div>
-<div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Dichiara le agevolazioni nell'atto notarile</h4><p>Al rogito, dichiari la volontà di beneficiare delle agevolazioni prima casa. Il notaio applicherà automaticamente le aliquote ridotte.</p></div></div>
-<div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Trasferisci la residenza entro 18 mesi</h4><p>Se non sei già residente nel Comune, hai 18 mesi per farlo. Altrimenti perdi le agevolazioni e devi pagare la differenza + sanzione del 30%.</p></div></div>
-<div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Detrazione interessi sul mutuo</h4><p>Puoi detrarre il 19% degli interessi passivi, su un massimo di 4.000 € annui.</p></div></div>
-<div class="step-item"><div class="step-num">5</div><div class="step-content"><h4>Credito d'imposta per riacquisto</h4><p>Se vendi e riacquisti entro 1 anno, puoi usare le imposte pagate sulla prima casa come credito d'imposta sulla seconda.</p></div></div>
-<div class="step-item"><div class="step-num">6</div><div class="step-content"><h4>Fondo garanzia giovani under 36</h4><p>Giovani under 36 con ISEE &lt; 40.000 € possono accedere al Fondo di Garanzia Consap per i mutui prima casa. Info su <a href="https://www.consap.it/fondo-garanzia-mutui-prima-casa/" target="_blank" rel="noopener">Consap</a>.</p></div></div>
-</div>
-<div class="guide-links-box"><h4>🔗 Link ufficiali utili</h4><a href="https://www.agenziaentrate.gov.it/portale/web/guest/agevolazioni/agevolazioni-prima-casa" target="_blank" rel="noopener">→ Agevolazioni Prima Casa — Agenzia delle Entrate</a></div>
-</template>
-</div>
-
-<!-- ═══════════ FISCO & BONUS ═══════════ -->
-<div class="guide-card" data-cat="fisco" data-tags="ISEE DSU reddito agevolazioni dichiarazione" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico">📊</div>
-<div class="guide-header-body">
-<h3>Come ottenere l'ISEE 2026</h3>
-<p>Cos'è, come compilare il DSU e dove presentarlo.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps">📋 7 step</span>
-<span class="meta-pill meta-time">⏱ 20 min</span>
-<span class="meta-pill meta-diff-med">Media difficoltà</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content">
-<div class="guide-intro">L'ISEE misura la situazione economica del tuo nucleo familiare. Serve per accedere a bonus, agevolazioni, riduzioni tariffarie e molte prestazioni sociali. Si calcola tramite la DSU ed è valido 12 mesi.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Raccogli i dati del nucleo familiare</h4><p>Dati di tutti i componenti del nucleo familiare risultanti dallo stato di famiglia, compresi i figli a carico anche se non conviventi.</p></div></div>
-<div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Recupera i dati reddituali e patrimoniali</h4><p><ul><li>Redditi percepiti nel 2024</li><li>Saldo e giacenza media dei conti correnti al 31/12/2024</li><li>Valori di immobili posseduti (rendita catastale)</li></ul></p></div></div>
-<div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Scegli come presentare il DSU</h4><p><ul><li><strong>Online con SPID/CIE</strong> sul sito INPS</li><li><strong>Tramite CAF</strong> — gratuito</li><li><strong>Tramite Patronato</strong> — gratuito</li></ul></p></div></div>
-<div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Compila il DSU online</h4><p>Accedi al portale <a href="https://www.inps.it" target="_blank" rel="noopener">INPS — ISEE</a>. Il sistema pre-compila molti campi automaticamente.</p></div></div>
-<div class="step-item"><div class="step-num">5</div><div class="step-content"><h4>Invia il DSU</h4><p>Firma digitalmente e invia. Riceverai una ricevuta di presentazione.</p></div></div>
-<div class="step-item"><div class="step-num">6</div><div class="step-content"><h4>Ottieni l'attestazione ISEE</h4><p>Disponibile entro pochi giorni. <div class="step-alert">⚠️ Se hai omesso dati o inserito informazioni errate, l'ISEE può essere contestato e annullato dall'INPS.</div></p></div></div>
-<div class="step-item"><div class="step-num">7</div><div class="step-content"><h4>Usa l'ISEE per le agevolazioni</h4><p>Presenta l'attestazione al Comune, INPS, università, asilo nido, bonus luce e gas e molto altro.</p></div></div>
-</div>
-<div class="guide-links-box"><h4>🔗 Link ufficiali utili</h4><a href="https://www.inps.it/it/it/strumenti/isee-precompilato.html" target="_blank" rel="noopener">→ ISEE precompilato — INPS</a></div>
-</template>
-</div>
-
-<div class="guide-card" data-cat="fisco" data-tags="730 dichiarazione redditi precompilata modello" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico">📄</div>
-<div class="guide-header-body">
-<h3>Come compilare e inviare il 730 precompilato</h3>
-<p>Guida alla dichiarazione dei redditi online in autonomia.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps">📋 7 step</span>
-<span class="meta-pill meta-time">⏱ 30 min</span>
-<span class="meta-pill meta-diff-med">Media difficoltà</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content">
-<div class="guide-intro">Il 730 precompilato è disponibile ogni anno dal 30 aprile sul sito dell'Agenzia delle Entrate. Il termine per l'invio è il 30 settembre. Se hai solo redditi da lavoro dipendente o pensione puoi inviarlo senza CAF.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Accedi con SPID o CIE</h4><p>Vai su <a href="https://www.agenziaentrate.gov.it/portale/web/guest/dichiarazione-precompilata" target="_blank" rel="noopener">730 Precompilato — Agenzia delle Entrate</a>.</p></div></div>
-<div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Visualizza il 730 precompilato</h4><p>L'Agenzia ha già inserito redditi da lavoro, interessi sul mutuo, premi assicurativi, spese mediche, contributi previdenziali.</p></div></div>
-<div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Verifica e integra i dati</h4><p>Aggiungi eventuali spese mediche, scolastiche, bonus ristrutturazioni non inseriti o redditi da affitto.</p></div></div>
-<div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Indica il sostituto d'imposta</h4><p>Se hai un datore di lavoro, il rimborso/pagamento avviene in busta paga. Altrimenti gestisci tramite F24.</p></div></div>
-<div class="step-item"><div class="step-num">5</div><div class="step-content"><h4>Indica le destinazioni dell'8, 5 e 2 per mille</h4><p>Compila le scelte per 8, 5 e 2 per mille. Sono facoltative.</p></div></div>
-<div class="step-item"><div class="step-num">6</div><div class="step-content"><h4>Firma e invia</h4><p>Verifica il riepilogo (credito o debito), firma digitalmente e invia.</p></div></div>
-<div class="step-item"><div class="step-num">7</div><div class="step-content"><h4>Gestisci rimborso o pagamento</h4><p>Se hai un credito, viene erogato in busta paga (luglio-agosto). <div class="step-alert">⚠️ Se modifichi il 730, conserva tutta la documentazione per almeno 5 anni.</div></p></div></div>
-</div>
-<div class="guide-links-box"><h4>🔗 Link ufficiali utili</h4><a href="https://www.agenziaentrate.gov.it/portale/web/guest/dichiarazione-precompilata" target="_blank" rel="noopener">→ 730 Precompilato — Agenzia delle Entrate</a></div>
-</template>
-</div>
-
-<div class="guide-card" data-cat="fisco" data-tags="bonus ristrutturazione detrazione lavori casa" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico">🔧</div>
-<div class="guide-header-body">
-<h3>Bonus Ristrutturazione 2026</h3>
-<p>Come detrarre i lavori in casa nella dichiarazione dei redditi.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps">📋 7 step</span>
-<span class="meta-pill meta-time">⏱ 20 min</span>
-<span class="meta-pill meta-diff-med">Media difficoltà</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content">
-<div class="guide-intro">Il bonus ristrutturazione consente di detrarre il 50% delle spese per lavori di recupero edilizio, fino a 96.000 € per unità immobiliare. La detrazione è ripartita in 10 quote annuali.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Verifica che i lavori siano ammessi</h4><p>Manutenzione straordinaria, restauro, risanamento conservativo, ristrutturazione edilizia, interventi antisismici.</p></div></div>
-<div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Comunica i lavori all'ENEA</h4><p>Per lavori di risparmio energetico, invia la comunicazione entro 90 giorni su <a href="https://ristrutturazioni2024.enea.it" target="_blank" rel="noopener">Portale ENEA</a>.</p></div></div>
-<div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Paga con bonifico parlante</h4><p>Tutte le spese devono essere pagate tramite <strong>bonifico parlante</strong> con causale normativa, codice fiscale beneficiario, P.IVA impresa. <div class="step-alert">⚠️ Pagamenti in contanti non danno diritto alla detrazione.</div></p></div></div>
-<div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Conserva la documentazione</h4><p>Fatture, ricevute dei bonifici parlanti, eventuali autorizzazioni comunali (CILA, SCIA).</p></div></div>
-<div class="step-item"><div class="step-num">5</div><div class="step-content"><h4>Inserisci la spesa nel 730</h4><p>Nel quadro E, rigo E41. Il sistema calcola automaticamente la quota annuale detraibile.</p></div></div>
-<div class="step-item"><div class="step-num">6</div><div class="step-content"><h4>In alternativa: cessione del credito</h4><p>Puoi cedere il credito fiscale alla banca o all'impresa in cambio di uno sconto in fattura.</p></div></div>
-<div class="step-item"><div class="step-num">7</div><div class="step-content"><h4>Verifiche e controlli</h4><p>L'Agenzia delle Entrate può richiedere documentazione. Tienila disponibile per almeno 5 anni.</p></div></div>
-</div>
-<div class="guide-links-box"><h4>🔗 Link ufficiali utili</h4><a href="https://www.agenziaentrate.gov.it/portale/web/guest/agevolazioni/bonus-ristrutturazioni" target="_blank" rel="noopener">→ Bonus Ristrutturazione — Agenzia delle Entrate</a></div>
-</template>
-</div>
-
-<div class="guide-card" data-cat="fisco" data-tags="bonus luce gas bollette agevolazioni ISEE energia" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico">💡</div>
-<div class="guide-header-body">
-<h3>Bonus luce, gas e acqua 2026</h3>
-<p>Come richiedere le agevolazioni sulle bollette con l'ISEE.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps">📋 4 step</span>
-<span class="meta-pill meta-time">⏱ 10 min</span>
-<span class="meta-pill meta-diff-easy">Facile</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content">
-<div class="guide-intro">I bonus sociali per luce, gas e acqua sono sconti automatici in bolletta per le famiglie in difficoltà. Dal 2021 sono erogati automaticamente a chi ha ISEE inferiore a 9.530 € (o 20.000 € per famiglie numerose).</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Verifica il requisito ISEE</h4><p>Hai diritto ai bonus se ISEE &lt; 9.530 € (standard) o &lt; 20.000 € (4+ figli) o sei titolare di Reddito di Cittadinanza/Assegno di Inclusione.</p></div></div>
-<div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Presenta il DSU/ISEE aggiornato</h4><p>Il bonus viene erogato automaticamente a chi presenta il DSU all'INPS. Non serve fare domanda separata.</p></div></div>
-<div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Verifica l'applicazione in bolletta</h4><p>Lo sconto viene applicato entro 3–4 mesi. Se non lo ricevi, contatta il tuo fornitore o il Comune.</p></div></div>
-<div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Rinnova ogni anno</h4><p>Si rinnova automaticamente se presenti il DSU entro l'anno. <div class="step-alert">⚠️ Il bonus disagio fisico ha soglie diverse e va richiesto al Comune con documentazione medica.</div></p></div></div>
-</div>
-<div class="guide-links-box"><h4>🔗 Link ufficiali utili</h4><a href="https://www.arera.it/it/bonus_sociali/index.htm" target="_blank" rel="noopener">→ Bonus sociali bollette — ARERA</a></div>
-</template>
-</div>
-
-<!-- ═══════════ FAMIGLIA & STATO CIVILE ═══════════ -->
-<div class="guide-card" data-cat="famiglia" data-tags="successione eredità morte defunto dichiarazione" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico">📜</div>
-<div class="guide-header-body">
-<h3>Dichiarazione di Successione</h3>
-<p>Chi deve presentarla, entro quando e come compilarla online.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps">📋 8 step</span>
-<span class="meta-pill meta-time">⏱ 25 min</span>
-<span class="meta-pill meta-diff-hard">Complessa</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content">
-<div class="guide-intro">La dichiarazione di successione va presentata entro 12 mesi dalla data del decesso. Devono presentarla eredi, legatari e loro rappresentanti legali.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Verifica se sei obbligato</h4><p>Sei esonerato se l'eredità ha valore inferiore a 100.000 €, non comprende immobili, e gli eredi sono coniuge o parenti in linea retta.</p></div></div>
-<div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Raccogli i documenti</h4><p><ul><li>Certificato di morte e stato di famiglia del defunto</li><li>Documenti d'identità di tutti gli eredi</li><li>Eventuale testamento</li><li>Visura catastale degli immobili</li><li>Estratti conto bancari al giorno del decesso</li></ul></p></div></div>
-<div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Calcola il valore dell'eredità</h4><p>Per immobili si usa la rendita catastale moltiplicata per specifici coefficienti. Per conti correnti si usa il saldo alla data del decesso.</p></div></div>
-<div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Compila il modello online</h4><p>Accedi con SPID o CIE su <a href="https://successioni.agenziaentrate.gov.it" target="_blank" rel="noopener">SuccessioniOnLine — Agenzia delle Entrate</a>.</p></div></div>
-<div class="step-item"><div class="step-num">5</div><div class="step-content"><h4>Calcola e paga le imposte</h4><p>Aliquote: coniuge/parenti retta 4% (franchigia 1M€), fratelli 6% (franchigia 100k€), altri parenti 6%, altri soggetti 8%. Paga tramite F24.</p></div></div>
-<div class="step-item"><div class="step-num">6</div><div class="step-content"><h4>Invia la dichiarazione</h4><p>Trasmetti telematicamente e conserva numero di protocollo.</p></div></div>
-<div class="step-item"><div class="step-num">7</div><div class="step-content"><h4>Richiedi la voltura catastale</h4><p>Per gli immobili, presenta la voltura catastale entro 30 giorni dalla registrazione della successione.</p></div></div>
-<div class="step-item"><div class="step-num">8</div><div class="step-content"><h4>Aggiorna i conti intestati</h4><p>Presenta la dichiarazione registrata alle banche per sbloccare i conti del defunto.</p></div></div>
-</div>
-<div class="guide-links-box"><h4>🔗 Link ufficiali utili</h4><a href="https://successioni.agenziaentrate.gov.it" target="_blank" rel="noopener">→ SuccessioniOnLine — Agenzia delle Entrate</a></div>
-</template>
-</div>
-
-<div class="guide-card" data-cat="famiglia" data-tags="assegno unico figli minori INPS bonus figli" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico">👶</div>
-<div class="guide-header-body">
-<h3>Assegno Unico Universale per i figli</h3>
-<p>Come fare domanda per l'assegno mensile per i figli a carico.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps">📋 5 step</span>
-<span class="meta-pill meta-time">⏱ 15 min</span>
-<span class="meta-pill meta-diff-easy">Facile</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content">
-<div class="guide-intro">L'Assegno Unico Universale è un sostegno mensile erogato dall'INPS per ogni figlio a carico fino a 21 anni. L'importo varia in base all'ISEE: da 57 € a 199 € per figlio al mese.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Verifica i requisiti</h4><p>Tutti i residenti in Italia con figli a carico under 21 (o senza limite per figli con disabilità). Non ci sono limiti di reddito.</p></div></div>
-<div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Ottieni l'ISEE aggiornato</h4><p>Senza ISEE si riceve l'importo minimo. Presenta il DSU per ricevere l'importo pieno.</p></div></div>
-<div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Fai domanda all'INPS</h4><p>Accedi con SPID o CIE su <a href="https://www.inps.it" target="_blank" rel="noopener">INPS — Assegno Unico</a>. Indica i dati dei figli e il codice IBAN.</p></div></div>
-<div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Attendi l'accoglimento</h4><p>L'INPS elabora la domanda entro pochi giorni. Il pagamento avviene il mese successivo.</p></div></div>
-<div class="step-item"><div class="step-num">5</div><div class="step-content"><h4>Rinnova ogni anno</h4><p>Aggiorna l'ISEE ogni anno (entro febbraio/marzo) per continuare a ricevere l'importo pieno.</p></div></div>
-</div>
-<div class="guide-links-box"><h4>🔗 Link ufficiali utili</h4><a href="https://www.inps.it" target="_blank" rel="noopener">→ Assegno Unico — INPS</a></div>
-</template>
-</div>
-
-<div class="guide-card" data-cat="famiglia" data-tags="matrimonio civile unione civile comune stato civile sposarsi" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico">💍</div>
-<div class="guide-header-body">
-<h3>Come sposarsi con rito civile</h3>
-<p>Procedura per le pubblicazioni e il matrimonio in Comune.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps">📋 6 step</span>
-<span class="meta-pill meta-time">⏱ 20 min</span>
-<span class="meta-pill meta-diff-med">Media difficoltà</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content">
-<div class="guide-intro">Il matrimonio civile si celebra davanti all'Ufficiale di Stato Civile del Comune. Prima del matrimonio devono essere effettuate le pubblicazioni.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Richiedi le pubblicazioni</h4><p>Entrambi i futuri sposi vanno all'Ufficio di Stato Civile con documento d'identità, codice fiscale, estratto dell'atto di nascita.</p></div></div>
-<div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Attendi il periodo di pubblicazione</h4><p>Le pubblicazioni vengono affisse all'albo del Comune per 8 giorni. Trascorsi altri 3 giorni senza opposizioni, si può procedere.</p></div></div>
-<div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Scegli la data e il luogo</h4><p>Concordate con l'Ufficiale di Stato Civile la data e l'orario della cerimonia.</p></div></div>
-<div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Scegli il regime patrimoniale</h4><p><strong>Comunione dei beni</strong> (default) oppure <strong>Separazione dei beni</strong>. La scelta va dichiarata all'atto del matrimonio.</p></div></div>
-<div class="step-item"><div class="step-num">5</div><div class="step-content"><h4>Celebra il matrimonio</h4><p>Almeno 2 testimoni. L'Ufficiale legge gli articoli 143, 144, 147 del Codice Civile e gli sposi dichiarano la volontà.</p></div></div>
-<div class="step-item"><div class="step-num">6</div><div class="step-content"><h4>Ottieni il certificato di matrimonio</h4><p>Puoi richiederlo gratuitamente tramite ANPR o allo sportello del Comune.</p></div></div>
-</div>
-<div class="guide-links-box"><h4>🔗 Link ufficiali utili</h4><a href="https://www.interno.gov.it/it/temi/popolazione-e-territorio/stato-civile/matrimonio" target="_blank" rel="noopener">→ Matrimonio civile — Ministero dell'Interno</a></div>
-</template>
-</div>
-
-<!-- ═══════════ VEICOLI & PATENTE ═══════════ -->
-<div class="guide-card" data-cat="veicoli" data-tags="bollo auto tassa automobilistica pagamento scadenza" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico">🚗</div>
-<div class="guide-header-body">
-<h3>Come pagare il bollo auto</h3>
-<p>Scadenze, importi e tutti i modi per pagare.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps">📋 4 step</span>
-<span class="meta-pill meta-time">⏱ 8 min</span>
-<span class="meta-pill meta-diff-easy">Facile</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content">
-<div class="guide-intro">Il bollo auto è una tassa regionale annuale. La scadenza è il mese successivo al mese di immatricolazione del veicolo.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Calcola l'importo dovuto</h4><p>L'importo dipende dalla potenza del motore (kW) e dalla classe ambientale Euro. Calcolalo su <a href="https://www.aci.it/i-servizi/calcolo-tasse-auto/bollo-auto.html" target="_blank" rel="noopener">Calcolo bollo — ACI</a>.</p></div></div>
-<div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Verifica la scadenza</h4><p>La scadenza è il mese successivo al mese di prima immatricolazione. Verificabile sul sito ACI.</p></div></div>
-<div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Scegli come pagare</h4><p>Online (ACI, PagoPA, app IO), Sportelli ACI, Tabaccherie, Uffici Postali, Internet banking.</p></div></div>
-<div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Conserva la ricevuta</h4><p>Conserva la ricevuta per almeno 3 anni. <div class="step-alert">⚠️ Il mancato pagamento entro il mese successivo alla scadenza comporta una sanzione del 30%.</div></p></div></div>
-</div>
-<div class="guide-links-box"><h4>🔗 Link ufficiali utili</h4><a href="https://www.aci.it/i-servizi/calcolo-tasse-auto/bollo-auto.html" target="_blank" rel="noopener">→ Calcolo e pagamento bollo — ACI</a></div>
-</template>
-</div>
-
-<div class="guide-card" data-cat="veicoli" data-tags="passaggio proprietà auto vendita acquisto veicolo voltura" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico">🔑</div>
-<div class="guide-header-body">
-<h3>Passaggio di proprietà di un veicolo</h3>
-<p>Come effettuare il trasferimento della proprietà di auto o moto.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps">📋 6 step</span>
-<span class="meta-pill meta-time">⏱ 20 min</span>
-<span class="meta-pill meta-diff-med">Media difficoltà</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content">
-<div class="guide-intro">Il passaggio di proprietà deve essere registrato al PRA entro 60 giorni dalla vendita. Si può fare dal notaio, agli sportelli ACI o online con SPID.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Sottoscrivi l'atto di vendita</h4><p>Le firme devono essere autenticate da notaio, funzionario ACI, o tramite il servizio online con SPID.</p></div></div>
-<div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Verifica fermi o ipoteche</h4><p>Prima di acquistare, verifica le visure al PRA su <a href="https://www.aci.it/i-servizi/visure-e-certificati.html" target="_blank" rel="noopener">Visure PRA — ACI</a>.</p></div></div>
-<div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Calcola le tasse</h4><p>Imposta provinciale di trascrizione (IPT), emolumenti ACI circa 27 €, imposta di bollo 32 €.</p></div></div>
-<div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Presenta la documentazione</h4><p>Carta di circolazione, certificato di proprietà digitale, atto di vendita autentico, documenti d'identità.</p></div></div>
-<div class="step-item"><div class="step-num">5</div><div class="step-content"><h4>Registra il passaggio al PRA</h4><p>Sportello ACI, Motorizzazione o tramite agenzia pratiche auto.</p></div></div>
-<div class="step-item"><div class="step-num">6</div><div class="step-content"><h4>Aggiorna assicurazione e bollo</h4><p>Stipula una nuova polizza RC auto a tuo nome.</p></div></div>
-</div>
-<div class="guide-links-box"><h4>🔗 Link ufficiali utili</h4><a href="https://www.aci.it/i-servizi/pratiche-auto/passaggio-di-proprieta.html" target="_blank" rel="noopener">→ Passaggio di proprietà — ACI</a></div>
-</template>
-</div>
-
-<div class="guide-card" data-cat="veicoli" data-tags="revisione auto moto scadenza obbligatoria Motorizzazione" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico">🔍</div>
-<div class="guide-header-body">
-<h3>Revisione del veicolo: quando e dove farla</h3>
-<p>Scadenze, costi e procedura per la revisione obbligatoria.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps">📋 4 step</span>
-<span class="meta-pill meta-time">⏱ 8 min</span>
-<span class="meta-pill meta-diff-easy">Facile</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content">
-<div class="guide-intro">La revisione periodica è obbligatoria. Per le autovetture: prima revisione dopo 4 anni dall'immatricolazione, poi ogni 2 anni. Per i motocicli: ogni 2 anni dalla prima revisione.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Verifica la scadenza</h4><p>La data di scadenza è indicata nel libretto di circolazione.</p></div></div>
-<div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Scegli dove fare la revisione</h4><p>Officine autorizzate alla revisione o uffici della Motorizzazione Civile (DTT).</p></div></div>
-<div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Porta il veicolo</h4><p>Libretto di circolazione e documento d'identità. Il costo è circa 40–80 € in base al tipo di veicolo.</p></div></div>
-<div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Revisione non superata</h4><p>Hai 30 giorni per riparare i difetti e ripresentarti per una revisione parziale. <div class="step-alert">⚠️ Guidare con revisione scaduta comporta una multa da 173 a 694 € e ritiro della carta di circolazione.</div></p></div></div>
-</div>
-<div class="guide-links-box"><h4>🔗 Link ufficiali utili</h4><a href="https://www.motorizzazione.it/revisioni/index.do" target="_blank" rel="noopener">→ Revisioni — Motorizzazione Civile</a></div>
-</template>
-</div>
-
-<!-- ═══════════ LAVORO & PENSIONE ═══════════ -->
-<div class="guide-card" data-cat="lavoro" data-tags="pensione INPS richiesta domanda età requisiti" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico">👴</div>
-<div class="guide-header-body">
-<h3>Come richiedere la pensione all'INPS</h3>
-<p>Tipi di pensione, requisiti e domanda online.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps">📋 7 step</span>
-<span class="meta-pill meta-time">⏱ 25 min</span>
-<span class="meta-pill meta-diff-med">Media difficoltà</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content">
-<div class="guide-intro">La domanda di pensione si presenta all'INPS. È consigliabile presentarla almeno 3 mesi prima della data di decorrenza desiderata.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Verifica i requisiti</h4><p><ul><li><strong>Vecchiaia</strong>: 67 anni + 20 anni di contributi</li><li><strong>Anticipata</strong>: 42a 10m contributi (uomini), 41a 10m (donne)</li><li><strong>Quota 103</strong>: 62 anni + 41 anni contributi</li></ul></p></div></div>
-<div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Consulta il tuo estratto conto previdenziale</h4><p>Accedi all'INPS con SPID o CIE: <a href="https://www.inps.it/it/it/dati-analisi-bilanci/consultazione-estratto-conto-previdenziale.html" target="_blank" rel="noopener">Estratto conto previdenziale — INPS</a>.</p></div></div>
-<div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Usa il simulatore INPS</h4><p>Stima la data di pensionamento e l'importo su <a href="https://www.inps.it/it/it/strumenti/la-mia-pensione-futura.html" target="_blank" rel="noopener">La mia pensione futura — INPS</a>.</p></div></div>
-<div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Comunica la cessazione al datore di lavoro</h4><p>Rispetta i tempi di preavviso previsti dal contratto collettivo applicato.</p></div></div>
-<div class="step-item"><div class="step-num">5</div><div class="step-content"><h4>Presenta la domanda online</h4><p>Portale INPS con SPID o CIE, sezione "Domanda di pensione". In alternativa puoi usare un Patronato (gratuito).</p></div></div>
-<div class="step-item"><div class="step-num">6</div><div class="step-content"><h4>Attendi la liquidazione</h4><p>L'INPS elabora la domanda entro 120 giorni. Puoi ricevere un anticipo provvisorio.</p></div></div>
-<div class="step-item"><div class="step-num">7</div><div class="step-content"><h4>Scegli la modalità di pagamento</h4><p>Conto corrente bancario (preferibile) o tramite Poste Italiane. <div class="step-alert">⚠️ Dal 2012 è obbligatorio il pagamento delle pensioni superiori a 1.000 € tramite conto corrente.</div></p></div></div>
-</div>
-<div class="guide-links-box"><h4>🔗 Link ufficiali utili</h4><a href="https://www.inps.it/it/it/strumenti/la-mia-pensione-futura.html" target="_blank" rel="noopener">→ Simulatore pensione — INPS</a></div>
-</template>
-</div>
-
-<div class="guide-card" data-cat="lavoro" data-tags="disoccupazione NASpI indennità licenziamento INPS" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico">💼</div>
-<div class="guide-header-body">
-<h3>Come richiedere la NASpI (disoccupazione)</h3>
-<p>Indennità di disoccupazione INPS dopo la perdita del lavoro.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps">📋 6 step</span>
-<span class="meta-pill meta-time">⏱ 15 min</span>
-<span class="meta-pill meta-diff-easy">Facile</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content">
-<div class="guide-intro">La NASpI è l'indennità mensile di disoccupazione per lavoratori dipendenti che hanno perso involontariamente il lavoro. La domanda deve essere presentata entro 68 giorni dalla cessazione.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Verifica i requisiti</h4><p>Perdita involontaria del lavoro, almeno 13 settimane di contribuzione negli ultimi 4 anni, 30 giornate lavorative negli ultimi 12 mesi.</p></div></div>
-<div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Calcola durata e importo</h4><p>Dura la metà delle settimane contributive degli ultimi 4 anni (max 24 mesi). L'importo è pari al 75% della retribuzione media mensile (con riduzioni mensili del 3% dopo il 5° mese).</p></div></div>
-<div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Iscriviti al Centro per l'Impiego</h4><p>Prima di fare domanda NASpI, iscriviti come disoccupato al Centro per l'Impiego del tuo Comune.</p></div></div>
-<div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Presenta la domanda entro 68 giorni</h4><p>Accedi all'INPS con SPID o CIE: <a href="https://www.inps.it" target="_blank" rel="noopener">NASpI — INPS</a>. In alternativa usa un CAF o Patronato (gratuito).</p></div></div>
-<div class="step-item"><div class="step-num">5</div><div class="step-content"><h4>Attendi la liquidazione</h4><p>L'INPS elabora la domanda entro 30 giorni. L'indennità viene accreditata mensile sul conto corrente.</p></div></div>
-<div class="step-item"><div class="step-num">6</div><div class="step-content"><h4>Rispetta gli obblighi durante la NASpI</h4><p>Rimani disponibile per offerte di lavoro, partecipa alle convocazioni del CPI, comunica immediatamente eventuali nuovi rapporti di lavoro all'INPS.</p></div></div>
-</div>
-<div class="guide-links-box"><h4>🔗 Link ufficiali utili</h4><a href="https://www.inps.it" target="_blank" rel="noopener">→ NASpI — INPS</a></div>
-</template>
-</div>
-
-<div class="guide-card" data-cat="lavoro" data-tags="maternità congedo indennità maternità INPS lavoratrice" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico">🤱</div>
-<div class="guide-header-body">
-<h3>Congedo di maternità e indennità</h3>
-<p>Come richiedere il congedo obbligatorio e l'indennità di maternità.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps">📋 5 step</span>
-<span class="meta-pill meta-time">⏱ 15 min</span>
-<span class="meta-pill meta-diff-easy">Facile</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content">
-<div class="guide-intro">Il congedo di maternità obbligatorio dura 5 mesi. Durante il congedo si percepisce l'80% della retribuzione media giornaliera, pagata dall'INPS.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Avvisa il datore di lavoro</h4><p>Comunica la gravidanza e presenta il certificato medico con la data presunta del parto. Da quel momento hai protezione contro il licenziamento.</p></div></div>
-<div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Scegli la modalità del congedo</h4><p>Standard (2 mesi prima + 3 dopo) oppure flessibilità (1 mese prima + 4 dopo, con certificato medico).</p></div></div>
-<div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Fai domanda di maternità all'INPS</h4><p>Accedi con SPID o CIE su <a href="https://www.inps.it" target="_blank" rel="noopener">Maternità e paternità — INPS</a>. La domanda va presentata entro 30 giorni dall'inizio dell'astensione.</p></div></div>
-<div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Congedo parentale facoltativo</h4><p>Dopo il congedo obbligatorio, fino ai 12 anni del bambino. L'indennità è all'80% per i primi 3 mesi, poi al 30% o all'80% con condizioni ISEE.</p></div></div>
-<div class="step-item"><div class="step-num">5</div><div class="step-content"><h4>Congedo di paternità obbligatorio</h4><p>Il padre ha diritto a 10 giorni di congedo obbligatorio (80%) nei 5 mesi intorno al parto. Domanda separata sul portale INPS.</p></div></div>
-</div>
-<div class="guide-links-box"><h4>🔗 Link ufficiali utili</h4><a href="https://www.inps.it" target="_blank" rel="noopener">→ Maternità e paternità — INPS</a></div>
-</template>
-</div>
-
-<!-- ═══════════ STRANIERI IN ITALIA ═══════════ -->
-<div class="guide-card cat-stranieri" data-cat="stranieri" data-tags="permesso soggiorno straniero immigrazione rinnovo extracomunitario" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico stranieri">🌍</div>
-<div class="guide-header-body">
-<h3>Permesso di Soggiorno: come richiederlo o rinnovarlo</h3>
-<p>Guida completa per cittadini stranieri non UE in Italia.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps stranieri">📋 8 step</span>
-<span class="meta-pill meta-time">⏱ 25 min</span>
-<span class="meta-pill meta-diff-med">Media difficoltà</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content" data-variant="stranieri">
-<div class="guide-intro stranieri">Il permesso di soggiorno è obbligatorio per tutti i cittadini extracomunitari che soggiornano in Italia per più di 90 giorni. La domanda va presentata entro 8 giorni lavorativi dall'ingresso in Italia.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num stranieri">1</div><div class="step-content"><h4>Identifica il tipo di permesso</h4><p>Principali motivi: lavoro, ricongiungimento familiare, studio, protezione internazionale, motivi umanitari.</p></div></div>
-<div class="step-item"><div class="step-num stranieri">2</div><div class="step-content"><h4>Ritira il kit postale</h4><p>Vai in uno degli <a href="https://www.poste.it/sportelloamico/trova-uffici-postali-kit-permesso-soggiorno.html" target="_blank" rel="noopener">Uffici Postali abilitati</a> e ritira il kit per la richiesta del permesso di soggiorno.</p></div></div>
-<div class="step-item"><div class="step-num stranieri">3</div><div class="step-content"><h4>Compila i moduli</h4><p>Puoi farti aiutare gratuitamente dagli sportelli CISL, CGIL, UIL o dai patronati.</p></div></div>
-<div class="step-item"><div class="step-num stranieri">4</div><div class="step-content"><h4>Raccogli i documenti</h4><p><ul><li>Passaporto valido (copia di tutte le pagine)</li><li>Visto d'ingresso, 4 fototessere recenti</li><li>Marca da bollo da 16 €</li><li>Ricevuta del contributo fisso (80–200 €)</li></ul></p></div></div>
-<div class="step-item"><div class="step-num stranieri">5</div><div class="step-content"><h4>Paga il contributo</h4><p>Permessi fino a 1 anno: 80 €. Permessi da 1 a 2 anni: 100 €. Carta di soggiorno: 200 €.</p></div></div>
-<div class="step-item"><div class="step-num stranieri">6</div><div class="step-content"><h4>Consegna il kit all'ufficio postale</h4><p>Porta il kit compilato con tutti i documenti. Ti verrà consegnata la ricevuta con la data dell'appuntamento in Questura.</p></div></div>
-<div class="step-item"><div class="step-num stranieri">7</div><div class="step-content"><h4>Presentati in Questura</h4><p>Vengono rilevate le impronte digitali e la foto. Consulta <a href="https://questure.poliziadistato.it" target="_blank" rel="noopener">Questure d'Italia</a>.</p></div></div>
-<div class="step-item"><div class="step-num stranieri">8</div><div class="step-content"><h4>Ritira il permesso di soggiorno</h4><p>Verifica lo stato su <a href="https://www.portaleimmigrazione.it" target="_blank" rel="noopener">Portale Immigrazione</a>. Quando pronto riceverai un SMS. <div class="step-alert">⚠️ Per il rinnovo, presenta la domanda almeno 60 giorni prima della scadenza.</div></p></div></div>
-</div>
-<div class="guide-links-box stranieri"><h4 class="stranieri">🔗 Link ufficiali utili</h4><a class="stranieri" href="https://www.portaleimmigrazione.it" target="_blank" rel="noopener">→ Portale Immigrazione</a><a class="stranieri" href="https://questure.poliziadistato.it" target="_blank" rel="noopener">→ Questure d'Italia</a></div>
-</template>
-</div>
-
-<div class="guide-card cat-stranieri" data-cat="stranieri" data-tags="cittadinanza italiana naturalizzazione straniero richiesta" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico stranieri">🇮🇹</div>
-<div class="guide-header-body">
-<h3>Come richiedere la Cittadinanza Italiana</h3>
-<p>Requisiti, domanda online e tempi per la naturalizzazione.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps stranieri">📋 7 step</span>
-<span class="meta-pill meta-time">⏱ 25 min</span>
-<span class="meta-pill meta-diff-hard">Complessa</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content" data-variant="stranieri">
-<div class="guide-intro stranieri">La cittadinanza italiana per naturalizzazione si può richiedere dopo 10 anni di residenza legale in Italia (4 anni per cittadini UE, 3 anni per chi ha antenati italiani). L'iter può durare fino a 4 anni.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num stranieri">1</div><div class="step-content"><h4>Verifica i requisiti</h4><p>Residenza legale continuativa, reddito sufficiente (≥ 8.263 €/anno), assenza di condanne penali, test italiano B1.</p></div></div>
-<div class="step-item"><div class="step-num stranieri">2</div><div class="step-content"><h4>Supera il test di italiano B1</h4><p>Presso un ente certificatore riconosciuto (es. <a href="https://www.cils.unistrasi.it" target="_blank" rel="noopener">CILS — Univ. per Stranieri di Siena</a>).</p></div></div>
-<div class="step-item"><div class="step-num stranieri">3</div><div class="step-content"><h4>Raccogli la documentazione</h4><p>Passaporto, atto di nascita apostillato e tradotto, certificato penale del Paese d'origine, documentazione reddituale, certificazione B1, stato di famiglia.</p></div></div>
-<div class="step-item"><div class="step-num stranieri">4</div><div class="step-content"><h4>Presenta la domanda online</h4><p>Esclusivamente online su <a href="https://www.interno.gov.it/it/temi/cittadinanza/acquisto-della-cittadinanza" target="_blank" rel="noopener">Ministero dell'Interno</a> con SPID o CIE.</p></div></div>
-<div class="step-item"><div class="step-num stranieri">5</div><div class="step-content"><h4>Paga il contributo</h4><p><strong>250 €</strong> tramite bonifico bancario alle coordinate indicate sul portale.</p></div></div>
-<div class="step-item"><div class="step-num stranieri">6</div><div class="step-content"><h4>Attendi l'istruttoria</h4><p>Tempi medi 2–4 anni. Puoi verificare lo stato della pratica sul portale del Ministero.</p></div></div>
-<div class="step-item"><div class="step-num stranieri">7</div><div class="step-content"><h4>Presta il giuramento</h4><p>Se la domanda è accolta, sei convocato per il giuramento davanti al Sindaco. Entro 6 mesi dal decreto devi prestarlo, altrimenti il decreto decade.</p></div></div>
-</div>
-<div class="guide-links-box stranieri"><h4 class="stranieri">🔗 Link ufficiali utili</h4><a class="stranieri" href="https://www.interno.gov.it/it/temi/cittadinanza/acquisto-della-cittadinanza" target="_blank" rel="noopener">→ Acquisto cittadinanza — Ministero dell'Interno</a></div>
-</template>
-</div>
-
-<div class="guide-card cat-stranieri" data-cat="stranieri" data-tags="ricongiungimento familiare straniero nulla osta famiglia" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico stranieri">👨‍👩‍👦</div>
-<div class="guide-header-body">
-<h3>Ricongiungimento Familiare</h3>
-<p>Come portare i familiari in Italia dal Paese d'origine.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps stranieri">📋 6 step</span>
-<span class="meta-pill meta-time">⏱ 20 min</span>
-<span class="meta-pill meta-diff-hard">Complessa</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content" data-variant="stranieri">
-<div class="guide-intro stranieri">Il ricongiungimento familiare permette ai cittadini stranieri residenti in Italia di far venire coniuge, figli minori e genitori a carico. Serve un permesso valido da almeno 1 anno e reddito/alloggio sufficienti.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num stranieri">1</div><div class="step-content"><h4>Verifica i requisiti</h4><p>Permesso valido da ≥ 1 anno, reddito ≥ assegno sociale, alloggio idoneo certificato da ASL o Comune.</p></div></div>
-<div class="step-item"><div class="step-num stranieri">2</div><div class="step-content"><h4>Ottieni la certificazione dell'alloggio</h4><p>Richiedi al tuo Comune o all'ASL il certificato di idoneità alloggiativa.</p></div></div>
-<div class="step-item"><div class="step-num stranieri">3</div><div class="step-content"><h4>Presenta la domanda di nulla osta</h4><p>Allo Sportello Unico per l'Immigrazione della Prefettura tramite <a href="https://www.portaleimmigrazione.it" target="_blank" rel="noopener">Portale Immigrazione</a>.</p></div></div>
-<div class="step-item"><div class="step-num stranieri">4</div><div class="step-content"><h4>Il familiare richiede il visto</h4><p>Una volta ottenuto il nulla osta (entro 90 giorni), il familiare si reca al Consolato italiano nel suo Paese.</p></div></div>
-<div class="step-item"><div class="step-num stranieri">5</div><div class="step-content"><h4>Il familiare arriva in Italia</h4><p>Entro 8 giorni dall'arrivo, il familiare si presenta con te allo Sportello Unico per richiedere il permesso per motivi familiari.</p></div></div>
-<div class="step-item"><div class="step-num stranieri">6</div><div class="step-content"><h4>Iscrizione all'anagrafe</h4><p>Iscrivilo all'anagrafe del tuo Comune per la residenza. Questo permette l'accesso ai servizi sanitari e scolastici.</p></div></div>
-</div>
-<div class="guide-links-box stranieri"><h4 class="stranieri">🔗 Link ufficiali utili</h4><a class="stranieri" href="https://www.portaleimmigrazione.it" target="_blank" rel="noopener">→ Portale Immigrazione — Sportello Unico</a></div>
-</template>
-</div>
-
-<div class="guide-card cat-stranieri" data-cat="stranieri" data-tags="asilo protezione internazionale rifugiato domanda straniero" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico stranieri">🛡️</div>
-<div class="guide-header-body">
-<h3>Domanda di protezione internazionale (asilo)</h3>
-<p>Come richiedere asilo in Italia e i diritti durante l'iter.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps stranieri">📋 6 step</span>
-<span class="meta-pill meta-time">⏱ 20 min</span>
-<span class="meta-pill meta-diff-hard">Complessa</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content" data-variant="stranieri">
-<div class="guide-intro stranieri">La protezione internazionale è il diritto riconosciuto a chi è perseguitato nel proprio Paese per motivi di razza, religione, nazionalità, opinioni politiche o appartenenza a un gruppo sociale.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num stranieri">1</div><div class="step-content"><h4>Manifesta la volontà di chiedere asilo</h4><p>Comunica la richiesta alla Polizia di Frontiera all'arrivo o alla Questura più vicina.</p></div></div>
-<div class="step-item"><div class="step-num stranieri">2</div><div class="step-content"><h4>Formalizza la domanda in Questura</h4><p>Puoi farti accompagnare da un avvocato o da un operatore di un'organizzazione umanitaria (UNHCR, Caritas, CIR).</p></div></div>
-<div class="step-item"><div class="step-num stranieri">3</div><div class="step-content"><h4>Ricevi il permesso per attesa asilo</h4><p>Permesso temporaneo di 6 mesi rinnovabile per soggiornare legalmente durante l'iter.</p></div></div>
-<div class="step-item"><div class="step-num stranieri">4</div><div class="step-content"><h4>Accoglienza durante l'iter</h4><p>Hai diritto all'accoglienza nel sistema SAI. Rivolgiti a <a href="https://www.unhcr.org/it/" target="_blank" rel="noopener">UNHCR Italia</a> per informazioni.</p></div></div>
-<div class="step-item"><div class="step-num stranieri">5</div><div class="step-content"><h4>Audizione davanti alla Commissione Territoriale</h4><p>Prepara l'audizione con un avvocato o operatore legale. Puoi presentarti con un interprete.</p></div></div>
-<div class="step-item"><div class="step-num stranieri">6</div><div class="step-content"><h4>Esito della domanda</h4><p>Status di rifugiato (5 anni), protezione sussidiaria (5 anni), o protezione speciale (2 anni). In caso di diniego, hai 30 giorni per il ricorso al Tribunale. <div class="step-alert">⚠️ Per assistenza legale gratuita contatta UNHCR, CIR o un'organizzazione legale locale.</div></p></div></div>
-</div>
-<div class="guide-links-box stranieri"><h4 class="stranieri">🔗 Link ufficiali utili</h4><a class="stranieri" href="https://www.unhcr.org/it/" target="_blank" rel="noopener">→ UNHCR Italia</a><a class="stranieri" href="https://www.cir-onlus.org" target="_blank" rel="noopener">→ CIR — Consiglio Italiano per i Rifugiati</a></div>
-</template>
-</div>
-
-<div class="guide-card cat-stranieri" data-cat="stranieri" data-tags="cittadini UE iscrizione anagrafe residenza europei" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico stranieri">🇪🇺</div>
-<div class="guide-header-body">
-<h3>Iscrizione anagrafe per cittadini UE</h3>
-<p>Come registrarsi come residente in Italia se sei cittadino UE.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps stranieri">📋 4 step</span>
-<span class="meta-pill meta-time">⏱ 10 min</span>
-<span class="meta-pill meta-diff-easy">Facile</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content" data-variant="stranieri">
-<div class="guide-intro stranieri">I cittadini UE/SEE possono risiedere liberamente in Italia. Devono iscriversi all'anagrafe se prevedono di soggiornare per più di 3 mesi. Non necessitano di permesso di soggiorno.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num stranieri">1</div><div class="step-content"><h4>Verifica di essere cittadino UE o SEE</h4><p>I 27 Paesi UE più Norvegia, Islanda, Liechtenstein. I cittadini britannici post-Brexit non sono più UE.</p></div></div>
-<div class="step-item"><div class="step-num stranieri">2</div><div class="step-content"><h4>Prepara i documenti</h4><p>Carta d'identità o passaporto del Paese d'origine, documentazione che prova il diritto al soggiorno (contratto di lavoro o iscrizione universitaria o disponibilità economica + assicurazione sanitaria), codice fiscale.</p></div></div>
-<div class="step-item"><div class="step-num stranieri">3</div><div class="step-content"><h4>Iscriviti all'anagrafe del Comune</h4><p>Recati all'Ufficio Anagrafe del Comune dove risiedi con tutti i documenti. L'iscrizione è gratuita.</p></div></div>
-<div class="step-item"><div class="step-num stranieri">4</div><div class="step-content"><h4>Attestato di iscrizione anagrafica</h4><p>I cittadini UE residenti da più di 5 anni consecutivi acquisiscono il diritto di soggiorno permanente.</p></div></div>
-</div>
-<div class="guide-links-box stranieri"><h4 class="stranieri">🔗 Link ufficiali utili</h4><a class="stranieri" href="https://www.interno.gov.it/it/temi/immigrazione-e-asilo/cittadini-ue-e-familiari" target="_blank" rel="noopener">→ Cittadini UE in Italia — Ministero dell'Interno</a></div>
-</template>
-</div>
-
-<!-- ═══════════ STUDENTI ═══════════ -->
-<div class="guide-card cat-studenti" data-cat="studenti" data-tags="borsa studio DSU ISEE università studenti diritto allo studio" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico studenti">🎓</div>
-<div class="guide-header-body">
-<h3>Borsa di Studio Universitaria (Diritto allo Studio)</h3>
-<p>Come fare domanda per la borsa di studio regionale all'università.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps studenti">📋 7 step</span>
-<span class="meta-pill meta-time">⏱ 20 min</span>
-<span class="meta-pill meta-diff-med">Media difficoltà</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content" data-variant="studenti">
-<div class="guide-intro studenti">Le borse di studio universitarie sono erogate dagli enti regionali per il diritto allo studio sulla base di criteri economici (ISEE) e di merito. La domanda si presenta ogni anno entro settembre/ottobre.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num studenti">1</div><div class="step-content"><h4>Ottieni l'ISEE universitario</h4><p>Compila il DSU indicando "prestazioni per il diritto allo studio universitario" su <a href="https://www.inps.it" target="_blank" rel="noopener">INPS — ISEE</a>.</p></div></div>
-<div class="step-item"><div class="step-num studenti">2</div><div class="step-content"><h4>Identifica l'ente della tua Regione</h4><p>Esempi: Lombardia (<a href="https://www.dsu.lombardia.it" target="_blank" rel="noopener">DSU Lombardia</a>), Lazio (<a href="https://www.laziodisu.it" target="_blank" rel="noopener">LazioDiSu</a>), Toscana (<a href="https://www.dsu.toscana.it" target="_blank" rel="noopener">DSU Toscana</a>).</p></div></div>
-<div class="step-item"><div class="step-num studenti">3</div><div class="step-content"><h4>Verifica i requisiti di merito</h4><p>Per il primo anno non ci sono requisiti di merito. Dal secondo anno serve un certo numero di CFU.</p></div></div>
-<div class="step-item"><div class="step-num studenti">4</div><div class="step-content"><h4>Consulta il bando annuale</h4><p>Ogni anno l'ente pubblica il bando con scadenze e importi aggiornati. Gli importi medi sono tra 2.000 € e 6.000 € annui.</p></div></div>
-<div class="step-item"><div class="step-num studenti">5</div><div class="step-content"><h4>Iscriviti all'università</h4><p>Devi essere regolarmente iscritto a un corso di laurea prima della presentazione della domanda.</p></div></div>
-<div class="step-item"><div class="step-num studenti">6</div><div class="step-content"><h4>Presenta la domanda online</h4><p>Accedi al portale del tuo ente regionale con SPID o credenziali universitarie entro la scadenza del bando.</p></div></div>
-<div class="step-item"><div class="step-num studenti">7</div><div class="step-content"><h4>Attendi la graduatoria</h4><p>La borsa viene erogata in due rate (ottobre/novembre e marzo/aprile). <div class="step-alert">⚠️ Se abbandoni gli studi o non raggiungi i crediti richiesti potresti dover restituire la borsa.</div></p></div></div>
-</div>
-<div class="guide-links-box studenti"><h4 class="studenti">🔗 Link ufficiali utili</h4><a class="studenti" href="https://www.inps.it" target="_blank" rel="noopener">→ ISEE Universitario — INPS</a><a class="studenti" href="https://www.miur.gov.it/diritto-allo-studio" target="_blank" rel="noopener">→ Diritto allo Studio — MUR</a></div>
-</template>
-</div>
-
-<div class="guide-card cat-studenti" data-cat="studenti" data-tags="studente fuori sede affitto agevolazioni tasse universitarie" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico studenti">🏠</div>
-<div class="guide-header-body">
-<h3>Agevolazioni per Studenti Fuori Sede</h3>
-<p>Bonus affitto, tasse ridotte e agevolazioni fiscali.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps studenti">📋 6 step</span>
-<span class="meta-pill meta-time">⏱ 15 min</span>
-<span class="meta-pill meta-diff-easy">Facile</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content" data-variant="studenti">
-<div class="guide-intro studenti">Gli studenti fuori sede hanno diritto a detrazioni sulle spese di affitto, riduzione delle tasse universitarie in base all'ISEE e contributi regionali per l'alloggio.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num studenti">1</div><div class="step-content"><h4>Registra il contratto d'affitto</h4><p>Il contratto deve essere registrato all'Agenzia delle Entrate per usufruire delle detrazioni fiscali.</p></div></div>
-<div class="step-item"><div class="step-num studenti">2</div><div class="step-content"><h4>Detrazione spese di affitto nel 730</h4><p>Detrazione del 19% fino a 2.633 € annui, se l'università dista almeno 100 km dalla residenza.</p></div></div>
-<div class="step-item"><div class="step-num studenti">3</div><div class="step-content"><h4>Tasse universitarie ridotte con ISEE</h4><p>Sotto i 13.000 € di ISEE le tasse sono spesso azzerate o al minimo.</p></div></div>
-<div class="step-item"><div class="step-num studenti">4</div><div class="step-content"><h4>Richiedi posto in residenza universitaria</h4><p>Fai domanda tramite il portale dell'ente regionale per posti alloggio a canoni agevolati.</p></div></div>
-<div class="step-item"><div class="step-num studenti">5</div><div class="step-content"><h4>Agevolazioni sui trasporti</h4><p>Abbonamenti scontati sui mezzi pubblici. Verifica sul sito del gestore dei trasporti della tua città.</p></div></div>
-<div class="step-item"><div class="step-num studenti">6</div><div class="step-content"><h4>Carta dello Studente IoStudio</h4><p>Gratuita, dà accesso a sconti e agevolazioni culturali. Richiedila su <a href="https://www.istruzione.it/iostudio" target="_blank" rel="noopener">IoStudio — Ministero dell'Istruzione</a>.</p></div></div>
-</div>
-<div class="guide-links-box studenti"><h4 class="studenti">🔗 Link ufficiali utili</h4><a class="studenti" href="https://www.istruzione.it/iostudio" target="_blank" rel="noopener">→ Carta IoStudio — Ministero dell'Istruzione</a></div>
-</template>
-</div>
-
-<div class="guide-card cat-studenti" data-cat="studenti" data-tags="studente straniero visto studio italia università permesso" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico studenti">🌐</div>
-<div class="guide-header-body">
-<h3>Visto per Studio in Italia (studenti stranieri)</h3>
-<p>Come ottenere il visto e il permesso di soggiorno per studiare in Italia.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps studenti">📋 6 step</span>
-<span class="meta-pill meta-time">⏱ 20 min</span>
-<span class="meta-pill meta-diff-med">Media difficoltà</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content" data-variant="studenti">
-<div class="guide-intro studenti">Gli studenti extra-UE che vogliono studiare in Italia per più di 90 giorni devono richiedere un visto per studio e, all'arrivo, il permesso di soggiorno per motivi di studio.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num studenti">1</div><div class="step-content"><h4>Ottieni l'iscrizione all'università italiana</h4><p>L'università rilascerà una lettera di accettazione. Trova informazioni su <a href="https://universitaly.it" target="_blank" rel="noopener">Universitaly</a>.</p></div></div>
-<div class="step-item"><div class="step-num studenti">2</div><div class="step-content"><h4>Richiedi il visto al Consolato italiano</h4><p>Con passaporto valido, lettera di accettazione, prova di mezzi (≥ 448 €/mese), prova di alloggio, assicurazione sanitaria. Consolati su <a href="https://vistoperitalia.esteri.it" target="_blank" rel="noopener">Visto per l'Italia</a>.</p></div></div>
-<div class="step-item"><div class="step-num studenti">3</div><div class="step-content"><h4>Arrivi in Italia</h4><p>Entro 8 giorni lavorativi dall'arrivo devi iniziare la procedura per il permesso di soggiorno.</p></div></div>
-<div class="step-item"><div class="step-num studenti">4</div><div class="step-content"><h4>Richiedi il permesso per studio</h4><p>Vai in un ufficio postale abilitato e ritira il kit. Seleziona la voce <strong>"motivi di studio"</strong>.</p></div></div>
-<div class="step-item"><div class="step-num studenti">5</div><div class="step-content"><h4>Presentati in Questura</h4><p>Porta passaporto, visto, lettera di iscrizione, prova di alloggio e disponibilità economica.</p></div></div>
-<div class="step-item"><div class="step-num studenti">6</div><div class="step-content"><h4>Rinnova ogni anno</h4><p>Con la prova di iscrizione al nuovo anno accademico. <div class="step-alert">⚠️ Presenta la domanda di rinnovo almeno 60 giorni prima della scadenza.</div></p></div></div>
-</div>
-<div class="guide-links-box studenti"><h4 class="studenti">🔗 Link ufficiali utili</h4><a class="studenti" href="https://vistoperitalia.esteri.it" target="_blank" rel="noopener">→ Visto per l'Italia — Ministero degli Esteri</a><a class="studenti" href="https://universitaly.it" target="_blank" rel="noopener">→ Universitaly</a></div>
-</template>
-</div>
-
-<div class="guide-card cat-studenti" data-cat="studenti" data-tags="730 dichiarazione redditi studente detrazioni spese universitarie" onclick="openModal(this)">
-<div class="guide-header">
-<div class="guide-ico studenti">📚</div>
-<div class="guide-header-body">
-<h3>Detrazioni fiscali per spese universitarie</h3>
-<p>Cosa puoi detrarre nel 730 per le spese universitarie.</p>
-<div class="guide-meta">
-<span class="meta-pill meta-steps studenti">📋 5 step</span>
-<span class="meta-pill meta-time">⏱ 15 min</span>
-<span class="meta-pill meta-diff-easy">Facile</span>
-</div>
-</div>
-<div class="guide-open-arrow">→</div>
-</div>
-<template class="guide-content" data-variant="studenti">
-<div class="guide-intro studenti">Le spese universitarie si detraggono al 19% nel 730, sia dallo studente stesso che dai genitori se lo studente è a loro carico fiscalmente.</div>
-<div class="steps-list">
-<div class="step-item"><div class="step-num studenti">1</div><div class="step-content"><h4>Tasse universitarie</h4><p>Detraibili al 19%. Per università private, la detrazione è limitata all'importo massimo di un'università statale dello stesso tipo.</p></div></div>
-<div class="step-item"><div class="step-num studenti">2</div><div class="step-content"><h4>Affitto per studenti fuori sede</h4><p>19% del canone di affitto, fino a 2.633 € (detrazione max 500 €), se l'università dista più di 100 km dalla residenza.</p></div></div>
-<div class="step-item"><div class="step-num studenti">3</div><div class="step-content"><h4>Spese per master e dottorati</h4><p>Detraibili al 19% anche master di primo e secondo livello, corsi di perfezionamento e dottorati presso università italiane o straniere.</p></div></div>
-<div class="step-item"><div class="step-num studenti">4</div><div class="step-content"><h4>Conserva la documentazione</h4><p>Ricevute del pagamento delle tasse, contratto di affitto registrato, documentazione del master.</p></div></div>
-<div class="step-item"><div class="step-num studenti">5</div><div class="step-content"><h4>Inserisci le spese nel 730</h4><p>Nel quadro E, righi E8-E10 (spese universitarie) e E14 (affitto studenti fuori sede). Molte spese sono già precaricate.</p></div></div>
-</div>
-<div class="guide-links-box studenti"><h4 class="studenti">🔗 Link ufficiali utili</h4><a class="studenti" href="https://www.agenziaentrate.gov.it/portale/web/guest/dichiarazione-precompilata" target="_blank" rel="noopener">→ 730 Precompilato — Agenzia delle Entrate</a></div>
-</template>
-</div>
-
-</div><!-- end guidesGrid -->
-</div>
-</div>
-
-<!-- COME FUNZIONA -->
-<div class="how-section" id="come">
-<div class="section-wrap fade">
-<div class="section-title">Come funziona SportelloAperto</div>
-<div class="how-grid">
-<div class="how-step"><div class="how-num">1</div><h3>Cerca la tua pratica</h3><p>Usa la ricerca o sfoglia le categorie per trovare la guida che ti serve.</p></div>
-<div class="how-step"><div class="how-num">2</div><h3>Clicca sulla guida</h3><p>La guida si apre in una finestra modale con tutti i passaggi e i link ufficiali.</p></div>
-<div class="how-step"><div class="how-num">3</div><h3>Segui i passaggi</h3><p>Ogni step ha istruzioni chiare, documenti necessari e link diretti agli enti.</p></div>
-<div class="how-step"><div class="how-num">4</div><h3>Fai la pratica da solo</h3><p>Tutto gratis, nessun intermediario, nessuna registrazione.</p></div>
-</div>
-</div>
-</div>
-
-<!-- POPOLARI -->
-<div style="background: var(--grey-6); border-top: 1px solid var(--grey-5);" id="popolari">
-<div class="section-wrap fade">
-<div class="section-title">Le più cercate questa settimana</div>
-<div class="popular-list">
-<div class="popular-item"><span class="popular-rank">#1</span><span class="popular-icon">📊</span><div class="popular-info"><h4>Come ottenere l'ISEE 2026</h4><span>Fisco & Bonus</span></div><span class="popular-views">🔥 12.400 letture</span><span class="popular-arrow">→</span></div>
-<div class="popular-item"><span class="popular-rank">#2</span><span class="popular-icon">🏘️</span><div class="popular-info"><h4>Cambio di residenza</h4><span>Anagrafe & Comune</span></div><span class="popular-views">🔥 9.800 letture</span><span class="popular-arrow">→</span></div>
-<div class="popular-item"><span class="popular-rank">#3</span><span class="popular-icon">🌍</span><div class="popular-info"><h4>Permesso di Soggiorno</h4><span>Stranieri in Italia</span></div><span class="popular-views">🔥 8.600 letture</span><span class="popular-arrow">→</span></div>
-<div class="popular-item"><span class="popular-rank">#4</span><span class="popular-icon">🎓</span><div class="popular-info"><h4>Borsa di studio universitaria</h4><span>Studenti</span></div><span class="popular-views">🔥 7.900 letture</span><span class="popular-arrow">→</span></div>
-<div class="popular-item"><span class="popular-rank">#5</span><span class="popular-icon">📜</span><div class="popular-info"><h4>Dichiarazione di Successione</h4><span>Famiglia & Stato civile</span></div><span class="popular-views">🔥 7.300 letture</span><span class="popular-arrow">→</span></div>
-<div class="popular-item"><span class="popular-rank">#6</span><span class="popular-icon">🔐</span><div class="popular-info"><h4>Come ottenere lo SPID</h4><span>Anagrafe & Comune</span></div><span class="popular-views">🔥 6.800 letture</span><span class="popular-arrow">→</span></div>
-<div class="popular-item"><span class="popular-rank">#7</span><span class="popular-icon">💼</span><div class="popular-info"><h4>NASpI — indennità di disoccupazione</h4><span>Lavoro & Pensione</span></div><span class="popular-views">🔥 6.100 letture</span><span class="popular-arrow">→</span></div>
-<div class="popular-item"><span class="popular-rank">#8</span><span class="popular-icon">👶</span><div class="popular-info"><h4>Assegno Unico Universale</h4><span>Famiglia & Stato civile</span></div><span class="popular-views">🔥 5.700 letture</span><span class="popular-arrow">→</span></div>
-</div>
-</div>
-</div>
-
-<!-- NEWSLETTER -->
-<div class="newsletter fade">
-<h2>Aggiornamenti sulle pratiche, gratis</h2>
-<p>Le leggi cambiano spesso le procedure. Iscriviti per ricevere le guide aggiornate nella tua email.</p>
-<div class="newsletter-form">
-<input type="email" placeholder="La tua email..."/>
-<button>Iscrivimi →</button>
-</div>
-<div class="newsletter-note">Nessuno spam. Solo aggiornamenti utili. Puoi cancellarti quando vuoi.</div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-<div class="footer-grid">
-<div class="footer-brand">
-<div class="footer-logo-wrap">
-<div class="footer-logo-icon">🏛️</div>
-<div class="footer-logo-text">SportelloAperto.it</div>
-</div>
-<p>Il portale gratuito che aiuta i cittadini italiani a orientarsi nella burocrazia. Nessuna vendita, nessun intermediario: solo informazioni chiare e aggiornate.</p>
-</div>
-<div class="footer-col"><h4>Guide</h4><ul>
-<li><a href="#">Anagrafe & Comune</a></li>
-<li><a href="#">Documenti personali</a></li>
-<li><a href="#">Casa & Immobili</a></li>
-<li><a href="#">Fisco & Bonus</a></li>
-<li><a href="#">Famiglia & Stato civile</a></li>
-<li><a href="#">Veicoli & Patente</a></li>
-<li><a href="#">Lavoro & Pensione</a></li>
-<li><a href="#">Stranieri in Italia</a></li>
-<li><a href="#">Studenti</a></li>
-</ul></div>
-<div class="footer-col"><h4>Il sito</h4><ul>
-<li><a href="#">Chi siamo</a></li>
-<li><a href="#">Come funziona</a></li>
-<li><a href="#">Suggerisci una guida</a></li>
-<li><a href="#">Segnala un errore</a></li>
-</ul></div>
-<div class="footer-col"><h4>Informazioni</h4><ul>
-<li><a href="#">Privacy Policy</a></li>
-<li><a href="#">Cookie Policy</a></li>
-<li><a href="#">Note legali</a></li>
-<li><a href="#">Contatti</a></li>
-</ul></div>
-</div>
-<div class="footer-bottom">
-<span>© 2026 SportelloAperto.it — Informazioni a scopo orientativo, non costituiscono consulenza legale</span>
-<div class="footer-free-note">✅ Sempre gratuito</div>
-</div>
-</footer>
 
 <script>
-/* ── Intersection Observer fade-in ── */
-const obs = new IntersectionObserver(entries => {
-entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
-}, { threshold: 0.06 });
-document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+  function handleSubmit() {
+    const input = document.getElementById('emailInput');
+    const form  = document.getElementById('formWrap');
+    const msg   = document.getElementById('successMsg');
 
-/* ══════════════════════════════
-MODAL SYSTEM
-══════════════════════════════ */
-const overlay = document.getElementById('modalOverlay');
-const modalBox = document.getElementById('modalBox');
-const modalIco = document.getElementById('modalIco');
-const modalTitle= document.getElementById('modalTitle');
-const modalSub = document.getElementById('modalSubtitle');
-const modalMeta = document.getElementById('modalMeta');
-const modalBody = document.getElementById('modalBody');
-const modalHdr = document.getElementById('modalHeader');
-const closeBtn = document.getElementById('modalClose');
+    if (!input.value || !input.value.includes('@')) {
+      input.style.outline = '2px solid #E55';
+      input.focus();
+      setTimeout(() => input.style.outline = '', 1500);
+      return;
+    }
 
-function openModal(card) {
-const ico = card.querySelector('.guide-ico');
-const h3 = card.querySelector('h3');
-const p = card.querySelector('.guide-header-body > p');
-const meta = card.querySelector('.guide-meta');
-const tmpl = card.querySelector('template.guide-content');
-const variant = tmpl ? tmpl.dataset.variant : null; // 'stranieri' | 'studenti' | null
+    form.style.display = 'none';
+    msg.style.display  = 'block';
+  }
 
-// set icon
-modalIco.textContent = ico.textContent;
-modalIco.className = 'modal-header-ico' + (variant ? ' ' + variant : '');
-
-// set header accent border
-modalHdr.style.borderBottom = '1px solid var(--grey-5)';
-
-// set title & subtitle
-modalTitle.textContent = h3.textContent;
-modalSub.textContent = p ? p.textContent : '';
-
-// set meta pills (clone)
-modalMeta.innerHTML = meta ? meta.innerHTML : '';
-
-// set body content from <template>
-if (tmpl) {
-modalBody.innerHTML = '';
-modalBody.appendChild(tmpl.content.cloneNode(true));
-}
-
-// show overlay
-overlay.classList.add('active');
-document.body.style.overflow = 'hidden';
-
-// focus trap start
-setTimeout(() => closeBtn.focus(), 50);
-}
-
-function closeModal() {
-overlay.classList.remove('active');
-document.body.style.overflow = '';
-}
-
-closeBtn.addEventListener('click', closeModal);
-
-overlay.addEventListener('click', function(e) {
-if (e.target === overlay) closeModal();
-});
-
-document.addEventListener('keydown', function(e) {
-if (e.key === 'Escape' && overlay.classList.contains('active')) closeModal();
-});
-
-/* ── Category filter ── */
-function filterCat(card, cat) {
-document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
-card.classList.add('active');
-document.querySelectorAll('#guidesGrid .guide-card').forEach(c => {
-c.style.display = (cat === 'tutti' || c.dataset.cat === cat) ? '' : 'none';
-});
-}
-
-/* ── Difficulty filter ── */
-function setFilter(btn, type) {
-document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-btn.classList.add('active');
-document.querySelectorAll('#guidesGrid .guide-card').forEach(c => {
-if (type === 'tutti') { c.style.display = ''; }
-else if (type === 'facili') { c.style.display = c.querySelector('.meta-diff-easy') ? '' : 'none'; }
-else if (type === 'aggiornate') { c.style.display = ''; }
-});
-}
-
-/* ── Search ── */
-function searchGuides() {
-const val = (document.getElementById('searchInput').value || document.getElementById('heroSearch').value).toLowerCase().trim();
-if (!val) {
-document.querySelectorAll('#guidesGrid .guide-card').forEach(c => c.style.display = '');
-return;
-}
-document.querySelectorAll('#guidesGrid .guide-card').forEach(c => {
-const text = (c.dataset.tags + ' ' + c.querySelector('h3').textContent + ' ' + c.querySelector('.guide-header-body > p').textContent).toLowerCase();
-c.style.display = text.includes(val) ? '' : 'none';
-});
-document.getElementById('guide').scrollIntoView({ behavior: 'smooth' });
-}
-
-function quickSearch(term) {
-document.getElementById('heroSearch').value = term;
-searchGuides();
-}
+  document.getElementById('emailInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') handleSubmit();
+  });
 </script>
+
 </body>
 </html>
